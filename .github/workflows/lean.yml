@@ -22,7 +22,8 @@ jobs:
           build: true
           use-mathlib-cache: true
           leanchecker: true
-          nanoda: true
-          nanoda-allow-sorry: false
       - name: Check the source and print theorem dependencies
         run: ./scripts/audit.sh
+      - name: Check the environment with pinned nanoda
+        timeout-minutes: 45
+        run: ./scripts/run_nanoda.sh

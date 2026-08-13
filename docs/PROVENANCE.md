@@ -26,7 +26,13 @@ of the recovered source package. The Lean files are a new, narrower artifact.
   The workflow also pins `actions/checkout` to
   `11d5960a326750d5838078e36cf38b85af677262` (`v4`) and
   `leanprover/lean-action` to
-  `38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9` (`v1`).
+  `38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9` (`v1`). The independent
+  checker script pins `lean4export` to its `v4.33.0` commit
+  `15f6055e299ad5b89345e533cc2192f4cc00f659`, `nanoda_lib` to
+  `418320295890faed83a96fd97907b12a3b6728c2`, and Rust to `1.97.1`; Cargo's
+  locked dependency checksums supply the remaining Rust package pins. This
+  repository-owned step avoids the stale `nanoda_lib/debug` clone in
+  [`lean-action` issue 169](https://github.com/leanprover/lean-action/issues/169).
 - **Phase II Python layer:** its source is present, but it requires SymPy and
   the recovered package did not record an exact Python/SymPy environment. Its
   frozen JSON report should be treated as provenance until a lockfile is

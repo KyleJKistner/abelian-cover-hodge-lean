@@ -47,10 +47,19 @@ focused mathlib imports.
 The audit file uses `Lean.collectAxioms`, the same kernel query behind the
 legacy `#print axioms` command (which Lean now disallows inside modules). CI
 additionally runs Lean's environment replay checker (`leanchecker`) and the
-independent Rust `nanoda` implementation. The source audit rejects `sorry`,
+independent Rust `nanoda` implementation through
+[`scripts/run_nanoda.sh`](scripts/run_nanoda.sh), with the exporter, checker,
+and Rust toolchain pinned explicitly. This repository-owned step avoids the
+stale parser integration tracked in upstream
+[`lean-action` issue 169](https://github.com/leanprover/lean-action/issues/169).
+The source audit rejects `sorry`,
 `admit`, and global `axiom` declarations; the curated dependency report rejects
 `sorryAx` and any dependency other than `propext`, `Quot.sound`, or
-`Classical.choice`; CI configures `nanoda` to disallow `sorry` as well.
+`Classical.choice`. `nanoda` independently rejects declarations which depend
+on an unpermitted axiom; its full-environment configuration additionally
+permits `Lean.trustCompiler` and enables the standard natural-number and string
+kernel extensions. The external check is CI-only in the fast path because the
+full transitive export is resource intensive.
 
 ## Where to look
 
