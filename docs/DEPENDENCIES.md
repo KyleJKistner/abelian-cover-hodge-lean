@@ -1,58 +1,49 @@
 # Dependency graph
 
-The core never imports the bridge. The bridge imports the core and composes
-ordinary theorem arguments; none of the arrows below is installed as a global
-postulate.
+The core never imports the bridge. The current bridge is explicitly a
+temporary logical scaffold; the concrete replacement criteria are in
+`AUDIT_BOUNDARY.md`.
 
 ```mermaid
 flowchart TD
-  A["Lean-verified arithmetic"] --> CW["Chevalley–Weil"]
-  CW --> HC["Hodge signature criterion"]
-  HC --> T["Hodge circle / centralizer"]
-  T --> B["Balanced relations"]
-  B --> AO["Aoki prime theorem"]
-  AO --> OP["Opposite pairings"]
-  OP --> FG["Fusion gluing"]
-  FG --> ACV["ACV smoothing"]
-  ACV --> SC["Schoen simple-curve cycle"]
-  SC --> PW["Primitive = whole Jacobian"]
-  PW --> SP["Specialization + compatibility"]
-  SP --> DET["Algebraic determinants"]
-  P1["Phase I exact blocks"] --> FFT["Weyl invariant theory"]
-  DET --> FFT
-  FFT --> HR["Weight-one Hodge realization"]
+  A["Lean-verified arithmetic"] --> CW["Chevalley--Weil bidegrees"]
+  P1["Phase I exact blocks + algebraic matrix units"] --> FFT["Weyl invariant theory"]
+  CW --> ZS["Determinant Hodge iff zero signature"]
+  FFT --> ZS
+  ZS --> BAL["Zero signature iff Aoki balance"]
+  BAL --> AO["Aoki prime theorem"]
+  AO --> PAIR["Opposite matching"]
+  PAIR --> FUS["Pairing graph / compact-type fusion datum"]
+  FUS --> ACV["ACV smoothing"]
+  ACV --> SCH["Schoen simple-tuple cycles"]
+  SCH --> PW["Primitive equals whole for prime cyclic P1 cover"]
+  PW --> SP["Chow specialization + determinant compatibility"]
+  SP --> DET["Algebraic determinant spaces"]
+  P1 --> CON["Algebraic contractions"]
+  FFT --> GEN["Algebraic tensor generators"]
+  DET --> GEN
+  CON --> GEN
+  GEN --> HR["Weight-one Hodge realization"]
   HR --> GOAL["All-powers rational Hodge conclusion"]
+
+  TOR["Corrected saturated determinant torus"] -. "separate refinement" .-> FULL["Full Hodge group / endomorphisms"]
 ```
 
-## Published interfaces
+## Why the direct route matters
 
-The `PublishedInputs` bundle has seven separately named fields:
+The all-powers conclusion uses determinant Hodge bidegrees directly. It does
+not require a prior computation of the complete central torus. Consequently,
+the unsaturated quotient and rank-two character errors recorded as AF-1 and
+AF-2 do not enter this headline path.
 
-| Lean field | Intended mathematical input | Scope warning |
-|---|---|---|
-| `chevalleyWeil` | Prime cyclic-cover eigenspace multiplicities | The Lean core verifies only the resulting integer arithmetic. |
-| `aokiPrime` | Prime balanced tuples are simple/opposite-paired | Supplied as a theorem parameter, not proved here. |
-| `acvSmoothing` | Balanced twisted/admissible-cover smoothing | Must match the precise characteristic-zero tame hypotheses. |
-| `schoenSimpleCurve` | Schoen's algebraicity result for a simple tuple | Schoen's theorem is about the simple curve/primitive factor interface. |
-| `chowSpecialization` | General existence of specialization for cycles | Exact determinant compatibility remains research-specific. |
-| `weylInvariantTheory` | First fundamental theorem for the relevant standard/dual blocks | No representation-theory library is imported here. |
-| `abelianHodgeRealization` | Passage from tensor invariants to Hodge classes on powers | Requires the exact weight-one and projector formalism. |
+## Current scaffold fields
 
-Primary references highlighted by the manuscript include
-[Schoen 1988](https://www.numdam.org/item/CM_1988__65_1_3_0.pdf) and
-[Abramovich–Corti–Vistoli](https://arxiv.org/abs/math/0106211).
+`PublishedInputs` has seven citation-level arrows, still awaiting exact
+source-scoped statements. `UnformalizedDeductions` has eight
+manuscript-specific arrows, each of which must disappear from the final theorem
+and be replaced by a proof over concrete objects. In particular,
+`phaseIExactBlocks` currently hides most of Phase I and is not an acceptable
+final assumption.
 
-## Research interfaces
-
-The `ResearchInputs` bundle is deliberately separate:
-
-| Lean field | Unformalized manuscript bridge |
-|---|---|
-| `phaseIExactBlocks` | Exact derived monodromy blocks and algebraic Kummer matrix units. |
-| `hodgeCircleAndCentralizer` | Identification of the generic central torus with the signature annihilator. |
-| `fusionGluing` | Global construction of the balanced compact-type cover from all pairings. |
-| `primitiveEqWholeForPrimeP1` | Identification of Schoen's primitive factor with the whole prime cyclic `P¹` Jacobian. |
-| `specializationCompatibility` | Exact `K`-linear identification of the specialized determinant tensor. |
-
-The theorem `rationalHodge_allPowers_of_inputs` is therefore useful as a
-machine-readable checklist, not evidence that these five fields have proofs.
+See `AUDIT_BOUNDARY.md` for the exact leaf inventory, hidden obligations, and
+completion test.

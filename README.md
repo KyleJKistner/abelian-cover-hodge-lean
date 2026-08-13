@@ -2,11 +2,12 @@
 
 [![Lean audit](https://github.com/KyleJKistner/abelian-cover-hodge-lean/actions/workflows/lean.yml/badge.svg)](https://github.com/KyleJKistner/abelian-cover-hodge-lean/actions/workflows/lean.yml)
 
-This repository does **not** claim a Lean proof of the Hodge conjecture. It
-kernel-checks the finite arithmetic and combinatorial spine of the supplied
-Phase I/II work, and it exposes the remaining geometric route to the
-all-powers rational Hodge conclusion as a conditional theorem with every input
-named. That boundary is the main design constraint.
+This repository does **not** claim a Lean proof of the Hodge conjecture. The
+current checkpoint kernel-checks a finite arithmetic/combinatorial core and
+contains a machine-checked dependency scaffold. The scaffold is not the final
+audit boundary: its abstract propositions still hide manuscript-specific
+deductions. [`docs/AUDIT_BOUNDARY.md`](docs/AUDIT_BOUNDARY.md) records the
+stronger completion standard and exact remaining proof obligations.
 
 ## Status at a glance
 
@@ -16,15 +17,15 @@ named. That boundary is the main design constraint.
 | Opposite-pair witnesses imply balance | **Lean verified** | Constructive theorem, not an invocation of Aoki. |
 | Fusion rank bookkeeping | **Lean verified** | The compact-type rank identity is integer arithmetic. |
 | Mixed `p = 5` and split `p = 3,5,7` examples | **Lean verified** | Exact kernel-reduced regressions. |
-| General Aoki converse and geometric inputs | **Explicit hypotheses** | Named published interfaces, never global postulates. |
-| Phase I blocks, Hodge-circle/centralizer, gluing, and exact specialization | **Research hypotheses** | Manuscript-specific bridges remain unformalized. |
-| Rational Hodge conjecture on all powers | **Conditional only** | `rationalHodge_allPowers_of_inputs` composes the visible inputs. |
+| General Aoki converse and geometric inputs | **Explicit hypotheses** | Named citation-level interfaces, not yet exact source-scoped statements. |
+| Phase I blocks, tensor reduction, gluing, and exact specialization | **Unformalized deductions** | Manuscript-specific arrows remain to be replaced by concrete proofs. |
+| Rational Hodge conjecture on all powers | **Scaffold only** | The direct assembly bypasses the blocked torus claims, but still has abstract unformalized deductions. |
 
 Two mathematical defects found during this conversion are recorded in
 [`docs/AUDIT_FINDINGS.md`](docs/AUDIT_FINDINGS.md): the Phase II Kummer relation
 lattice needs saturation, and an internal rank-two determinant character is
 misnormalized. The legacy manuscripts are preserved unchanged for provenance;
-the Lean claim set does not use either defective step.
+the direct all-powers dependency route does not use either defective step.
 
 ## Fast audit
 
@@ -49,11 +50,13 @@ rejects `sorry`, `admit`, `axiom`, and `sorryAx`.
 - [`AbelianCoverHodge/Verified/Core.lean`](AbelianCoverHodge/Verified/Core.lean)
   is the unconditional kernel-checked layer.
 - [`AbelianCoverHodge/Bridge/Assembly.lean`](AbelianCoverHodge/Bridge/Assembly.lean)
-  is the explicit conditional dependency interface.
+  is the temporary direct-route dependency scaffold.
 - [`docs/CLAIMS.md`](docs/CLAIMS.md) maps every manuscript ledger item to its
   formal status.
 - [`docs/DEPENDENCIES.md`](docs/DEPENDENCIES.md) shows the assembly DAG and the
   published/research split.
+- [`docs/AUDIT_BOUNDARY.md`](docs/AUDIT_BOUNDARY.md) states the target external
+  trust boundary and every manuscript-specific obligation still to formalize.
 - [`docs/PROVENANCE.md`](docs/PROVENANCE.md) records source hashes and the legacy
   certificate reproducibility gap.
 - [`manuscripts/`](manuscripts/) contains unmodified source copies and ledgers.

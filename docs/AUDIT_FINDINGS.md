@@ -57,6 +57,13 @@ finite statements it actually claims.
 
 ## Review consequence
 
-Until AF-1 and AF-2 are repaired and the research interfaces in
-`Bridge/Assembly.lean` are formalized, it would be inaccurate to describe the
-headline all-powers Hodge theorem as Lean verified.
+It remains inaccurate to describe the headline all-powers Hodge theorem as
+Lean verified: the manuscript-specific deductions in `Bridge/Assembly.lean`
+are still abstract inputs.
+
+However, the shortest all-powers route does not need the determinant quotient
+or internal-disk criterion. Derived invariant theory followed by the direct
+Hodge-bidegree test selects zero-signature determinant words, and the
+Aoki/fusion/Schoen route algebraizes them. AF-1 and AF-2 therefore remain
+blockers for the claimed complete Hodge group and endomorphism refinement, but
+not necessary premises of the direct all-powers dependency scaffold.

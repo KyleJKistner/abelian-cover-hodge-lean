@@ -3,15 +3,18 @@ module
 public import AbelianCoverHodge.Verified.Core
 
 /-!
-# Conditional geometric assembly
+# Direct conditional assembly for the all-powers conclusion
 
-This file is a dependency interface, not a proof of its geometric inputs.
-Every published theorem and every manuscript-specific bridge appears as an
-ordinary theorem parameter.  There are no project-level global postulates.
+This file is a logical dependency scaffold, not the finished audit-boundary
+formalization. Its propositions are deliberately abstract, so the theorem
+below checks only composition. `docs/AUDIT_BOUNDARY.md` records the concrete
+interfaces that must replace them.
 
-The separation matters: `Verified.Core` can be audited without importing this
-file, while this module makes the remaining route to the all-powers rational
-Hodge conclusion machine-readable.
+The route here is nevertheless mathematically important: it does not use the
+blocked determinant-torus quotient or the misnormalized internal-disk claim.
+Once Phase I identifies the derived invariants, Hodge bidegrees directly select
+the zero-signature determinant words. Aoki, fusion, Schoen, and specialization
+then algebraize those words.
 -/
 
 namespace AbelianCoverHodge.Bridge
@@ -20,12 +23,15 @@ public section
 
 @[expose] section
 
-/-- Abstract propositions at the successive interfaces of the Phase II
-argument.  A future geometric formalization can replace each field with a
-concrete mathlib definition without changing the dependency graph below. -/
+/-- Abstract checkpoints in the direct all-powers route. These are temporary
+placeholders for concrete structures, maps, covers, Hodge spaces, and cycle
+classes; no field is itself presented as a formalized mathematical theorem. -/
 structure Stages where
   verifiedArithmetic : Prop
-  hodgeSignatureCriterion : Prop
+  chevalleyWeilBidegrees : Prop
+  phaseIBlockDescription : Prop
+  derivedInvariantGenerators : Prop
+  zeroSignatureDeterminants : Prop
   balancedRelations : Prop
   oppositePairings : Prop
   fusionDatum : Prop
@@ -35,61 +41,80 @@ structure Stages where
   specializedCycle : Prop
   algebraicDeterminants : Prop
   algebraicContractions : Prop
-  invariantGenerators : Prop
+  algebraicHodgeTensors : Prop
   rationalHodgeAllPowers : Prop
 
-/-- Published inputs used by the assembly.  The field names are intentionally
-theorem-specific so source scope can be audited one edge at a time. -/
+/-- Citation-level inputs. The final version will replace each arrow by its
+exact source-scoped theorem statement and all of its hypotheses. -/
 structure PublishedInputs (S : Stages) where
-  chevalleyWeil : S.verifiedArithmetic → S.hodgeSignatureCriterion
+  chevalleyWeil : S.verifiedArithmetic → S.chevalleyWeilBidegrees
   aokiPrime : S.balancedRelations → S.oppositePairings
   acvSmoothing : S.fusionDatum → S.smoothedCover
   schoenSimpleCurve : S.smoothedCover → S.simpleCurveCycle
   chowSpecialization : S.wholeJacobianCycle → S.specializedCycle
   weylInvariantTheory :
-    S.algebraicContractions → S.algebraicDeterminants → S.invariantGenerators
-  abelianHodgeRealization :
-    S.invariantGenerators → S.rationalHodgeAllPowers
+    S.phaseIBlockDescription → S.derivedInvariantGenerators
+  weightOneHodgeRealization :
+    S.algebraicHodgeTensors → S.rationalHodgeAllPowers
 
-/-- Manuscript-specific bridges.  These are separated from published inputs
-because they carry the main unresolved proof burden in the present package. -/
-structure ResearchInputs (S : Stages) where
-  phaseIExactBlocks : S.algebraicContractions
-  hodgeCircleAndCentralizer :
-    S.hodgeSignatureCriterion → S.balancedRelations
+/-- Argument-specific deductions still to be replaced by proofs over concrete
+objects. Keeping them separate prevents manuscript claims from being mistaken
+for published inputs. -/
+structure UnformalizedDeductions (S : Stages) where
+  phaseIExactBlocks : S.phaseIBlockDescription
+  determinantBidegreeCriterion :
+    S.chevalleyWeilBidegrees →
+    S.derivedInvariantGenerators →
+    S.zeroSignatureDeterminants
+  zeroSignatureIffBalanced :
+    S.zeroSignatureDeterminants → S.balancedRelations
   fusionGluing : S.oppositePairings → S.fusionDatum
   primitiveEqWholeForPrimeP1 :
     S.simpleCurveCycle → S.wholeJacobianCycle
   specializationCompatibility :
     S.specializedCycle → S.algebraicDeterminants
+  contractionsFromPhaseI :
+    S.phaseIBlockDescription → S.algebraicContractions
+  assembleAlgebraicTensorGenerators :
+    S.derivedInvariantGenerators →
+    S.algebraicContractions →
+    S.algebraicDeterminants →
+    S.algebraicHodgeTensors
 
-/-- The all-powers conclusion, conditional on the seven named published
-interfaces, the five named research interfaces, and the verified arithmetic
-premise.  The proof merely composes those arrows; it does not hide any input. -/
+/-- Direct all-powers assembly. This theorem does not depend on a central
+torus, its character lattice, or the internal rank-two disk calculation. At
+this checkpoint it remains only a machine-checked dependency sketch. -/
 theorem rationalHodge_allPowers_of_inputs
     (S : Stages)
     (published : PublishedInputs S)
-    (research : ResearchInputs S)
+    (deductions : UnformalizedDeductions S)
     (arithmetic : S.verifiedArithmetic) :
     S.rationalHodgeAllPowers := by
-  have signatureCriterion : S.hodgeSignatureCriterion :=
+  have bidegrees : S.chevalleyWeilBidegrees :=
     published.chevalleyWeil arithmetic
+  have generators : S.derivedInvariantGenerators :=
+    published.weylInvariantTheory deductions.phaseIExactBlocks
+  have zeroSignature : S.zeroSignatureDeterminants :=
+    deductions.determinantBidegreeCriterion bidegrees generators
   have balanced : S.balancedRelations :=
-    research.hodgeCircleAndCentralizer signatureCriterion
+    deductions.zeroSignatureIffBalanced zeroSignature
   have paired : S.oppositePairings := published.aokiPrime balanced
-  have fusion : S.fusionDatum := research.fusionGluing paired
+  have fusion : S.fusionDatum := deductions.fusionGluing paired
   have smoothed : S.smoothedCover := published.acvSmoothing fusion
   have simpleCycle : S.simpleCurveCycle :=
     published.schoenSimpleCurve smoothed
   have wholeCycle : S.wholeJacobianCycle :=
-    research.primitiveEqWholeForPrimeP1 simpleCycle
+    deductions.primitiveEqWholeForPrimeP1 simpleCycle
   have specialized : S.specializedCycle :=
     published.chowSpecialization wholeCycle
   have determinants : S.algebraicDeterminants :=
-    research.specializationCompatibility specialized
-  have generators : S.invariantGenerators :=
-    published.weylInvariantTheory research.phaseIExactBlocks determinants
-  exact published.abelianHodgeRealization generators
+    deductions.specializationCompatibility specialized
+  have contractions : S.algebraicContractions :=
+    deductions.contractionsFromPhaseI deductions.phaseIExactBlocks
+  have algebraicTensors : S.algebraicHodgeTensors :=
+    deductions.assembleAlgebraicTensorGenerators
+      generators contractions determinants
+  exact published.weightOneHodgeRealization algebraicTensors
 
 end
 

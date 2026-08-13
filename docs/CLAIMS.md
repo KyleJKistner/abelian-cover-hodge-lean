@@ -6,8 +6,11 @@ This is the controlling claim ledger for the repository. Status words mean:
 - **PARTIAL FORMALIZED:** a stated finite/arithmetic subclaim is proved, not the
   full geometric ledger item.
 - **PUBLISHED INPUT:** represented by a named field of `PublishedInputs`.
-- **MANUSCRIPT INPUT:** represented by a named field of `ResearchInputs` or is
+- **MANUSCRIPT INPUT:** represented by a named field of
+  `UnformalizedDeductions` or is
   otherwise still part of the unformalized research bridge.
+- **SCAFFOLD ONLY:** Lean checks the logical composition, but the statement uses
+  abstract propositions that erase the mathematics an auditor must inspect.
 - **REGRESSION ONLY:** checked for an explicitly bounded finite sample; it must
   not be read as a universal theorem.
 - **BLOCKED:** the supplied formulation contains a known defect.
@@ -24,7 +27,7 @@ This is the controlling claim ledger for the repository. Status words mean:
 | `mixed_galois_balance` | FORMALIZED | The frozen mixed `p=5` concatenation passes every nonzero Galois-row balance check. |
 | `mixed_fusion_rank` | FORMALIZED | The frozen two-component fusion has rank four. |
 | `split_regression_p3/p5/p7` | REGRESSION ONLY | Exact enumeration for the three stated primes. |
-| `rationalHodge_allPowers_of_inputs` | CONDITIONAL | Pure composition of 12 visible published/research theorem arguments plus the arithmetic premise. |
+| `rationalHodge_allPowers_of_inputs` | SCAFFOLD ONLY | Pure composition along the direct zero-signature/fusion route; its abstract manuscript-specific arrows are not formalized mathematics. |
 
 ## Phase I ledger
 
@@ -65,14 +68,14 @@ This is the controlling claim ledger for the repository. Status words mean:
 | P2.8 Full Hodge group | MANUSCRIPT INPUT | Depends on P2.4/P2.7. |
 | P2.9 Isolated disk criterion | BLOCKED | Character is `±ε_c`, not `2ε_c`; also downstream of AF-1. See AF-2. |
 | P2.10 Tensor invariant generators | PUBLISHED INPUT + MANUSCRIPT INPUT | `weylInvariantTheory` is explicit; exact multiplicity/Kummer identification still uses Phase I. |
-| P2.11 Determinant word criterion | PARTIAL FORMALIZED / REGRESSION ONLY | Exact signed words and finite signature checks exist; the universal Hodge iff statement depends on P2.7 and is not proved. |
+| P2.11 Determinant word criterion | PARTIAL FORMALIZED / REGRESSION ONLY | Exact signed words and finite signature checks exist; the universal direct Hodge-bidegree criterion is not proved. It need not depend on P2.7. |
 | P2.12 Prime relations are opposite-paired | PARTIAL FORMALIZED + PUBLISHED INPUT | Opposite-paired implies balance is proved; balanced implies opposite-paired is `aokiPrime`. The general relation-to-balance reduction remains to be formalized. |
 | P2.13 Compact-type gluing | PARTIAL FORMALIZED + MANUSCRIPT INPUT | Pair/rank bookkeeping is proved; global admissible-cover construction is `fusionGluing`. |
 | P2.14 Smoothing and rank | PARTIAL FORMALIZED + PUBLISHED INPUT | Rank identity is proved; deformation is `acvSmoothing` and must match the exact global datum. |
 | P2.15 Schoen cycles | PUBLISHED INPUT + MANUSCRIPT INPUT | `schoenSimpleCurve` is separate from the extra `primitiveEqWholeForPrimeP1` bridge. |
 | P2.16 Specialization | PUBLISHED INPUT + MANUSCRIPT INPUT | General cycle specialization is separate from exact determinant compatibility. |
 | P2.17 Determinant relations algebraic | CONDITIONAL | Follows only after P2.12–P2.16 interfaces are discharged. Mixed `p=5` is arithmetic regression, not cycle construction. |
-| P2.18 All rational Hodge classes algebraic | CONDITIONAL | Conclusion of `rationalHodge_allPowers_of_inputs`; not unconditional. |
+| P2.18 All rational Hodge classes algebraic | SCAFFOLD ONLY | The direct route avoids P2.5/P2.7/P2.9, but Phase I, tensor reduction, fusion geometry, and specialization still require concrete formal proofs. |
 | P2.19 Binary divisor generation | MANUSCRIPT INPUT | Depends on the binary Phase I theorem and symplectic invariant theory. |
 
 ## Explicit nonclaims
