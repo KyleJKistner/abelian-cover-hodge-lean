@@ -22,7 +22,5 @@ jobs:
           build: true
           use-mathlib-cache: false
           leanchecker: true
-          nanoda: true
-          nanoda-allow-sorry: false
       - name: Check the source and print theorem dependencies
         run: ./scripts/audit.sh

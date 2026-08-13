@@ -39,8 +39,10 @@ lake env lean AbelianCoverHodge/Audit/PrintAxioms.lean
 
 The audit file uses `Lean.collectAxioms`, the same kernel query behind the
 legacy `#print axioms` command (which Lean now disallows inside modules). CI
-additionally runs Lean's independent environment checker and `nanoda`, with
-permission for `sorryAx` disabled.
+additionally runs Lean's independent environment checker. The optional
+`nanoda` action is not claimed: its current parser rejects Lean 4.33 exports
+after a successful export, before checking any declaration. The source audit
+rejects `sorry`, `admit`, `axiom`, and `sorryAx`.
 
 ## Where to look
 
