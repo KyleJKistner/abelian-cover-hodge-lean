@@ -14,13 +14,15 @@ jobs:
   verify:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - name: Build and independently check the environment
-        uses: leanprover/lean-action@v1
+        uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9 # v1
         with:
           auto-config: false
           build: true
           use-mathlib-cache: true
           leanchecker: true
+          nanoda: true
+          nanoda-allow-sorry: false
       - name: Check the source and print theorem dependencies
         run: ./scripts/audit.sh

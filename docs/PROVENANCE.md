@@ -23,6 +23,10 @@ of the recovered source package. The Lean files are a new, narrower artifact.
   finite kernel is `Std`-only; newer concrete algebra uses focused mathlib
   imports. The resolved transitive revisions are recorded in
   `lake-manifest.json`, and CI builds plus independently checks the result.
+  The workflow also pins `actions/checkout` to
+  `11d5960a326750d5838078e36cf38b85af677262` (`v4`) and
+  `leanprover/lean-action` to
+  `38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9` (`v1`).
 - **Phase II Python layer:** its source is present, but it requires SymPy and
   the recovered package did not record an exact Python/SymPy environment. Its
   frozen JSON report should be treated as provenance until a lockfile is
@@ -34,3 +38,43 @@ The missing Phase I core is expected to have SHA-256
 `dd58de8adfae482319ccbfab2164bee2b5393ce27f0dbbef1c055a5784a67fff`.
 If recovered, verify the hash before running it and record the interpreter and
 dependency versions used.
+
+## External source pins introduced by the Lean audit
+
+The Phase I full-projection interface and its arithmetic hypothesis match are
+pinned to Menet--Nguyen, *Representations of braid groups via cyclic covers of
+the sphere: Zariski closure and arithmeticity*,
+[`arXiv:2310.10401v3`](https://arxiv.org/abs/2310.10401v3), 16 November 2024,
+Definition 1.1(a) (p. 3), Theorems 2.1--2.2 (p. 8), Theorem 2.5, its following
+reflection discussion, and Corollary 2.7 (p. 9), Theorem 2.8 (p. 10), Lemma
+3.9 (pp. 14--15), Corollary 3.11 (p. 16), and Theorem 5.1 with its standing
+Section 5 assumptions (p. 24). `External/MenetNguyen.lean` currently models
+the row data and the 2.5/2.7/2.8/5.1 interfaces; exact Theorem 2.2 Gram data and
+the Lemma 3.9/Corollary 3.11 subset-eigenspace package remain to be added. The
+repository takes sourced implications only as explicit parameter data;
+`Mathlib/MenetNguyenGood.lean` proves the separate case-(a) inequality match.
+
+Menet--Nguyen uses `q = exp(-2*pi*i*k/d)`, whereas the Phase I manuscript writes
+positive-exponent `t_i`. Their root/sign conversion is a project-side proof
+obligation, not a citation. The printed final branch of Theorem 2.8 contains an
+undefined `q_l`; the interface records the inferred `g_l` correction and
+restricts to `r < n`, where the displayed cases do not overlap.
+
+The Aoki interface is pinned to Theorem A, pp. 23--24 of
+[*On some arithmetic problems related to the Hodge cycles on the Fermat
+varieties*](https://doi.org/10.1007/BF01458703), with the even-length premise
+retained. Its one-page erratum, Math. Ann. 267 (1984), p. 572, was checked: it
+corrects only the statement of Theorem B in the introduction, so Theorem A is
+unaffected. Stable copies are indexed by
+[EuDML](https://eudml.org/doc/163917) and the
+[Göttingen resolver](http://resolver.sub.uni-goettingen.de/purl?GDZPPN002325268).
+The Schoen interface is pinned to Section 2, Theorem 2.0, p. 11 and
+the Section 3 setup and Corollary 3.1, pp. 24--25 of
+[*Hodge classes on self-products of a variety with an
+automorphism*](https://www.numdam.org/item/CM_1988__65_1_3_0.pdf).
+
+Still pending exact primary-source locators are the particular forms used for
+Chevalley--Weil, Deligne fixed part, Andre normality, Weyl invariant theory,
+ACV smoothing, compact-type Picard, smooth-proper comparison, Chow
+specialization, and the weight-one realization package. Their current Lean
+contexts are prospective interfaces, not a completed or wired trust boundary.

@@ -90,6 +90,43 @@ def IsAokiBalanced (p : Nat) [NeZero p] (residues : BranchWord p) : Prop :=
   ∀ a : ZMod p, a ≠ zzero p →
     2 * galoisResidueSum a residues = p * llength residues
 
+/-- For an odd modulus, the doubled balance equation itself forces Aoki's
+even-length premise.  This is a manuscript-specific discharge of the source
+side condition, not part of Aoki's imported theorem. -/
+theorem aokiBalanced_length_even_of_odd {p : Nat} [NeZero p]
+    (hpGtOne : 1 < p) (hpOdd : p % 2 = 1) {residues : BranchWord p}
+    (balanced : IsAokiBalanced p residues) :
+    llength residues % 2 = 0 := by
+  have rowOneNonzero : zOfNat p 1 ≠ zzero p := by
+    intro equality
+    have values := congrArg Fin.val equality
+    simp [zOfNat, Nat.mod_eq_of_lt hpGtOne] at values
+  have equation := balanced (zOfNat p 1) rowOneNonzero
+  have parity := congrArg (fun n : Nat ↦ n % 2) equation
+  symm
+  simpa [Nat.mul_mod, hpOdd] using parity
+
+/-- Every prime modulus other than two is odd, so the preceding arithmetic
+lemma discharges Aoki's even-length premise in the odd-prime application. -/
+theorem aokiBalanced_length_even_of_prime_ne_two {p : Nat} [NeZero p]
+    (hp : IsPrimeModulus p) (hpNotTwo : p ≠ 2)
+    {residues : BranchWord p} (balanced : IsAokiBalanced p residues) :
+    llength residues % 2 = 0 := by
+  have hpOdd : p % 2 = 1 := by
+    have hmodLt : p % 2 < 2 := Nat.mod_lt p (by omega)
+    have hmodNonzero : p % 2 ≠ 0 := by
+      intro hmodZero
+      have twoDvd : 2 ∣ p := Nat.dvd_of_mod_eq_zero hmodZero
+      rcases hp.2 2 twoDvd with twoEqOne | twoEqP
+      · omega
+      · exact hpNotTwo twoEqP.symm
+    omega
+  apply aokiBalanced_length_even_of_odd
+  · have hpAtLeastTwo := hp.1
+    omega
+  · exact hpOdd
+  · exact balanced
+
 /-- At an invertible row, a nonzero opposite pair has least residues summing
 to the modulus. -/
 theorem scaled_opposite_pair_value_sum {p : Nat} [NeZero p]
@@ -264,15 +301,17 @@ structure AokiPrimeTheorem (p : Nat) [NeZero p] where
   prime : IsPrimeModulus p
   simple_of_balanced : ∀ residues : BranchWord p,
     AllResiduesNonzero residues →
+    llength residues % 2 = 0 →
     IsAokiBalanced p residues →
     OppositePairingWitness residues
 
 def aoki_pairing_of_input {p : Nat} [NeZero p]
     (published : AokiPrimeTheorem p) (residues : BranchWord p)
     (hnonzero : AllResiduesNonzero residues)
+    (heven : llength residues % 2 = 0)
     (hbalanced : IsAokiBalanced p residues) :
     OppositePairingWitness residues :=
-  published.simple_of_balanced residues hnonzero hbalanced
+  published.simple_of_balanced residues hnonzero heven hbalanced
 
 /-! ## Fusion rank bookkeeping -/
 

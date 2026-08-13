@@ -1,19 +1,21 @@
 module
 
 public import AbelianCoverHodge.Verified.AokiFusion
+public import AbelianCoverHodge.External.MenetNguyen
 
 /-!
-# Auditable interfaces for published inputs
+# Prospective auditable interfaces for citation inputs
 
 This module contains **types of assumptions**, not proofs of the cited
 theorems.  In particular, it declares no global postulate and constructs no value of any
 input structure below.  A later module may take values of these structures as
 explicit parameters, or an independently audited library may construct them.
 
-The project is currently `Std`-only.  `Std` has no definitions of variations
-of Hodge structure, algebraic groups, Chow groups, admissible covers, or
-cohomological realizations.  The interfaces below therefore follow a strict
-two-level convention:
+The verified arithmetic layer now also uses focused mathlib imports, but the
+available library stack still has no project-ready definitions of variations
+of Hodge structure, Chow realizations, or the required admissible-cover
+geometry.  The interfaces below therefore follow a strict two-level
+convention:
 
 * finite residue data and the hypotheses that can already be expressed in
   Lean are concrete;
@@ -22,18 +24,20 @@ two-level convention:
 
 This erasure is deliberate and visible in every context name.  A predicate
 such as `IsSmoothProper` is not evidence: evidence occurs only in the
-corresponding published-input structure.  Replacing an erased context by
-mathlib definitions must preserve the theorem signatures, not merely their
-names.
+corresponding citation-input structure.  Replacing an erased context by
+concrete library definitions may refine these interfaces; an auditor must
+compare the resulting hypotheses and conclusion to the cited source rather
+than relying on declaration names.
 
 The interfaces also keep source results separate from manuscript-specific
 bridges.  Examples of bridges which are *not* fields below include:
 
-* positivity of Chevalley--Weil multiplicities implies the Menet--Nguyen
-  `good sequence` condition;
+* application of the proved positivity-to-good-sequence arithmetic bridge to
+  the concrete geometric eigenspace;
 * a zero-signature determinant word gives an Aoki-balanced tuple;
 * the pairing forest produces the precise balanced admissible cover;
-* the fused branch tuple is simple and has the required rank;
+* realization of the certified simple fused tuple and rank ledger by an
+  admissible cover;
 * for a prime cyclic cover of `P^1`, Schoen's primitive factor is the whole
   Jacobian;
 * determinant and cycle classes commute with the concrete identifications
@@ -81,7 +85,8 @@ def deligneFixedPart : SourceScope where
 def menetNguyenProjection : SourceScope where
   work :=
     "G. Menet and D.-M. Nguyen, Representations of braid groups via cyclic covers of the sphere"
-  locator := "Definition 1.1(a) and Theorem 5.1 (source version to be pinned)"
+  locator :=
+    "arXiv:2310.10401v3 (16 November 2024), Definition 1.1(a) and Theorem 5.1"
   importedConclusion :=
     "full connected special-unitary projection for a primitive good sequence"
 
@@ -102,9 +107,9 @@ def aokiPrime : SourceScope where
   work :=
     "N. Aoki, On some arithmetic problems related to the Hodge cycles on the Fermat varieties"
   locator :=
-    "prime-exponent balanced-tuple theorem, in the form used by Schoen near Corollary 1.9"
+    "Theorem A, pp. 23--24; cf. Schoen after Corollary 1.9; 1984 erratum changes only Theorem B"
   importedConclusion :=
-    "a balanced nonzero residue tuple has opposite multiplicities"
+    "an even-length balanced nonzero residue tuple is permutable into opposite pairs"
 
 def acvSmoothing : SourceScope where
   work :=
@@ -117,7 +122,8 @@ def acvSmoothing : SourceScope where
 def schoenSimpleTuple : SourceScope where
   work :=
     "C. Schoen, Hodge classes on self-products of a variety with an automorphism"
-  locator := "Theorem 2.0 and Corollary 3.1"
+  locator :=
+    "Section 2, Theorem 2.0, p. 11; Section 3 setup and Corollary 3.1, pp. 24--25"
   importedConclusion :=
     "algebraicity of the primitive cyclotomic determinant space for a simple tuple"
 
@@ -166,7 +172,7 @@ function `h10 a` denotes the `(1,0)` multiplicity at the embedding indexed by
 `a`; only nonzero `a` are mathematically relevant. -/
 structure CyclicHodgeDatum (p : Nat) [NeZero p] where
   branch : BranchWord p
-  h10 : ZMod p → Nat
+  h10 : Verified.ZMod p → Nat
   cyclotomicRank : Nat
 
 /-- The geometric hypotheses of the cyclic `P^1` form used in the
@@ -180,17 +186,42 @@ structure ChevalleyWeilHypotheses {p : Nat} [NeZero p]
   entriesNonzero : AllEntriesNonzero datum.branch
   nonempty : 0 < llength datum.branch
 
-/-- Exact Chevalley--Weil formulas used by the direct route.  This is a
-parameter type.  It has no constructor in this repository. -/
-structure ChevalleyWeilInput : Prop where
+/-- Geometric vocabulary tying a `CyclicHodgeDatum` to an actual cyclic
+cover.  The formula below is deliberately unavailable until the branch tuple,
+Hodge multiplicities, and cyclotomic rank have each been identified with the
+same cover. -/
+structure ChevalleyWeilContext (p : Nat) [NeZero p] where
+  Cover : Type
+  datum : Cover → CyclicHodgeDatum p
+  IsSmoothConnectedComplexProjectiveCurve : Cover → Prop
+  HasFaithfulCyclicActionOfOrderP : Cover → Prop
+  QuotientIsP1 : Cover → Prop
+  BranchTupleIsAssociatedLocalMonodromy : Cover → Prop
+  H10IsEigenspaceMultiplicity : Cover → Prop
+  CyclotomicRankIsPrimitiveH1Rank : Cover → Prop
+
+/-- Exact Chevalley--Weil formulas used by the direct route, scoped to data
+geometrically identified with one cyclic cover.  This is a parameter type; no
+value is constructed in this repository. -/
+structure ChevalleyWeilInput {p : Nat} [NeZero p]
+    (context : ChevalleyWeilContext p) : Prop where
   formula :
-    forall (p : Nat) [NeZero p] (datum : CyclicHodgeDatum p),
-      ChevalleyWeilHypotheses datum →
-      forall a : ZMod p, a ≠ zzero p →
-        datum.h10 a =
-            supportSize datum.branch - qValue a datum.branch - 1 ∧
-        datum.h10 (zneg a) = qValue a datum.branch - 1 ∧
-        datum.cyclotomicRank = supportSize datum.branch - 2
+    forall cover : context.Cover,
+      context.IsSmoothConnectedComplexProjectiveCurve cover →
+      context.HasFaithfulCyclicActionOfOrderP cover →
+      context.QuotientIsP1 cover →
+      context.BranchTupleIsAssociatedLocalMonodromy cover →
+      context.H10IsEigenspaceMultiplicity cover →
+      context.CyclotomicRankIsPrimitiveH1Rank cover →
+      ChevalleyWeilHypotheses (context.datum cover) →
+      forall a : Verified.ZMod p, a ≠ zzero p →
+        (context.datum cover).h10 a =
+            supportSize (context.datum cover).branch -
+              qValue a (context.datum cover).branch - 1 ∧
+        (context.datum cover).h10 (zneg a) =
+            qValue a (context.datum cover).branch - 1 ∧
+        (context.datum cover).cyclotomicRank =
+            supportSize (context.datum cover).branch - 2
 
 /-! ## Fixed part, full cyclic projection, and normality -/
 
@@ -216,41 +247,23 @@ structure DeligneSemisimplicityFixedPartInput
   fixedPartConstant : context.Constant context.fixedPart
   fixedPartIsFullInvariant : context.IsFullInvariantPart context.fixedPart
 
-/-- Erased source vocabulary for the cyclic full-projection theorem.  In
-particular, `GoodSequence` is to be replaced by the source's exact Definition
-1.1(a), and `ConnectedProjectionIsFullSU` by an equality of algebraic groups
-once those objects are available. -/
-structure CyclicProjectionContext (p : Nat) [NeZero p] where
+/-- A dependent family of concrete Menet--Nguyen finite data and matrix
+models.  Different factors may have different numbers of finite labels. -/
+structure MenetNguyenFamily (p : Nat) [NeZero p] where
   Factor : Type
-  datum : Factor → CyclicHodgeDatum p
-  EffectiveCharacter : Factor → Prop
-  PrimitiveCharacter : Factor → Prop
-  GoodSequence : Factor → Prop
-  ConnectedProjectionIsFullSU : Factor → Prop
+  finiteLabelCount : Factor → Nat
+  datum : (factor : Factor) →
+    MenetNguyen.Datum p (finiteLabelCount factor)
+  model : (factor : Factor) → MenetNguyen.MonodromyModel (datum factor)
 
-/-- Menet--Nguyen's full cyclic projection is deliberately stated with its
-source hypothesis `GoodSequence`, not with the manuscript's positivity
-criterion.  Positivity-to-good-sequence is therefore forced to remain a
-separate local proof. -/
-structure MenetNguyenFullProjectionInput {p : Nat} [NeZero p]
-    (context : CyclicProjectionContext p) : Prop where
-  theorem5_1 :
-    forall factor : context.Factor,
-      context.EffectiveCharacter factor →
-      context.PrimitiveCharacter factor →
-      context.GoodSequence factor →
-      context.ConnectedProjectionIsFullSU factor
-
-/-- Explicit type of the manuscript-specific hypothesis match which must be
-proved before `MenetNguyenFullProjectionInput` can be applied.  This structure
-is not part of `PublishedInputs`. -/
-structure PositivityMatchesGoodSequence {p : Nat} [NeZero p]
-    (context : CyclicProjectionContext p) : Prop where
-  ofPositive :
-    forall factor : context.Factor,
-      0 < (context.datum factor).h10 (zOfNat p 1) →
-      0 < (context.datum factor).h10 (zneg (zOfNat p 1)) →
-      context.GoodSequence factor
+/-- Concrete source interfaces at every selected cyclic factor.  The fields
+of `MenetNguyen.SourceInputs` retain their own source hypotheses; this wrapper
+contributes no theorem and performs no manuscript-specific deduction. -/
+structure MenetNguyenFamilyInputs {p : Nat} [NeZero p]
+    (family : MenetNguyenFamily p) : Prop where
+  sourceInputs :
+    forall factor : family.Factor,
+      MenetNguyen.SourceInputs (family.datum factor) (family.model factor)
 
 /-- Erased vocabulary for Andre normality. -/
 structure NormalityContext where
@@ -307,14 +320,15 @@ structure WeylStandardDualFFTInput
 
 /-! ## Aoki's prime balanced-tuple theorem -/
 
-/-- Concrete, source-auditable form of the only Aoki implication used by the
-direct route.  The conclusion says exactly that every residue and its negative
-have equal multiplicity. -/
+/-- Concrete typed form of the Aoki implication used by the direct route.  The
+published erratum corrects Theorem B only and does not affect this use of
+Theorem A. -/
 structure AokiPrimeBalanceInput where
   balancedHasOppositePairing :
     forall (p : Nat) [NeZero p], IsPrime p →
       forall residues : BranchWord p,
         AllEntriesNonzero residues →
+        llength residues % 2 = 0 →
         IsAokiBalanced residues →
         OppositePairingWitness residues
 
@@ -358,8 +372,13 @@ structure SchoenContext (p : Nat) [NeZero p] where
   CyclicCover : Type
   branchTuple : CyclicCover → BranchWord p
   cyclotomicRank : CyclicCover → Nat
-  IsDegreePCoverOfP1 : CyclicCover → Prop
-  IsPrimitiveCyclotomicFactor : CyclicCover → Prop
+  IsSmoothIrreducibleComplexProjectiveCurve : CyclicCover → Prop
+  HasFaithfulCyclicAction : CyclicCover → Prop
+  QuotientIsP1 : CyclicCover → Prop
+  BranchTupleIsAssociatedLocalMonodromyTuple : CyclicCover → Prop
+  CyclotomicRankIsPrimitiveH1Rank : CyclicCover → Prop
+  PrimitiveFactorIsSchoenB : CyclicCover → Prop
+  DeterminantClassIsSchoenWeilSubspace : CyclicCover → Prop
   PrimitiveDeterminantClass : CyclicCover → Type
   PrimitiveCycleCombination : CyclicCover → Nat → Type
   cycleClass :
@@ -367,18 +386,26 @@ structure SchoenContext (p : Nat) [NeZero p] where
       PrimitiveCycleCombination cover codimension →
       PrimitiveDeterminantClass cover
 
-/-- Schoen's imported conclusion stops at the primitive cyclotomic abelian
-factor.  The project must separately prove that this factor is the whole
-Jacobian in the prime cyclic `P^1` case where that is used. -/
+/-- Prime-`P^1` specialization of Schoen's imported conclusion, stopping at
+his primitive cyclotomic factor `B`.  The hypotheses keep the actual source
+curve, action, associated local-monodromy tuple, primitive rank, and Weil
+subspace identifications visible.  The project must separately prove that
+this primitive factor is the whole Jacobian where that is used. -/
 structure SchoenSimpleTupleInput {p : Nat} [NeZero p]
     (context : SchoenContext p) : Prop where
   primitiveDeterminantAlgebraic :
     IsPrime p →
+    2 < p →
     forall cover : context.CyclicCover,
-      context.IsDegreePCoverOfP1 cover →
-      context.IsPrimitiveCyclotomicFactor cover →
+      context.IsSmoothIrreducibleComplexProjectiveCurve cover →
+      context.HasFaithfulCyclicAction cover →
+      context.QuotientIsP1 cover →
+      context.BranchTupleIsAssociatedLocalMonodromyTuple cover →
+      context.CyclotomicRankIsPrimitiveH1Rank cover →
+      context.PrimitiveFactorIsSchoenB cover →
+      context.DeterminantClassIsSchoenWeilSubspace cover →
       AllEntriesNonzero (context.branchTuple cover) →
-      hasOppositeMultiplicities (context.branchTuple cover) →
+      OppositePairingWitness (context.branchTuple cover) →
       context.cyclotomicRank cover % 2 = 0 →
       forall determinant : context.PrimitiveDeterminantClass cover,
         Exists fun cycle :
@@ -554,17 +581,20 @@ structure WeightOneHodgeRealizationInput
         context.alternatingProject (degree := degree)
           (context.tensorCycleClass cycle)
 
-/-! ## Bundle for the direct route -/
+/-! ## Prospective citation bundle for the direct route -/
 
-/-- The citation-level bundle expected by the direct all-powers route.
-Contexts are explicit parameters, so this structure cannot hide an erased
-geometric model.  It intentionally does not contain any Phase I block theorem,
-zero-signature arithmetic, fusion construction, primitive-equals-whole step,
-or determinant-specialization argument. -/
-structure PublishedInputs
+/-- The prospective citation-level bundle expected by the concrete direct
+all-powers route.  It is **not yet consumed** by
+`Bridge.rationalHodge_allPowers_of_inputs`, whose `Bridge.PublishedInputs` is a
+separate abstract scaffold.  Contexts are explicit parameters.  This bundle
+intentionally contains no Phase I block theorem, zero-signature arithmetic,
+fusion construction, primitive-equals-whole step, or
+determinant-specialization argument. -/
+structure ProspectiveCitationInputs
     (variation : VariationContext)
     {p : Nat} [NeZero p]
-    (cyclicProjection : CyclicProjectionContext p)
+    (chevalleyWeilContext : ChevalleyWeilContext p)
+    (menetNguyenFamily : MenetNguyenFamily p)
     (normality : NormalityContext)
     (fft : StandardDualFFTContext)
     (acv : ACVSmoothingContext p)
@@ -573,9 +603,9 @@ structure PublishedInputs
     (comparison : SmoothProperComparisonContext)
     (chow : ChowSpecializationContext)
     (weightOne : WeightOneRealizationContext) where
-  chevalleyWeil : ChevalleyWeilInput
+  chevalleyWeil : ChevalleyWeilInput chevalleyWeilContext
   deligne : DeligneSemisimplicityFixedPartInput variation
-  fullCyclicProjection : MenetNguyenFullProjectionInput cyclicProjection
+  menetNguyen : MenetNguyenFamilyInputs menetNguyenFamily
   andre : AndreNormalityInput normality
   weyl : WeylStandardDualFFTInput fft
   aoki : AokiPrimeBalanceInput

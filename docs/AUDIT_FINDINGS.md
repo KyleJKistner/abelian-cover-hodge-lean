@@ -27,6 +27,9 @@ R_{\mathrm{Kum}}^{\mathrm{sat}}
 `Mathlib/DeterminantLattice.lean` implements this saturation, proves that its
 quotient is torsion-free, and proves that saturation does not change a
 compatible signature image because the signature lattice is torsion-free.
+`Mathlib/DeterminantSignature.lean` additionally proves this for concrete
+standard/dual branch words up to coordinate permutation, including the
+self-dual raw generator `2 ε_c`.
 P2.5 is nevertheless false as written: identifying the corrected lattice with
 the character lattice of the connected geometric torus still requires a fresh
 proof. No Lean theorem assumes the unsaturated geometric claim.
@@ -71,9 +74,62 @@ prove the manuscript-specific hypothesis match
 
 `positive Chevalley--Weil multiplicities -> good sequence`
 
-before applying the published theorem. `External/Inputs.lean` exposes that
-match separately and records that Menet--Nguyen is an arXiv preprint; it does
-not bundle the implication into the published input.
+before applying the source theorem. `Mathlib/MenetNguyenGood.lean` now proves
+this arithmetic match on the nonzero support at a unit row. The separately
+typed Theorem 5.1 input exposes degree, branch-count/range, connectedness,
+primitive-root, and good-sequence premises; the Lean result does not assert
+the monodromy conclusion. Menet--Nguyen remains an arXiv preprint.
+
+## AF-5 — Aoki's converse requires even tuple length
+
+**Location:** Phase II balanced-to-simple step, ledger item P2.12.
+
+Aoki's Theorem A is stated for an even-length tuple. Omitting that premise
+makes the naive typed statement false at `p = 2`: the one-entry tuple `[1]`
+satisfies the doubled balance equation but cannot be partitioned into opposite
+pairs. Both `AokiPrimeTheorem` and `AokiPrimeBalanceInput` now expose the exact
+condition `length % 2 = 0`. The project theorem
+`aokiBalanced_length_even_of_prime_ne_two` proves that balance supplies this
+premise for every prime modulus other than two.
+
+Aoki's one-page 1984 erratum has also been checked. It corrects only the
+statement of Theorem B in the introduction; it does not affect the Theorem A
+balanced-tuple result used here.
+
+## AF-6 — Schoen's primitive-factor theorem has a narrower source scope
+
+**Location:** Phase II simple-tuple cycle step, ledger item P2.15.
+
+Schoen's Corollary 3.1 is in the section assuming `m > 2` and concerns the
+primitive factor `B`, its Weil subspace, and the associated simple
+local-monodromy tuple. The source input now exposes smooth irreducible complex
+projectivity, faithful cyclic action, the quotient, associated-tuple and
+primitive-rank identifications, `m > 2`, the primitive factor, and an explicit
+opposite-pair witness. Identifying that factor with the whole prime cyclic
+`P^1` Jacobian remains a separate manuscript obligation.
+
+## AF-7 — Menet--Nguyen uses the opposite root convention, and extra source data are needed
+
+**Location:** Phase I pair-spectrum and high-rank reconstruction steps, ledger
+items I.5--I.7.
+
+Menet--Nguyen Section 5 fixes
+`q = exp(-2*pi*i*k/d)`, while Phase I defines the branch eigenvalues using a
+positive exponential. For the same row, the source pair eigenvalue is the
+inverse of the manuscript's displayed product. Applying the source formulas to
+the opposite character may repair the argument, but invariance of the good
+condition and identification of the two orientations are manuscript-specific
+deductions and must be proved.
+
+The pair-twist formula and Corollary 2.7 also do not by themselves supply every
+claim made in Phase I. Nonidentity in the unipotent case uses the exact Gram
+relations from Menet--Nguyen Theorem 2.2. The claimed prefix eigenspace and
+complement use Lemma 3.9 and Corollary 3.11 in addition to Theorem 2.8.
+`External/MenetNguyen.lean` now enforces negative-root/row alignment and
+geometric operator identification, separates the nontrivial reflection
+spectrum from literal Corollary 2.7, and records the root-sign and nonidentity
+steps as project obligations. The remaining Theorem 2.2 and subset-eigenspace
+interfaces are explicitly marked unmodeled.
 
 ## Review consequence
 

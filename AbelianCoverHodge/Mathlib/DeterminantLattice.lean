@@ -169,8 +169,8 @@ theorem rawDeterminantLattice_finite (ι : Type*) [Finite ι] :
 
 /-- The two relation shapes used in the Kummer presentation. -/
 inductive KummerRelationKind
-  | sameCharacter
-  | dualCharacter
+  | standardToStandard
+  | standardToDual
   deriving DecidableEq, Repr
 
 /-- A relation records its two block indices and whether their determinant
@@ -184,18 +184,18 @@ structure KummerRelation (ι : Type*) where
 namespace KummerRelation
 
 def same (left right : ι) : KummerRelation ι :=
-  ⟨left, right, .sameCharacter⟩
+  ⟨left, right, .standardToStandard⟩
 
 def dual (left right : ι) : KummerRelation ι :=
-  ⟨left, right, .dualCharacter⟩
+  ⟨left, right, .standardToDual⟩
 
 /-- The integral vector imposed by one Kummer relation. -/
 noncomputable def vector [Finite ι] (r : KummerRelation ι) :
     RawDeterminantLattice ι :=
   match r.kind with
-  | .sameCharacter =>
+  | .standardToStandard =>
       rawDeterminantBasis ι r.left - rawDeterminantBasis ι r.right
-  | .dualCharacter =>
+  | .standardToDual =>
       rawDeterminantBasis ι r.left + rawDeterminantBasis ι r.right
 
 @[simp]
@@ -298,6 +298,25 @@ theorem signatureOnSaturatedDeterminantLattice_mkQ
         ((kummerSaturatedSubmodule relations).mkQ x) =
       signature x :=
   rfl
+
+/-- Saturated descent changes only the source lattice: its image is exactly
+the image of the original signature map. -/
+theorem range_signatureOnSaturatedDeterminantLattice
+    {ι κ : Type*} [Finite ι]
+    (relations : Set (KummerRelation ι))
+    (signature : RawDeterminantLattice ι →ₗ[ℤ] SignatureLattice κ)
+    (killsRelations : ∀ r ∈ relations, signature r.vector = 0) :
+    LinearMap.range
+        (signatureOnSaturatedDeterminantLattice
+          relations signature killsRelations) =
+      LinearMap.range signature := by
+  apply le_antisymm
+  · rintro value ⟨quotientValue, rfl⟩
+    obtain ⟨representative, rfl⟩ :=
+      (kummerSaturatedSubmodule relations).mkQ_surjective quotientValue
+    exact ⟨representative, rfl⟩
+  · rintro value ⟨representative, rfl⟩
+    exact ⟨(kummerSaturatedSubmodule relations).mkQ representative, rfl⟩
 
 /-- First isomorphism theorem for the signature map after saturated descent. -/
 noncomputable def signatureQuotientEquivRange

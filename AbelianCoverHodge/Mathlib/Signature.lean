@@ -60,6 +60,39 @@ def coordinateSum (c : BranchWord p ι) : _root_.ZMod p :=
 /-- The branch condition used by the signature calculation. -/
 def IsBranchWord (c : BranchWord p ι) : Prop := coordinateSum c = 0
 
+/-! ## Invariance under branch-coordinate permutations -/
+
+/-- Reindex a branch word along a permutation of its occurrence set. -/
+def reindex (permutation : ι ≃ ι) (c : BranchWord p ι) :
+    BranchWord p ι :=
+  c ∘ permutation
+
+omit [NeZero p] in
+theorem coordinateSum_reindex (permutation : ι ≃ ι)
+    (c : BranchWord p ι) :
+    coordinateSum (reindex permutation c) = coordinateSum c := by
+  exact permutation.sum_comp c
+
+omit [NeZero p] in
+theorem isBranchWord_reindex (permutation : ι ≃ ι)
+    {c : BranchWord p ι} (hc : IsBranchWord c) :
+    IsBranchWord (reindex permutation c) := by
+  rw [IsBranchWord, coordinateSum_reindex]
+  exact hc
+
+omit [NeZero p] in
+theorem supportCard_reindex (permutation : ι ≃ ι)
+    (c : BranchWord p ι) :
+    supportCard (reindex permutation c) = supportCard c := by
+  classical
+  rw [supportCard, supportCard, support, support,
+    Finset.card_filter, Finset.card_filter]
+  change (∑ i, if c (permutation i) ≠ 0 then 1 else 0) =
+    ∑ i, if c i ≠ 0 then 1 else 0
+  exact Fintype.sum_equiv permutation
+    (fun i ↦ if c (permutation i) ≠ 0 then 1 else 0)
+    (fun i ↦ if c i ≠ 0 then 1 else 0) (fun _ ↦ rfl)
+
 /-- Multiplication by a cyclotomic/Galois row. -/
 def scale (a : _root_.ZMod p) (c : BranchWord p ι) : BranchWord p ι :=
   fun i ↦ a * c i
@@ -106,10 +139,22 @@ theorem supportCard_scale_of_isUnit (a : _root_.ZMod p) (ha : IsUnit a)
 def qNumerator (a : _root_.ZMod p) (c : BranchWord p ι) : ℕ :=
   ∑ i, leastResidue (a * c i)
 
+omit [NeZero p] in
+theorem qNumerator_reindex (a : _root_.ZMod p)
+    (permutation : ι ≃ ι) (c : BranchWord p ι) :
+    qNumerator a (reindex permutation c) = qNumerator a c := by
+  exact permutation.sum_comp (fun i ↦ leastResidue (a * c i))
+
 /-- Chevalley--Weil integer `q_a(c)`.  Exactness is supplied by
 `p_dvd_qNumerator` for branch words. -/
 def qValue (a : _root_.ZMod p) (c : BranchWord p ι) : ℕ :=
   qNumerator a c / p
+
+omit [NeZero p] in
+theorem qValue_reindex (a : _root_.ZMod p)
+    (permutation : ι ≃ ι) (c : BranchWord p ι) :
+    qValue a (reindex permutation c) = qValue a c := by
+  rw [qValue, qValue, qNumerator_reindex]
 
 /-- Coordinate sum zero forces the sum of least representatives to be a
 multiple of `p`. -/
@@ -201,6 +246,12 @@ theorem qValue_neg_add (a : _root_.ZMod p) (ha : IsUnit a)
 /-- Integral signature `δ_a(c) = |supp(c)| - 2 q_a(c)`. -/
 def delta (a : _root_.ZMod p) (c : BranchWord p ι) : ℤ :=
   (supportCard c : ℤ) - 2 * (qValue a c : ℤ)
+
+omit [NeZero p] in
+theorem delta_reindex (a : _root_.ZMod p)
+    (permutation : ι ≃ ι) (c : BranchWord p ι) :
+    delta a (reindex permutation c) = delta a c := by
+  rw [delta, delta, supportCard_reindex, qValue_reindex]
 
 /-- Negating a branch word negates its signature at every unit row. -/
 theorem delta_neg_word (a : _root_.ZMod p) (ha : IsUnit a)
