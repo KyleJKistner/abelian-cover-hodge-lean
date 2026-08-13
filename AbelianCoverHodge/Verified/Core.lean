@@ -205,6 +205,7 @@ def defectNeg : Defect → Defect
 
 def defectIsZero : Defect → Bool
   | .nonnegative 0 => true
+  | .negative 0 => true
   | _ => false
 
 /-- Exact certificate formula `δₐ(c) = support(c) - 2 qₐ(c)`. -/

@@ -16,7 +16,7 @@ block `V_c` with `V_c^∨`, this prescription can impose only `2 ε_c = 0`.
 The resulting quotient has `Z/2` torsion, whereas the character lattice of a
 connected algebraic torus is torsion-free.
 
-The candidate correction is to quotient by the saturation
+The correction is to quotient by the saturation
 
 \[
 R_{\mathrm{Kum}}^{\mathrm{sat}}
@@ -24,9 +24,12 @@ R_{\mathrm{Kum}}^{\mathrm{sat}}
 \varepsilon_c+\varepsilon_d\rangle.
 \]
 
-The ultimate signature image may be unchanged because its target is
-torsion-free, but P2.5 is false as written and its downstream proofs require a
-fresh check. No Lean theorem in this repository assumes the unsaturated claim.
+`Mathlib/DeterminantLattice.lean` implements this saturation, proves that its
+quotient is torsion-free, and proves that saturation does not change a
+compatible signature image because the signature lattice is torsion-free.
+P2.5 is nevertheless false as written: identifying the corrected lattice with
+the character lattice of the connected geometric torus still requires a fresh
+proof. No Lean theorem assumes the unsaturated geometric claim.
 
 ## AF-2 — Internal rank-two character is misnormalized
 
@@ -54,6 +57,23 @@ A hash does not reconstruct the source. Consequently, the reported
 Fox–Gassner and 7,077,120-vector computations are provenance records, not
 currently reproducible certificates. The Lean core independently replaces the
 finite statements it actually claims.
+
+## AF-4 — The full-projection source must be Menet--Nguyen, not a factorwise reading of Spelta--Tamborini
+
+**Location:** Phase I full-simple-projection step, ledger item I.3.
+
+Spelta--Tamborini Theorem 4.4 assumes a condition on the whole cyclic family
+(`no repeating factors`) and does not by itself supply the factorwise theorem
+in the generality used by the manuscript. The viable individual-eigenspace
+input is Menet--Nguyen Theorem 5.1, whose hypothesis is that the associated
+sequence is `good` in their Definition 1.1. Consequently, the project must
+prove the manuscript-specific hypothesis match
+
+`positive Chevalley--Weil multiplicities -> good sequence`
+
+before applying the published theorem. `External/Inputs.lean` exposes that
+match separately and records that Menet--Nguyen is an arXiv preprint; it does
+not bundle the implication into the published input.
 
 ## Review consequence
 

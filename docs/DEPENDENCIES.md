@@ -6,7 +6,8 @@ temporary logical scaffold; the concrete replacement criteria are in
 
 ```mermaid
 flowchart TD
-  A["Lean-verified arithmetic"] --> CW["Chevalley--Weil bidegrees"]
+  BD["Prime inertia evaluation code"] --> A["Lean-verified integral signature"]
+  A --> CW["Chevalley--Weil bidegrees"]
   P1["Phase I exact blocks + algebraic matrix units"] --> FFT["Weyl invariant theory"]
   CW --> ZS["Determinant Hodge iff zero signature"]
   FFT --> ZS
@@ -26,7 +27,8 @@ flowchart TD
   GEN --> HR["Weight-one Hodge realization"]
   HR --> GOAL["All-powers rational Hodge conclusion"]
 
-  TOR["Corrected saturated determinant torus"] -. "separate refinement" .-> FULL["Full Hodge group / endomorphisms"]
+  LAT["Lean-verified saturated relation lattice"] --> TOR["Geometric torus identification"]
+  TOR -. "separate refinement" .-> FULL["Full Hodge group / endomorphisms"]
 ```
 
 ## Why the direct route matters
@@ -36,12 +38,23 @@ not require a prior computation of the complete central torus. Consequently,
 the unsaturated quotient and rank-two character errors recorded as AF-1 and
 AF-2 do not enter this headline path.
 
-## Current scaffold fields
+The full-group branch now starts from a proved algebraic correction: the
+saturated quotient is torsion-free and compatible signature maps descend.
+Only its identification with the geometric connected central torus remains on
+that branch.
 
-`PublishedInputs` has seven citation-level arrows, still awaiting exact
-source-scoped statements. `UnformalizedDeductions` has eight
-manuscript-specific arrows, each of which must disappear from the final theorem
-and be replaced by a proof over concrete objects. In particular,
+## Current interfaces and scaffold
+
+`External/Inputs.lean` now separates the citation-level assumptions into typed
+interfaces for Chevalley--Weil, Deligne, Menet--Nguyen, Andre, Weyl, Aoki, ACV,
+Schoen, compact-type Picard, smooth-proper comparison, Chow specialization,
+and weight-one realization. These are assumption *types*, not global
+postulates; contexts still using erased carrier types advertise that fact.
+
+The older `Bridge.PublishedInputs` has seven logical arrows and
+`UnformalizedDeductions` has eight manuscript-specific arrows. Both structures
+remain scaffolding. Every manuscript-specific field must disappear from the
+final theorem and be replaced by a proof over concrete objects. In particular,
 `phaseIExactBlocks` currently hides most of Phase I and is not an acceptable
 final assumption.
 

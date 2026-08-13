@@ -20,7 +20,7 @@ jobs:
         with:
           auto-config: false
           build: true
-          use-mathlib-cache: false
+          use-mathlib-cache: true
           leanchecker: true
       - name: Check the source and print theorem dependencies
         run: ./scripts/audit.sh

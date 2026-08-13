@@ -2,22 +2,26 @@
 
 [![Lean audit](https://github.com/KyleJKistner/abelian-cover-hodge-lean/actions/workflows/lean.yml/badge.svg)](https://github.com/KyleJKistner/abelian-cover-hodge-lean/actions/workflows/lean.yml)
 
-This repository does **not** claim a Lean proof of the Hodge conjecture. The
-current checkpoint kernel-checks a finite arithmetic/combinatorial core and
-contains a machine-checked dependency scaffold. The scaffold is not the final
-audit boundary: its abstract propositions still hide manuscript-specific
+This repository does **not** yet claim a Lean proof of the Hodge conjecture.
+The current checkpoint kernel-checks a growing arithmetic/combinatorial core,
+states the citation-level inputs as explicit typed interfaces, and contains a
+machine-checked dependency scaffold. The scaffold is not the final audit
+boundary: its abstract propositions still hide manuscript-specific geometric
 deductions. [`docs/AUDIT_BOUNDARY.md`](docs/AUDIT_BOUNDARY.md) records the
-stronger completion standard and exact remaining proof obligations.
+completion standard and exact remaining proof obligations.
 
 ## Status at a glance
 
 | Layer | Status | What an auditor can conclude |
 |---|---|---|
 | Residue arithmetic, branch-code enumeration, signatures | **Lean verified** | Definitions and exact computations are checked by Lean. |
-| Opposite-pair witnesses imply balance | **Lean verified** | Constructive theorem, not an invocation of Aoki. |
+| Prime inertia data and evaluation code | **Lean verified** | Concrete `ZMod p` evaluation is injective from spanning, has dimension `m`, lies in the zero-sum hyperplane, and has full support. |
+| Integral determinant signature iff Galois balance | **Lean verified** | General theorem under explicit branch-divisibility hypotheses. |
+| Saturated Kummer-relation lattice | **Lean verified algebra** | The corrected quotient is torsion-free and has the same signature image when raw relations lie in the signature kernel; no geometric torus identification is claimed. |
+| Opposite-pair witnesses imply all-row balance | **Lean verified** | Constructive theorem, not an invocation of Aoki. |
 | Fusion rank bookkeeping | **Lean verified** | The compact-type rank identity is integer arithmetic. |
 | Mixed `p = 5` and split `p = 3,5,7` examples | **Lean verified** | Exact kernel-reduced regressions. |
-| General Aoki converse and geometric inputs | **Explicit hypotheses** | Named citation-level interfaces, not yet exact source-scoped statements. |
+| General Aoki converse and geometric inputs | **Explicit hypotheses** | Typed source-scoped interfaces; several exact source locators remain to be pinned. |
 | Phase I blocks, tensor reduction, gluing, and exact specialization | **Unformalized deductions** | Manuscript-specific arrows remain to be replaced by concrete proofs. |
 | Rational Hodge conjecture on all powers | **Scaffold only** | The direct assembly bypasses the blocked torus claims, but still has abstract unformalized deductions. |
 
@@ -29,8 +33,9 @@ the direct all-powers dependency route does not use either defective step.
 
 ## Fast audit
 
-The project deliberately depends only on Lean's `Std` library. Lean is pinned
-in `lean-toolchain`; there is no mathlib or package-resolution surface.
+Lean and mathlib are pinned to exact revisions. The legacy finite core remains
+`Std`-only; the concrete branch-code, signature, and lattice layers use
+focused mathlib imports.
 
 ```bash
 lake build
@@ -49,6 +54,20 @@ rejects `sorry`, `admit`, `axiom`, and `sorryAx`.
 
 - [`AbelianCoverHodge/Verified/Core.lean`](AbelianCoverHodge/Verified/Core.lean)
   is the unconditional kernel-checked layer.
+- [`AbelianCoverHodge/Verified/IntegralSignature.lean`](AbelianCoverHodge/Verified/IntegralSignature.lean)
+  proves the additive integer signature and exact balance bridge.
+- [`AbelianCoverHodge/Verified/AokiFusion.lean`](AbelianCoverHodge/Verified/AokiFusion.lean)
+  proves the all-row easy direction, exposes Aoki as supplied theorem data,
+  and packages the fusion rank premises.
+- [`AbelianCoverHodge/Mathlib/PrimeBranchDatum.lean`](AbelianCoverHodge/Mathlib/PrimeBranchDatum.lean)
+  constructs the prime inertia evaluation code in genuine mathlib `ZMod` linear algebra.
+- [`AbelianCoverHodge/Mathlib/Signature.lean`](AbelianCoverHodge/Mathlib/Signature.lean)
+  defines the integral signature as a genuine `ℤ`-linear map.
+- [`AbelianCoverHodge/Mathlib/DeterminantLattice.lean`](AbelianCoverHodge/Mathlib/DeterminantLattice.lean)
+  proves the saturation and torsion-free quotient correction independently of geometry.
+- [`AbelianCoverHodge/External/Inputs.lean`](AbelianCoverHodge/External/Inputs.lean)
+  gives the citation-level trust boundary as typed interfaces rather than
+  global postulates.
 - [`AbelianCoverHodge/Bridge/Assembly.lean`](AbelianCoverHodge/Bridge/Assembly.lean)
   is the temporary direct-route dependency scaffold.
 - [`docs/CLAIMS.md`](docs/CLAIMS.md) maps every manuscript ledger item to its
@@ -71,7 +90,13 @@ provides:
 - support, residue sums, Chevalley–Weil-style `q` values, and signature columns;
 - signed determinant-word expansion and balance checks;
 - a proof that explicit nonzero opposite pairs have symmetric multiplicities
-  and satisfy the doubled balance equation;
+  and satisfy the doubled balance equation at every nonzero row for prime
+  modulus;
+- an additive `Int`-valued determinant signature and a proof that its
+  vanishing is equivalent to the literal concatenated-residue balance
+  equation under explicit divisibility hypotheses;
+- a permutation-valued opposite-pairing witness and a parameterized interface
+  for the published Aoki converse;
 - the fusion identity
   `branches - 2 * vertices = (branches - 2 * treeEdges) - 2` for a tree;
 - the exact mixed `p = 5` cancellation and fused rank-four witness;

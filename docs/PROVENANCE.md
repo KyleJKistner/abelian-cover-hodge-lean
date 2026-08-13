@@ -18,8 +18,11 @@ of the recovered source package. The Lean files are a new, narrower artifact.
 
 ## Reproducibility classes
 
-- **Lean layer:** pinned to Lean `v4.33.0`, depends only on `Std`, and is built
-  plus independently checked in CI.
+- **Lean layer:** pinned to Lean `v4.33.0` and mathlib commit
+  `db584cd6d46c92f209a44c0f1c829460d327499d` (the `v4.33.0` tag). The legacy
+  finite kernel is `Std`-only; newer concrete algebra uses focused mathlib
+  imports. The resolved transitive revisions are recorded in
+  `lake-manifest.json`, and CI builds plus independently checks the result.
 - **Phase II Python layer:** its source is present, but it requires SymPy and
   the recovered package did not record an exact Python/SymPy environment. Its
   frozen JSON report should be treated as provenance until a lockfile is

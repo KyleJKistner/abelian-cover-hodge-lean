@@ -7,9 +7,18 @@ hypotheses and conclusion, prove every deduction specific to these manuscripts,
 and leave the final all-powers theorem conditional on only a short list of
 source-auditable inputs.
 
-The current repository does **not** yet meet that boundary. `Verified/Core.lean`
-checks a finite arithmetic/combinatorial layer. `Bridge/Assembly.lean` is only a
-logical dependency scaffold: its abstract propositions erase too much
+The current repository does **not** yet meet that boundary.
+`Verified/Core.lean`, `Verified/IntegralSignature.lean`, and
+`Verified/AokiFusion.lean` check the finite arithmetic through the exact
+zero-signature/balance reduction and the fusion rank identity.
+The `Mathlib/` modules now construct prime inertia evaluation codes, a genuine
+integral signature linear map, and the corrected saturated determinant
+relation quotient. These are concrete algebraic foundations, not geometric
+substitutes for covers, Hodge structures, or Chow groups.
+`External/Inputs.lean` exposes the citation-level assumptions as typed data,
+but several contexts are necessarily erased until the corresponding Hodge,
+Chow, and admissible-cover objects are defined. `Bridge/Assembly.lean` remains
+only a logical dependency scaffold: its abstract propositions erase too much
 mathematical content to count as a formalization of the geometric proof.
 
 ## Shortest headline route
@@ -65,7 +74,10 @@ all-powers route if Phase I is formulated directly on every relevant block.
 
 The largest proof obligations that must not remain bundled as hypotheses are:
 
-- branch-datum/code equivalence and exact integral signature identities;
+- branch-datum/code equivalence; evaluation from spanning prime inertia data,
+  code dimension, zero-sum containment, full support, and the exact integral
+  determinant-signature identities are now formalized, while cover
+  classification and their Chevalley--Weil meaning are not;
 - positivity-to-moving and positivity-to-good-sequence hypothesis matching;
 - semisimple subdirect-product reduction, support separation, and high-rank
   character reconstruction;
@@ -73,16 +85,21 @@ The largest proof obligations that must not remain bundled as hypotheses are:
   rigidity, replacing the missing legacy Phase I core certificate;
 - quotient-cover graph construction, nonvanishing, descent, matrix units,
   double centralizer, and Phase I block assembly;
-- determinant-word zero-signature iff balanced;
+- determinant-word zero-signature iff balanced is formalized at the residue
+  level under explicit branch-divisibility hypotheses; its Hodge-bidegree
+  interpretation remains;
 - pairing graph, spanning forest, remaining simple tuple, branch count, rank,
   inverse inertia, connectedness, and compact type;
 - prime primitive-factor equals whole-Jacobian application of Schoen;
 - determinant of a direct sum, specialization to component determinants,
   quotient pull--push/projectors, and final tensor-to-cohomology assembly.
 
-The corrected determinant-lattice/full-group refinement is a separate work
-stream. It must quotient by the saturation of the Kummer relation lattice and
-use central character `+/- epsilon_c`, not `2 epsilon_c`.
+The integral algebra of the corrected determinant lattice is now formalized:
+it quotients by the saturation, proves the quotient torsion-free, descends any
+compatible signature map, and proves the first-isomorphism statement. The
+full-group refinement remains a separate work stream because it must identify
+this algebraic quotient with the connected geometric torus and use central
+character `+/- epsilon_c`, not `2 epsilon_c`.
 
 ## Completion test
 

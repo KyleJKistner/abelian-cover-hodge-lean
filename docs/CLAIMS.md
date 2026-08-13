@@ -6,6 +6,8 @@ This is the controlling claim ledger for the repository. Status words mean:
 - **PARTIAL FORMALIZED:** a stated finite/arithmetic subclaim is proved, not the
   full geometric ledger item.
 - **PUBLISHED INPUT:** represented by a named field of `PublishedInputs`.
+- **EXPLICIT INPUT TYPE:** a published theorem is represented as data that a
+  caller must supply, with no global declaration asserting it.
 - **MANUSCRIPT INPUT:** represented by a named field of
   `UnformalizedDeductions` or is
   otherwise still part of the unformalized research bridge.
@@ -21,8 +23,19 @@ This is the controlling claim ledger for the repository. Status words mean:
 |---|---|---|
 | `pairResidues_opposite` | FORMALIZED | A list built as `(x,-x)` pairs has symmetric residue multiplicities. |
 | `pairResidues_balanced` | FORMALIZED | Nonzero explicit opposite pairs satisfy the doubled balance equation. This is the easy direction, not Aoki's converse. |
+| `integralDeterminantSignatureAt_eq_zero_iff_galoisBalanced` | FORMALIZED | The additive integer signature vanishes exactly when the literal concatenated residue word satisfies the division-free balance equation, under explicit per-word divisibility. |
+| `integralRowSignature_negativeWord` | FORMALIZED | Negating a branch row negates its integer signature. |
+| `pairResidues_aokiBalanced` | FORMALIZED | For prime modulus, an explicit list of nonzero opposite pairs is balanced at every nonzero Galois row. |
+| `OppositePairingWitness.aokiBalanced` | FORMALIZED | The all-row balance result is invariant under an explicit list permutation witness. |
+| `AokiPrimeTheorem` | EXPLICIT INPUT TYPE | The published converse is supplied as theorem data; it is not asserted globally or represented as a project proof. |
+| `PrimeBranchDatum.evaluationLinearMap_injective` | FORMALIZED | Spanning prime inertia vectors make the concrete character-evaluation map injective. |
+| `PrimeBranchDatum.finrank_evaluationCode` | FORMALIZED | The mathlib-native evaluation code has dimension `m`; zero-sum containment and full support are also proved. |
+| `Signature.p_dvd_qNumerator` / `Signature.delta_neg_word` | FORMALIZED | Genuine `ZMod p` branch sums give exact numerator divisibility and negation of the integral signature. |
+| `Signature.determinantSignatureMap` | FORMALIZED | Determinant exponent signature is bundled as a `ℤ`-linear map. |
+| `Submodule.quotient_zSaturation_isTorsionFree` | FORMALIZED | Quotienting an integral module by the explicit saturation of a submodule produces a torsion-free quotient. |
+| `kummerSaturatedSubmodule_le_signatureKernel` | FORMALIZED | A signature map to a torsion-free lattice that kills raw Kummer generators also kills their saturation. |
 | `splitWord_rowSignature_zero` | FORMALIZED | A nonzero row `(u,v,-u,-v)` has zero row signature for every nonzero modulus. |
-| `fusion_rank_identity` | FORMALIZED | Tree-edge deletion preserves the stated compact-type `K`-rank arithmetic. |
+| `fusion_rank_identity` / `FusionComponent.rank_preserved` | FORMALIZED | Tree-edge deletion preserves the stated compact-type `K`-rank arithmetic, with all numerical premises packaged explicitly. |
 | `mixed_relation_all_embeddings` | FORMALIZED | The two frozen `p=5` signature columns cancel exactly. |
 | `mixed_galois_balance` | FORMALIZED | The frozen mixed `p=5` concatenation passes every nonzero Galois-row balance check. |
 | `mixed_fusion_rank` | FORMALIZED | The frozen two-component fusion has rank four. |
@@ -33,7 +46,7 @@ This is the controlling claim ledger for the repository. Status words mean:
 
 | Item | Repository status | Audit interpretation |
 |---|---|---|
-| I.1 Branch-code anti-equivalence | PARTIAL FORMALIZED | `spanCode`, modular word operations, support, and branch-sum predicates are executable. The categorical/finite Pontryagin-dual equivalence is not formalized. |
+| I.1 Branch-code anti-equivalence | PARTIAL FORMALIZED | Prime inertia data, the character-evaluation map, injectivity, code dimension, zero-sum containment, and full support are formalized. The cover classification and categorical anti-equivalence are not. |
 | I.2 Moving-factor criterion | PUBLISHED INPUT + MANUSCRIPT INPUT | Chevalley–Weil/fixed-part ingredients and their exact geometric application are not in Lean. |
 | I.3 Full simple projection | PUBLISHED INPUT | Must be pinned to the exact cyclic-cover monodromy theorem and hypotheses. |
 | I.4 Semisimple block reduction | MANUSCRIPT INPUT | Lie-algebra Goursat and integration are not formalized. |
@@ -62,14 +75,14 @@ This is the controlling claim ledger for the repository. Status words mean:
 | P2.2 `K`-rank `s(c)-2` | PARTIAL FORMALIZED | Support/rank arithmetic is represented, but the rational Hodge factor identification is not. |
 | P2.3 Toric-factor exclusion | MANUSCRIPT INPUT | Torelli/dominance argument absent. |
 | P2.4 Derived group equality | MANUSCRIPT INPUT | Carried by `phaseIExactBlocks`. |
-| P2.5 Determinant quotient lattice | BLOCKED | Unsaturated relation lattice can have torsion; see AF-1. |
+| P2.5 Determinant quotient lattice | PARTIAL FORMALIZED + BLOCKED AS WRITTEN | The manuscript's raw quotient is wrong; the saturated integral quotient and its torsion-freeness are formalized. Identifying that quotient with the connected determinant torus still requires a new geometric proof. |
 | P2.6 Kummer relations in signature kernel | MANUSCRIPT INPUT | Geometric variation isomorphisms absent. |
 | P2.7 Central torus annihilator | MANUSCRIPT INPUT | Carried by `hodgeCircleAndCentralizer`; downstream of AF-1. |
 | P2.8 Full Hodge group | MANUSCRIPT INPUT | Depends on P2.4/P2.7. |
 | P2.9 Isolated disk criterion | BLOCKED | Character is `±ε_c`, not `2ε_c`; also downstream of AF-1. See AF-2. |
 | P2.10 Tensor invariant generators | PUBLISHED INPUT + MANUSCRIPT INPUT | `weylInvariantTheory` is explicit; exact multiplicity/Kummer identification still uses Phase I. |
-| P2.11 Determinant word criterion | PARTIAL FORMALIZED / REGRESSION ONLY | Exact signed words and finite signature checks exist; the universal direct Hodge-bidegree criterion is not proved. It need not depend on P2.7. |
-| P2.12 Prime relations are opposite-paired | PARTIAL FORMALIZED + PUBLISHED INPUT | Opposite-paired implies balance is proved; balanced implies opposite-paired is `aokiPrime`. The general relation-to-balance reduction remains to be formalized. |
+| P2.11 Determinant word criterion | PARTIAL FORMALIZED | The universal integer signature-to-residue-balance equivalence is proved under explicit divisibility; identifying zero signature with Hodge bidegree still uses Chevalley--Weil and the tensor model. It need not depend on P2.7. |
+| P2.12 Prime relations are opposite-paired | PARTIAL FORMALIZED + PUBLISHED INPUT | Relation-to-balance and opposite-paired-to-balance are formalized arithmetically. Balanced-to-opposite-paired is exposed only through `AokiPrimeTheorem`. |
 | P2.13 Compact-type gluing | PARTIAL FORMALIZED + MANUSCRIPT INPUT | Pair/rank bookkeeping is proved; global admissible-cover construction is `fusionGluing`. |
 | P2.14 Smoothing and rank | PARTIAL FORMALIZED + PUBLISHED INPUT | Rank identity is proved; deformation is `acvSmoothing` and must match the exact global datum. |
 | P2.15 Schoen cycles | PUBLISHED INPUT + MANUSCRIPT INPUT | `schoenSimpleCurve` is separate from the extra `primitiveEqWholeForPrimeP1` bridge. |
