@@ -32,7 +32,11 @@ of the recovered source package. The Lean files are a new, narrower artifact.
   `418320295890faed83a96fd97907b12a3b6728c2`, and Rust to `1.97.1`; Cargo's
   locked dependency checksums supply the remaining Rust package pins. This
   repository-owned step avoids the stale `nanoda_lib/debug` clone in
-  [`lean-action` issue 169](https://github.com/leanprover/lean-action/issues/169).
+  [`lean-action` issue 169](https://github.com/leanprover/lean-action/issues/169);
+  the pinned checker includes the merged NDJSON parser from
+  [`nanoda_lib` PR 7](https://github.com/ammkrn/nanoda_lib/pull/7). Its config
+  also requires the headline scaffold declaration to occur in the exported
+  environment, so an empty or wrong-module export cannot pass vacuously.
 - **Phase II Python layer:** its source is present, but it requires SymPy and
   the recovered package did not record an exact Python/SymPy environment. Its
   frozen JSON report should be treated as provenance until a lockfile is

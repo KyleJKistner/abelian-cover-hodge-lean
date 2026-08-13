@@ -9,5 +9,10 @@
   "unpermitted_axiom_hard_error": false,
   "nat_extension": true,
   "string_extension": true,
+  "pp_declars": [
+    "AbelianCoverHodge.Bridge.rationalHodge_allPowers_of_inputs"
+  ],
+  "unknown_pp_declar_hard_error": true,
+  "print_axioms": false,
   "print_success_message": true
 }
