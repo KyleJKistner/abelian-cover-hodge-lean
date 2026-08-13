@@ -1,0 +1,13 @@
+/.lake/
+*.olean
+*.olean.*
+*.ilean
+*.ir
+*.c
+*.o
+*.a
+*.so
+*.trace
+default.profraw
+__pycache__/
+*.pyc

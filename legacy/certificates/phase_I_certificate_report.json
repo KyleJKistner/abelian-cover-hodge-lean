@@ -1,0 +1,807 @@
+{
+  "core": {
+    "gassner_fricke": {
+      "consequence": "The fourth Fricke coordinate survives the uniform half shift only if one pair product t_i t_j equals -1; then the shift is already -P(x) for the corresponding double transposition P.",
+      "half_shift_commutator_difference": "2*(t1*t2 + 1)*(t1*t3 + 1)*(t2*t3 + 1)/(t1*t2*t3)",
+      "normalized_trace_squares": [
+        "(t1*t2 + 1)**2/(t1*t2)",
+        "(t2*t3 + 1)**2/(t2*t3)",
+        "(t1*t3 + 1)**2/(t1*t3)"
+      ],
+      "sphere_quotient_generators": {
+        "A12": "Matrix([[t1*t2, 0], [t1*t2 - 1/t3, 1]])",
+        "A23": "Matrix([[t2*t3, t3*(1 - t2)], [0, 1]])"
+      }
+    },
+    "half_shift_finite_regression": {
+      "disk_vectors_checked": 7077120,
+      "even_denominators_checked_through": 96,
+      "failures": 0,
+      "surviving_half_shift_equalities": 214320
+    },
+    "low_prime_code_census": {
+      "first_elementary_prime_with_complex_diagonal_defect": 5,
+      "p3": {
+        "S4_orbits": 2,
+        "all_two_dimensional_subspaces": 13,
+        "defective_orbits": 0,
+        "full_support_subspaces": 9,
+        "orbit_rows": [
+          {
+            "V4_blocks": 1,
+            "basis_rref": [
+              [
+                1,
+                0,
+                1,
+                1
+              ],
+              [
+                0,
+                1,
+                2,
+                0
+              ]
+            ],
+            "complex_diagonal_defect": 0,
+            "disk_character_pairs": 1
+          },
+          {
+            "V4_blocks": 2,
+            "basis_rref": [
+              [
+                1,
+                0,
+                0,
+                2
+              ],
+              [
+                0,
+                1,
+                2,
+                0
+              ]
+            ],
+            "complex_diagonal_defect": 0,
+            "disk_character_pairs": 2
+          }
+        ],
+        "p": 3
+      },
+      "p5": {
+        "S4_orbits": 4,
+        "all_two_dimensional_subspaces": 31,
+        "defective_orbits": 2,
+        "full_support_subspaces": 27,
+        "orbit_rows": [
+          {
+            "V4_blocks": 4,
+            "basis_rref": [
+              [
+                1,
+                0,
+                2,
+                2
+              ],
+              [
+                0,
+                1,
+                3,
+                1
+              ]
+            ],
+            "complex_diagonal_defect": 0,
+            "disk_character_pairs": 4
+          },
+          {
+            "V4_blocks": 5,
+            "basis_rref": [
+              [
+                1,
+                0,
+                2,
+                2
+              ],
+              [
+                0,
+                1,
+                4,
+                0
+              ]
+            ],
+            "complex_diagonal_defect": 0,
+            "disk_character_pairs": 5
+          },
+          {
+            "V4_blocks": 3,
+            "basis_rref": [
+              [
+                1,
+                0,
+                3,
+                1
+              ],
+              [
+                0,
+                1,
+                4,
+                0
+              ]
+            ],
+            "complex_diagonal_defect": 1,
+            "disk_character_pairs": 4
+          },
+          {
+            "V4_blocks": 6,
+            "basis_rref": [
+              [
+                1,
+                0,
+                0,
+                4
+              ],
+              [
+                0,
+                1,
+                4,
+                0
+              ]
+            ],
+            "complex_diagonal_defect": 2,
+            "disk_character_pairs": 8
+          }
+        ],
+        "p": 5
+      },
+      "p7_exploratory": {
+        "S4_orbits": 6,
+        "all_two_dimensional_subspaces": 57,
+        "defective_orbits": 3,
+        "full_support_subspaces": 53,
+        "orbit_rows": [
+          {
+            "V4_blocks": 10,
+            "basis_rref": [
+              [
+                1,
+                0,
+                3,
+                3
+              ],
+              [
+                0,
+                1,
+                5,
+                1
+              ]
+            ],
+            "complex_diagonal_defect": 0,
+            "disk_character_pairs": 10
+          },
+          {
+            "V4_blocks": 11,
+            "basis_rref": [
+              [
+                1,
+                0,
+                4,
+                2
+              ],
+              [
+                0,
+                1,
+                6,
+                0
+              ]
+            ],
+            "complex_diagonal_defect": 0,
+            "disk_character_pairs": 11
+          },
+          {
+            "V4_blocks": 12,
+            "basis_rref": [
+              [
+                1,
+                0,
+                3,
+                3
+              ],
+              [
+                0,
+                1,
+                6,
+                0
+              ]
+            ],
+            "complex_diagonal_defect": 0,
+            "disk_character_pairs": 12
+          },
+          {
+            "V4_blocks": 8,
+            "basis_rref": [
+              [
+                1,
+                0,
+                4,
+                2
+              ],
+              [
+                0,
+                1,
+                5,
+                1
+              ]
+            ],
+            "complex_diagonal_defect": 2,
+            "disk_character_pairs": 10
+          },
+          {
+            "V4_blocks": 6,
+            "basis_rref": [
+              [
+                1,
+                0,
+                5,
+                1
+              ],
+              [
+                0,
+                1,
+                6,
+                0
+              ]
+            ],
+            "complex_diagonal_defect": 3,
+            "disk_character_pairs": 9
+          },
+          {
+            "V4_blocks": 12,
+            "basis_rref": [
+              [
+                1,
+                0,
+                0,
+                6
+              ],
+              [
+                0,
+                1,
+                6,
+                0
+              ]
+            ],
+            "complex_diagonal_defect": 6,
+            "disk_character_pairs": 18
+          }
+        ],
+        "p": 7
+      }
+    },
+    "split_rational_function_identities": {
+      "Kummer_model": "u^p=x/(x-t), v^p=x-1",
+      "base_change": "s^p=t-1",
+      "branch_data": "(e1,e2,-e1,-e2)",
+      "closed_formulas": {
+        "V4_blocks": "(p^2-1)/4",
+        "complex_diagonal_defect": "(p-1)(p-3)/4",
+        "complex_disk_coordinates": "(p-1)^2/2",
+        "genus": "(p-1)^2"
+      },
+      "lifts_for_odd_p": {
+        "(12)(34)": "(x,u,v)->(t(x-1)/(x-t), v/s, s*u)",
+        "(13)(24)": "(x,u,v)->((t-x)/(1-x), -1/(s*u), -s/v)",
+        "(14)(23)": "(x,u,v)->(t/x, -1/v, -1/u)"
+      },
+      "sample_rows": [
+        {
+          "V4_blocks": 2,
+          "complex_diagonal_defect": 0,
+          "complex_disk_coordinates": 2,
+          "genus": 4,
+          "inverse_line_pairs_excluding_pm1": 0,
+          "p": 3,
+          "rational_active_lines": 2
+        },
+        {
+          "V4_blocks": 6,
+          "complex_diagonal_defect": 2,
+          "complex_disk_coordinates": 8,
+          "genus": 16,
+          "inverse_line_pairs_excluding_pm1": 1,
+          "p": 5,
+          "rational_active_lines": 4
+        },
+        {
+          "V4_blocks": 12,
+          "complex_diagonal_defect": 6,
+          "complex_disk_coordinates": 18,
+          "genus": 36,
+          "inverse_line_pairs_excluding_pm1": 2,
+          "p": 7,
+          "rational_active_lines": 6
+        },
+        {
+          "V4_blocks": 30,
+          "complex_diagonal_defect": 20,
+          "complex_disk_coordinates": 50,
+          "genus": 100,
+          "inverse_line_pairs_excluding_pm1": 4,
+          "p": 11,
+          "rational_active_lines": 10
+        },
+        {
+          "V4_blocks": 42,
+          "complex_diagonal_defect": 30,
+          "complex_disk_coordinates": 72,
+          "genus": 144,
+          "inverse_line_pairs_excluding_pm1": 5,
+          "p": 13,
+          "rational_active_lines": 12
+        },
+        {
+          "V4_blocks": 72,
+          "complex_diagonal_defect": 56,
+          "complex_disk_coordinates": 128,
+          "genus": 256,
+          "inverse_line_pairs_excluding_pm1": 7,
+          "p": 17,
+          "rational_active_lines": 16
+        },
+        {
+          "V4_blocks": 90,
+          "complex_diagonal_defect": 72,
+          "complex_disk_coordinates": 162,
+          "genus": 324,
+          "inverse_line_pairs_excluding_pm1": 8,
+          "p": 19,
+          "rational_active_lines": 18
+        },
+        {
+          "V4_blocks": 132,
+          "complex_diagonal_defect": 110,
+          "complex_disk_coordinates": 242,
+          "genus": 484,
+          "inverse_line_pairs_excluding_pm1": 10,
+          "p": 23,
+          "rational_active_lines": 22
+        },
+        {
+          "V4_blocks": 210,
+          "complex_diagonal_defect": 182,
+          "complex_disk_coordinates": 392,
+          "genus": 784,
+          "inverse_line_pairs_excluding_pm1": 13,
+          "p": 29,
+          "rational_active_lines": 28
+        },
+        {
+          "V4_blocks": 240,
+          "complex_diagonal_defect": 210,
+          "complex_disk_coordinates": 450,
+          "genus": 900,
+          "inverse_line_pairs_excluding_pm1": 14,
+          "p": 31,
+          "rational_active_lines": 30
+        }
+      ]
+    }
+  },
+  "full_kummer_map_checks": {
+    "composition": "Phi Psi = Psi Phi = Omega",
+    "deck_conjugation": {
+      "Omega": "rho1 -> rho2^{-1}, rho2 -> rho1^{-1}",
+      "Phi": "rho1 <-> rho2",
+      "Psi": "rho_i -> rho_i^{-1}"
+    },
+    "involutions": [
+      "Phi",
+      "Psi",
+      "Omega"
+    ]
+  },
+  "hashes": {
+    "phase1src/p_ary_mt_defect_certificate.py": "dd58de8adfae482319ccbfab2164bee2b5393ce27f0dbbef1c055a5784a67fff",
+    "phase_I_certificate.py": "adf12fc99e1f045294f8172024faa60b488400d5a068819855c5698d6d0cad99",
+    "phase_I_complete.tex": "6aef90d94b6184f610df91936977d2ef7737e9a90dd28c2e92c657694c9c3662"
+  },
+  "mobius_involutions": {
+    "Omega": "t/x",
+    "Phi": "t*(x - 1)/(-t + x)",
+    "Psi": "(-t + x)/(x - 1)"
+  },
+  "proof_boundary": [
+    "not a substitute for full simple projection",
+    "not a substitute for semisimple Goursat and high-rank reconstruction",
+    "not a substitute for algebraic descent and double centralizer",
+    "not a substitute for the all-powers Hodge argument"
+  ],
+  "scope": "exact symbolic and finite regression for Phase I completion",
+  "split_family_rational_checks": {
+    "character_lattice_actions": {
+      "Omega": [
+        [
+          0,
+          -1
+        ],
+        [
+          -1,
+          0
+        ]
+      ],
+      "Phi": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "Psi": [
+        [
+          -1,
+          0
+        ],
+        [
+          0,
+          -1
+        ]
+      ]
+    },
+    "group_relations": "Phi^2=Psi^2=Omega^2=1 and Phi Psi=Psi Phi=Omega",
+    "odd_primes_checked_through": 101,
+    "rows": [
+      {
+        "End0_Q_dimension": 8,
+        "Neron_Severi_rank": 6,
+        "complex_disk_coordinates": 2,
+        "complex_kummer_blocks": 2,
+        "decomposition_dimension": 4,
+        "diagonal_defect": 0,
+        "fixed_slope_factors": 2,
+        "genus": 4,
+        "nonfixed_slope_factors": 0,
+        "p": 3,
+        "rational_Hodge_factors": 2,
+        "simple_factor_dimension": 1
+      },
+      {
+        "End0_Q_dimension": 48,
+        "Neron_Severi_rank": 32,
+        "complex_disk_coordinates": 8,
+        "complex_kummer_blocks": 6,
+        "decomposition_dimension": 16,
+        "diagonal_defect": 2,
+        "fixed_slope_factors": 2,
+        "genus": 16,
+        "nonfixed_slope_factors": 1,
+        "p": 5,
+        "rational_Hodge_factors": 3,
+        "simple_factor_dimension": 2
+      },
+      {
+        "End0_Q_dimension": 120,
+        "Neron_Severi_rank": 78,
+        "complex_disk_coordinates": 18,
+        "complex_kummer_blocks": 12,
+        "decomposition_dimension": 36,
+        "diagonal_defect": 6,
+        "fixed_slope_factors": 2,
+        "genus": 36,
+        "nonfixed_slope_factors": 2,
+        "p": 7,
+        "rational_Hodge_factors": 4,
+        "simple_factor_dimension": 3
+      },
+      {
+        "End0_Q_dimension": 360,
+        "Neron_Severi_rank": 230,
+        "complex_disk_coordinates": 50,
+        "complex_kummer_blocks": 30,
+        "decomposition_dimension": 100,
+        "diagonal_defect": 20,
+        "fixed_slope_factors": 2,
+        "genus": 100,
+        "nonfixed_slope_factors": 4,
+        "p": 11,
+        "rational_Hodge_factors": 6,
+        "simple_factor_dimension": 5
+      },
+      {
+        "End0_Q_dimension": 528,
+        "Neron_Severi_rank": 336,
+        "complex_disk_coordinates": 72,
+        "complex_kummer_blocks": 42,
+        "decomposition_dimension": 144,
+        "diagonal_defect": 30,
+        "fixed_slope_factors": 2,
+        "genus": 144,
+        "nonfixed_slope_factors": 5,
+        "p": 13,
+        "rational_Hodge_factors": 7,
+        "simple_factor_dimension": 6
+      },
+      {
+        "End0_Q_dimension": 960,
+        "Neron_Severi_rank": 608,
+        "complex_disk_coordinates": 128,
+        "complex_kummer_blocks": 72,
+        "decomposition_dimension": 256,
+        "diagonal_defect": 56,
+        "fixed_slope_factors": 2,
+        "genus": 256,
+        "nonfixed_slope_factors": 7,
+        "p": 17,
+        "rational_Hodge_factors": 9,
+        "simple_factor_dimension": 8
+      },
+      {
+        "End0_Q_dimension": 1224,
+        "Neron_Severi_rank": 774,
+        "complex_disk_coordinates": 162,
+        "complex_kummer_blocks": 90,
+        "decomposition_dimension": 324,
+        "diagonal_defect": 72,
+        "fixed_slope_factors": 2,
+        "genus": 324,
+        "nonfixed_slope_factors": 8,
+        "p": 19,
+        "rational_Hodge_factors": 10,
+        "simple_factor_dimension": 9
+      },
+      {
+        "End0_Q_dimension": 1848,
+        "Neron_Severi_rank": 1166,
+        "complex_disk_coordinates": 242,
+        "complex_kummer_blocks": 132,
+        "decomposition_dimension": 484,
+        "diagonal_defect": 110,
+        "fixed_slope_factors": 2,
+        "genus": 484,
+        "nonfixed_slope_factors": 10,
+        "p": 23,
+        "rational_Hodge_factors": 12,
+        "simple_factor_dimension": 11
+      },
+      {
+        "End0_Q_dimension": 3024,
+        "Neron_Severi_rank": 1904,
+        "complex_disk_coordinates": 392,
+        "complex_kummer_blocks": 210,
+        "decomposition_dimension": 784,
+        "diagonal_defect": 182,
+        "fixed_slope_factors": 2,
+        "genus": 784,
+        "nonfixed_slope_factors": 13,
+        "p": 29,
+        "rational_Hodge_factors": 15,
+        "simple_factor_dimension": 14
+      },
+      {
+        "End0_Q_dimension": 3480,
+        "Neron_Severi_rank": 2190,
+        "complex_disk_coordinates": 450,
+        "complex_kummer_blocks": 240,
+        "decomposition_dimension": 900,
+        "diagonal_defect": 210,
+        "fixed_slope_factors": 2,
+        "genus": 900,
+        "nonfixed_slope_factors": 14,
+        "p": 31,
+        "rational_Hodge_factors": 16,
+        "simple_factor_dimension": 15
+      },
+      {
+        "End0_Q_dimension": 5040,
+        "Neron_Severi_rank": 3168,
+        "complex_disk_coordinates": 648,
+        "complex_kummer_blocks": 342,
+        "decomposition_dimension": 1296,
+        "diagonal_defect": 306,
+        "fixed_slope_factors": 2,
+        "genus": 1296,
+        "nonfixed_slope_factors": 17,
+        "p": 37,
+        "rational_Hodge_factors": 19,
+        "simple_factor_dimension": 18
+      },
+      {
+        "End0_Q_dimension": 6240,
+        "Neron_Severi_rank": 3920,
+        "complex_disk_coordinates": 800,
+        "complex_kummer_blocks": 420,
+        "decomposition_dimension": 1600,
+        "diagonal_defect": 380,
+        "fixed_slope_factors": 2,
+        "genus": 1600,
+        "nonfixed_slope_factors": 19,
+        "p": 41,
+        "rational_Hodge_factors": 21,
+        "simple_factor_dimension": 20
+      },
+      {
+        "End0_Q_dimension": 6888,
+        "Neron_Severi_rank": 4326,
+        "complex_disk_coordinates": 882,
+        "complex_kummer_blocks": 462,
+        "decomposition_dimension": 1764,
+        "diagonal_defect": 420,
+        "fixed_slope_factors": 2,
+        "genus": 1764,
+        "nonfixed_slope_factors": 20,
+        "p": 43,
+        "rational_Hodge_factors": 22,
+        "simple_factor_dimension": 21
+      },
+      {
+        "End0_Q_dimension": 8280,
+        "Neron_Severi_rank": 5198,
+        "complex_disk_coordinates": 1058,
+        "complex_kummer_blocks": 552,
+        "decomposition_dimension": 2116,
+        "diagonal_defect": 506,
+        "fixed_slope_factors": 2,
+        "genus": 2116,
+        "nonfixed_slope_factors": 22,
+        "p": 47,
+        "rational_Hodge_factors": 24,
+        "simple_factor_dimension": 23
+      },
+      {
+        "End0_Q_dimension": 10608,
+        "Neron_Severi_rank": 6656,
+        "complex_disk_coordinates": 1352,
+        "complex_kummer_blocks": 702,
+        "decomposition_dimension": 2704,
+        "diagonal_defect": 650,
+        "fixed_slope_factors": 2,
+        "genus": 2704,
+        "nonfixed_slope_factors": 25,
+        "p": 53,
+        "rational_Hodge_factors": 27,
+        "simple_factor_dimension": 26
+      },
+      {
+        "End0_Q_dimension": 13224,
+        "Neron_Severi_rank": 8294,
+        "complex_disk_coordinates": 1682,
+        "complex_kummer_blocks": 870,
+        "decomposition_dimension": 3364,
+        "diagonal_defect": 812,
+        "fixed_slope_factors": 2,
+        "genus": 3364,
+        "nonfixed_slope_factors": 28,
+        "p": 59,
+        "rational_Hodge_factors": 30,
+        "simple_factor_dimension": 29
+      },
+      {
+        "End0_Q_dimension": 14160,
+        "Neron_Severi_rank": 8880,
+        "complex_disk_coordinates": 1800,
+        "complex_kummer_blocks": 930,
+        "decomposition_dimension": 3600,
+        "diagonal_defect": 870,
+        "fixed_slope_factors": 2,
+        "genus": 3600,
+        "nonfixed_slope_factors": 29,
+        "p": 61,
+        "rational_Hodge_factors": 31,
+        "simple_factor_dimension": 30
+      },
+      {
+        "End0_Q_dimension": 17160,
+        "Neron_Severi_rank": 10758,
+        "complex_disk_coordinates": 2178,
+        "complex_kummer_blocks": 1122,
+        "decomposition_dimension": 4356,
+        "diagonal_defect": 1056,
+        "fixed_slope_factors": 2,
+        "genus": 4356,
+        "nonfixed_slope_factors": 32,
+        "p": 67,
+        "rational_Hodge_factors": 34,
+        "simple_factor_dimension": 33
+      },
+      {
+        "End0_Q_dimension": 19320,
+        "Neron_Severi_rank": 12110,
+        "complex_disk_coordinates": 2450,
+        "complex_kummer_blocks": 1260,
+        "decomposition_dimension": 4900,
+        "diagonal_defect": 1190,
+        "fixed_slope_factors": 2,
+        "genus": 4900,
+        "nonfixed_slope_factors": 34,
+        "p": 71,
+        "rational_Hodge_factors": 36,
+        "simple_factor_dimension": 35
+      },
+      {
+        "End0_Q_dimension": 20448,
+        "Neron_Severi_rank": 12816,
+        "complex_disk_coordinates": 2592,
+        "complex_kummer_blocks": 1332,
+        "decomposition_dimension": 5184,
+        "diagonal_defect": 1260,
+        "fixed_slope_factors": 2,
+        "genus": 5184,
+        "nonfixed_slope_factors": 35,
+        "p": 73,
+        "rational_Hodge_factors": 37,
+        "simple_factor_dimension": 36
+      },
+      {
+        "End0_Q_dimension": 24024,
+        "Neron_Severi_rank": 15054,
+        "complex_disk_coordinates": 3042,
+        "complex_kummer_blocks": 1560,
+        "decomposition_dimension": 6084,
+        "diagonal_defect": 1482,
+        "fixed_slope_factors": 2,
+        "genus": 6084,
+        "nonfixed_slope_factors": 38,
+        "p": 79,
+        "rational_Hodge_factors": 40,
+        "simple_factor_dimension": 39
+      },
+      {
+        "End0_Q_dimension": 26568,
+        "Neron_Severi_rank": 16646,
+        "complex_disk_coordinates": 3362,
+        "complex_kummer_blocks": 1722,
+        "decomposition_dimension": 6724,
+        "diagonal_defect": 1640,
+        "fixed_slope_factors": 2,
+        "genus": 6724,
+        "nonfixed_slope_factors": 40,
+        "p": 83,
+        "rational_Hodge_factors": 42,
+        "simple_factor_dimension": 41
+      },
+      {
+        "End0_Q_dimension": 30624,
+        "Neron_Severi_rank": 19184,
+        "complex_disk_coordinates": 3872,
+        "complex_kummer_blocks": 1980,
+        "decomposition_dimension": 7744,
+        "diagonal_defect": 1892,
+        "fixed_slope_factors": 2,
+        "genus": 7744,
+        "nonfixed_slope_factors": 43,
+        "p": 89,
+        "rational_Hodge_factors": 45,
+        "simple_factor_dimension": 44
+      },
+      {
+        "End0_Q_dimension": 36480,
+        "Neron_Severi_rank": 22848,
+        "complex_disk_coordinates": 4608,
+        "complex_kummer_blocks": 2352,
+        "decomposition_dimension": 9216,
+        "diagonal_defect": 2256,
+        "fixed_slope_factors": 2,
+        "genus": 9216,
+        "nonfixed_slope_factors": 47,
+        "p": 97,
+        "rational_Hodge_factors": 49,
+        "simple_factor_dimension": 48
+      },
+      {
+        "End0_Q_dimension": 39600,
+        "Neron_Severi_rank": 24800,
+        "complex_disk_coordinates": 5000,
+        "complex_kummer_blocks": 2550,
+        "decomposition_dimension": 10000,
+        "diagonal_defect": 2450,
+        "fixed_slope_factors": 2,
+        "genus": 10000,
+        "nonfixed_slope_factors": 49,
+        "p": 101,
+        "rational_Hodge_factors": 51,
+        "simple_factor_dimension": 50
+      }
+    ]
+  }
+}

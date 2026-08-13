@@ -1,0 +1,3800 @@
+{
+  "artifact_hashes": {
+    "phase_II_complete.tex": "9c9811c8ed8fa081b1849abce431df54eb28d8fded55c3d981e7cf737425ed12",
+    "phase_I_complete.tex": "6aef90d94b6184f610df91936977d2ef7737e9a90dd28c2e92c657694c9c3662"
+  },
+  "isolated_disk_saturation": {
+    "failures": 0,
+    "primes_through": 19,
+    "rows": [
+      {
+        "failures": 0,
+        "normalized_disks_checked": 3,
+        "p": 3,
+        "zero_signature_disks": 3
+      },
+      {
+        "failures": 0,
+        "normalized_disks_checked": 13,
+        "p": 5,
+        "zero_signature_disks": 9
+      },
+      {
+        "failures": 0,
+        "normalized_disks_checked": 31,
+        "p": 7,
+        "zero_signature_disks": 15
+      },
+      {
+        "failures": 0,
+        "normalized_disks_checked": 91,
+        "p": 11,
+        "zero_signature_disks": 27
+      },
+      {
+        "failures": 0,
+        "normalized_disks_checked": 133,
+        "p": 13,
+        "zero_signature_disks": 33
+      },
+      {
+        "failures": 0,
+        "normalized_disks_checked": 241,
+        "p": 17,
+        "zero_signature_disks": 45
+      },
+      {
+        "failures": 0,
+        "normalized_disks_checked": 307,
+        "p": 19,
+        "zero_signature_disks": 51
+      }
+    ],
+    "total_zero_signature_disks": 183
+  },
+  "mixed_p5_relation": {
+    "Hodge_codimension": 2,
+    "balanced_concatenation": {
+      "branch_occurrences": 8,
+      "galois_residue_sums": [
+        20,
+        20,
+        20,
+        20
+      ],
+      "opposite_multiplicities": {
+        "1": 3,
+        "2": 1,
+        "3": 1,
+        "4": 3
+      },
+      "target_residue_sum": 20
+    },
+    "chosen_node_residues": [
+      3,
+      2
+    ],
+    "first_word": [
+      1,
+      1,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "fused_K_rank": 4,
+    "fused_smooth_branch_tuple": [
+      1,
+      1,
+      1,
+      4,
+      4,
+      4
+    ],
+    "p": 5,
+    "second_word": [
+      0,
+      0,
+      0,
+      1,
+      2,
+      4,
+      4,
+      4
+    ],
+    "signature_first": [
+      1,
+      1,
+      -1,
+      -1
+    ],
+    "signature_second": [
+      -1,
+      -1,
+      1,
+      1
+    ]
+  },
+  "sample_codes": [
+    {
+      "codewords": 25,
+      "dimension": 2,
+      "integral_relation_rank": 10,
+      "length": 8,
+      "name": "mixed_support_p5",
+      "oriented_sign_pairs": 12,
+      "p": 5,
+      "relations": [
+        {
+          "balance": {
+            "branch_occurrences": 18,
+            "galois_residue_sums": [
+              45,
+              45,
+              45,
+              45
+            ],
+            "opposite_multiplicities": {
+              "1": 4,
+              "2": 5,
+              "3": 5,
+              "4": 4
+            },
+            "target_residue_sum": 45
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 12,
+                "K_rank_before": 12,
+                "original_branch_occurrences": 18,
+                "pair_edges": 9,
+                "remaining_opposite_counts": {
+                  "1": 2,
+                  "2": 5,
+                  "3": 5,
+                  "4": 2
+                },
+                "remaining_smooth_branch_points": 14,
+                "tree_edges_used_as_nodes": 2,
+                "vertices": [
+                  0,
+                  1,
+                  2
+                ]
+              }
+            ],
+            "total_K_rank": 12
+          },
+          "occurrence_count": 3,
+          "relation": [
+            1,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 18,
+            "galois_residue_sums": [
+              45,
+              45,
+              45,
+              45
+            ],
+            "opposite_multiplicities": {
+              "1": 4,
+              "2": 5,
+              "3": 5,
+              "4": 4
+            },
+            "target_residue_sum": 45
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 12,
+                "K_rank_before": 12,
+                "original_branch_occurrences": 18,
+                "pair_edges": 9,
+                "remaining_opposite_counts": {
+                  "1": 2,
+                  "2": 5,
+                  "3": 5,
+                  "4": 2
+                },
+                "remaining_smooth_branch_points": 14,
+                "tree_edges_used_as_nodes": 2,
+                "vertices": [
+                  0,
+                  1,
+                  2
+                ]
+              }
+            ],
+            "total_K_rank": 12
+          },
+          "occurrence_count": 3,
+          "relation": [
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 18,
+            "galois_residue_sums": [
+              45,
+              45,
+              45,
+              45
+            ],
+            "opposite_multiplicities": {
+              "1": 7,
+              "2": 2,
+              "3": 2,
+              "4": 7
+            },
+            "target_residue_sum": 45
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 12,
+                "K_rank_before": 12,
+                "original_branch_occurrences": 18,
+                "pair_edges": 9,
+                "remaining_opposite_counts": {
+                  "1": 5,
+                  "2": 2,
+                  "3": 2,
+                  "4": 5
+                },
+                "remaining_smooth_branch_points": 14,
+                "tree_edges_used_as_nodes": 2,
+                "vertices": [
+                  0,
+                  1,
+                  2
+                ]
+              }
+            ],
+            "total_K_rank": 12
+          },
+          "occurrence_count": 3,
+          "relation": [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 8,
+            "galois_residue_sums": [
+              20,
+              20,
+              20,
+              20
+            ],
+            "opposite_multiplicities": {
+              "1": 1,
+              "2": 3,
+              "3": 3,
+              "4": 1
+            },
+            "target_residue_sum": 20
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 4,
+                "K_rank_before": 4,
+                "original_branch_occurrences": 8,
+                "pair_edges": 4,
+                "remaining_opposite_counts": {
+                  "1": 0,
+                  "2": 3,
+                  "3": 3,
+                  "4": 0
+                },
+                "remaining_smooth_branch_points": 6,
+                "tree_edges_used_as_nodes": 1,
+                "vertices": [
+                  0,
+                  1
+                ]
+              }
+            ],
+            "total_K_rank": 4
+          },
+          "occurrence_count": 2,
+          "relation": [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 18,
+            "galois_residue_sums": [
+              45,
+              45,
+              45,
+              45
+            ],
+            "opposite_multiplicities": {
+              "1": 5,
+              "2": 4,
+              "3": 4,
+              "4": 5
+            },
+            "target_residue_sum": 45
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 12,
+                "K_rank_before": 12,
+                "original_branch_occurrences": 18,
+                "pair_edges": 9,
+                "remaining_opposite_counts": {
+                  "1": 3,
+                  "2": 4,
+                  "3": 4,
+                  "4": 3
+                },
+                "remaining_smooth_branch_points": 14,
+                "tree_edges_used_as_nodes": 2,
+                "vertices": [
+                  0,
+                  1,
+                  2
+                ]
+              }
+            ],
+            "total_K_rank": 12
+          },
+          "occurrence_count": 3,
+          "relation": [
+            -1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 8,
+            "galois_residue_sums": [
+              20,
+              20,
+              20,
+              20
+            ],
+            "opposite_multiplicities": {
+              "1": 1,
+              "2": 3,
+              "3": 3,
+              "4": 1
+            },
+            "target_residue_sum": 20
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 6,
+                "K_rank_before": 6,
+                "original_branch_occurrences": 8,
+                "pair_edges": 4,
+                "remaining_opposite_counts": {
+                  "1": 1,
+                  "2": 3,
+                  "3": 3,
+                  "4": 1
+                },
+                "remaining_smooth_branch_points": 8,
+                "tree_edges_used_as_nodes": 0,
+                "vertices": [
+                  0
+                ]
+              }
+            ],
+            "total_K_rank": 6
+          },
+          "occurrence_count": 1,
+          "relation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 18,
+            "galois_residue_sums": [
+              45,
+              45,
+              45,
+              45
+            ],
+            "opposite_multiplicities": {
+              "1": 2,
+              "2": 7,
+              "3": 7,
+              "4": 2
+            },
+            "target_residue_sum": 45
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 12,
+                "K_rank_before": 12,
+                "original_branch_occurrences": 18,
+                "pair_edges": 9,
+                "remaining_opposite_counts": {
+                  "1": 0,
+                  "2": 7,
+                  "3": 7,
+                  "4": 0
+                },
+                "remaining_smooth_branch_points": 14,
+                "tree_edges_used_as_nodes": 2,
+                "vertices": [
+                  0,
+                  1,
+                  2
+                ]
+              }
+            ],
+            "total_K_rank": 12
+          },
+          "occurrence_count": 3,
+          "relation": [
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 18,
+            "galois_residue_sums": [
+              45,
+              45,
+              45,
+              45
+            ],
+            "opposite_multiplicities": {
+              "1": 5,
+              "2": 4,
+              "3": 4,
+              "4": 5
+            },
+            "target_residue_sum": 45
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 12,
+                "K_rank_before": 12,
+                "original_branch_occurrences": 18,
+                "pair_edges": 9,
+                "remaining_opposite_counts": {
+                  "1": 3,
+                  "2": 4,
+                  "3": 4,
+                  "4": 3
+                },
+                "remaining_smooth_branch_points": 14,
+                "tree_edges_used_as_nodes": 2,
+                "vertices": [
+                  0,
+                  1,
+                  2
+                ]
+              }
+            ],
+            "total_K_rank": 12
+          },
+          "occurrence_count": 3,
+          "relation": [
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 8,
+            "galois_residue_sums": [
+              20,
+              20,
+              20,
+              20
+            ],
+            "opposite_multiplicities": {
+              "1": 3,
+              "2": 1,
+              "3": 1,
+              "4": 3
+            },
+            "target_residue_sum": 20
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 6,
+                "K_rank_before": 6,
+                "original_branch_occurrences": 8,
+                "pair_edges": 4,
+                "remaining_opposite_counts": {
+                  "1": 3,
+                  "2": 1,
+                  "3": 1,
+                  "4": 3
+                },
+                "remaining_smooth_branch_points": 8,
+                "tree_edges_used_as_nodes": 0,
+                "vertices": [
+                  0
+                ]
+              }
+            ],
+            "total_K_rank": 6
+          },
+          "occurrence_count": 1,
+          "relation": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 8,
+            "galois_residue_sums": [
+              20,
+              20,
+              20,
+              20
+            ],
+            "opposite_multiplicities": {
+              "1": 3,
+              "2": 1,
+              "3": 1,
+              "4": 3
+            },
+            "target_residue_sum": 20
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 4,
+                "K_rank_before": 4,
+                "original_branch_occurrences": 8,
+                "pair_edges": 4,
+                "remaining_opposite_counts": {
+                  "1": 2,
+                  "2": 1,
+                  "3": 1,
+                  "4": 2
+                },
+                "remaining_smooth_branch_points": 6,
+                "tree_edges_used_as_nodes": 1,
+                "vertices": [
+                  0,
+                  1
+                ]
+              }
+            ],
+            "total_K_rank": 4
+          },
+          "occurrence_count": 2,
+          "relation": [
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "representatives": [
+        [
+          0,
+          0,
+          0,
+          1,
+          2,
+          4,
+          4,
+          4
+        ],
+        [
+          0,
+          0,
+          0,
+          2,
+          4,
+          3,
+          3,
+          3
+        ],
+        [
+          1,
+          1,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          3,
+          1,
+          2,
+          4,
+          4,
+          4
+        ],
+        [
+          1,
+          1,
+          3,
+          2,
+          4,
+          3,
+          3,
+          3
+        ],
+        [
+          1,
+          1,
+          3,
+          3,
+          1,
+          2,
+          2,
+          2
+        ],
+        [
+          1,
+          1,
+          3,
+          4,
+          3,
+          1,
+          1,
+          1
+        ],
+        [
+          2,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          2,
+          1,
+          1,
+          2,
+          4,
+          4,
+          4
+        ],
+        [
+          2,
+          2,
+          1,
+          2,
+          4,
+          3,
+          3,
+          3
+        ],
+        [
+          2,
+          2,
+          1,
+          3,
+          1,
+          2,
+          2,
+          2
+        ],
+        [
+          2,
+          2,
+          1,
+          4,
+          3,
+          1,
+          1,
+          1
+        ]
+      ],
+      "signature_matrix": [
+        [
+          -1,
+          -1,
+          1,
+          0,
+          0,
+          2,
+          2,
+          1,
+          0,
+          0,
+          2,
+          2
+        ],
+        [
+          -1,
+          1,
+          1,
+          0,
+          2,
+          0,
+          2,
+          -1,
+          -2,
+          0,
+          -2,
+          0
+        ],
+        [
+          1,
+          -1,
+          -1,
+          0,
+          -2,
+          0,
+          -2,
+          1,
+          2,
+          0,
+          2,
+          0
+        ],
+        [
+          1,
+          1,
+          -1,
+          0,
+          0,
+          -2,
+          -2,
+          -1,
+          0,
+          0,
+          -2,
+          -2
+        ]
+      ],
+      "signature_rank": 2,
+      "smith_nonzero_invariants": [
+        1,
+        2
+      ]
+    },
+    {
+      "codewords": 9,
+      "dimension": 2,
+      "integral_relation_rank": 3,
+      "length": 6,
+      "name": "ternary_two_triangle_code",
+      "oriented_sign_pairs": 4,
+      "p": 3,
+      "relations": [
+        {
+          "balance": {
+            "branch_occurrences": 12,
+            "galois_residue_sums": [
+              18,
+              18
+            ],
+            "opposite_multiplicities": {
+              "1": 6,
+              "2": 6
+            },
+            "target_residue_sum": 18
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 6,
+                "K_rank_before": 6,
+                "original_branch_occurrences": 12,
+                "pair_edges": 6,
+                "remaining_opposite_counts": {
+                  "1": 4,
+                  "2": 4
+                },
+                "remaining_smooth_branch_points": 8,
+                "tree_edges_used_as_nodes": 2,
+                "vertices": [
+                  0,
+                  1,
+                  2
+                ]
+              }
+            ],
+            "total_K_rank": 6
+          },
+          "occurrence_count": 3,
+          "relation": [
+            -2,
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 6,
+            "galois_residue_sums": [
+              9,
+              9
+            ],
+            "opposite_multiplicities": {
+              "1": 3,
+              "2": 3
+            },
+            "target_residue_sum": 9
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 4,
+                "K_rank_before": 4,
+                "original_branch_occurrences": 6,
+                "pair_edges": 3,
+                "remaining_opposite_counts": {
+                  "1": 3,
+                  "2": 3
+                },
+                "remaining_smooth_branch_points": 6,
+                "tree_edges_used_as_nodes": 0,
+                "vertices": [
+                  0
+                ]
+              }
+            ],
+            "total_K_rank": 4
+          },
+          "occurrence_count": 1,
+          "relation": [
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 6,
+            "galois_residue_sums": [
+              9,
+              9
+            ],
+            "opposite_multiplicities": {
+              "1": 3,
+              "2": 3
+            },
+            "target_residue_sum": 9
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 2,
+                "K_rank_before": 2,
+                "original_branch_occurrences": 6,
+                "pair_edges": 3,
+                "remaining_opposite_counts": {
+                  "1": 2,
+                  "2": 2
+                },
+                "remaining_smooth_branch_points": 4,
+                "tree_edges_used_as_nodes": 1,
+                "vertices": [
+                  0,
+                  1
+                ]
+              }
+            ],
+            "total_K_rank": 2
+          },
+          "occurrence_count": 2,
+          "relation": [
+            -1,
+            1,
+            0,
+            0
+          ]
+        }
+      ],
+      "representatives": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          2,
+          2,
+          2
+        ]
+      ],
+      "signature_matrix": [
+        [
+          1,
+          1,
+          2,
+          0
+        ],
+        [
+          -1,
+          -1,
+          -2,
+          0
+        ]
+      ],
+      "signature_rank": 1,
+      "smith_nonzero_invariants": [
+        1
+      ]
+    },
+    {
+      "codewords": 25,
+      "dimension": 2,
+      "integral_relation_rank": 10,
+      "length": 5,
+      "name": "quinary_overlap_code",
+      "oriented_sign_pairs": 12,
+      "p": 5,
+      "relations": [
+        {
+          "balance": {
+            "branch_occurrences": 8,
+            "galois_residue_sums": [
+              20,
+              20,
+              20,
+              20
+            ],
+            "opposite_multiplicities": {
+              "1": 2,
+              "2": 2,
+              "3": 2,
+              "4": 2
+            },
+            "target_residue_sum": 20
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 4,
+                "K_rank_before": 4,
+                "original_branch_occurrences": 8,
+                "pair_edges": 4,
+                "remaining_opposite_counts": {
+                  "1": 1,
+                  "2": 2,
+                  "3": 2,
+                  "4": 1
+                },
+                "remaining_smooth_branch_points": 6,
+                "tree_edges_used_as_nodes": 1,
+                "vertices": [
+                  0,
+                  1
+                ]
+              }
+            ],
+            "total_K_rank": 4
+          },
+          "occurrence_count": 2,
+          "relation": [
+            -1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 8,
+            "galois_residue_sums": [
+              20,
+              20,
+              20,
+              20
+            ],
+            "opposite_multiplicities": {
+              "1": 2,
+              "2": 2,
+              "3": 2,
+              "4": 2
+            },
+            "target_residue_sum": 20
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 4,
+                "K_rank_before": 4,
+                "original_branch_occurrences": 8,
+                "pair_edges": 4,
+                "remaining_opposite_counts": {
+                  "1": 1,
+                  "2": 2,
+                  "3": 2,
+                  "4": 1
+                },
+                "remaining_smooth_branch_points": 6,
+                "tree_edges_used_as_nodes": 1,
+                "vertices": [
+                  0,
+                  1
+                ]
+              }
+            ],
+            "total_K_rank": 4
+          },
+          "occurrence_count": 2,
+          "relation": [
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 4,
+            "galois_residue_sums": [
+              10,
+              10,
+              10,
+              10
+            ],
+            "opposite_multiplicities": {
+              "1": 1,
+              "2": 1,
+              "3": 1,
+              "4": 1
+            },
+            "target_residue_sum": 10
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 2,
+                "K_rank_before": 2,
+                "original_branch_occurrences": 4,
+                "pair_edges": 2,
+                "remaining_opposite_counts": {
+                  "1": 1,
+                  "2": 1,
+                  "3": 1,
+                  "4": 1
+                },
+                "remaining_smooth_branch_points": 4,
+                "tree_edges_used_as_nodes": 0,
+                "vertices": [
+                  0
+                ]
+              }
+            ],
+            "total_K_rank": 2
+          },
+          "occurrence_count": 1,
+          "relation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 6,
+            "galois_residue_sums": [
+              15,
+              15,
+              15,
+              15
+            ],
+            "opposite_multiplicities": {
+              "1": 1,
+              "2": 2,
+              "3": 2,
+              "4": 1
+            },
+            "target_residue_sum": 15
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 2,
+                "K_rank_before": 2,
+                "original_branch_occurrences": 6,
+                "pair_edges": 3,
+                "remaining_opposite_counts": {
+                  "1": 0,
+                  "2": 2,
+                  "3": 2,
+                  "4": 0
+                },
+                "remaining_smooth_branch_points": 4,
+                "tree_edges_used_as_nodes": 1,
+                "vertices": [
+                  0,
+                  1
+                ]
+              }
+            ],
+            "total_K_rank": 2
+          },
+          "occurrence_count": 2,
+          "relation": [
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 8,
+            "galois_residue_sums": [
+              20,
+              20,
+              20,
+              20
+            ],
+            "opposite_multiplicities": {
+              "1": 2,
+              "2": 2,
+              "3": 2,
+              "4": 2
+            },
+            "target_residue_sum": 20
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 4,
+                "K_rank_before": 4,
+                "original_branch_occurrences": 8,
+                "pair_edges": 4,
+                "remaining_opposite_counts": {
+                  "1": 1,
+                  "2": 2,
+                  "3": 2,
+                  "4": 1
+                },
+                "remaining_smooth_branch_points": 6,
+                "tree_edges_used_as_nodes": 1,
+                "vertices": [
+                  0,
+                  1
+                ]
+              }
+            ],
+            "total_K_rank": 4
+          },
+          "occurrence_count": 2,
+          "relation": [
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 8,
+            "galois_residue_sums": [
+              20,
+              20,
+              20,
+              20
+            ],
+            "opposite_multiplicities": {
+              "1": 2,
+              "2": 2,
+              "3": 2,
+              "4": 2
+            },
+            "target_residue_sum": 20
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 4,
+                "K_rank_before": 4,
+                "original_branch_occurrences": 8,
+                "pair_edges": 4,
+                "remaining_opposite_counts": {
+                  "1": 1,
+                  "2": 2,
+                  "3": 2,
+                  "4": 1
+                },
+                "remaining_smooth_branch_points": 6,
+                "tree_edges_used_as_nodes": 1,
+                "vertices": [
+                  0,
+                  1
+                ]
+              }
+            ],
+            "total_K_rank": 4
+          },
+          "occurrence_count": 2,
+          "relation": [
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 4,
+            "galois_residue_sums": [
+              10,
+              10,
+              10,
+              10
+            ],
+            "opposite_multiplicities": {
+              "1": 1,
+              "2": 1,
+              "3": 1,
+              "4": 1
+            },
+            "target_residue_sum": 10
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 2,
+                "K_rank_before": 2,
+                "original_branch_occurrences": 4,
+                "pair_edges": 2,
+                "remaining_opposite_counts": {
+                  "1": 1,
+                  "2": 1,
+                  "3": 1,
+                  "4": 1
+                },
+                "remaining_smooth_branch_points": 4,
+                "tree_edges_used_as_nodes": 0,
+                "vertices": [
+                  0
+                ]
+              }
+            ],
+            "total_K_rank": 2
+          },
+          "occurrence_count": 1,
+          "relation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 8,
+            "galois_residue_sums": [
+              20,
+              20,
+              20,
+              20
+            ],
+            "opposite_multiplicities": {
+              "1": 2,
+              "2": 2,
+              "3": 2,
+              "4": 2
+            },
+            "target_residue_sum": 20
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 4,
+                "K_rank_before": 4,
+                "original_branch_occurrences": 8,
+                "pair_edges": 4,
+                "remaining_opposite_counts": {
+                  "1": 1,
+                  "2": 2,
+                  "3": 2,
+                  "4": 1
+                },
+                "remaining_smooth_branch_points": 6,
+                "tree_edges_used_as_nodes": 1,
+                "vertices": [
+                  0,
+                  1
+                ]
+              }
+            ],
+            "total_K_rank": 4
+          },
+          "occurrence_count": 2,
+          "relation": [
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 8,
+            "galois_residue_sums": [
+              20,
+              20,
+              20,
+              20
+            ],
+            "opposite_multiplicities": {
+              "1": 2,
+              "2": 2,
+              "3": 2,
+              "4": 2
+            },
+            "target_residue_sum": 20
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 4,
+                "K_rank_before": 4,
+                "original_branch_occurrences": 8,
+                "pair_edges": 4,
+                "remaining_opposite_counts": {
+                  "1": 1,
+                  "2": 2,
+                  "3": 2,
+                  "4": 1
+                },
+                "remaining_smooth_branch_points": 6,
+                "tree_edges_used_as_nodes": 1,
+                "vertices": [
+                  0,
+                  1
+                ]
+              }
+            ],
+            "total_K_rank": 4
+          },
+          "occurrence_count": 2,
+          "relation": [
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 6,
+            "galois_residue_sums": [
+              15,
+              15,
+              15,
+              15
+            ],
+            "opposite_multiplicities": {
+              "1": 2,
+              "2": 1,
+              "3": 1,
+              "4": 2
+            },
+            "target_residue_sum": 15
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 2,
+                "K_rank_before": 2,
+                "original_branch_occurrences": 6,
+                "pair_edges": 3,
+                "remaining_opposite_counts": {
+                  "1": 1,
+                  "2": 1,
+                  "3": 1,
+                  "4": 1
+                },
+                "remaining_smooth_branch_points": 4,
+                "tree_edges_used_as_nodes": 1,
+                "vertices": [
+                  0,
+                  1
+                ]
+              }
+            ],
+            "total_K_rank": 2
+          },
+          "occurrence_count": 2,
+          "relation": [
+            -1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "representatives": [
+        [
+          0,
+          1,
+          1,
+          0,
+          3
+        ],
+        [
+          0,
+          2,
+          2,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          3,
+          0
+        ],
+        [
+          1,
+          1,
+          2,
+          3,
+          3
+        ],
+        [
+          1,
+          2,
+          3,
+          3,
+          1
+        ],
+        [
+          1,
+          3,
+          4,
+          3,
+          4
+        ],
+        [
+          1,
+          4,
+          0,
+          3,
+          2
+        ],
+        [
+          2,
+          0,
+          2,
+          1,
+          0
+        ],
+        [
+          2,
+          1,
+          3,
+          1,
+          3
+        ],
+        [
+          2,
+          2,
+          4,
+          1,
+          1
+        ],
+        [
+          2,
+          3,
+          0,
+          1,
+          4
+        ],
+        [
+          2,
+          4,
+          1,
+          1,
+          2
+        ]
+      ],
+      "signature_matrix": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          -1,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          -1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          -1,
+          1,
+          -1,
+          0,
+          -1
+        ],
+        [
+          -1,
+          1,
+          -1,
+          -1,
+          -1,
+          -1,
+          0,
+          1,
+          -1,
+          1,
+          0,
+          1
+        ],
+        [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          0,
+          -1,
+          -1,
+          -1,
+          0,
+          -1
+        ]
+      ],
+      "signature_rank": 2,
+      "smith_nonzero_invariants": [
+        1,
+        2
+      ]
+    },
+    {
+      "codewords": 49,
+      "dimension": 2,
+      "integral_relation_rank": 21,
+      "length": 6,
+      "name": "septenary_length_six",
+      "oriented_sign_pairs": 24,
+      "p": 7,
+      "relations": [
+        {
+          "balance": {
+            "branch_occurrences": 14,
+            "galois_residue_sums": [
+              49,
+              49,
+              49,
+              49,
+              49,
+              49
+            ],
+            "opposite_multiplicities": {
+              "1": 3,
+              "2": 2,
+              "3": 2,
+              "4": 2,
+              "5": 2,
+              "6": 3
+            },
+            "target_residue_sum": 49
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 8,
+                "K_rank_before": 8,
+                "original_branch_occurrences": 14,
+                "pair_edges": 7,
+                "remaining_opposite_counts": {
+                  "1": 2,
+                  "2": 1,
+                  "3": 2,
+                  "4": 2,
+                  "5": 1,
+                  "6": 2
+                },
+                "remaining_smooth_branch_points": 10,
+                "tree_edges_used_as_nodes": 2,
+                "vertices": [
+                  0,
+                  1,
+                  2
+                ]
+              }
+            ],
+            "total_K_rank": 8
+          },
+          "occurrence_count": 3,
+          "relation": [
+            0,
+            0,
+            -1,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 20,
+            "galois_residue_sums": [
+              70,
+              70,
+              70,
+              70,
+              70,
+              70
+            ],
+            "opposite_multiplicities": {
+              "1": 4,
+              "2": 3,
+              "3": 3,
+              "4": 3,
+              "5": 3,
+              "6": 4
+            },
+            "target_residue_sum": 70
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 12,
+                "K_rank_before": 12,
+                "original_branch_occurrences": 20,
+                "pair_edges": 10,
+                "remaining_opposite_counts": {
+                  "1": 2,
+                  "2": 2,
+                  "3": 3,
+                  "4": 3,
+                  "5": 2,
+                  "6": 2
+                },
+                "remaining_smooth_branch_points": 14,
+                "tree_edges_used_as_nodes": 3,
+                "vertices": [
+                  0,
+                  1,
+                  2,
+                  3
+                ]
+              }
+            ],
+            "total_K_rank": 12
+          },
+          "occurrence_count": 4,
+          "relation": [
+            0,
+            0,
+            -1,
+            -2,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 10,
+            "galois_residue_sums": [
+              35,
+              35,
+              35,
+              35,
+              35,
+              35
+            ],
+            "opposite_multiplicities": {
+              "1": 1,
+              "2": 2,
+              "3": 2,
+              "4": 2,
+              "5": 2,
+              "6": 1
+            },
+            "target_residue_sum": 35
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 6,
+                "K_rank_before": 6,
+                "original_branch_occurrences": 10,
+                "pair_edges": 5,
+                "remaining_opposite_counts": {
+                  "1": 0,
+                  "2": 2,
+                  "3": 2,
+                  "4": 2,
+                  "5": 2,
+                  "6": 0
+                },
+                "remaining_smooth_branch_points": 8,
+                "tree_edges_used_as_nodes": 1,
+                "vertices": [
+                  0,
+                  1
+                ]
+              }
+            ],
+            "total_K_rank": 6
+          },
+          "occurrence_count": 2,
+          "relation": [
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 6,
+            "galois_residue_sums": [
+              21,
+              21,
+              21,
+              21,
+              21,
+              21
+            ],
+            "opposite_multiplicities": {
+              "1": 2,
+              "2": 1,
+              "3": 0,
+              "4": 0,
+              "5": 1,
+              "6": 2
+            },
+            "target_residue_sum": 21
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 4,
+                "K_rank_before": 4,
+                "original_branch_occurrences": 6,
+                "pair_edges": 3,
+                "remaining_opposite_counts": {
+                  "1": 2,
+                  "2": 1,
+                  "3": 0,
+                  "4": 0,
+                  "5": 1,
+                  "6": 2
+                },
+                "remaining_smooth_branch_points": 6,
+                "tree_edges_used_as_nodes": 0,
+                "vertices": [
+                  0
+                ]
+              }
+            ],
+            "total_K_rank": 4
+          },
+          "occurrence_count": 1,
+          "relation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 10,
+            "galois_residue_sums": [
+              35,
+              35,
+              35,
+              35,
+              35,
+              35
+            ],
+            "opposite_multiplicities": {
+              "1": 2,
+              "2": 2,
+              "3": 1,
+              "4": 1,
+              "5": 2,
+              "6": 2
+            },
+            "target_residue_sum": 35
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 6,
+                "K_rank_before": 6,
+                "original_branch_occurrences": 10,
+                "pair_edges": 5,
+                "remaining_opposite_counts": {
+                  "1": 1,
+                  "2": 2,
+                  "3": 1,
+                  "4": 1,
+                  "5": 2,
+                  "6": 1
+                },
+                "remaining_smooth_branch_points": 8,
+                "tree_edges_used_as_nodes": 1,
+                "vertices": [
+                  0,
+                  1
+                ]
+              }
+            ],
+            "total_K_rank": 6
+          },
+          "occurrence_count": 2,
+          "relation": [
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 14,
+            "galois_residue_sums": [
+              49,
+              49,
+              49,
+              49,
+              49,
+              49
+            ],
+            "opposite_multiplicities": {
+              "1": 2,
+              "2": 2,
+              "3": 3,
+              "4": 3,
+              "5": 2,
+              "6": 2
+            },
+            "target_residue_sum": 49
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 8,
+                "K_rank_before": 8,
+                "original_branch_occurrences": 14,
+                "pair_edges": 7,
+                "remaining_opposite_counts": {
+                  "1": 1,
+                  "2": 1,
+                  "3": 3,
+                  "4": 3,
+                  "5": 1,
+                  "6": 1
+                },
+                "remaining_smooth_branch_points": 10,
+                "tree_edges_used_as_nodes": 2,
+                "vertices": [
+                  0,
+                  1,
+                  2
+                ]
+              }
+            ],
+            "total_K_rank": 8
+          },
+          "occurrence_count": 3,
+          "relation": [
+            0,
+            -1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 8,
+            "galois_residue_sums": [
+              28,
+              28,
+              28,
+              28,
+              28,
+              28
+            ],
+            "opposite_multiplicities": {
+              "1": 1,
+              "2": 2,
+              "3": 1,
+              "4": 1,
+              "5": 2,
+              "6": 1
+            },
+            "target_residue_sum": 28
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 4,
+                "K_rank_before": 4,
+                "original_branch_occurrences": 8,
+                "pair_edges": 4,
+                "remaining_opposite_counts": {
+                  "1": 0,
+                  "2": 2,
+                  "3": 1,
+                  "4": 1,
+                  "5": 2,
+                  "6": 0
+                },
+                "remaining_smooth_branch_points": 6,
+                "tree_edges_used_as_nodes": 1,
+                "vertices": [
+                  0,
+                  1
+                ]
+              }
+            ],
+            "total_K_rank": 4
+          },
+          "occurrence_count": 2,
+          "relation": [
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 24,
+            "galois_residue_sums": [
+              84,
+              84,
+              84,
+              84,
+              84,
+              84
+            ],
+            "opposite_multiplicities": {
+              "1": 5,
+              "2": 3,
+              "3": 4,
+              "4": 4,
+              "5": 3,
+              "6": 5
+            },
+            "target_residue_sum": 84
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 14,
+                "K_rank_before": 14,
+                "original_branch_occurrences": 24,
+                "pair_edges": 12,
+                "remaining_opposite_counts": {
+                  "1": 2,
+                  "2": 2,
+                  "3": 4,
+                  "4": 4,
+                  "5": 2,
+                  "6": 2
+                },
+                "remaining_smooth_branch_points": 16,
+                "tree_edges_used_as_nodes": 4,
+                "vertices": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ]
+              }
+            ],
+            "total_K_rank": 14
+          },
+          "occurrence_count": 5,
+          "relation": [
+            0,
+            1,
+            -1,
+            -2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 10,
+            "galois_residue_sums": [
+              35,
+              35,
+              35,
+              35,
+              35,
+              35
+            ],
+            "opposite_multiplicities": {
+              "1": 1,
+              "2": 2,
+              "3": 2,
+              "4": 2,
+              "5": 2,
+              "6": 1
+            },
+            "target_residue_sum": 35
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 6,
+                "K_rank_before": 6,
+                "original_branch_occurrences": 10,
+                "pair_edges": 5,
+                "remaining_opposite_counts": {
+                  "1": 0,
+                  "2": 2,
+                  "3": 2,
+                  "4": 2,
+                  "5": 2,
+                  "6": 0
+                },
+                "remaining_smooth_branch_points": 8,
+                "tree_edges_used_as_nodes": 1,
+                "vertices": [
+                  0,
+                  1
+                ]
+              }
+            ],
+            "total_K_rank": 6
+          },
+          "occurrence_count": 2,
+          "relation": [
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 6,
+            "galois_residue_sums": [
+              21,
+              21,
+              21,
+              21,
+              21,
+              21
+            ],
+            "opposite_multiplicities": {
+              "1": 0,
+              "2": 2,
+              "3": 1,
+              "4": 1,
+              "5": 2,
+              "6": 0
+            },
+            "target_residue_sum": 21
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 4,
+                "K_rank_before": 4,
+                "original_branch_occurrences": 6,
+                "pair_edges": 3,
+                "remaining_opposite_counts": {
+                  "1": 0,
+                  "2": 2,
+                  "3": 1,
+                  "4": 1,
+                  "5": 2,
+                  "6": 0
+                },
+                "remaining_smooth_branch_points": 6,
+                "tree_edges_used_as_nodes": 0,
+                "vertices": [
+                  0
+                ]
+              }
+            ],
+            "total_K_rank": 4
+          },
+          "occurrence_count": 1,
+          "relation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 18,
+            "galois_residue_sums": [
+              63,
+              63,
+              63,
+              63,
+              63,
+              63
+            ],
+            "opposite_multiplicities": {
+              "1": 3,
+              "2": 3,
+              "3": 3,
+              "4": 3,
+              "5": 3,
+              "6": 3
+            },
+            "target_residue_sum": 63
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 10,
+                "K_rank_before": 10,
+                "original_branch_occurrences": 18,
+                "pair_edges": 9,
+                "remaining_opposite_counts": {
+                  "1": 1,
+                  "2": 2,
+                  "3": 3,
+                  "4": 3,
+                  "5": 2,
+                  "6": 1
+                },
+                "remaining_smooth_branch_points": 12,
+                "tree_edges_used_as_nodes": 3,
+                "vertices": [
+                  0,
+                  1,
+                  2,
+                  3
+                ]
+              }
+            ],
+            "total_K_rank": 10
+          },
+          "occurrence_count": 4,
+          "relation": [
+            0,
+            -1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 10,
+            "galois_residue_sums": [
+              35,
+              35,
+              35,
+              35,
+              35,
+              35
+            ],
+            "opposite_multiplicities": {
+              "1": 2,
+              "2": 1,
+              "3": 2,
+              "4": 2,
+              "5": 1,
+              "6": 2
+            },
+            "target_residue_sum": 35
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 6,
+                "K_rank_before": 6,
+                "original_branch_occurrences": 10,
+                "pair_edges": 5,
+                "remaining_opposite_counts": {
+                  "1": 1,
+                  "2": 1,
+                  "3": 2,
+                  "4": 2,
+                  "5": 1,
+                  "6": 1
+                },
+                "remaining_smooth_branch_points": 8,
+                "tree_edges_used_as_nodes": 1,
+                "vertices": [
+                  0,
+                  1
+                ]
+              }
+            ],
+            "total_K_rank": 6
+          },
+          "occurrence_count": 2,
+          "relation": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 10,
+            "galois_residue_sums": [
+              35,
+              35,
+              35,
+              35,
+              35,
+              35
+            ],
+            "opposite_multiplicities": {
+              "1": 2,
+              "2": 2,
+              "3": 1,
+              "4": 1,
+              "5": 2,
+              "6": 2
+            },
+            "target_residue_sum": 35
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 6,
+                "K_rank_before": 6,
+                "original_branch_occurrences": 10,
+                "pair_edges": 5,
+                "remaining_opposite_counts": {
+                  "1": 1,
+                  "2": 2,
+                  "3": 1,
+                  "4": 1,
+                  "5": 2,
+                  "6": 1
+                },
+                "remaining_smooth_branch_points": 8,
+                "tree_edges_used_as_nodes": 1,
+                "vertices": [
+                  0,
+                  1
+                ]
+              }
+            ],
+            "total_K_rank": 6
+          },
+          "occurrence_count": 2,
+          "relation": [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 14,
+            "galois_residue_sums": [
+              49,
+              49,
+              49,
+              49,
+              49,
+              49
+            ],
+            "opposite_multiplicities": {
+              "1": 3,
+              "2": 2,
+              "3": 2,
+              "4": 2,
+              "5": 2,
+              "6": 3
+            },
+            "target_residue_sum": 49
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 8,
+                "K_rank_before": 8,
+                "original_branch_occurrences": 14,
+                "pair_edges": 7,
+                "remaining_opposite_counts": {
+                  "1": 1,
+                  "2": 2,
+                  "3": 2,
+                  "4": 2,
+                  "5": 2,
+                  "6": 1
+                },
+                "remaining_smooth_branch_points": 10,
+                "tree_edges_used_as_nodes": 2,
+                "vertices": [
+                  0,
+                  1,
+                  2
+                ]
+              }
+            ],
+            "total_K_rank": 8
+          },
+          "occurrence_count": 3,
+          "relation": [
+            0,
+            -1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 8,
+            "galois_residue_sums": [
+              28,
+              28,
+              28,
+              28,
+              28,
+              28
+            ],
+            "opposite_multiplicities": {
+              "1": 1,
+              "2": 1,
+              "3": 2,
+              "4": 2,
+              "5": 1,
+              "6": 1
+            },
+            "target_residue_sum": 28
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 4,
+                "K_rank_before": 4,
+                "original_branch_occurrences": 8,
+                "pair_edges": 4,
+                "remaining_opposite_counts": {
+                  "1": 0,
+                  "2": 1,
+                  "3": 2,
+                  "4": 2,
+                  "5": 1,
+                  "6": 0
+                },
+                "remaining_smooth_branch_points": 6,
+                "tree_edges_used_as_nodes": 1,
+                "vertices": [
+                  0,
+                  1
+                ]
+              }
+            ],
+            "total_K_rank": 4
+          },
+          "occurrence_count": 2,
+          "relation": [
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 6,
+            "galois_residue_sums": [
+              21,
+              21,
+              21,
+              21,
+              21,
+              21
+            ],
+            "opposite_multiplicities": {
+              "1": 1,
+              "2": 0,
+              "3": 2,
+              "4": 2,
+              "5": 0,
+              "6": 1
+            },
+            "target_residue_sum": 21
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 4,
+                "K_rank_before": 4,
+                "original_branch_occurrences": 6,
+                "pair_edges": 3,
+                "remaining_opposite_counts": {
+                  "1": 1,
+                  "2": 0,
+                  "3": 2,
+                  "4": 2,
+                  "5": 0,
+                  "6": 1
+                },
+                "remaining_smooth_branch_points": 6,
+                "tree_edges_used_as_nodes": 0,
+                "vertices": [
+                  0
+                ]
+              }
+            ],
+            "total_K_rank": 4
+          },
+          "occurrence_count": 1,
+          "relation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 20,
+            "galois_residue_sums": [
+              70,
+              70,
+              70,
+              70,
+              70,
+              70
+            ],
+            "opposite_multiplicities": {
+              "1": 5,
+              "2": 3,
+              "3": 2,
+              "4": 2,
+              "5": 3,
+              "6": 5
+            },
+            "target_residue_sum": 70
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 12,
+                "K_rank_before": 12,
+                "original_branch_occurrences": 20,
+                "pair_edges": 10,
+                "remaining_opposite_counts": {
+                  "1": 2,
+                  "2": 3,
+                  "3": 2,
+                  "4": 2,
+                  "5": 3,
+                  "6": 2
+                },
+                "remaining_smooth_branch_points": 14,
+                "tree_edges_used_as_nodes": 3,
+                "vertices": [
+                  0,
+                  1,
+                  2,
+                  3
+                ]
+              }
+            ],
+            "total_K_rank": 12
+          },
+          "occurrence_count": 4,
+          "relation": [
+            0,
+            -1,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 10,
+            "galois_residue_sums": [
+              35,
+              35,
+              35,
+              35,
+              35,
+              35
+            ],
+            "opposite_multiplicities": {
+              "1": 2,
+              "2": 1,
+              "3": 2,
+              "4": 2,
+              "5": 1,
+              "6": 2
+            },
+            "target_residue_sum": 35
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 6,
+                "K_rank_before": 6,
+                "original_branch_occurrences": 10,
+                "pair_edges": 5,
+                "remaining_opposite_counts": {
+                  "1": 1,
+                  "2": 1,
+                  "3": 2,
+                  "4": 2,
+                  "5": 1,
+                  "6": 1
+                },
+                "remaining_smooth_branch_points": 8,
+                "tree_edges_used_as_nodes": 1,
+                "vertices": [
+                  0,
+                  1
+                ]
+              }
+            ],
+            "total_K_rank": 6
+          },
+          "occurrence_count": 2,
+          "relation": [
+            0,
+            0,
+            -1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 24,
+            "galois_residue_sums": [
+              84,
+              84,
+              84,
+              84,
+              84,
+              84
+            ],
+            "opposite_multiplicities": {
+              "1": 5,
+              "2": 4,
+              "3": 3,
+              "4": 3,
+              "5": 4,
+              "6": 5
+            },
+            "target_residue_sum": 84
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 14,
+                "K_rank_before": 14,
+                "original_branch_occurrences": 24,
+                "pair_edges": 12,
+                "remaining_opposite_counts": {
+                  "1": 2,
+                  "2": 3,
+                  "3": 3,
+                  "4": 3,
+                  "5": 3,
+                  "6": 2
+                },
+                "remaining_smooth_branch_points": 16,
+                "tree_edges_used_as_nodes": 4,
+                "vertices": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ]
+              }
+            ],
+            "total_K_rank": 14
+          },
+          "occurrence_count": 5,
+          "relation": [
+            0,
+            1,
+            -1,
+            -2,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 22,
+            "galois_residue_sums": [
+              77,
+              77,
+              77,
+              77,
+              77,
+              77
+            ],
+            "opposite_multiplicities": {
+              "1": 5,
+              "2": 3,
+              "3": 3,
+              "4": 3,
+              "5": 3,
+              "6": 5
+            },
+            "target_residue_sum": 77
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 12,
+                "K_rank_before": 12,
+                "original_branch_occurrences": 22,
+                "pair_edges": 11,
+                "remaining_opposite_counts": {
+                  "1": 2,
+                  "2": 2,
+                  "3": 3,
+                  "4": 3,
+                  "5": 2,
+                  "6": 2
+                },
+                "remaining_smooth_branch_points": 14,
+                "tree_edges_used_as_nodes": 4,
+                "vertices": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ]
+              }
+            ],
+            "total_K_rank": 12
+          },
+          "occurrence_count": 5,
+          "relation": [
+            0,
+            1,
+            -1,
+            -2,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "balance": {
+            "branch_occurrences": 22,
+            "galois_residue_sums": [
+              77,
+              77,
+              77,
+              77,
+              77,
+              77
+            ],
+            "opposite_multiplicities": {
+              "1": 5,
+              "2": 3,
+              "3": 3,
+              "4": 3,
+              "5": 3,
+              "6": 5
+            },
+            "target_residue_sum": 77
+          },
+          "fusion": {
+            "components": [
+              {
+                "K_rank_after": 12,
+                "K_rank_before": 12,
+                "original_branch_occurrences": 22,
+                "pair_edges": 11,
+                "remaining_opposite_counts": {
+                  "1": 1,
+                  "2": 3,
+                  "3": 3,
+                  "4": 3,
+                  "5": 3,
+                  "6": 1
+                },
+                "remaining_smooth_branch_points": 14,
+                "tree_edges_used_as_nodes": 4,
+                "vertices": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ]
+              }
+            ],
+            "total_K_rank": 12
+          },
+          "occurrence_count": 5,
+          "relation": [
+            1,
+            1,
+            -1,
+            -2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "representatives": [
+        [
+          0,
+          1,
+          0,
+          2,
+          1,
+          3
+        ],
+        [
+          0,
+          2,
+          0,
+          4,
+          2,
+          6
+        ],
+        [
+          0,
+          3,
+          0,
+          6,
+          3,
+          2
+        ],
+        [
+          1,
+          0,
+          2,
+          1,
+          6,
+          4
+        ],
+        [
+          1,
+          1,
+          2,
+          3,
+          0,
+          0
+        ],
+        [
+          1,
+          2,
+          2,
+          5,
+          1,
+          3
+        ],
+        [
+          1,
+          3,
+          2,
+          0,
+          2,
+          6
+        ],
+        [
+          1,
+          4,
+          2,
+          2,
+          3,
+          2
+        ],
+        [
+          1,
+          5,
+          2,
+          4,
+          4,
+          5
+        ],
+        [
+          1,
+          6,
+          2,
+          6,
+          5,
+          1
+        ],
+        [
+          2,
+          0,
+          4,
+          2,
+          5,
+          1
+        ],
+        [
+          2,
+          1,
+          4,
+          4,
+          6,
+          4
+        ],
+        [
+          2,
+          2,
+          4,
+          6,
+          0,
+          0
+        ],
+        [
+          2,
+          3,
+          4,
+          1,
+          1,
+          3
+        ],
+        [
+          2,
+          4,
+          4,
+          3,
+          2,
+          6
+        ],
+        [
+          2,
+          5,
+          4,
+          5,
+          3,
+          2
+        ],
+        [
+          2,
+          6,
+          4,
+          0,
+          4,
+          5
+        ],
+        [
+          3,
+          0,
+          6,
+          3,
+          4,
+          5
+        ],
+        [
+          3,
+          1,
+          6,
+          5,
+          5,
+          1
+        ],
+        [
+          3,
+          2,
+          6,
+          0,
+          6,
+          4
+        ],
+        [
+          3,
+          3,
+          6,
+          2,
+          0,
+          0
+        ],
+        [
+          3,
+          4,
+          6,
+          4,
+          1,
+          3
+        ],
+        [
+          3,
+          5,
+          6,
+          6,
+          2,
+          6
+        ],
+        [
+          3,
+          6,
+          6,
+          1,
+          3,
+          2
+        ]
+      ],
+      "signature_matrix": [
+        [
+          2,
+          0,
+          0,
+          1,
+          2,
+          2,
+          1,
+          2,
+          0,
+          0,
+          1,
+          0,
+          0,
+          2,
+          0,
+          0,
+          -1,
+          -1,
+          0,
+          -1,
+          0,
+          0,
+          -2,
+          0
+        ],
+        [
+          0,
+          0,
+          -2,
+          1,
+          0,
+          0,
+          -1,
+          0,
+          2,
+          0,
+          1,
+          2,
+          0,
+          0,
+          0,
+          0,
+          1,
+          -1,
+          0,
+          -1,
+          -2,
+          0,
+          -2,
+          -2
+        ],
+        [
+          0,
+          -2,
+          0,
+          -1,
+          0,
+          0,
+          -1,
+          -2,
+          0,
+          0,
+          -1,
+          -2,
+          -2,
+          0,
+          -2,
+          0,
+          -1,
+          1,
+          2,
+          -1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          0,
+          0,
+          1,
+          2,
+          0,
+          0,
+          1,
+          2,
+          2,
+          0,
+          2,
+          0,
+          1,
+          -1,
+          -2,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          2,
+          -1,
+          0,
+          0,
+          1,
+          0,
+          -2,
+          0,
+          -1,
+          -2,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          1,
+          0,
+          1,
+          2,
+          0,
+          2,
+          2
+        ],
+        [
+          -2,
+          0,
+          0,
+          -1,
+          -2,
+          -2,
+          -1,
+          -2,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          -2,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          2,
+          0
+        ]
+      ],
+      "signature_rank": 3,
+      "smith_nonzero_invariants": [
+        1,
+        2,
+        2
+      ]
+    }
+  ],
+  "scope": "Exact regression for the elementary-prime signature-torus, determinant-relation, and compact-type fusion calculations",
+  "script_sha256": "7e5358c2fb23eee6751bcbe1e178dc7d3b6bbb6b7a9b5c4805cee5535e99ee9e",
+  "split_elementary_p_family": [
+    {
+      "p": 3,
+      "relation_rank": 2,
+      "sign_orbits_with_cohomology": 2,
+      "signature_torus_rank": 0
+    },
+    {
+      "p": 5,
+      "relation_rank": 8,
+      "sign_orbits_with_cohomology": 8,
+      "signature_torus_rank": 0
+    },
+    {
+      "p": 7,
+      "relation_rank": 18,
+      "sign_orbits_with_cohomology": 18,
+      "signature_torus_rank": 0
+    },
+    {
+      "p": 11,
+      "relation_rank": 50,
+      "sign_orbits_with_cohomology": 50,
+      "signature_torus_rank": 0
+    },
+    {
+      "p": 13,
+      "relation_rank": 72,
+      "sign_orbits_with_cohomology": 72,
+      "signature_torus_rank": 0
+    },
+    {
+      "p": 17,
+      "relation_rank": 128,
+      "sign_orbits_with_cohomology": 128,
+      "signature_torus_rank": 0
+    },
+    {
+      "p": 19,
+      "relation_rank": 162,
+      "sign_orbits_with_cohomology": 162,
+      "signature_torus_rank": 0
+    },
+    {
+      "p": 23,
+      "relation_rank": 242,
+      "sign_orbits_with_cohomology": 242,
+      "signature_torus_rank": 0
+    },
+    {
+      "p": 29,
+      "relation_rank": 392,
+      "sign_orbits_with_cohomology": 392,
+      "signature_torus_rank": 0
+    },
+    {
+      "p": 31,
+      "relation_rank": 450,
+      "sign_orbits_with_cohomology": 450,
+      "signature_torus_rank": 0
+    }
+  ],
+  "warnings": [
+    "The displayed relation vectors are a certified Smith-normal-form Z-basis of the integral signature kernel for each sample code.",
+    "Aoki's all-prime opposite-pair theorem is a written published input; the finite disk check is regression only.",
+    "Admissible-cover smoothing, specialization of cycles, and Schoen's cycle theorem are mathematical arguments, not computational claims.",
+    "The theorem concerns prime exponent p; composite-exponent non-simple balanced words are outside its scope."
+  ]
+}

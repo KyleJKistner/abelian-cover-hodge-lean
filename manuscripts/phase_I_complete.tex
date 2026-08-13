@@ -1,0 +1,922 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,microtype}
+\usepackage[margin=0.95in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,tabularx,array,longtable}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage[nameinlink,capitalize,noabbrev]{cleveref}
+\usepackage{fancyhdr,lastpage}
+
+\definecolor{ink}{HTML}{17212B}
+\definecolor{blue}{HTML}{295D84}
+\definecolor{green}{HTML}{2C6749}
+\definecolor{amber}{HTML}{895B14}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue,
+ pdftitle={Abelian branch codes, exact monodromy blocks, and algebraic Mumford--Tate defects},
+ pdfauthor={Kyle Kistner}}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small Abelian branch codes and exact monodromy blocks}
+\fancyhead[R]{\small Phase I complete, 10 August 2026}
+\fancyfoot[C]{\small \thepage\ of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.3pt}
+\setlist[itemize]{leftmargin=1.45em,itemsep=0.22em,topsep=0.32em}
+\setlist[enumerate]{leftmargin=1.7em,itemsep=0.22em,topsep=0.32em}
+\renewcommand{\arraystretch}{1.14}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\crefname{theorem}{Theorem}{Theorems}
+\crefname{proposition}{Proposition}{Propositions}
+\crefname{lemma}{Lemma}{Lemmas}
+\crefname{corollary}{Corollary}{Corollaries}
+\crefname{definition}{Definition}{Definitions}
+\crefname{remark}{Remark}{Remarks}
+
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\F}{\mathbb F}
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+\newcommand{\PP}{\mathbb P}
+\newcommand{\M}{\mathcal M}
+\newcommand{\Mon}{\operatorname{Mon}}
+\newcommand{\Hg}{\operatorname{Hg}}
+\newcommand{\MT}{\operatorname{MT}}
+\newcommand{\End}{\operatorname{End}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\NS}{\operatorname{NS}}
+\newcommand{\CH}{\operatorname{CH}}
+\newcommand{\Sp}{\operatorname{Sp}}
+\newcommand{\SU}{\operatorname{SU}}
+\newcommand{\PSL}{\operatorname{PSL}}
+\newcommand{\PSp}{\operatorname{PSp}}
+\newcommand{\PSU}{\operatorname{PSU}}
+\newcommand{\Res}{\operatorname{Res}}
+\newcommand{\diagdef}{\delta_{\mathrm{diag}}}
+\newcommand{\one}{\mathbf 1}
+
+\title{\vspace{-1.35em}\textbf{Abelian branch codes, exact monodromy blocks,\vspace{0.08em} and algebraic Mumford--Tate defects}\vspace{0.15em}\\
+\large Completion of the finite-abelian $p$-ary Phase I programme}
+\author{Kyle Kistner\\\small Ulam Capital\\\small \texttt{KyleJKistner@gmail.com}}
+\date{10 August 2026}
+
+\begin{document}
+\maketitle
+\vspace{-1.0em}
+
+\begin{abstract}
+A connected finite abelian cover of $\PP^1$ is encoded canonically by a finite additive branch code
+\[
+ C\subset (\Q/\Z)^r,\qquad C\subset\one^\perp,
+\]
+with nonzero coordinate projections.  For an elementary $p$-cover this is a full-support linear $p$-ary code in $\F_p^r\cap\one^\perp$.  We determine the connected generic monodromy on the moving part of $H^1$ for every such cover family.  Every noncompact character factor has full simple projection.  Distinct supports separate; on a common support of size at least five, pair- and triple-twist spectra reconstruct the character up to inversion.  The only possible product identifications are therefore rank-two four-point factors.
+
+For those factors we prove Kummer rigidity: two projective character variations are isomorphic if and only if their residue vectors differ by inversion and a double transposition.  Every nontrivial relation between distinct character coordinates is realized by an isomorphism of cyclic quotient families after finite base change; pulling back and projecting its graph gives the exceptional Hodge homomorphism explicitly.  The deck correspondences and all such quotient graphs form a saturated algebra $\mathcal A_{\rm sat}$ whose derived symplectic centralizer is exactly connected monodromy.  Consequently the generic derived Hodge group equals monodromy, and every off-diagonal Hodge-homomorphism corner between distinct character coordinates is exactly the corresponding corner of $\mathcal A_{\rm sat}$.  Thus every generic cross-character endomorphism defect for a finite abelian cover of $\PP^1$ is classified and algebraic.  The only endomorphism issue not asserted in this generality is the internal standard--dual corner of an isolated disk factor; it depends on the Mumford--Tate center and belongs to Phase II unless a geometric Kummer stabilizer saturates it.
+
+For the split elementary-$p$ family
+\[
+ X_{p,t}:\quad u^p=\frac{x}{x-t},\qquad v^p=x-1,
+\]
+we obtain unconditional formulas.  With $K^+=\Q(\zeta_p+\zeta_p^{-1})$, $d=(p-1)/2$, the very general Jacobian has
+\[
+ JX_{p,t}\sim B_1^2\times B_{-1}^2\times
+ \prod_{\{r,r^{-1}\},\ r\ne\pm1} B_r^4,
+\]
+where the $B_r$ are pairwise non-isogenous absolutely simple $d$-folds with endomorphism field $K^+$.  Moreover
+\[
+ \End^0(JX_{p,t})\cong M_2(K^+)^2\times M_4(K^+)^{(p-3)/2},
+\]
+\[
+ \Hg(JX_{p,t})^{\rm der}\cong
+ \bigl(\Res_{K^+/\Q}\mathrm{SL}_2\bigr)^{(p+1)/2},
+ \qquad
+ \rho(JX_{p,t})=\frac{(p-1)(5p-9)}2.
+\]
+Every rational Hodge class on every power of the very general Jacobian is generated by divisor classes; hence the rational Hodge conjecture holds for all powers in this infinite family.
+\end{abstract}
+
+\noindent\textbf{Proof status.}
+Every dependency in the main theorem is either a published theorem cited below or proved in this paper.  No main statement is conditional on a companion manuscript.  The attached exact-arithmetic certificate independently checks the Fox--Gassner identity, the four-point collision reduction, the low-prime code census, the split-family Kummer maps, and all numerical formulas.  The paper has not undergone external peer review.
+
+\medskip
+\noindent\textbf{Scope.}
+The general theorem concerns the moving weight-one Hodge structure and its generic endomorphism tensors.  Constant factors, special-fibre jumps, nonabelian deck groups, and higher Weil-type tensors are not included.  These form the Phase II frontier.
+
+\tableofcontents
+
+\section{Branch codes and the moving variation}
+
+Let $G$ be a finite abelian group, written additively, let $r\ge4$, and let
+\begin{equation}\label{eq:branch-data}
+ a_1,\ldots,a_r\in G\setminus\{0\},\qquad
+ \sum_{i=1}^r a_i=0,\qquad
+ \langle a_1,\ldots,a_r\rangle=G
+\end{equation}
+be connected branch data.  Let all ordered branch points vary over
+$B=\M_{0,r}$, and let
+\[
+ f:\mathcal X\longrightarrow B
+\]
+be the corresponding family of smooth connected $G$-covers of $\PP^1$.  We call this the \emph{full family} attached to the branch datum.  Passing to a finite \'etale cover of $B$ will be used freely: it does not change the connected algebraic monodromy group, the very general Hodge group, or the isogeny class of the generic Jacobian.
+
+Write $G^\vee=\Hom(G,\Q/\Z)$ additively.
+
+\begin{theorem}[Branch-code anti-equivalence]\label{thm:code-dictionary}
+The evaluation map
+\[
+ \operatorname{ev}_a:G^\vee\longrightarrow(\Q/\Z)^r,
+ \qquad
+ c\longmapsto(c(a_1),\ldots,c(a_r))
+\]
+is injective.  Its image $C_a$ is a finite subgroup of the sum-zero hyperplane and has nonzero projection to every coordinate.  Conversely, every finite subgroup
+\[
+ C\subset\{x\in(\Q/\Z)^r:\textstyle\sum_i x_i=0\}
+\]
+with nonzero coordinate projections determines a connected finite abelian cover datum, uniquely up to an automorphism of the deck group and a permutation of the branch labels.
+\end{theorem}
+
+\begin{proof}
+If a character vanishes on all $a_i$, it vanishes on their span and is zero; evaluation is injective.  The product-one relation in \eqref{eq:branch-data} gives the sum-zero condition.  Since $a_i\ne0$, some character is nonzero on it, so every coordinate projection is nonzero.
+
+Conversely put $G=C^\vee$ and let $a_i\in C^\vee$ be evaluation at the $i$th coordinate.  Sum-zero gives $\sum_i a_i=0$.  The annihilator in $C$ of the subgroup generated by the $a_i$ consists of codewords all of whose coordinates vanish, and is therefore zero.  Pontryagin duality shows that the $a_i$ generate $G$.  Nonzero coordinate projection is equivalent to $a_i\ne0$.  The two constructions are inverse.
+\end{proof}
+
+For $G=(\Z/p\Z)^m$, this says precisely that $C_a$ is a full-support linear code
+\begin{equation}\label{eq:p-code}
+ C_a\subset\F_p^r\cap\one^\perp.
+\end{equation}
+For $p=2$, \eqref{eq:p-code} is the even-code condition.  For a general exponent $N$, the correct object is a finite $\Z/N\Z$-module code; it need not be free.
+
+For $0\ne c\in C_a$, choose fractional representatives
+\[
+ \alpha_i(c)\in[0,1),\qquad
+ s(c)=|\supp(c)|,\qquad
+ q(c)=\sum_i\alpha_i(c)\in\Z.
+\]
+Chevalley--Weil gives
+\begin{equation}\label{eq:CW}
+ d(c):=h^{1,0}_c=s(c)-q(c)-1,
+ \qquad
+ d(-c)=q(c)-1,
+ \qquad
+ d(c)+d(-c)=s(c)-2.
+\end{equation}
+We call the sign orbit $[c]=\{c,-c\}$ \emph{positive} if
+$d(c)d(-c)>0$.  If $2c=0$, this means $d(c)=s(c)/2-1>0$.
+A positive orbit with $s(c)=4$ is a \emph{disk orbit}; equivalently its fractional residues have sum two and its associated simple domain is one-dimensional.
+
+Let
+\[
+ \mathbb V=R^1f_*\Q,
+ \qquad
+ M=\overline{\rho(\pi_1(B))}^{\,\mathrm{Zar},0}
+ \subset\Sp(\mathbb V_b)
+\]
+be the connected algebraic monodromy group.  Deligne's semisimplicity and fixed-part theorems \cite{Deligne} imply that $M$ is semisimple and that $\mathbb V^M$ is a constant subvariation.  Define the moving part
+\begin{equation}\label{eq:moving}
+ \mathbb V_{\rm mov}=(\mathbb V^M)^\perp.
+\end{equation}
+It is a rational polarized weight-one subvariation and therefore corresponds, up to isogeny, to an abelian subvariety $J_{\rm mov}$ of the very general Jacobian.
+
+\begin{lemma}[Positive factors are exactly the moving factors]\label{lem:positive-moving}
+After a finite \'etale base change, the scalar extension of $\mathbb V_{\rm mov}$ is precisely the direct sum of the positive character factors.
+\end{lemma}
+
+\begin{proof}
+For a non-real character pair $\{c,-c\}$, the two Hodge multiplicities are $d(c)$ and $d(-c)$.  If one is zero, the corresponding polarized variation is unitary: its Hodge filtration has only one type on each conjugate eigenspace.  Its monodromy is simultaneously integral and contained in a compact unitary group, hence finite; after a finite \'etale cover it is constant.  Conversely, if both multiplicities are positive, full factorwise projection in \cref{prop:full-projection} gives a nontrivial noncompact simple monodromy factor, so the variation is moving.  The order-two case is the same, with symplectic multiplicity $d(c)$; $d(c)=0$ contributes no cohomology and $d(c)>0$ is moving.
+\end{proof}
+
+\section{Full projections and semisimple block structure}
+
+For a positive non-real orbit $[c]$, put
+\[
+ H_c=\PSU(d(c),d(-c)).
+\]
+For $2c=0$, put
+\[
+ H_c=\PSp(2d(c),\R).
+\]
+These are the adjoint simple factors of the derived PEL centralizer attached to the deck action.
+
+\begin{proposition}[Full factorwise projection]\label{prop:full-projection}
+The projection of $M^{\rm ad}_{\R}$ to every positive factor $H_c$ is surjective.
+\end{proposition}
+
+\begin{proof}
+The $c$-eigenspace variation is pulled back from the corresponding primitive eigenspace of the cyclic quotient
+\[
+ \mathcal X/\ker(c)\longrightarrow\PP^1.
+\]
+It depends only on the labels in $\supp(c)$, and the forgetful morphism
+$\M_{0,r}\to\M_{0,s(c)}$ induces a surjection on fundamental groups.  The factorwise theorem for cyclic covers of the line states that whenever both Hodge multiplicities are nonzero, the connected projection is the full special unitary group; for an order-two character it is the full symplectic group.  This is the genus-zero projection statement used in the proof of Spelta--Tamborini's Theorem~4.4, where it is attributed to Rohde \cite{Rohde,ST}.  Equivalently, in the non-real case Menet--Nguyen's Theorem~5.1 applies directly: the effective cyclic character is primitive, and its residue sequence is ``good'' because positivity is exactly
+$1<q(c)<s(c)-1$ \cite{MN}.  The order-two case is also the classical hyperelliptic symplectic monodromy theorem \cite{ACampo}.  Passing to adjoint groups gives the claim.
+\end{proof}
+
+We use the following elementary form of semisimple Goursat theory.
+
+\begin{lemma}[Subdirect products of simple groups]\label{lem:goursat}
+Let $H\subset\prod_{i\in I}H_i$ be a connected semisimple algebraic subgroup, where every $H_i$ is adjoint simple, and suppose every coordinate projection is surjective.  Then $I$ has a partition into blocks such that $H$ is the product, over the blocks, of one simple group embedded diagonally through isomorphisms between the factors in that block.
+\end{lemma}
+
+\begin{proof}
+At the Lie-algebra level, write
+$\mathfrak h=\bigoplus_j\mathfrak s_j$ as a sum of simple ideals.  The projection of a simple ideal $\mathfrak s_j$ to $\mathfrak h_i$ is either zero or an isomorphism: its kernel is an ideal, and surjectivity of the total projection forces some ideal to map nontrivially.  Two distinct simple ideals cannot both map nontrivially to the same $\mathfrak h_i$, because their images commute and $\mathfrak h_i$ is simple.  Thus the supports of the $\mathfrak s_j$ partition $I$, and each $\mathfrak s_j$ is a graph diagonal on its support.  Adjointness integrates the Lie-algebra statement uniquely.
+\end{proof}
+
+It remains to determine which positive factors can belong to one graph block.
+
+\section{Support separation and high-rank reconstruction}
+
+Choose one active branch label as infinity and regard the remaining $s(c)-1$ active labels as points in an affine disk.  For two finite active labels $i,j$, let $A_{ij}$ be the pure braid in which $i$ winds around $j$.  If
+\[
+ t_i=\exp(2\pi i\alpha_i(c)),
+\]
+Menet--Nguyen's specialized Gassner formula says that $A_{ij}$ acts with spectrum
+\begin{equation}\label{eq:pair-spectrum}
+ (t_it_j,1,\ldots,1),
+\end{equation}
+and is a nontrivial unipotent when $t_it_j=1$ \cite[Theorem~2.5 and Corollary~2.7]{MN}.
+
+\begin{lemma}[Support separation]\label{lem:support-separation}
+Two positive factors with different active supports do not lie in the same graph block.
+\end{lemma}
+
+\begin{proof}
+Choose $i\in\supp(c)\setminus\supp(e)$ and
+$j\in\supp(c)\setminus\{i\}$.  The braid $A_{ij}$ maps to the identity after forgetting the inactive label $i$, and hence acts trivially on the $e$-factor.  By \eqref{eq:pair-spectrum}, it acts nontrivially on the $c$-factor.  A graph relation cannot send the same group element to the identity in one coordinate and a nonidentity element in the other.
+\end{proof}
+
+\begin{lemma}[High-rank character reconstruction]\label{lem:high-rank}
+Let $c,e$ be positive non-real characters with the same support $S$ and $|S|\ge5$.  If their adjoint factors lie in one graph block, then $e=c$ or $e=-c$.
+\end{lemma}
+
+\begin{proof}
+Put $n=|S|-2\ge3$.  A graph isomorphism between the two real simple factors complexifies to an automorphism of $\mathfrak{sl}_n$.  The only irreducible $n$-dimensional representations of $\mathfrak{sl}_n$ are the standard representation and its dual.  Consequently there are a matrix $T\in\mathrm{GL}_n(\C)$, a sign $\varepsilon\in\{1,-1\}$, and a scalar character $\lambda$ of the pure braid group such that
+\begin{equation}\label{eq:projective-lift}
+ T\rho_e(\gamma)T^{-1}
+ =\lambda(\gamma)\begin{cases}
+ \rho_c(\gamma),&\varepsilon=1,\\
+ \rho_c(\gamma)^{-t},&\varepsilon=-1.
+ \end{cases}
+\end{equation}
+This is the standard projective-lift argument used in the proof of Menet--Nguyen's Proposition~6.2 \cite{MN}.
+
+Write $u_i=\exp(2\pi i\alpha_i(e))$.  Apply \eqref{eq:projective-lift} to $A_{ij}$.  The repeated eigenvalue on each side has multiplicity $n-1\ge2$.  Comparing the multisets
+\[
+ \{u_iu_j,1^{n-1}\},
+ \qquad
+ \{\lambda(A_{ij})(t_it_j)^\varepsilon,
+       \underbrace{\lambda(A_{ij}),\ldots,\lambda(A_{ij})}_{n-1}\}
+\]
+forces
+\begin{equation}\label{eq:pair-reconstruct}
+ \lambda(A_{ij})=1,
+ \qquad
+ u_iu_j=(t_it_j)^\varepsilon.
+\end{equation}
+The conclusion remains valid when a pair product is one, because the corresponding transformation is nontrivial unipotent and all its eigenvalues are one.  The $A_{ij}$ generate the pure braid group, so $\lambda$ is trivial.
+
+For the finite active labels put $c_i=u_it_i^{-\varepsilon}$.  Equation \eqref{eq:pair-reconstruct} gives $c_ic_j=1$ for every pair.  Since there are at least four finite active labels, all $c_i$ equal a common $c_0\in\{1,-1\}$.  If $c_0=-1$, take a twist around any three finite labels.  Menet--Nguyen's subset-twist formula gives the eigenvalue $t_it_jt_k$ on a two-dimensional subspace and the eigenvalue one on the complement \cite[Theorem~2.8]{MN}; when the product is one the action is its corresponding unipotent limit.  On the $e$-factor the product is $-\,(t_it_jt_k)^\varepsilon$, so the characteristic polynomials cannot agree.  Hence $c_0=1$.
+
+Thus $u_i=t_i^\varepsilon$ on all finite active labels.  The product-one relation gives the same equality at infinity.  The branch elements generate $G$, so $e=c$ for $\varepsilon=1$ and $e=-c$ for $\varepsilon=-1$.
+\end{proof}
+
+An order-two character is determined by its support.  For support at least six its complex Lie type is $C_{s/2-1}$, whereas a non-real factor has type $A_{s-3}$; these types are not isomorphic.  The only accidental overlap is $A_1=C_1$, namely the four-point disk case.  By \cref{lem:support-separation,lem:high-rank}, every possible nontrivial graph block is therefore a four-point rank-two block.
+
+\section{Four-point Fricke characters and Kummer rigidity}
+
+Let $x=(x_1,x_2,x_3,x_4)\in(\Q/\Z)^4$ be an active disk word.  Write its representatives as
+$0<\alpha_i<1$ with $\sum_i\alpha_i=2$.  Normalize the branch points to
+$(0,1,t,\infty)$.  The associated eigenspace is a rank-two hypergeometric local system on $\M_{0,4}$.
+
+Put
+\[
+ s_2=\alpha_1+\alpha_2,
+ \qquad
+ s_3=\alpha_1+\alpha_3,
+ \qquad
+ s_4=\alpha_1+\alpha_4.
+\]
+Euler's integral identifies the period equation with a Gauss hypergeometric equation whose local exponent differences, in a fixed ordering of the three boundary points of $\M_{0,4}$, are
+\[
+ s_3-1,\qquad s_4-1,\qquad s_2-1.
+\]
+Thus determinant-one lifts have local traces $2\cos\pi(s_j-1)$.  Up to one fixed global sign convention for the product of the three lifts, the exact projective Fricke character is equivalent to
+\begin{equation}\label{eq:exact-fingerprint}
+ \mathfrak F(x)=
+ \left(
+ 4\cos^2\pi s_2,
+ 4\cos^2\pi s_3,
+ 4\cos^2\pi s_4,
+ 8\prod_{j=2}^4\cos\pi s_j
+ \right).
+\end{equation}
+Indeed the first three entries are the squared local traces and the last determines their product; the Fricke identity
+\begin{equation}\label{eq:fricke-identity}
+ \operatorname{tr}[A,B]=x^2+y^2+z^2-xyz-2
+\end{equation}
+then determines the commutator trace.  The same formula follows directly from the rank-two quotient of the four-strand Gassner representation; the certificate derives it from Fox calculus.
+
+Let
+\[
+ V_4=\{1,(12)(34),(13)(24),(14)(23)\}\triangleleft S_4.
+\]
+This is the kernel of the action of $S_4$ on the labelled cross-ratio.
+
+\begin{definition}[Kummer equivalence]\label{def:kummer}
+Two active disk words $x,y$ are Kummer-equivalent if
+\begin{equation}\label{eq:kummer-equivalence}
+ y=\varepsilon P x
+ \quad\text{in }(\Q/\Z)^4
+\end{equation}
+for some $\varepsilon\in\{1,-1\}$ and $P\in V_4$.
+\end{definition}
+
+\begin{lemma}[Projective Fricke rigidity]\label{lem:projective-fricke}
+Two Zariski-dense representations $\pi_1(\M_{0,4})\to\PSL_2(\R)$ are related by an automorphism of $\PSL_2(\R)$ if and only if their exact Fricke characters agree.
+\end{lemma}
+
+\begin{proof}
+Choose free generators and determinant-one lifts.  An irreducible $\mathrm{SL}_2$ representation of a free group of rank two is determined up to conjugacy by the three traces
+$\operatorname{tr}A$, $\operatorname{tr}B$, and $\operatorname{tr}(AB)$.  Equality of the first three squared traces and the commutator trace, using \eqref{eq:fricke-identity}, determines the product of the three traces.  The two trace triples therefore differ only by
+\[
+ (x,y,z)\mapsto(\epsilon_1x,\epsilon_2y,\epsilon_1\epsilon_2z),
+\]
+which is exactly the ambiguity in choosing lifts of a projective representation.  Zariski density implies irreducibility.  Since both dense images lie in the real form $\PSL_2(\R)$, the resulting complex conjugacy normalizes that real form and gives an automorphism of $\PSL_2(\R)$.  The converse is immediate.
+\end{proof}
+
+\begin{lemma}[Coarse collision fibre]\label{lem:coarse-collision}
+If two active disk words have equal first three entries in \eqref{eq:exact-fingerprint}, then, after applying Kummer equivalence to one of them, they are equal or differ by the uniform half-shift
+\[
+ \eta=(1/2,1/2,1/2,1/2).
+\]
+\end{lemma}
+
+\begin{proof}
+Equality of squared cosines gives
+\[
+ \beta_1+\beta_j\equiv\epsilon_j(\alpha_1+\alpha_j)\pmod\Z,
+ \qquad j=2,3,4.
+\]
+The four elements of $V_4$ realize the sign patterns
+$(+++),(+--),(-+-),(--+)$ on these three pair sums, and global inversion changes all signs.  We may therefore assume all three pair sums agree.  If $d_i=\beta_i-\alpha_i$, then $d_1+d_j=0$ for $j=2,3,4$, while $\sum_i d_i=0$.  Hence $2d_1=0$ and every $d_i$ is either zero or $1/2$.
+\end{proof}
+
+\begin{lemma}[The half-shift is not an extra Fricke coincidence]\label{lem:half-shift}
+Suppose $y=x+\eta$ in $(\Q/\Z)^4$, with both represented by active disk vectors of age two.  The fourth entry of \eqref{eq:exact-fingerprint} changes sign.  Equality can occur only when one cosine factor vanishes, and in that case $y$ is already Kummer-equivalent to $x$.
+\end{lemma}
+
+\begin{proof}
+Write $\beta_i=\alpha_i+1/2-e_i$ with $e_i\in\{0,1\}$.  Equality of ages gives $\sum e_i=2$.  The change in the three pair sums is the integer $1-e_1-e_j$.  Their sum is $1-2e_1$, which is odd, so the product of cosines changes sign.
+
+If, for example, $\alpha_1+\alpha_2\equiv1/2$, then also
+$\alpha_3+\alpha_4\equiv1/2$.  Coordinatewise,
+\[
+ x+\eta=-(12)(34)x.
+\]
+The other two vanishing cases give the other double transpositions.
+\end{proof}
+
+\begin{theorem}[Kummer rigidity]\label{thm:kummer-rigidity}
+For active disk words $x,y$, the following are equivalent:
+\begin{enumerate}
+\item their rank-two projective local systems are related by an automorphism of $\PSL_2(\R)$;
+\item $\mathfrak F(x)=\mathfrak F(y)$;
+\item $x$ and $y$ are Kummer-equivalent.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+The equivalence of the first two statements is \cref{lem:projective-fricke}.  Apply \cref{lem:coarse-collision}.  The equal case is Kummer equivalence; \cref{lem:half-shift} eliminates the only other coarse possibility except when it is itself Kummer equivalence.  Conversely, inversion gives the dual rank-two representation, which is projectively equivalent, and a double transposition is represented by a M\"obius transformation acting trivially on the cross-ratio.  Hence Kummer-equivalent words define the same projective local system.
+\end{proof}
+
+\section{The exact monodromy-block theorem}
+
+For a four-element support $S$, let $\mathcal D_S(C_a)$ be the set of positive sign orbits $[c]=\{c,-c\}$ with support $S$.  The group $V_4(S)$ acts partially: two elements are equivalent when representatives satisfy $e=\pm Pc$ for some $P\in V_4(S)$.
+
+\begin{theorem}[Exact connected monodromy blocks]\label{thm:exact-blocks}
+The connected real adjoint monodromy group on $\mathbb V_{\rm mov}$ is
+\begin{equation}\label{eq:block-product}
+ M^{\rm ad}_{\R}\cong
+ \prod_{\substack{[c]\ \mathrm{positive}\\s(c)\ge5}} H_c
+ \times
+ \prod_{\substack{S\subset\{1,\ldots,r\}\\|S|=4}}
+ \prod_{\omega\in\mathcal D_S(C_a)/V_4(S)}\PSL_2(\R).
+\end{equation}
+The factors in the first product are embedded coordinatewise.  The disk factor indexed by $\omega$ is embedded diagonally across exactly the disk coordinates in $\omega$.
+
+Consequently the disk-sector product defect is
+\begin{equation}\label{eq:defect-formula}
+ \boxed{
+ \diagdef(C_a)=
+ \sum_{|S|=4}
+ \left(|\mathcal D_S(C_a)|-
+       |\mathcal D_S(C_a)/V_4(S)|\right).}
+\end{equation}
+No other generic product-monodromy defect occurs.
+\end{theorem}
+
+\begin{proof}
+By \cref{prop:full-projection,lem:goursat}, connected adjoint monodromy is a product of graph diagonals among isomorphic simple factors.  Different supports are excluded by \cref{lem:support-separation}.  On a support of size at least five, \cref{lem:high-rank} shows that only a character and its inverse could be related; they are the two orientations of the same PEL factor and do not give a diagonal between distinct coordinates.  The Lie-type observation after \cref{lem:high-rank} disposes of order-two/non-real coincidences outside rank one.  On a four-point support, \cref{thm:kummer-rigidity} says that the graph classes are exactly the $V_4$-orbits of sign orbits.  This proves \eqref{eq:block-product}; counting one disk dimension per graph class gives \eqref{eq:defect-formula}.
+\end{proof}
+
+\section{Algebraic quotient correspondences}
+
+The block theorem identifies the exceptional homomorphisms abstractly.  We now realize all of them by algebraic cycles.
+
+\begin{theorem}[Algebraization of every nontrivial disk intertwiner]\label{thm:algebraization}
+Let $[c]$ and $[e]$ be active disk sign orbits and suppose
+\[
+ e=\varepsilon Pc,
+ \qquad P\in V_4,
+ \qquad \varepsilon\in\{1,-1\}.
+\]
+Assume either $[c]\ne[e]$ or $P\ne1$; the omitted case $P=1$, $e=-c$ is only the two orientations of one PEL coordinate and is not a cross-character defect.  Let
+\[
+ q_c:\mathcal X\to\mathcal Y_c=\mathcal X/\ker(c),
+ \qquad
+ q_e:\mathcal X\to\mathcal Y_e=\mathcal X/\ker(e)
+\]
+be the cyclic quotient families.  After finite \'etale base change, there is an algebraic isomorphism
+\[
+ \phi_{e,c}:\mathcal Y_c\xrightarrow{\sim}\mathcal Y_e
+\]
+which conjugates the quotient deck character $c$ to $e$ and whose Betti realization identifies the corresponding rank-two variations.  The projected pull--graph--push correspondence
+\begin{equation}\label{eq:theta}
+ \Theta_{e,c}
+ =e_e\,q_e^*\,(\phi_{e,c})_*\,(q_c)_*\,e_c
+\end{equation}
+is a nonzero algebraic Hodge homomorphism with cyclotomic coefficients.  The full Galois orbit of these correspondences descends to a nonzero rational algebraic correspondence between the associated rational deck-isotypic factors.
+\end{theorem}
+
+\begin{proof}
+Let $N$ be the common effective order.  Over the function field of the four-point base, write
+\[
+ Y_c:\ y^N=f_c(x),
+ \qquad
+ Y_e:\ v^N=f_e(x).
+\]
+The double transposition $P$ has a M\"obius representative $T_P$ acting trivially on the cross-ratio.  The residue relation $e=\varepsilon Pc$ implies that
+\[
+ \operatorname{div}\left(
+ \frac{f_e(T_P(x))}{f_c(x)^\varepsilon}
+ \right)
+\]
+is divisible by $N$.  The quotient divisor has degree zero on $\PP^1$, hence is principal.  Therefore
+\[
+ \frac{f_e(T_P(x))}{f_c(x)^\varepsilon}=a(t)h(x)^N.
+\]
+For the three double transpositions, the normalized M\"obius formulas show that $a(t)$ is a monomial in $t$ and $t-1$; hence it is a unit on the open four-point base.  Adjoining an $N$th root therefore gives a finite \'etale cover.  On that cover the formulas
+\[
+ (x,y)\longmapsto(T_P(x),h(x)y)
+ \quad(\varepsilon=1),
+\]
+\[
+ (x,y)\longmapsto(T_P(x),h(x)/y)
+ \quad(\varepsilon=-1)
+\]
+give an isomorphism of function fields, hence of the smooth projective models.  The formulas also show directly that the quotient deck generator is conjugated with the prescribed sign.  Therefore the induced map carries the $c$-eigenspace to the $e$-eigenspace and is nonzero.  Graphs, quotient maps, and deck-character projectors are algebraic correspondences, proving the cyclotomic statement.
+
+For rational descent, take all Galois conjugates of the construction.  They occupy the corresponding conjugate character-Hom summands.  A normal-basis trace combination is Galois invariant and nonzero, and hence defines a rational algebraic correspondence between the rational isotypic factors.
+\end{proof}
+
+\begin{remark}[Why quotient correspondences are optimal]
+The isomorphism in \cref{thm:algebraization} need not lift to an automorphism of the entire $G$-cover.  A double transposition may carry one codeword to another without preserving the full branch code.  Thus the correct theorem is quotient-wise, not a whole-code automorphism theorem.  Pure inversion with $P=1$ is deliberately not counted as a new correspondence: it is the orientation identification inside one PEL coordinate and, without a nontrivial geometric stabilizer, its Hodge-theoretic status is controlled by the Mumford--Tate center.
+\end{remark}
+
+\section{The saturated correspondence algebra}
+
+Replace $B$ by one finite \'etale cover on which all Kummer quotient isomorphisms used below are defined; connected monodromy and the very general fibre are unchanged.  Let $L/\Q$ be a finite Galois splitting field for the deck idempotents and coefficient correspondences.  On $\mathbb V_{\rm mov,L}$, let $\mathcal A_L$ be the algebra generated by the deck correspondences and all nontrivial projected Kummer correspondences \eqref{eq:theta}, together with their Rosati adjoints.  The construction is Galois-stable.  Denote its rational descent by
+\begin{equation}\label{eq:Asat}
+ \mathcal A_{\rm sat}\subset\End_\Q(\mathbb V_{\rm mov,b}).
+\end{equation}
+Every element of $\mathcal A_{\rm sat}$ is induced by an algebraic correspondence.
+
+For a positive disk sign orbit $\xi=[c]$, write $U_\xi=W_c\oplus W_{-c}$ for the corresponding PEL coordinate after scalar extension, with the evident convention when $2c=0$.  We call the individual $W_c$ the oriented character summands.
+
+\begin{lemma}[Matrix units across a directed Kummer block]\label{lem:matrix-units}
+Let $W_0,\ldots,W_{m-1}$ be irreducible oriented disk summands connected by nontrivial Kummer arrows.  Choose nonzero projected graph isomorphisms
+$\Theta_i:W_0\to W_i$, with $\Theta_0=1$.  If
+$\Theta_i^\dagger\Theta_i=\lambda_i1_{W_0}$, then
+\begin{equation}\label{eq:matrix-units}
+ E_{ij}=\lambda_j^{-1}\Theta_i\Theta_j^\dagger
+\end{equation}
+satisfy
+\[
+ E_{ij}E_{k\ell}=\delta_{jk}E_{i\ell}.
+\]
+Thus $\mathcal A_L$ contains the full matrix algebra on every directed Kummer multiplicity space.  Combining the two conjugate orientations gives the corresponding matrix corners between PEL coordinates.  Nontrivial $V_4$-stabilizers of one disk coordinate are included as semilinear self-correspondences.
+\end{lemma}
+
+\begin{proof}
+Each $\Theta_i$ is an isomorphism between irreducible polarized local systems.  Its adjoint composite is a positive scalar by Schur's lemma.  Rescale and compose.  The multiplication relation follows immediately, and every operation is a composition or rational linear combination of algebraic correspondences.
+\end{proof}
+
+\begin{theorem}[Exact cross-character Hodge homomorphisms]\label{thm:cross-hom}
+Let $\xi\ne\eta$ be two positive character sign orbits.  After extension to $L$,
+\begin{equation}\label{eq:cross-corner}
+ \Hom_{\rm HS}(U_\xi,U_\eta)
+ =1_\eta\mathcal A_L1_\xi.
+\end{equation}
+This space is zero unless $\xi$ and $\eta$ are four-point disk coordinates on the same support and are Kummer-equivalent.  In the latter case it is spanned by the projected quotient-graph correspondences attached to all Kummer arrows from $\xi$ to $\eta$.  The rational statement is obtained by Galois descent.
+\end{theorem}
+
+\begin{proof}
+The inclusion from right to left follows from algebraicity.  A Hodge homomorphism at a very general point commutes with the generic Hodge group and hence with connected monodromy.  If the two coordinates lie in different monodromy blocks, Schur's lemma gives zero.  If they lie in one block, \cref{thm:exact-blocks} forces them to be rank-two disk coordinates in one Kummer class.  Over a splitting field, every monodromy intertwiner between two oriented occurrences of the standard $\mathrm{SL}_2$ module is generated by one graph isomorphism together with scalar deck operators; summing the oriented corners gives the full corner between $U_\xi$ and $U_\eta$.  When several Kummer arrows or stabilizers occur, \cref{lem:matrix-units} supplies every matrix unit.  By \cref{thm:algebraization} all these generators are algebraic.  This proves \eqref{eq:cross-corner}; the Galois-stable collection descends.
+\end{proof}
+
+\begin{theorem}[Saturated derived centralizer]\label{thm:saturated-centralizer}
+On the moving part,
+\begin{equation}\label{eq:centralizer}
+ M=\bigl(C_{\Sp(\mathbb V_{\rm mov})}(\mathcal A_{\rm sat})^0\bigr)^{\rm der}.
+\end{equation}
+For the very general fibre,
+\begin{equation}\label{eq:hg-mon}
+ \Hg(\mathbb V_{\rm mov})^{\rm der}=M.
+\end{equation}
+Moreover
+\begin{equation}\label{eq:end-inclusions}
+ \mathcal A_{\rm sat}
+ \subseteq\End_{\rm HS}(\mathbb V_{\rm mov,b})
+ \subseteq\End_M(\mathbb V_{\rm mov,b}),
+\end{equation}
+and the two inclusions are equal on every off-diagonal corner between distinct positive character coordinates, by \cref{thm:cross-hom}.
+\end{theorem}
+
+\begin{proof}
+Work first over $L$.  For a support of size at least five, the deck algebra preserves the standard and dual character summands and its symplectic centralizer has the expected full simple derived factor $H_c$; \cref{thm:exact-blocks} shows that this factor occurs in one coordinate only.  For a four-point Kummer block, the deck idempotents first separate the disk coordinates and their two orientations, while the directed matrix units of \cref{lem:matrix-units} force the same $\mathrm{SL}_2$ to act diagonally across all coordinates in the block.  A stabilizer correspondence may further reduce the central torus or enlarge the commutant, but it does not alter that derived $\mathrm{SL}_2$ factor.  Taking the product over all blocks gives
+\[
+ \bigl(C_{\Sp(\mathbb V_{\rm mov,L})}(\mathcal A_L)^0\bigr)^{\rm der}=M_L.
+\]
+Galois descent proves \eqref{eq:centralizer}.
+
+Every element of $\mathcal A_{\rm sat}$ is algebraic and hence a Hodge endomorphism, so the generic Hodge group centralizes $\mathcal A_{\rm sat}$.  Andr\'e's normality theorem gives
+$M\subseteq\Hg(\mathbb V_{\rm mov})^{\rm der}$.  Therefore
+\[
+ M
+ \subseteq\Hg(\mathbb V_{\rm mov})^{\rm der}
+ \subseteq
+ \bigl(C_{\Sp}(\mathcal A_{\rm sat})^0\bigr)^{\rm der}
+ =M,
+\]
+proving \eqref{eq:hg-mon}.  The inclusions \eqref{eq:end-inclusions} are immediate from algebraicity and $M\subseteq\Hg$; their off-diagonal equality is \cref{thm:cross-hom}.
+\end{proof}
+
+\begin{corollary}[Completed general Phase I theorem]\label{cor:phase-I}
+For every full family of finite abelian covers of $\PP^1$:
+\begin{enumerate}
+\item the connected generic monodromy on the moving part is given exactly by \eqref{eq:block-product};
+\item every product defect is a four-point Kummer class counted by \eqref{eq:defect-formula};
+\item every exceptional generic Hodge homomorphism between distinct character coordinates is represented by an explicit algebraic quotient correspondence;
+\item after saturation by those correspondences, generic monodromy and the generic derived Hodge group are the full derived symplectic centralizer.
+\end{enumerate}
+The only general weight-one datum intentionally deferred is the internal endomorphism corner of a single disk coordinate when no nontrivial Kummer stabilizer realizes its standard--dual symmetry; determining that corner requires the Mumford--Tate center.  It does not affect the classification or algebraization of cross-character defects.
+\end{corollary}
+
+\section{Immediate code-theoretic consequences}
+
+\begin{corollary}[Binary rigidity]
+For an elementary $2$-abelian cover, no distinct disk coordinates merge.  Hence its connected monodromy is the full independent product of the symplectic factors indexed by positive codewords.
+\end{corollary}
+
+\begin{proof}
+An order-two character is determined by its support.  Two binary words with the same four-point support are equal, so every $V_4$-orbit in \eqref{eq:defect-formula} has one disk coordinate.
+\end{proof}
+
+\begin{corollary}[Ternary saturation without diagonal merger]\label{cor:ternary}
+For an elementary $3$-abelian cover, no two distinct disk coordinates merge.  A four-point disk word necessarily has residue multiset $(1,1,2,2)$ and is Kummer-equivalent to its inverse, so its rational endomorphism algebra is nevertheless saturated by a geometric conjugation correspondence.
+\end{corollary}
+
+\begin{proof}
+A nonzero four-point ternary word of age two has two entries $1$ and two entries $2$.  Its sign orbit is determined by the unordered partition of the support into the two equal-residue pairs.  A double transposition preserves that partition or exchanges the two pairs, the latter realizing inversion; it cannot carry it to a different partition.  Thus there is no merger of distinct sign orbits, while self-conjugation is geometric.
+\end{proof}
+
+The first elementary prime with genuine diagonal mergers is $p=5$.  The exact certificate exhausts the two-dimensional full-support length-four codes for $p=3,5$: there are no defective $p=3$ orbits and exactly two defective $p=5$ orbits.
+
+\section{The split elementary-p family}
+
+Let $p$ be an odd prime and take branch data
+\[
+ (e_1,e_2,-e_1,-e_2)\in(\F_p^2)^4
+\]
+at $(0,1,t,\infty)$.  A Kummer model is
+\begin{equation}\label{eq:split-model}
+ X_{p,t}:\qquad
+ u^p=\frac{x}{x-t},
+ \qquad
+ v^p=x-1.
+\end{equation}
+Let $\rho_1,\rho_2$ be the deck generators multiplying $u,v$ by $\zeta_p$.
+
+\begin{theorem}[Geometry and exact disk defect]\label{thm:split-geometry}
+For \eqref{eq:split-model}:
+\begin{enumerate}
+\item $g(X_{p,t})=(p-1)^2$;
+\item the nonzero cohomology characters are exactly $(a,b)$ with $a,b\ne0$, and every one has Hodge type $(1,1)$;
+\item there are $(p-1)^2/2$ complex disk coordinates, $(p^2-1)/4$ monodromy blocks, and
+\begin{equation}\label{eq:split-defect}
+ \diagdef(X_{p,t})=\frac{(p-1)(p-3)}4;
+\end{equation}
+\item after the base change $s^p=t-1$, the three double transpositions lift to involutions
+\begin{align}
+ \Phi(x,u,v)&=\left(\frac{t(x-1)}{x-t},\frac{v}{s},su\right),\label{eq:Phi}\\
+ \Psi(x,u,v)&=\left(\frac{t-x}{1-x},-\frac1{su},-\frac{s}{v}\right),\label{eq:Psi}\\
+ \Omega(x,u,v)&=\left(\frac{t}{x},-\frac1v,-\frac1u\right).\label{eq:Omega}
+\end{align}
+They satisfy
+\[
+ \Phi\rho_1\Phi^{-1}=\rho_2,
+ \quad
+ \Phi\rho_2\Phi^{-1}=\rho_1,
+ \quad
+ \Psi\rho_i\Psi^{-1}=\rho_i^{-1},
+\]
+and their projected graphs realize every Kummer matrix unit.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Riemann--Hurwitz gives
+\[
+ 2g-2=p^2\left(-2+4(1-1/p)\right),
+\]
+hence $g=(p-1)^2$.  The word attached to $(a,b)$ is
+$(a,b,-a,-b)$.  If one coordinate is zero, the quotient has two branch points and contributes no cohomology.  If $a,b\ne0$, the opposite pairs have complementary fractional residues, so both Hodge multiplicities equal one.
+
+Modulo global sign, there are $(p-1)^2/2$ disk coordinates.  On the oriented pairs $(a,b)$, the Kummer group acts through
+\[
+ \{I,-I,S,-S\},\qquad S(a,b)=(b,a).
+\]
+Burnside's lemma gives
+\[
+ \frac{(p-1)^2+(p-1)+(p-1)}4=\frac{p^2-1}{4}
+\]
+orbits, proving \eqref{eq:split-defect}.
+
+Put $f_1=x/(x-t)$ and $f_2=x-1$.  The six identities
+\begin{align*}
+ f_1\!\left(\frac{t(x-1)}{x-t}\right)&=\frac{f_2(x)}{t-1},&
+ f_2\!\left(\frac{t(x-1)}{x-t}\right)&=(t-1)f_1(x),\\
+ f_1\!\left(\frac{t-x}{1-x}\right)f_1(x)&=-\frac1{t-1},&
+ f_2\!\left(\frac{t-x}{1-x}\right)f_2(x)&=1-t,\\
+ f_1(t/x)f_2(x)&=-1,&
+ f_2(t/x)f_1(x)&=-1
+\end{align*}
+prove that \eqref{eq:Phi}--\eqref{eq:Omega} preserve the defining equations.  Direct substitution shows they square to the identity.  Conjugating $\rho_1,\rho_2$ gives the displayed relations.  Their actions on characters are $S$, $-I$, and $-S$, so their projected graphs give every orbit intertwiner.
+\end{proof}
+
+\section{Rational decomposition and exact generic invariants}
+
+Put
+\[
+ K=\Q(\zeta_p),\qquad
+ K^+=\Q(\zeta_p+\zeta_p^{-1}),\qquad
+ d=[K^+:\Q]=\frac{p-1}{2}.
+\]
+The rational deck-isotypic components are indexed by active projective character lines
+\[
+ L_r=\F_p(1,r),\qquad r\in\F_p^\times.
+\]
+Let $A_r$ be the corresponding abelian factor of dimension $p-1$.
+
+\begin{lemma}[Crossed-product splitting]\label{lem:crossed-product}
+The involution $\Psi$ preserves $A_r$ and acts on its deck field $K$ by complex conjugation.  Hence
+\begin{equation}\label{eq:crossed-product}
+ K\rtimes\Gal(K/K^+)
+ \cong\End_{K^+}(K)
+ \cong M_2(K^+)
+\end{equation}
+embeds algebraically in $\End^0(A_r)$, and
+\[
+ A_r\sim B_r^2
+\]
+for an abelian variety $B_r$ of dimension $d$.  The involution $\Phi$ maps $A_r$ isomorphically to $A_{r^{-1}}$.
+\end{lemma}
+
+\begin{proof}
+The conjugation relations in \cref{thm:split-geometry} show that $\Psi$ sends every deck character to its inverse, which is complex conjugation on $K$, and that $\Phi$ swaps the two coordinates, hence sends slope $r$ to $r^{-1}$.  For a finite Galois extension $K/F$, the skew group algebra $K\rtimes\Gal(K/F)$ acts faithfully on $K$ as an $F$-vector space and has the same $F$-dimension as $\End_F(K)$; this proves \eqref{eq:crossed-product}.  A rank-one idempotent in $M_2(K^+)$ gives the isogeny splitting and the dimension of $B_r$.
+\end{proof}
+
+Let
+\begin{equation}\label{eq:Omega-p}
+ \Omega_p=
+ \bigl\{\{1\},\{-1\}\bigr\}
+ \cup
+ \bigl\{\{r,r^{-1}\}:r\in\F_p^\times,\ r\ne\pm1\bigr\}.
+\end{equation}
+It has $(p+1)/2$ elements.
+
+\begin{theorem}[Exact split-family theorem]\label{thm:split-exact}
+For a very general fibre of \eqref{eq:split-model}, there are pairwise non-isogenous absolutely simple abelian varieties $B_\omega$, indexed by $\omega\in\Omega_p$, each of dimension $d$ and with
+\[
+ \End^0(B_\omega)=K^+,
+\]
+such that
+\begin{equation}\label{eq:split-isogeny}
+ JX_{p,t}\sim
+ B_{\{1\}}^2\times B_{\{-1\}}^2\times
+ \prod_{\substack{\{r,r^{-1}\}\in\Omega_p\\r\ne\pm1}}B_{\{r,r^{-1}\}}^4.
+\end{equation}
+Furthermore
+\begin{equation}\label{eq:split-end}
+ \boxed{
+ \End^0(JX_{p,t})\cong
+ M_2(K^+)^2\times M_4(K^+)^{(p-3)/2},}
+\end{equation}
+\begin{equation}\label{eq:split-Hg}
+ \boxed{
+ \Hg(JX_{p,t})^{\rm der}\cong
+ \left(\Res_{K^+/\Q}\mathrm{SL}_2\right)^{(p+1)/2},}
+\end{equation}
+and
+\begin{equation}\label{eq:split-NS}
+ \boxed{
+ \rho(JX_{p,t})=
+ \frac{(p-1)(5p-9)}2.}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Every character factor is moving, so $J_{\rm mov}=JX_{p,t}$.  Over a splitting field, the three algebraic involutions act on oriented characters by
+\[
+ \Phi:(a,b)\mapsto(b,a),
+ \qquad
+ \Psi:(a,b)\mapsto(-a,-b),
+ \qquad
+ \Omega:(a,b)\mapsto(-b,-a).
+\]
+Thus a character on slope $r=1$ or $r=-1$ belongs to a two-element oriented Kummer orbit, whereas every other inversion orbit of slopes gives a four-element oriented orbit.  Deck idempotents separate the oriented summands, and the graphs of $\Phi,\Psi,\Omega$ connect every pair inside each orbit.  Over a splitting field the matrix-unit construction therefore gives the full multiplicity algebra: $M_2$ for a fixed slope and $M_4$ for a nonfixed inversion pair.
+
+The rational descent is explicit.  By \cref{lem:crossed-product}, each slope component carries the algebra $K\rtimes\Gal(K/K^+)\cong M_2(K^+)$ generated by the deck field and the graph of $\Psi$.  If $r\ne\pm1$, the graph of $\Phi$ identifies the components of slopes $r$ and $r^{-1}$ and, together with its Rosati adjoint, supplies the off-diagonal matrix units; hence the two copies of $M_2(K^+)$ combine into $M_4(K^+)$.  For $r=\pm1$ there is one copy of $M_2(K^+)$.  Thus the algebraic correspondence algebra is
+\[
+ \mathcal A_{\rm split}
+ \cong M_2(K^+)^2\times M_4(K^+)^{(p-3)/2}.
+\]
+Conversely, the exact block theorem shows that the connected monodromy has one standard $\Res_{K^+/\Q}\mathrm{SL}_2$ factor for each element $\omega\in\Omega_p$.  As a module for this product, the $\omega$-block is the standard rank-two $K^+$-module with multiplicity $m_\omega=2$ for $\omega=\{\pm1\}$ and $m_\omega=4$ otherwise, and all other product factors act trivially on that block.  Schur's lemma and the double-centralizer theorem therefore give
+\[
+ \End_M(H^1(JX_{p,t},\Q))
+ \cong\prod_{\omega\in\Omega_p}M_{m_\omega}(K^+)
+ =\mathcal A_{\rm split}.
+\]
+Because $\mathcal A_{\rm split}$ is algebraic,
+\[
+ \mathcal A_{\rm split}
+ \subseteq\End_{\rm HS}(H^1(JX_{p,t},\Q))
+ \subseteq\End_M(H^1(JX_{p,t},\Q)),
+\]
+so both inclusions are equalities.  Full faithfulness of the weight-one Hodge realization for complex abelian varieties identifies this algebra with $\End^0(JX_{p,t})$ \cite{BL}.  The same block description together with \eqref{eq:hg-mon} gives \eqref{eq:split-Hg}.  Primitive idempotents in the matrix factors yield \eqref{eq:split-isogeny}.
+
+The exact product form of \eqref{eq:split-end} has no off-diagonal terms between distinct $\omega$.  Hence the $B_\omega$ are pairwise non-isogenous.  The endomorphism algebra of each $B_\omega$ is the field $K^+$; it has no nontrivial idempotent, so the very general complex abelian variety $B_\omega$ is absolutely simple.
+
+For an isotypic power $B^m$ with $\End^0(B)=K^+$, the positive Rosati involution restricts to the identity on the totally real field $K^+$.  The Rosati-fixed subspace of $M_m(K^+)$ therefore has rational dimension
+\[
+ d\,\frac{m(m+1)}2.
+\]
+The two multiplicity-two factors contribute $2\cdot3d$ and the $(p-3)/2$ multiplicity-four factors contribute $10d$ each.  Since $\NS(A)_\Q$ is the Rosati-fixed part of $\End^0(A)$ \cite{BL},
+\[
+ \rho(JX_{p,t})
+ =d\left(6+10\frac{p-3}{2}\right)
+ =\frac{(p-1)(5p-9)}2.
+\]
+\end{proof}
+
+A dimension check confirms \eqref{eq:split-isogeny}:
+\[
+ 2d+2d+\frac{p-3}{2}\cdot4d=(p-1)^2=g(X_{p,t}).
+\]
+
+\section{Hodge classes on all powers of the split family}
+
+\begin{theorem}[All-powers rational Hodge theorem]\label{thm:all-powers-Hodge}
+Let $A=JX_{p,t}$ be a very general Jacobian in the split elementary-$p$ family.  For every $q\ge1$, the rational Hodge ring of $A^q$ is generated by divisor classes.  Consequently the rational Hodge conjecture holds for every power $A^q$.
+\end{theorem}
+
+\begin{proof}
+By \eqref{eq:split-Hg}, after scalar extension the derived Hodge group is a product of copies of $\mathrm{SL}_2$, and $H^1(A^q)$ is a direct sum of standard two-dimensional modules with multiplicities.  The first fundamental theorem for $\mathrm{SL}_2$ says that invariants in every tensor power are generated by pairwise contractions with the alternating forms and by linear maps on the multiplicity spaces \cite{Weyl}.  The contractions are supplied by polarizations.  By \eqref{eq:split-end}, every multiplicity-space map is an algebraic homomorphism generated by deck projectors and Kummer correspondences.  Via the Poincar\'e bundle, each such homomorphism gives an algebraic divisor class on a product of the relevant abelian factors.
+
+After extending scalars to an algebraic closure, every invariant of the derived Hodge group lies in the algebra generated by these divisor classes.  Since the full Hodge group contains its derived group, every Hodge class is among those derived-group invariants; conversely every divisor class is a Hodge class.  Hence, after scalar extension, the Hodge ring equals the divisor algebra.  Faithful descent along $\Q\subset\overline{\Q}$ gives the same equality over $\Q$.  Every Hodge class on every power is therefore algebraic.
+\end{proof}
+
+\begin{remark}
+The theorem does not use a computation of the central torus of the full Mumford--Tate group.  The full Hodge invariants are contained in the derived-group invariants, and the latter are already generated by algebraic divisor contractions.  The central torus becomes essential only when seeking higher Weil-type tensors in families whose derived representation admits invariants not exhausted by pairings.
+\end{remark}
+
+\section{What Phase I completes, and what remains}
+
+The completed theorem stack is
+\[
+ \boxed{
+ \begin{array}{c}
+ \text{finite abelian branch codes}\\[2pt]
+ \Downarrow\\[2pt]
+ \text{exact connected monodromy blocks}\\[2pt]
+ \Downarrow\\[2pt]
+ \text{Kummer classification of every rank-two defect}\\[2pt]
+ \Downarrow\\[2pt]
+ \text{explicit algebraic quotient correspondences}\\[2pt]
+ \Downarrow\\[2pt]
+ \Hg^{\rm der}=\Mon,
+ \quad \Hom_{\rm HS}^{\rm cross}=\mathcal A_{\rm sat}^{\rm cross}.
+ \end{array}}
+\]
+For the split elementary-$p$ tower the global Kummer involutions also saturate every internal disk corner.  This gives the exact isogeny decomposition, full generic endomorphism algebra, N\'eron--Severi rank, derived Hodge group, and the rational Hodge conjecture on every power.
+
+The following are deliberately outside Phase I:
+\begin{enumerate}
+\item the central torus, including the unsaturated internal standard--dual corner of an isolated disk factor, and its character-relation lattice for a general abelian branch code;
+\item higher determinant or Weil-type Hodge tensors not visible in $\End(H^1)$;
+\item special-fibre Mumford--Tate jumps;
+\item arbitrary nonabelian deck groups.
+\end{enumerate}
+The first two items are the natural Phase II programme.
+
+\appendix
+\section{Certificate ledger}
+
+The attached script runs and extends the frozen exact certificate:
+\begin{quote}\small
+\path{phase_I_certificate.py}\\
+\path{phase1src/p_ary_mt_defect_certificate.py}
+\end{quote}
+It performs the following independent checks:
+\begin{enumerate}
+\item derives the rank-two sphere quotient of the four-strand Gassner representation from Fox calculus;
+\item verifies symbolically that the uniform half-shift changes the commutator trace by
+\[
+ \frac{2(1+t_1t_2)(1+t_1t_3)(1+t_2t_3)}{t_1t_2t_3};
+\]
+\item checks $7{,}077{,}120$ active disk vectors through denominator $96$, with no failure of the Kummer conclusion;
+\item exhausts full-support two-dimensional length-four codes at $p=3,5$ and records the $p=7$ census;
+\item verifies the six rational-function identities defining $\Phi,\Psi,\Omega$, their involution and composition laws, and their conjugation action on the deck generators;
+\item verifies the orbit, genus, decomposition-dimension, endomorphism-dimension, and N\'eron--Severi formulas for every odd prime through $101$;
+\item records SHA-256 hashes of the scripts and manuscript used to produce the report.
+\end{enumerate}
+The computation is a regression certificate, not a substitute for the written monodromy, descent, double-centralizer, or Hodge-theoretic arguments.
+
+\begin{thebibliography}{99}
+
+\bibitem{ACampo}
+N. A'Campo,
+\emph{Tresses, monodromie et le groupe symplectique},
+Comment. Math. Helv. 54 (1979), 318--327.
+
+\bibitem{Andre}
+Y. Andr\'e,
+\emph{Mumford--Tate groups of mixed Hodge structures and the theorem of the fixed part},
+Compositio Math. 82 (1992), 1--24.
+
+\bibitem{BL}
+C. Birkenhake and H. Lange,
+\emph{Complex Abelian Varieties}, second edition,
+Grundlehren Math. Wiss. 302, Springer, 2004.
+
+\bibitem{Deligne}
+P. Deligne,
+\emph{Th\'eorie de Hodge II},
+Publ. Math. IH\'ES 40 (1971), 5--57.
+
+\bibitem{CR}
+A. Carocca and R. E. Rodr\'iguez,
+\emph{Jacobians with group actions and rational idempotents},
+J. Algebra 306 (2006), 322--343.
+
+\bibitem{MN}
+G. Menet and D.-M. Nguyen,
+\emph{Representations of braid groups via cyclic covers of the sphere: Zariski closure and arithmeticity},
+arXiv:2310.10401v3 (2024).
+
+\bibitem{Moonen}
+B. Moonen,
+\emph{Special subvarieties arising from families of cyclic covers of the projective line},
+Doc. Math. 15 (2010), 793--819.
+
+\bibitem{Rohde}
+J. C. Rohde,
+\emph{Cyclic Coverings, Calabi--Yau Manifolds and Complex Multiplication},
+Lecture Notes in Mathematics 1975, Springer, 2009.
+
+\bibitem{ST}
+I. Spelta and C. Tamborini,
+\emph{Families of cyclic curve coverings with maximal monodromy},
+arXiv:2512.23479v2 (2026).
+
+\bibitem{Weyl}
+H. Weyl,
+\emph{The Classical Groups: Their Invariants and Representations},
+Princeton University Press, 1939.
+
+\end{thebibliography}
+
+\end{document}

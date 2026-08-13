@@ -1,0 +1,6 @@
+name = "AbelianCoverHodge"
+version = "0.1.0"
+defaultTargets = ["AbelianCoverHodge"]
+
+[[lean_lib]]
+name = "AbelianCoverHodge"
