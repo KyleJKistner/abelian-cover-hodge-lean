@@ -70,14 +70,19 @@ obligation, not a citation. The printed final branch of Theorem 2.8 contains an
 undefined `q_l`; the interface records the inferred `g_l` correction and
 restricts to `r < n`, where the displayed cases do not overlap.
 
-The Aoki interface is pinned to Theorem A, pp. 23--24 of
+The prime balanced-tuple equality used by the Aoki interface is stated on
+p. 24, immediately before Theorem A, of
 [*On some arithmetic problems related to the Hodge cycles on the Fermat
-varieties*](https://doi.org/10.1007/BF01458703), with the even-length premise
-retained. Its one-page erratum, Math. Ann. 267 (1984), p. 572, was checked: it
+varieties*](https://doi.org/10.1007/BF01458703); Aoki credits that prime case
+to W. Parry, while Theorem A gives the surrounding classification. The
+source's branch-sum, nonzero-entry, even-length, and minimum-length premises
+are retained in the focused `External/Aoki.lean` leaf. Its one-page erratum,
+Math. Ann. 267 (1984), p. 572, was checked: it
 corrects only the statement of Theorem B in the introduction, so Theorem A is
-unaffected. Stable copies are indexed by
-[EuDML](https://eudml.org/doc/163917) and the
-[Göttingen resolver](http://resolver.sub.uni-goettingen.de/purl?GDZPPN002325268).
+unaffected. The [Göttingen original-article resolver](http://resolver.sub.uni-goettingen.de/purl?GDZPPN002324474)
+indexes volume 266, pp. 23--54. Stable erratum copies are indexed separately
+by [EuDML](https://eudml.org/doc/163917) and the
+[Göttingen erratum resolver](http://resolver.sub.uni-goettingen.de/purl?GDZPPN002325268).
 The Schoen interface is pinned to Section 2, Theorem 2.0, p. 11 and
 the Section 3 setup and Corollary 3.1, pp. 24--25 of
 [*Hodge classes on self-products of a variety with an

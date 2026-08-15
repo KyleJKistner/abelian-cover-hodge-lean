@@ -11,8 +11,10 @@ public import AbelianCoverHodge.Mathlib.BranchSignature
 public import AbelianCoverHodge.Mathlib.MenetNguyenGood
 public import AbelianCoverHodge.Mathlib.DeterminantLattice
 public import AbelianCoverHodge.Mathlib.DeterminantSignature
+public import AbelianCoverHodge.External.Aoki
 public import AbelianCoverHodge.External.MenetNguyen
 public import AbelianCoverHodge.External.Inputs
+public import AbelianCoverHodge.Bridge.DeterminantAoki
 public import AbelianCoverHodge.Bridge.Assembly
 public meta import Lean.Elab.Command
 
@@ -61,6 +63,13 @@ elab "#audit_axioms " declaration:ident : command => do
 #audit_axioms AbelianCoverHodge.Verified.pairResidues_aokiBalanced
 #audit_axioms AbelianCoverHodge.Verified.aokiBalanced_length_even_of_prime_ne_two
 #audit_axioms AbelianCoverHodge.Verified.OppositePairingWitness.aokiBalanced
+#audit_axioms AbelianCoverHodge.Bridge.scaleWord_isBranchWord
+#audit_axioms AbelianCoverHodge.Bridge.determinantResidues_allResiduesNonzero
+#audit_axioms AbelianCoverHodge.Bridge.determinantResidues_isAokiBalanced
+#audit_axioms AbelianCoverHodge.Bridge.isBranchWord_of_aokiBalanced_even
+#audit_axioms AbelianCoverHodge.Bridge.aokiUnitBalanced_of_aokiBalanced_prime
+#audit_axioms AbelianCoverHodge.Bridge.oppositePairingWitness_of_short_aokiBalanced
+#audit_axioms AbelianCoverHodge.Bridge.determinantResidues_oppositePairing_of_aokiPrime
 #audit_axioms AbelianCoverHodge.Verified.FusionComponent.rank_preserved
 #audit_axioms AbelianCoverHodge.Verified.OppositePairingWitness.exists_componentOccurrencePairing
 #audit_axioms AbelianCoverHodge.Verified.IsAttachmentSpanningTree.edge_count_add_one_eq_vertex_count

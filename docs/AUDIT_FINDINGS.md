@@ -80,21 +80,28 @@ typed Theorem 5.1 input exposes degree, branch-count/range, connectedness,
 primitive-root, and good-sequence premises; the Lean result does not assert
 the monodromy conclusion. Menet--Nguyen remains an arXiv preprint.
 
-## AF-5 — Aoki's converse requires even tuple length
+## AF-5 — The prime balanced-tuple leaf has a narrower source domain
 
 **Location:** Phase II balanced-to-simple step, ledger item P2.12.
 
-Aoki's Theorem A is stated for an even-length tuple. Omitting that premise
-makes the naive typed statement false at `p = 2`: the one-entry tuple `[1]`
-satisfies the doubled balance equation but cannot be partitioned into opposite
-pairs. Both `AokiPrimeTheorem` and `AokiPrimeBalanceInput` now expose the exact
-condition `length % 2 = 0`. The project theorem
-`aokiBalanced_length_even_of_prime_ne_two` proves that balance supplies this
-premise for every prime modulus other than two.
+Aoki's `B_m^n` setup requires nonzero entries, branch sum zero, unit-row
+balance, and tuple length `n + 2` with `n` positive and even. Thus the prime
+`B = D` statement recorded on p. 24 (and credited there to W. Parry) applies
+to even tuples of length at least four. Omitting evenness also makes a naive
+all-length statement false at `p = 2`: the one-entry tuple `[1]` satisfies the
+doubled all-row equation but cannot be partitioned into opposite pairs.
+
+`External.AokiPrimeBalanceInput` now exposes the full source domain and only
+an existential pairing conclusion. The bridge proves odd-prime parity, branch
+sum, and the restriction from all nonzero rows to unit rows. It proves the
+length-zero and length-two pairings directly and invokes the source input only
+at length at least four. The project theorem
+`aokiBalanced_length_even_of_prime_ne_two` supplies the parity step for every
+prime modulus other than two.
 
 Aoki's one-page 1984 erratum has also been checked. It corrects only the
-statement of Theorem B in the introduction; it does not affect the Theorem A
-balanced-tuple result used here.
+statement of Theorem B in the introduction; it does not affect the p. 24 prime
+`B = D` statement used here or the surrounding Theorem A classification.
 
 ## AF-6 — Schoen's primitive-factor theorem has a narrower source scope
 

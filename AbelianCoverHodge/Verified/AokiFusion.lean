@@ -14,8 +14,8 @@ determinant-signature relation and the geometric fusion construction.
   not merely by a Boolean check.
 * Opposite-paired words are proved balanced at every nonzero row for a prime
   modulus.
-* `AokiPrimeTheorem` is an explicit parameter type for the published converse.
-  Nothing in this module purports to prove that external result.
+* the published converse is not asserted here; its exact source-facing input
+  lives separately in `External/Aoki.lean`.
 * `FusionComponent` packages the exact numerical hypotheses under which the
   compact-type rank calculation is valid.
 
@@ -219,7 +219,7 @@ theorem pairResidues_aokiBalanced {p : Nat} [NeZero p]
       pairResidues_length]
   ac_rfl
 
-/-! ## Concrete simplicity witness and the published converse interface -/
+/-! ## Concrete simplicity witness -/
 
 /-- A concrete witness that a residue tuple is simple: up to an explicit
 permutation, it is a list of nonzero opposite pairs. -/
@@ -293,25 +293,6 @@ theorem OppositePairingWitness.aokiBalanced
   rw [galoisResidueSum_eq_of_perm a witness.perm,
       llength_eq_of_perm witness.perm]
   exact hpaired
-
-/-- Exact dependency interface for Aoki's prime theorem.  A caller supplies
-this value as a published theorem input; the finite development proves only
-the reverse implication above. -/
-structure AokiPrimeTheorem (p : Nat) [NeZero p] where
-  prime : IsPrimeModulus p
-  simple_of_balanced : ∀ residues : BranchWord p,
-    AllResiduesNonzero residues →
-    llength residues % 2 = 0 →
-    IsAokiBalanced p residues →
-    OppositePairingWitness residues
-
-def aoki_pairing_of_input {p : Nat} [NeZero p]
-    (published : AokiPrimeTheorem p) (residues : BranchWord p)
-    (hnonzero : AllResiduesNonzero residues)
-    (heven : llength residues % 2 = 0)
-    (hbalanced : IsAokiBalanced p residues) :
-    OppositePairingWitness residues :=
-  published.simple_of_balanced residues hnonzero heven hbalanced
 
 /-! ## Fusion rank bookkeeping -/
 

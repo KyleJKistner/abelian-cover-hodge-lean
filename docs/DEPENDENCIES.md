@@ -19,8 +19,9 @@ flowchart TD
   P1["Phase I exact blocks + algebraic matrix units"] --> FFT["Weyl invariant theory"]
   CW --> ZS["Determinant Hodge iff zero signature"]
   FFT --> ZS
-  ZS --> BAL["Zero signature iff Aoki balance"]
-  BAL --> AO["Aoki prime theorem"]
+  WORD["Concrete branch-valid signed determinant terms"] --> BAL["Lean: all-row zero signature gives literal Aoki balance"]
+  ZS -. "object-level realization still project-side" .-> WORD
+  BAL --> AO["Exact prime B = D source input (length >= 4)"]
   AO --> PAIR["Opposite matching"]
   PAIR --> FUS["Pairing graph / compact-type fusion datum"]
   FUS --> ACV["ACV smoothing"]
@@ -60,6 +61,15 @@ interfaces for Chevalley--Weil, Deligne, Menet--Nguyen, Andre, Weyl, Aoki, ACV,
 Schoen, compact-type Picard, smooth-proper comparison, Chow specialization,
 and weight-one realization. These are assumption *types*, not global
 postulates; contexts still using erased carrier types advertise that fact.
+
+The exact prime balanced-tuple leaf has additionally been split into the focused
+`External/Aoki.lean` module. `Bridge/DeterminantAoki.lean` proves the concrete
+finite path from branch-valid signed determinant terms with zero signature at
+every nonzero row to `OppositePairingWitness`; only the final balanced-to-paired
+step for tuples of length at least four consumes that proposition-valued leaf.
+Lean proves the source branch/unit-row adapters and the shorter cases. The
+dotted edge from Hodge determinant data to the signed-word model is still a
+project obligation.
 
 `External.ProspectiveCitationInputs` is not consumed by the headline scaffold.
 The separate `Bridge.PublishedInputs` has seven logical arrows and

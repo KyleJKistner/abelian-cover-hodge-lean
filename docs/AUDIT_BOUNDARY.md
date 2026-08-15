@@ -11,6 +11,11 @@ The current repository does **not** yet meet that boundary.
 `Verified/Core.lean`, `Verified/IntegralSignature.lean`, and
 `Verified/AokiFusion.lean` check the finite arithmetic through the exact
 zero-signature/balance reduction and the basic fusion expression identity.
+`Bridge/DeterminantAoki.lean` now closes the concrete odd-prime finite chain
+from branch-valid all-row zero signed determinant terms to an explicit
+opposite-pairing witness, consuming only the exact prime `B = D` source input
+in `External/Aoki.lean` for tuples of length at least four. The shorter cases
+and every source-side adapter are proved in Lean.
 The `Mathlib/` modules now prove both directions of the finite branch-code
 dictionary, the case-(a) Menet--Nguyen arithmetic hypothesis match, a genuine
 integral signature linear map, and the corrected saturated determinant
@@ -39,7 +44,8 @@ calculation:
    exactly when every signature sum is zero.
 4. The manuscript-specific arithmetic reduction turns zero signature into an
    Aoki-balanced residue tuple.
-5. Aoki's prime theorem supplies opposite-residue pairs.
+5. The source-pinned prime `B = D` theorem supplies opposite-residue pairs at
+   length at least four; Lean handles the shorter tuples.
 6. The pairing graph and spanning forest give the compact-type fusion datum.
 7. ACV smoothing, Schoen's simple-tuple theorem, and Chow specialization
    algebraize the determinant space.
@@ -63,8 +69,9 @@ after their hypotheses are pinned to primary sources.
 4. Menet--Nguyen pair- and subset-twist spectra.
 5. Andre normality for the derived generic Hodge group.
 6. Weyl's invariant theorem for standard/dual special-linear blocks.
-7. Aoki's prime balanced-tuple theorem, with nonzero entries and the source's
-   even-length premise, in the form used by Schoen.
+7. The prime `B = D` statement recorded on Aoki p. 24 and credited there to
+   W. Parry, with the source's branch, nonzero-entry, unit-row, and even-length
+   at least four premises, in the form used by Schoen.
 8. ACV deformation of the precise balanced tame cyclic admissible cover.
 9. Schoen's theorem for a simple tuple and its primitive determinant space.
 10. Compact-type Picard, smooth proper comparison, and Chow specialization
@@ -96,8 +103,13 @@ The largest proof obligations that must not remain bundled as hypotheses are:
 - quotient-cover graph construction, nonvanishing, descent, matrix units,
   double centralizer, and Phase I block assembly;
 - determinant-word zero-signature iff balanced is formalized at the residue
-  level under explicit branch-divisibility hypotheses; its Hodge-bidegree
-  interpretation remains;
+  level under explicit branch-divisibility hypotheses. For branch-valid signed
+  terms, Lean now proves every divisibility and nonzero-entry side condition,
+  derives odd-prime parity and the branch condition, restricts all-row balance
+  to the source's unit rows, proves the length-zero and length-two cases, and
+  applies the exact prime `B = D` leaf only at length at least four. Identifying
+  a concrete Hodge determinant monomial and its bidegrees with this signed-word
+  model remains;
 - occurrence-labelled pairing and the finite consequences of an attachment
   forest are formalized. A distinct source-family wrapper gives exact source
   vertex coverage, and actual local-rank sums are equated only under explicit

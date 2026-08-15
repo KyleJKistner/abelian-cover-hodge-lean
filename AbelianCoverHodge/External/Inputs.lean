@@ -1,6 +1,6 @@
 module
 
-public import AbelianCoverHodge.Verified.AokiFusion
+public import AbelianCoverHodge.External.Aoki
 public import AbelianCoverHodge.External.MenetNguyen
 
 /-!
@@ -34,7 +34,9 @@ bridges.  Examples of bridges which are *not* fields below include:
 
 * application of the proved positivity-to-good-sequence arithmetic bridge to
   the concrete geometric eigenspace;
-* a zero-signature determinant word gives an Aoki-balanced tuple;
+* identification of an actual Hodge determinant monomial with the concrete
+  branch-valid signed-word model (the subsequent zero-signature-to-balance
+  deduction is proved in `Bridge/DeterminantAoki.lean`);
 * the pairing forest produces the precise balanced admissible cover;
 * realization of the certified simple fused tuple and rank ledger by an
   admissible cover;
@@ -53,11 +55,6 @@ public section
 @[expose] section
 
 open AbelianCoverHodge.Verified
-
-/-- Concrete primality predicate for the current `Std`-only layer.  This can
-be replaced by the library primality predicate when the project adopts its
-number-theory dependency. -/
-abbrev IsPrime := IsPrimeModulus
 
 /-! ## Audit metadata -/
 
@@ -107,9 +104,9 @@ def aokiPrime : SourceScope where
   work :=
     "N. Aoki, On some arithmetic problems related to the Hodge cycles on the Fermat varieties"
   locator :=
-    "Theorem A, pp. 23--24; cf. Schoen after Corollary 1.9; 1984 erratum changes only Theorem B"
+    "prime B = D statement on p. 24, credited there to W. Parry; cf. Aoki Theorem A and Schoen after Corollary 1.9; 1984 erratum changes only Theorem B"
   importedConclusion :=
-    "an even-length balanced nonzero residue tuple is permutable into opposite pairs"
+    "a prime B-tuple of even length at least four is permutable into opposite pairs"
 
 def acvSmoothing : SourceScope where
   work :=
@@ -153,19 +150,6 @@ def weightOneRealization : SourceScope where
     "algebraic tensor generators give algebraic Hodge classes on all powers"
 
 end Sources
-
-/-! ## Concrete cyclic residue data -/
-
-/-- Every entry of a cyclic branch tuple is nonzero.  Tuples in this module
-list only actual branch occurrences, rather than padding by zero coordinates
-of a larger branch code. -/
-abbrev AllEntriesNonzero {p : Nat} [NeZero p] (word : BranchWord p) : Prop :=
-  AllResiduesNonzero word
-
-/-- Aoki balance at every nonzero Galois row, in the division-free form
-`2 * sum [a beta_i]_p = p * length(beta)`. -/
-abbrev IsAokiBalanced {p : Nat} [NeZero p] (word : BranchWord p) : Prop :=
-  Verified.IsAokiBalanced p word
 
 /-- The concrete input and output data on which Chevalley--Weil is used.  The
 function `h10 a` denotes the `(1,0)` multiplicity at the embedding indexed by
@@ -317,20 +301,6 @@ structure WeylStandardDualFFTInput
         Exists fun expression : context.Expression block shape =>
           context.UsesOnlyEvaluationsAndVolumes expression ∧
           context.realizes expression = invariant
-
-/-! ## Aoki's prime balanced-tuple theorem -/
-
-/-- Concrete typed form of the Aoki implication used by the direct route.  The
-published erratum corrects Theorem B only and does not affect this use of
-Theorem A. -/
-structure AokiPrimeBalanceInput where
-  balancedHasOppositePairing :
-    forall (p : Nat) [NeZero p], IsPrime p →
-      forall residues : BranchWord p,
-        AllEntriesNonzero residues →
-        llength residues % 2 = 0 →
-        IsAokiBalanced residues →
-        OppositePairingWitness residues
 
 /-! ## ACV balanced smoothing -/
 
