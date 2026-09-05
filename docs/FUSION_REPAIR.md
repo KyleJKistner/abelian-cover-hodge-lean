@@ -59,7 +59,9 @@ The standalone theorem needs no assertion about the central torus. The two algeb
 
 **Rank-two normalization.** If epsilon is the determinant character of a rank-two standard representation V, the canonical equivariant isomorphism `det(V) tensor V_dual -> V` shows that a standard-to-dual SL2 intertwiner acquires determinant weight plus or minus epsilon, depending on orientation. It does not automatically have weight `2*epsilon`. A scalar matrix is a direct check: it acts on the relevant Hom line by t^2, exactly det(t I), not its square. The zero-character condition may sometimes be unchanged, but that does not validate the old normalization.
 
-**Lattice versus effective tensor monoid.** A lattice basis is not by itself a list of algebraic generators for all effective determinant words. Negative basis coefficients require an explicit realization of duals and Tate twists, or a separate effective-monoid generation argument. The revised conditional all-powers statement keeps this obligation visible.
+**Lattice versus effective tensor monoid.** A lattice basis is not by itself a list of algebraic generators for all effective determinant words. Negative basis coefficients require an explicit realization of duals and Tate twists, or a separate effective-monoid generation argument. The fusion manuscript keeps this obligation visible. The new general
+companion resolves it by enumerating all effective diagrams in each finite
+degree, with actual negative-character factors and their Tate twists.
 
 ## Verification and remaining mathematical work
 
@@ -73,6 +75,6 @@ It uses exact rational matrices for p=3,5,7 to test the matching projector and i
 
 The local replay and source-level environment, brace, label, and citation checks passed. PDF compilation is handled by the repository-wide repair verification; it is a separate check and is not certified by the finite projector script.
 
-The standalone proof needs independent expert review, particularly the precise passage from the generic simple-tuple cycle theorem to the compact-type special fiber and the rational correspondence normalization. The all-powers result additionally needs the stated **generator hypothesis**: a correct rational, representation-theoretic exhaustion of every Hodge class by divisor/graph contractions and balanced effective determinant words. Compact-embedding rational descent, graph-arrow orientation, and any use of the complete central torus belong to that separate problem. The standalone theorem does not resolve them.
+The standalone proof needs independent expert review, particularly the precise passage from the generic simple-tuple cycle theorem to the compact-type special fiber and the rational correspondence normalization. The **generator hypothesis** in this manuscript is now proved in the separate [general all-powers manuscript](../manuscripts/general_all_powers.tex), Sections 5–6. That proof retains all rational embeddings, uses actual oriented graphs, and constructs a rational algebraic diagram-source map; Hodge lifting then selects balanced effective words. It does not need the complete central torus. The standalone fusion proof remains independent of these generator arguments, so this application is not circular.
 
 For prior art, a single simple cover is already Schoen's result, and clutching and specialization are established methods. The possible contribution is the arbitrary-list, mixed-product consequence with balance only after concatenation and a correct rational projector. A bounded search did not identify the exact quantified formulation; no priority claim or journal ranking is made.

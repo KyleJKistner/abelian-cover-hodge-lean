@@ -50,13 +50,13 @@ specified arithmetic and combinatorial subset.
 - **Original Phase I Python layer:** still not reproducible because the
   imported core is missing. See AF-3 in `AUDIT_FINDINGS.md`. The revised split
   proof does not depend on that core or its frozen enumeration.
-- **New Phase I and fusion checks:** `scripts/check_phase_i.py` and
-  `scripts/check_fusion.py` test the exact stated algebraic identities and
+- **New Phase I, fusion and general checks:** `scripts/check_phase_i.py` and
+  `scripts/check_fusion.py` and `scripts/check_general.py` test the exact stated algebraic identities and
   bounded examples. Their reports name the source/script hashes and check
   ranges. They do not certify the full geometric arguments.
 - **Combined replay:** `scripts/replay_certificates.py` checks all eight frozen
   hashes before executing any certificate, enforces the dependency versions,
-  checks the review-PDF/source hashes, runs the original Phase II and both
+  checks the review-PDF/source hashes, runs the original Phase II and all three
   new mathematical checkers plus the assertion-preservation regression, and
   writes an environment
   and output-hash manifest to `build/audit/replay_manifest.json`. CI runs the
@@ -114,3 +114,15 @@ Lean interfaces. The particular prospective Lean contexts for these results,
 Chevalley--Weil, Deligne fixed part, Andre normality, Weyl invariant theory and
 weight-one realization still need concrete objects and wiring into the
 headline theorem.
+
+## General all-powers manuscript (5 September 2026)
+
+`manuscripts/general_all_powers.tex` is a new written proof and does not edit
+any frozen source. It replaces the legacy general block and generator routes
+using universal arguments. `GENERAL_ALL_POWERS.md` pins the exact additional
+André, CDK, Schur–Weyl, symplectic FFT and A'Campo source coverage and records
+the affine normalization correction. `scripts/check_general.py` is a new
+deterministic bounded regression, not a replay of the missing Phase I core.
+The three current source/PDF pairs are hashed in `output/pdf/manifest.json`
+and all are required by the combined replay runner. Internal agent review is
+recorded as internal review, never as external specialist validation.

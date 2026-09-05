@@ -41,7 +41,9 @@ correspondences give exactly these monomial equations, with no missing
 relations or unrecorded finite isogeny. A determinant image and a central
 torus can be isogenous without the displayed determinant characters forming
 the entire integral character lattice. Saturation alone does not prove that
-geometric identification. The general Phase I repairs remain prerequisites.
+geometric identification. The new general monodromy block proof supplies
+part of the background; it does not identify the full Hodge-group center.
+The [general all-powers proof](GENERAL_ALL_POWERS.md) avoids this refinement.
 
 ## The rank-two character is one determinant
 

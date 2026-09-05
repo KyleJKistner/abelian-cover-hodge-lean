@@ -24,6 +24,21 @@ This is the controlling claim ledger for the repository. Status words mean:
 - **REGRESSION ONLY:** checked for an explicitly bounded finite sample; it must
   not be read as a universal theorem.
 - **BLOCKED:** the supplied formulation contains a known defect.
+- **LEGACY ROUTE BYPASSED / WRITTEN PROOF OF REPLACEMENT:** the original
+  argument is not repaired or imported; the named new argument supplies the
+  necessary conclusion within its stated scope.
+
+## General all-powers written proof
+
+The current mathematical statement is Theorem 1.1 of
+[`general_all_powers.tex`](../manuscripts/general_all_powers.tex), with the
+independent standalone fusion companion. It covers every prime, fixed
+spanning zero-sum elementary abelian branch datum, and all powers of the
+very general Jacobian in the full branch family. Its rational diagram and
+Hodge-lifting proof closes the previously separate generator hypothesis.
+[GENERAL_ALL_POWERS.md](GENERAL_ALL_POWERS.md) records source coverage,
+regression ranges, and exact nonclaims. **This does not upgrade the Lean
+headline:** that declaration remains scaffold only.
 
 ## Lean headline declarations
 
@@ -79,20 +94,20 @@ This is the controlling claim ledger for the repository. Status words mean:
 | Item | Repository status | Audit interpretation |
 |---|---|---|
 | I.1 Branch-code anti-equivalence | PARTIAL FORMALIZED | Both directions of the finite-linear-algebra dictionary, its coordinate independence, injectivity, dimension, zero-sum containment, and full support are formalized. The passage to actual covers and a categorical anti-equivalence is not. |
-| I.2 Moving-factor criterion | WRITTEN PROOF; NOT FORMALIZED | The revised criterion retains whole rational cyclotomic orbits and proves the matched source hypotheses. The old per-complex-eigenspace compactness argument is false (AF-8). |
-| I.3 Full simple projection | PARTIAL FORMALIZED + TYPED SOURCE INTERFACE | The case-(a) positivity-to-good-sequence arithmetic match is formalized. Menet--Nguyen Theorem 5.1 remains an explicit input with degree, branch-range/count, connectedness, root-row alignment, primitive-root, and good-sequence premises separated. |
-| I.4 Semisimple block reduction | MANUSCRIPT INPUT | Lie-algebra Goursat and integration are not formalized. |
-| I.5 Different-support separation | MANUSCRIPT INPUT | Geometric local-system argument absent. |
-| I.6 Same-support high-rank separation | TYPED SOURCE INTERFACE + MANUSCRIPT INPUT | Source-scoped pair/prefix action and spectrum interfaces exist. The exact Theorem 2.2 Gram data, subset eigenspace inputs, sign-orientation bridge, standard/dual classification, and reconstruction deduction remain absent. |
-| I.7 Reduction to four-point rank two | MANUSCRIPT INPUT | Depends on I.3–I.6. |
-| I.8 Exact Fricke fingerprint | MANUSCRIPT INPUT | The legacy core remains missing. The restricted split-family revision bypasses this step with two braid eigenratios; the general fingerprint claim is not thereby proved. |
-| I.9 Kummer rigidity | MANUSCRIPT INPUT | Exact local-system identification is not formalized. |
-| I.10 Exact connected monodromy blocks | MANUSCRIPT INPUT | Exposed through `phaseIExactBlocks`. |
-| I.11 Algebraization of disk intertwiners | MANUSCRIPT INPUT | Quotient-cover isomorphism, graph nonvanishing, and descent absent. |
+| I.2 Moving-factor criterion | WRITTEN PROOF; NOT FORMALIZED | The general manuscript proves a mixed embedding exists on every rational orbit with support at least four, retains all definite conjugates, and identifies the support-three constant factors. The old per-embedding compactness argument remains false. |
+| I.3 Full simple projection | WRITTEN PROOF + PARTIAL FORMALIZED | The general manuscript matches MN case (a), normalizes affine configurations with finite scalar fiber monodromy, and transports the K-defined closure to every embedding. The positivity-to-good-sequence arithmetic match is Lean proved; the geometry is not. |
+| I.4 Semisimple block reduction | WRITTEN PROOF; NOT FORMALIZED | General manuscript Section 3 proves semisimplicity, the graph normalizer gate and Goursat product decomposition. |
+| I.5 Different-support separation | WRITTEN PROOF; NOT FORMALIZED | The spanning-vector/rank-one argument proves active pair twists nonidentity, including zero pair sums. Forgetting an inactive point separates supports. |
+| I.6 Same-support high-rank separation | WRITTEN PROOF; NOT FORMALIZED | One global inner/outer sign in PGL_h and labelled pair sums reconstruct c or -c for h≥3. The new proof does not use the old prefix/half-shift argument. |
+| I.7 Reduction to four-point rank two | WRITTEN PROOF; NOT FORMALIZED | All moving factors have h=s-2; h=2 is exactly active support four, after the full-projection and support arguments. |
+| I.8 Exact Fricke fingerprint | LEGACY ROUTE BYPASSED | The old core is still missing. General manuscript Section 3 supplies a different universal proof: labelled pair eigenratios give precisely the ±V4 sign cube. No finite Fricke replay is claimed. |
+| I.9 Kummer rigidity | WRITTEN PROOF OF REPLACEMENT; NOT FORMALIZED | Explicit Möbius/Kummer graphs prove the converse to the new ±V4 classification. The old rigidity route is not imported. |
+| I.10 Exact connected monodromy blocks | WRITTEN PROOF; NOT FORMALIZED | The general manuscript determines all complex connected blocks and actual oriented occurrences. The abstract Lean phaseIExactBlocks field is still not a concrete theorem. |
+| I.11 Algebraization of disk intertwiners | WRITTEN PROOF WITH ORIENTED SCOPE | Deck-equivariant graphs and quotient pullback/norm give actual oriented arrows on (V4.c)∩C; negative components are polarized duals. Arbitrary monodromy intertwiners are not called Hodge maps. |
 | I.12 Cross-character Hodge-Hom corners | BLOCKED AS WRITTEN | The general oriented-corner saturation assertion is withdrawn (AF-9/AF-10). The restricted split case is separately proved with inverse graph maps. |
 | I.13 Saturated derived centralizer | MANUSCRIPT INPUT | Abstract and geometric double-centralizer work absent. |
 | I.14 Generic derived Hodge group | MANUSCRIPT INPUT | André normality application absent. |
-| I.15 Binary/ternary consequences | REGRESSION ONLY | Some finite word behavior is executable; the monodromy consequence is not Lean proved. |
+| I.15 Binary/ternary consequences | WRITTEN PROOF + REGRESSION ONLY | The general manuscript proves binary independent symplectic factors and all-powers divisor generation. Finite word calculations remain regressions, not formal monodromy proofs. |
 | I.16 Split-family Kummer geometry | WRITTEN PROOF + PARTIAL FORMALIZED | Six explicit cover isomorphisms and their relations are written and symbolically checked; only split-row signature arithmetic is Lean proved. |
 | I.17 Split endomorphism algebra | WRITTEN PROOF | The revision constructs the crossed product, inverse matrix units and full generic commutant. It is not Lean formalized. |
 | I.18 Split isogeny decomposition | WRITTEN PROOF | The restricted split-family revision deduces the isogeny decomposition, simplicity and non-isogeny from its exact rational algebra. Not Lean formalized. |
@@ -104,24 +119,24 @@ This is the controlling claim ledger for the repository. Status words mean:
 | Item | Repository status | Audit interpretation |
 |---|---|---|
 | P2.1 Signature formulas | PARTIAL FORMALIZED + TYPED SOURCE INTERFACE | `qValue`, `signatureAt`, and exact columns are defined and computed; identifying them with Hodge multiplicities uses the still-prospective `External.ChevalleyWeilInput`. |
-| P2.2 `K`-rank `s(c)-2` | PARTIAL FORMALIZED | Support/rank arithmetic is represented, but the rational Hodge factor identification is not. |
-| P2.3 Toric-factor exclusion | MANUSCRIPT INPUT | Torelli/dominance argument absent. |
+| P2.2 `K`-rank `s(c)-2` | WRITTEN PROOF + PARTIAL FORMALIZED | The general and fusion manuscripts identify the rational cyclic factor and its K-rank. Lean supplies only finite support/rank arithmetic. |
+| P2.3 Toric-factor exclusion | WRITTEN PROOF OF REPLACEMENT | The mixed-embedding carry lemma and three-point isotriviality account for all rational factors directly. No higher-rank all-definite rational factor is dropped, and no Torelli argument is needed here. |
 | P2.4 Derived group equality | MANUSCRIPT INPUT | Carried by `phaseIExactBlocks`. |
 | P2.5 Determinant quotient lattice | PARTIAL FORMALIZED + BLOCKED AS WRITTEN | The manuscript's raw quotient is wrong; the saturated integral quotient and its torsion-freeness are formalized. Identifying that quotient with the connected determinant torus still requires a new geometric proof. |
 | P2.6 Kummer relations in signature kernel | PARTIAL FORMALIZED + MANUSCRIPT INPUT | Given explicit equal/dual branch-word compatibility, raw generators and their saturation lie in the concrete all-row signature kernel. Producing those compatibilities from geometric variation isomorphisms remains absent. |
 | P2.7 Central torus annihilator | CONDITIONAL | `TORUS_REPAIR.md` separates the corrected integral algebra from the geometric character-lattice identification. No current Lean declaration proves that identification. |
 | P2.8 Full Hodge group | MANUSCRIPT INPUT | Depends on P2.4/P2.7. |
 | P2.9 Isolated disk criterion | PARTIAL FORMALIZED + BLOCKED AS WRITTEN | The character is `±ε_c`, not `2ε_c`; the correcting matrix identity is now Lean proved. Its Hodge-Hom interpretation and geometric torus hypotheses remain separate. |
-| P2.10 Tensor invariant generators | TYPED SOURCE INTERFACE + MANUSCRIPT INPUT | `External.WeylStandardDualFFTInput` is prospective; the current Bridge field is abstract, and exact multiplicity/Kummer identification still uses Phase I. |
-| P2.11 Determinant word criterion | PARTIAL FORMALIZED | The universal integer signature-to-residue-balance equivalence is proved under explicit divisibility, and branch-valid signed terms now discharge the divisibility conditions at every row. Identifying zero signature with Hodge bidegree still uses Chevalley--Weil and the tensor model. It need not depend on P2.7. |
+| P2.10 Tensor invariant generators | WRITTEN PROOF; NOT FORMALIZED | General manuscript Section 5 proves the Schur–Weyl reduction and algebraic rational diagram realization, with actual orientations, all effective words, and the empty-word Vandermonde step. The Lean source interface is still prospective. |
+| P2.11 Determinant word criterion | WRITTEN PROOF + PARTIAL FORMALIZED | The general manuscript constructs rational K-line word sources and proves zero-or-full Hodge subspace iff all embeddings balance. Lean proves the residue signature equivalence and divisibility adapters, not the Hodge realization. |
 | P2.12 Prime relations are opposite-paired | PARTIAL FORMALIZED + EXPLICIT INPUT TYPE | On the concrete signed-word model, all-row zero signature gives a literal nonzero balanced tuple. Lean derives branch sum, odd-prime parity, and unit-row balance, handles lengths zero and two directly, and uses the exact prime `B = D` leaf only from length four onward. The remaining project bridge is from actual determinant exponent/tensor data to this signed-word model. The 1984 erratum changes only Theorem B. |
 | P2.13 Compact-type gluing | WRITTEN PROOF + PARTIAL FORMALIZED | The fusion revision constructs the balanced admissible cover with inverse tangent characters. Lean constructs connected attachment trees, exact pair partitions and distinct repeated-source labels. Disconnected component assembly and the geometric realization are not formalized. |
 | P2.14 Smoothing and rank | WRITTEN PROOF + PARTIAL FORMALIZED | Lean derives fused lower bounds from source data and proves equality of actual local-rank sums. The manuscript supplies stable algebraic ACV smoothing and connectedness; the corresponding Lean geometric interface remains prospective. |
 | P2.15 Schoen cycles | WRITTEN PROOF; NOT FORMALIZED | The fusion revision verifies the primitive-equals-whole prime case, source tuple hypotheses and scope of the 1998 addendum. The Lean source interface and abstract bridge remain unconnected. |
 | P2.16 Specialization | WRITTEN PROOF; NOT FORMALIZED | The fusion revision supplies finite-extension descent, a compact-type abelian scheme, rational matching-slot projectors and cycle-class specialization. The Lean geometric bridge remains abstract. |
-| P2.17 Determinant relations algebraic | WRITTEN PROOF; NOT FORMALIZED | The standalone fusion manuscript proves the explicitly defined balanced mixed determinant space algebraic. Its use as an exhaustive list of all Hodge generators is a separate hypothesis. |
-| P2.18 All rational Hodge classes algebraic | SCAFFOLD ONLY | The direct route avoids P2.5/P2.7/P2.9, but Phase I, tensor reduction, fusion geometry, and specialization still require concrete formal proofs. |
-| P2.19 Binary divisor generation | MANUSCRIPT INPUT | Depends on the binary Phase I theorem and symplectic invariant theory. |
+| P2.17 Determinant relations algebraic | WRITTEN PROOF; NOT FORMALIZED | The standalone fusion proof algebraizes the specified balanced mixed determinant space. General manuscript Sections 5–6 now prove exhaustive rational generation using Hodge lifting, without assuming an algebraic splitting. |
+| P2.18 All rational Hodge classes algebraic | WRITTEN PROOF; LEAN SCAFFOLD ONLY | General manuscript Theorem 1.1 closes the all-powers statement with the standalone fusion proof and named published inputs. It bypasses P2.5/P2.7/P2.9. The separate Lean composition still has abstract unformalized deductions. |
+| P2.19 Binary divisor generation | WRITTEN PROOF; NOT FORMALIZED | General manuscript Section 7 matches A’Campo including genus one, separates supports with nonidentity pair twists, and applies symplectic tensor invariants to all powers. |
 
 ## Explicit nonclaims
 

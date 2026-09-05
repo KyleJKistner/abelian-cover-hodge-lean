@@ -1,18 +1,23 @@
-# Hodge proof repairs: 4 September 2026
+# Hodge proof repairs: 4–5 September 2026
 
 The current revisions replace the affected legacy arguments, add concrete
 Lean deductions, and make the available arithmetic checks reproducible.
 The original eight manuscript/ledger/certificate files remain unchanged and
 are verified by SHA-256 before every certificate replay.
 
+The 5 September [general all-powers proof](GENERAL_ALL_POWERS.md) supplies the
+representation and rational generator arguments left open in the first repair.
+Its status is written proof with named source inputs and the fusion companion,
+not complete Lean formalization or external referee validation.
+
 ## Mathematical changes
 
 | Area | Repair | Current scope |
 |---|---|---|
 | Split odd-prime family | Two local braid eigenratios replace reliance on the missing Fricke/Fox certificate. Explicit inverse graph maps give matrix units; the rational algebra is matched to the full monodromy commutant. | Written proof of the exact generic decomposition, endomorphisms, Hodge group and divisor generation on every power, relative to named classical and Menet–Nguyen inputs. Not formally or externally referee-verified. |
-| General moving part | Retain full rational cyclotomic orbits, including definite embeddings whenever a conjugate is positive. | Corrected proof with the factorwise source hypothesis and its arithmetic match explicit. No complete general block classification is inferred. |
-| General graph correspondences | Track generator inversion and use actual oriented arrows with inverse maps. | The former blanket cross-Hom saturation assertion is withdrawn; it is not silently reused by the revised proofs. |
-| Balanced mixed determinants | Supply rational slot projectors, factorial/Koszul normalization, inverse tangent characters, stable gluing, algebraic smoothing, finite-extension cycle specialization and disconnected-component projection. | Standalone geometric proof draft. The universal all-powers application retains a separate generator hypothesis. |
+| General moving part and blocks | Prove a mixed embedding exists for every support of size at least four, transport density to all conjugates, and reconstruct exact labelled support/±V4 blocks. | Written proof for every odd prime; no missing finite certificate is used. |
+| General graph correspondences and generators | Use actual oriented graphs, algebraic rational diagram maps, and Hodge semisimplicity to lift classes to balanced K-line sources. | Written general all-powers proof. The blanket equality of monodromy and Hodge commutants remains withdrawn. |
+| Balanced mixed determinants | Supply rational slot projectors, factorial/Koszul normalization, inverse tangent characters, stable gluing, algebraic smoothing, finite-extension cycle specialization and disconnected-component projection. | Standalone geometric proof draft; the general companion now proves the required all-powers generator statement. |
 | Determinant torus | Saturate the relation lattice and separate determinant image from the full integral character lattice. | Correct algebra and a precise conditional geometric refinement. |
 | Rank-two character | Prove `A J Aᵀ = det(A) J` and coefficient uniqueness in Lean. | Universal commutative-ring identity; the correct character is one determinant, not its square. |
 | Finite fusion | Derive surviving branch bounds from actual source counts, and connect signed determinant words to distinct labelled source copies and occurrence pairings. | Lean proofs with the exact Aoki source leaf; connected source pairings have a proved forest-existence theorem. General disconnected assembly remains separate. No erased geometric propositions occur in these finite theorems. |
@@ -39,6 +44,9 @@ and mpmath 1.3.0:
 - The new fusion checker covers projector identities, the mixed prime-five
   example, repeated and disconnected factors, and determinant rank divisible
   by the prime.
+- The general checker adds 13,268 normalized partitions, 69,644 four-words,
+  2,166 higher-rank words, exact cyclotomic Vandermonde tests and explicit
+  counterexamples to false shortcuts; its ranges are in GENERAL_ALL_POWERS.md.
 - The original Phase I core remains missing; its 7,077,120-vector report is
   **not** relabelled as reproduced. The revised split proof no longer needs it.
 
@@ -50,6 +58,8 @@ optimization cannot silently disable the legacy certificate assertions.
 
 ## Review copies
 
+- [General all-powers manuscript](../manuscripts/general_all_powers.tex) and
+  [PDF](../output/pdf/general_all_powers.pdf).
 - [Split-family manuscript](../manuscripts/phase_I_revised.tex) and
   [PDF](../output/pdf/phase_I_revised.pdf).
 - [Standalone fusion manuscript](../manuscripts/fusion_revised.tex) and
@@ -60,11 +70,10 @@ support specified identities, not the geometric theorem as a whole.
 
 ## What remains unresolved
 
-The full Hodge theorem for all very general elementary-prime cover families
-is not established by these repairs. Its general derived representation and
-generator-exhaustion step still need a proof with every rational embedding
-and oriented corner accounted for. The full geometric determinant-torus
-identification is a separate refinement.
+The general all-powers claim has a written proof in the new manuscript, with
+the standalone fusion theorem as its independent companion dependency. Its
+full geometric determinant-torus and Hodge-group identification is a separate
+unresolved refinement; the all-powers proof does not require it.
 
 The Lean headline remains a logical scaffold: the project does not yet
 formalize the requisite covers, Hodge structures, Chow groups, algebraic

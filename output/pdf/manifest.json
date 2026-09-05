@@ -15,6 +15,13 @@
       "pdf": "output/pdf/fusion_revised.pdf",
       "pdf_sha256": "c1aabe3140f615a625b067ba0d599f072902617ea86a8ac37cc0393689f3e345",
       "pages": 9
+    },
+    {
+      "source": "manuscripts/general_all_powers.tex",
+      "source_sha256": "44b8b74a818f8fe266797fd78fb80e354e296cd03eceb0f7cec18e6ab0541e4e",
+      "pdf": "output/pdf/general_all_powers.pdf",
+      "pdf_sha256": "0fae7ae45c6503b40e4b55a2e059898d66ab1e7f321cee829e5eb60eca4a8e06",
+      "pages": 11
     }
   ]
 }

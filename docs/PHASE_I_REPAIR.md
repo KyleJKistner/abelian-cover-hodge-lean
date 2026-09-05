@@ -1,5 +1,13 @@
 # Phase I repair: exact scope and reproducibility
 
+**5 September update:** this note records the restricted split-family revision.
+The new [general all-powers proof](GENERAL_ALL_POWERS.md) separately supplies
+the full prime-exponent connected-monodromy classification, actual oriented
+correspondences and rational generator argument. Its all-powers conclusion
+has a written proof. The complete generic Hodge-group/endomorphism and integral
+torus refinements remain separate; the legacy blanket commutant equality is
+not reinstated.
+
 The revision is [phase_I_revised.tex](../manuscripts/phase_I_revised.tex).
 The original manuscript and every legacy certificate are retained unchanged.
 The revision replaces the former blanket “complete finite-abelian Phase I”
@@ -136,26 +144,26 @@ supplies a rational lower algebra; its dimension matches the full complex
 monodromy commutant. No unspecified descent of one cyclotomic graph is
 used.
 
-## General assertions withdrawn or still open
+## General scope and withdrawn assertions
 
-The revision does not assert the following as completed:
+This split-family paper proves the rational moving criterion and its specified
+split family. The separate `general_all_powers.tex` now supplies the complete
+prime-exponent connected-monodromy blocks and the general rational all-powers
+argument. Its proof uses all Galois embeddings, actual oriented graphs and
+balanced determinant sources; it does not need the missing Fricke/Fox core.
 
-- The former real product formula deleting all compact complex factors;
-  only the corrected rational moving criterion is supplied.
-- A complete general finite-abelian block theorem. General support,
-  high-rank, and arbitrary disk-word arguments retain their own source
-  and proof obligations.
-- Equality of every off-diagonal monodromy-Hom corner with the graph
-  algebra. Only actual oriented graph components receive matrix units.
-- The general full Hodge group, determinant-torus refinement, or universal
-  finite-abelian all-powers Hodge theorem.
+The following stronger assertions are still not supplied:
 
-A general direct all-powers route must retain every Galois embedding of
-the rational derived representation. It may avoid an exact full
-endomorphism theorem by retaining determinant tensors and proving their
-algebraicity separately. It cannot turn them into divisors using the
-withdrawn cross-corner assertion. Uniform fusion/specialization is a
-separate obligation.
+- the old real product formula deleting compact complex embeddings;
+- equality of every monodromy-Hom corner with algebraic Hodge graph maps;
+- the complete generic Hodge group, its integral determinant-torus refinement,
+  or a general endomorphism formula outside the separately proved split case;
+- arbitrary composite-exponent finite abelian covers.
+
+The blanket cross-corner claim remains false. The general proof treats
+negative orientations as polarized duals and retains volume tensors as
+rank-one K Hodge structures until their all-row balance is proved. The
+standalone fusion companion then supplies their cycles.
 
 ## Reproduction and checked scope
 

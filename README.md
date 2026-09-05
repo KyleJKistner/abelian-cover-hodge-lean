@@ -2,8 +2,10 @@
 
 [![Lean audit](https://github.com/KyleJKistner/abelian-cover-hodge-lean/actions/workflows/lean.yml/badge.svg)](https://github.com/KyleJKistner/abelian-cover-hodge-lean/actions/workflows/lean.yml)
 
-This repository contains revised mathematical manuscripts and a separately
-checked Lean arithmetic layer. It does **not** claim a Lean proof of the Hodge conjecture.
+This repository contains a written proof of the rational Hodge conjecture for
+all powers of very general Jacobians in full elementary-prime abelian-cover
+families, its standalone fusion companion, and a separately checked Lean
+arithmetic layer. It does **not** claim a Lean proof of the Hodge conjecture.
 The current checkpoint kernel-checks a growing arithmetic/combinatorial core,
 states the citation-level inputs as explicit typed interfaces, and contains a
 machine-checked dependency scaffold. The scaffold is not the final audit
@@ -19,8 +21,9 @@ sources with known errors. Use the following revisions for the current claims.
 
 | Revision | Result and boundary |
 |---|---|
+| [General all-powers theorem](manuscripts/general_all_powers.tex) | A written proof for every prime and every full elementary abelian branch family, including constant factors and all rational embeddings. Exact monodromy blocks, rational algebraic diagram maps and Hodge lifting supply the previously missing generator argument. Uses the standalone fusion proof for odd primes; the binary case gives divisor generation. |
 | [Split-family Phase I](manuscripts/phase_I_revised.tex) | A rewritten proof for every odd prime, using two braid eigenratios to establish exact generic blocks, explicit inverse graph maps for the endomorphism algebra, and divisor generation on all powers. It also repairs the rational moving-part criterion. The general finite-abelian exhaustion theorem is not asserted. |
-| [Standalone balanced fusion](manuscripts/fusion_revised.tex) | A detailed geometric proof draft for mixed determinants on products of prime cyclic-cover Jacobians. It supplies slot-level rational projectors, balanced smoothing, and specialization. The universal all-powers application has a separate explicit generator hypothesis. |
+| [Standalone balanced fusion](manuscripts/fusion_revised.tex) | A detailed geometric proof draft for mixed determinants on products of prime cyclic-cover Jacobians. It supplies slot-level rational projectors, balanced smoothing, and specialization. Its conditional all-powers application is completed by the new general manuscript; the standalone fusion proof itself uses no generator hypothesis. |
 | [Determinant-torus correction](docs/TORUS_REPAIR.md) | Saturation, the corrected rank-two character, and the exact conditional boundary of the stronger full-group refinement. |
 
 These manuscripts are not externally referee-verified or novelty-certified.
@@ -43,14 +46,16 @@ The [repair overview](docs/REPAIR_STATUS.md) links every change and its checks.
 | Mixed `p = 5` and split `p = 3,5,7` examples | **Lean verified** | Exact kernel-reduced regressions. |
 | Prime balanced-tuple source leaf and geometric inputs | **Explicit hypotheses** | The exact prime `B = D` leaf is isolated and source-pinned; several geometric source interfaces remain prospective or need exact locators. |
 | Phase I blocks, tensor reduction, gluing, and exact specialization | **Unformalized deductions** | Manuscript-specific arrows remain to be replaced by concrete proofs. |
-| Rational Hodge conjecture on all powers | **Scaffold only** | The direct assembly bypasses the blocked torus claims, but still has abstract unformalized deductions. |
+| Rational Hodge conjecture on all powers | **Written proof; Lean scaffold only** | The general manuscript supplies the geometric and rational generator arguments. The separate Lean assembly still uses abstract unformalized deductions. |
 
 Mathematical/source-interface findings and their repair status are recorded
 in [`docs/AUDIT_FINDINGS.md`](docs/AUDIT_FINDINGS.md). The two defects bypassed
-by the proposed direct all-powers route are the unsaturated Phase II Kummer relation
-lattice and the misnormalized internal rank-two determinant character. That
-route still needs the general Phase I representation and generator argument. The
-legacy manuscripts are preserved unchanged for provenance.
+by the written direct all-powers proof are the unsaturated Phase II Kummer relation
+lattice and the misnormalized internal rank-two determinant character. The
+[general proof audit](docs/GENERAL_ALL_POWERS.md) records the completed written
+representation and generator arguments, exact source coverage, and remaining
+formalization and external-review boundaries. The legacy manuscripts are
+preserved unchanged for provenance.
 
 The exact-arithmetic checks are reproducible separately:
 
@@ -62,7 +67,7 @@ python3 -m venv .venv-audit
 
 This checks eight frozen source hashes, regenerates the original Phase II
 report byte for byte, verifies the review-PDF/source hashes, and runs the new
-Phase I and fusion repair checks plus the assertion-preservation regression.
+Phase I, fusion and general arithmetic checks plus the assertion-preservation regression.
 It does not claim to reproduce the missing original Phase I core.
 
 ## Fast audit

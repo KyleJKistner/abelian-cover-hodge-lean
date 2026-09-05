@@ -4,8 +4,9 @@ Start with these current revisions:
 
 | Source | Review PDF | Exact scope |
 |---|---|---|
+| [general_all_powers.tex](general_all_powers.tex) | [PDF](../output/pdf/general_all_powers.pdf) | Every prime, every full elementary abelian branch family, all powers of the very general Jacobian. Uses the standalone fusion companion for odd primes and independent symplectic factors for p=2. |
 | [phase_I_revised.tex](phase_I_revised.tex) | [PDF](../output/pdf/phase_I_revised.pdf) | The restricted split odd-prime family: exact generic decomposition, endomorphisms, Hodge group and divisor generation on all powers. Also corrects the rational moving-part criterion. |
-| [fusion_revised.tex](fusion_revised.tex) | [PDF](../output/pdf/fusion_revised.pdf) | Algebraicity of the explicitly defined balanced mixed determinant space for products of prime cyclic-cover Jacobians. A universal all-powers application retains a separate generator hypothesis. |
+| [fusion_revised.tex](fusion_revised.tex) | [PDF](../output/pdf/fusion_revised.pdf) | Algebraicity of the explicitly defined balanced mixed determinant space for products of prime cyclic-cover Jacobians. The new general manuscript proves the generator hypothesis in its final all-powers application. |
 
 These are written proof drafts with named source inputs, not externally
 refereed or Lean-formalized geometric theorems. See the
@@ -21,6 +22,7 @@ To compile a revision from the repository root with Tectonic:
 
 ```bash
 mkdir -p build/tex
+tectonic --outdir build/tex manuscripts/general_all_powers.tex
 tectonic --outdir build/tex manuscripts/phase_I_revised.tex
 tectonic --outdir build/tex manuscripts/fusion_revised.tex
 ```

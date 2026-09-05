@@ -1,5 +1,13 @@
 # Mathematical audit findings
 
+**Current resolution note (5 September 2026):** these findings concern the
+preserved legacy arguments. The new [general all-powers proof](GENERAL_ALL_POWERS.md)
+replaces the needed monodromy and rational generator steps and uses the
+standalone fusion companion. It does not rehabilitate the incorrect general
+Hodge/monodromy commutant equality or full determinant-torus formulas. The
+[claim matrix](CLAIMS.md) distinguishes current written proofs from unfinished
+Lean formalization and historical defects.
+
 These findings were discovered while translating the supplied Phase I/II
 package. They are disclosed here because suppressing them would make the Lean
 boundary misleading. The provenance copies in `manuscripts/` remain unchanged.
@@ -218,13 +226,13 @@ It remains inaccurate to describe the headline all-powers Hodge theorem as
 Lean verified: the manuscript-specific deductions in `Bridge/Assembly.lean`
 are still abstract inputs.
 
-However, the shortest all-powers route does not need the determinant quotient
-or internal-disk criterion. Derived invariant theory followed by the direct
-Hodge-bidegree test selects zero-signature determinant words, and the
-Aoki/fusion/Schoen route algebraizes them. AF-1 and AF-2 therefore remain
-blockers for the claimed complete Hodge group and endomorphism refinement, but
-not necessary premises of the direct all-powers dependency scaffold. This
-does not establish that route: the general rational representation and
-generator-exhaustion issues exposed by AF-8 through AF-10 remain unresolved.
-The revised standalone fusion argument and its slot projectors address AF-11,
-without assuming that they exhaust all Hodge generators.
+The written general all-powers proof now constructs a rational algebraic
+map from determinant-word sources onto monodromy invariants and lifts Hodge
+classes through it by semisimplicity. The K-line argument selects exactly
+balanced sources, which standalone fusion algebraizes. This closes the written
+representation/generator gaps exposed by AF-8 through AF-10 without promoting
+the full monodromy commutant to Hodge endomorphisms. AF-1 and AF-2 remain
+blockers for the stronger full Hodge-group and integral torus refinement;
+neither is a premise of the general all-powers proof. The standalone fusion
+argument and its slot projectors address AF-11 independently. See
+[GENERAL_ALL_POWERS.md](GENERAL_ALL_POWERS.md) for the exact new proof path.
