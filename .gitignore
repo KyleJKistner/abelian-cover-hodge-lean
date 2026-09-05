@@ -11,3 +11,5 @@
 default.profraw
 __pycache__/
 *.pyc
+/build/
+/.venv-audit/

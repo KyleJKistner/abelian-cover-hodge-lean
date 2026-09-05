@@ -33,8 +33,10 @@ abstract `Bridge.PublishedInputs`.
 
 ## Shortest headline route
 
-The rational Hodge conclusion does not require the full determinant-torus
-calculation:
+The proposed rational Hodge route does not require the full determinant-torus
+calculation. Its general Phase I and generator steps remain unresolved; the
+revised split-family theorem and standalone fusion theorem have written proofs
+with narrower, explicit scopes:
 
 1. Phase I identifies the derived Hodge-group blocks and supplies algebraic
    Kummer matrix units.
@@ -52,9 +54,10 @@ calculation:
 8. Algebraic contractions and determinant spaces generate every rational Hodge
    class on every power.
 
-This route quarantines audit findings AF-1 and AF-2. They still block the
-separate claims computing the complete Hodge group and all endomorphism
-corners, but they are not premises of the direct all-powers argument.
+This route bypasses the legacy AF-1 and AF-2 calculations. It does not bypass
+the rational-orbit and oriented-corner issues AF-8 through AF-10: those still
+prevent reusing the legacy general Phase I statement without repair. The
+standalone fusion revision addresses AF-11 independently.
 
 ## Citation-level leaves to state exactly
 
@@ -98,8 +101,9 @@ The largest proof obligations that must not remain bundled as hypotheses are:
   subset-eigenspace inputs still need to be modeled for the Phase I use;
 - semisimple subdirect-product reduction, support separation, and high-rank
   character reconstruction;
-- symbolic Fricke/Gassner fingerprint, half-shift exclusion, and Kummer
-  rigidity, replacing the missing legacy Phase I core certificate;
+- the general symbolic fingerprint, half-shift exclusion and Kummer rigidity;
+  the revised split family instead has a two-eigenratio proof that avoids the
+  missing legacy certificate;
 - quotient-cover graph construction, nonvanishing, descent, matrix units,
   double centralizer, and Phase I block assembly;
 - determinant-word zero-signature iff balanced is formalized at the residue
@@ -110,17 +114,20 @@ The largest proof obligations that must not remain bundled as hypotheses are:
   applies the exact prime `B = D` leaf only at length at least four. Identifying
   a concrete Hodge determinant monomial and its bidegrees with this signed-word
   model remains;
-- occurrence-labelled pairing and the finite consequences of an attachment
-  forest are formalized. A distinct source-family wrapper gives exact source
-  vertex coverage, and actual local-rank sums are equated only under explicit
-  bounds for every source and fused component. Construction of that forest for
-  every pairing graph, persistent marking-slot identifiers, inverse-inertia
-  realization, connectedness, and compact type remain;
+- occurrence-labelled pairing, connected attachment-tree existence and the
+  finite consequences of an attachment forest are formalized. Distinct source
+  positions preserve repeated determinant factors. Source bounds alone imply
+  the required fused bounds and exact equality of actual local-rank sums.
+  The disconnected graph partition and assembly remain to be formalized, as
+  do the geometric inverse-inertia realization, smoothing and compact type.
+  The fusion revision supplies written arguments for the geometric steps;
 - prime primitive-factor equals whole-Jacobian application of Schoen;
 - determinant of a direct sum, specialization to component determinants,
   quotient pull--push/projectors, and final tensor-to-cohomology assembly.
 
-The integral algebra of the corrected determinant lattice is now formalized:
+The correcting rank-two determinant identity is now formalized over an
+arbitrary commutative ring. The integral algebra of the corrected determinant
+lattice is also formalized:
 it quotients by the saturation, proves the quotient torsion-free, proves the
 explicit standard/dual word generators up to branch-coordinate permutation
 vanish in every unit row (including self-dual `2 epsilon` relations), descends the

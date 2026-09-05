@@ -1,0 +1,20 @@
+{
+  "compiler": "Tectonic 0.17.0",
+  "review": "All final pages rendered and visually inspected; no overfull boxes or unresolved references.",
+  "artifacts": [
+    {
+      "source": "manuscripts/phase_I_revised.tex",
+      "source_sha256": "37ae53b9c78d8d985986215e85619ba61f1717a17adf3bb2e26c44d9fb655920",
+      "pdf": "output/pdf/phase_I_revised.pdf",
+      "pdf_sha256": "45120d4a30f86fb24b237c1e06c3072338011364ca1e2df183732e7fa7472f54",
+      "pages": 8
+    },
+    {
+      "source": "manuscripts/fusion_revised.tex",
+      "source_sha256": "7b6af90135572fbde43d8c64e81d7999e348778db144d23700e3ae1e48a43961",
+      "pdf": "output/pdf/fusion_revised.pdf",
+      "pdf_sha256": "c1aabe3140f615a625b067ba0d599f072902617ea86a8ac37cc0393689f3e345",
+      "pages": 9
+    }
+  ]
+}

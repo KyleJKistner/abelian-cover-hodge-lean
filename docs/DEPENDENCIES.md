@@ -50,8 +50,10 @@ AF-2 do not enter this headline path.
 
 The full-group branch now starts from a proved algebraic correction: the
 saturated quotient is torsion-free and compatible signature maps descend.
-Only its identification with the geometric connected central torus remains on
-that branch.
+The remaining geometric work includes identifying the complete integral
+character lattice, not merely a rationally isogenous torus; see
+`TORUS_REPAIR.md`. The corrected rank-two character is independently proved
+in Lean. General Phase I and generator exhaustion also remain unresolved.
 
 ## Current interfaces and scaffold
 
@@ -72,6 +74,15 @@ dotted edge from Hodge determinant data to the signed-word model is still a
 project obligation.
 
 `External.ProspectiveCitationInputs` is not consumed by the headline scaffold.
+The concrete finite continuation now lives in `Bridge/DeterminantFusion.lean`:
+repeated determinant factors receive distinct source labels, their residue
+concatenation is exact, and source support bounds imply all required fused
+bounds and rank preservation. `Verified/ConnectedFusion.lean` constructs a
+complete fusion component for connected pairing graphs. General disconnected
+component assembly and every cover/Chow realization remain beyond these Lean
+results. The standalone manuscript supplies the geometric argument; it is not
+silently treated as a formal theorem.
+
 The separate `Bridge.PublishedInputs` has seven logical arrows and
 `UnformalizedDeductions` has eight manuscript-specific arrows. Both structures
 remain scaffolding. Every manuscript-specific field must disappear from the

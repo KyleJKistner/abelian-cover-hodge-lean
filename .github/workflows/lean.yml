@@ -11,6 +11,20 @@ permissions:
   contents: read
 
 jobs:
+  arithmetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Install the pinned exact-arithmetic dependencies
+        run: |
+          python3 -m venv .venv-audit
+          .venv-audit/bin/python -m pip install -r requirements-audit.txt
+      - name: Check source integrity and replay original and repair certificates
+        run: |
+          .venv-audit/bin/python scripts/replay_certificates.py
+          cat build/audit/replay_manifest.json
+
   verify:
     runs-on: ubuntu-latest
     steps:
