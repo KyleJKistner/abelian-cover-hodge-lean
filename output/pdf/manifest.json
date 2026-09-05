@@ -1,6 +1,6 @@
 {
   "compiler": "Tectonic 0.17.0",
-  "review": "All final pages rendered and visually inspected; no overfull boxes or unresolved references.",
+  "review": "All final pages rendered and visually inspected; no overfull boxes or unresolved references. Updated general (14 pages), Fermat transfer (6 pages), and structural/odd-exponent (21 pages) PDFs reviewed on 5 September 2026; unchanged Phase I and fusion artifacts retain their prior review.",
   "artifacts": [
     {
       "source": "manuscripts/phase_I_revised.tex",
@@ -18,10 +18,24 @@
     },
     {
       "source": "manuscripts/general_all_powers.tex",
-      "source_sha256": "44b8b74a818f8fe266797fd78fb80e354e296cd03eceb0f7cec18e6ab0541e4e",
+      "source_sha256": "25a5d3d57c4857569cada1e44e2ae74c173bdb1f1a28ac146ec57be2e261dfca",
       "pdf": "output/pdf/general_all_powers.pdf",
-      "pdf_sha256": "0fae7ae45c6503b40e4b55a2e059898d66ab1e7f321cee829e5eb60eca4a8e06",
-      "pages": 11
+      "pdf_sha256": "ed5a71f69f1075bfd3f63c0b7d52fecfa326a4b256855d1d5cf754b508f8a52f",
+      "pages": 14
+    },
+    {
+      "source": "manuscripts/fermat_determinant_transfer.tex",
+      "source_sha256": "da31a461aaecb84112b236920225be32d064285103f0eff7eea70f89d953ec38",
+      "pdf": "output/pdf/fermat_determinant_transfer.pdf",
+      "pdf_sha256": "3d1c62e9ffd8d63a88f7120744d2ab01e7e2f04838e1b2ec6de6891d8bc68d64",
+      "pages": 6
+    },
+    {
+      "source": "manuscripts/structural_extensions.tex",
+      "source_sha256": "5eb5deb36eece0c69772d790a6eae0a5d6317d3ace985e961ce12ad36524ff27",
+      "pdf": "output/pdf/structural_extensions.pdf",
+      "pdf_sha256": "2fb55773269bfec32030128b636ae04820970263dce07b83dda4e2179f902e73",
+      "pages": 21
     }
   ]
 }

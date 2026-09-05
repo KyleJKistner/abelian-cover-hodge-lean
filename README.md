@@ -4,7 +4,9 @@
 
 This repository contains a written proof of the rational Hodge conjecture for
 all powers of very general Jacobians in full elementary-prime abelian-cover
-families, its standalone fusion companion, and a separately checked Lean
+families, an extension to finite abelian groups of odd prime-power exponent
+and the mixed-prime exponents 3^a5^b and 3^a7^b, structural refinements,
+and a separately checked Lean
 arithmetic layer. It does **not** claim a Lean proof of the Hodge conjecture.
 The current checkpoint kernel-checks a growing arithmetic/combinatorial core,
 states the citation-level inputs as explicit typed interfaces, and contains a
@@ -21,12 +23,17 @@ sources with known errors. Use the following revisions for the current claims.
 
 | Revision | Result and boundary |
 |---|---|
-| [General all-powers theorem](manuscripts/general_all_powers.tex) | A written proof for every prime and every full elementary abelian branch family, including constant factors and all rational embeddings. Exact monodromy blocks, rational algebraic diagram maps and Hodge lifting supply the previously missing generator argument. Uses the standalone fusion proof for odd primes; the binary case gives divisor generation. |
+| [General all-powers theorem](manuscripts/general_all_powers.tex) | Every prime, every rank, every admissible branch datum over the projective line, and every power of the very general Jacobian. Uses exact monodromy blocks, algebraic diagram maps and the classical Fermat-product reduction; the binary case gives divisor generation. |
+| [Fermat determinant transfer](manuscripts/fermat_determinant_transfer.tex) | An explicit Chow-correspondence splitting realizes every cyclic prime-cover determinant in Fermat cohomology. Shioda's theorem gives all mixed determinant Hodge classes. This is a classical-construction consequence, not a claimed new algebraicity breakthrough. |
+| [Structural extensions](manuscripts/structural_extensions.tex) | Odd-exponent transfer criterion and unconditional all-powers HC for finite abelian covers of exponent dividing p^e (p odd), 3^a5^b or 3^a7^b. Also exact prime-family Hodge groups, first exceptional classes, all-powers generators, distinct-prime products and a degree-seven generalized-Hodge corollary. Written proofs; novelty remains under comparison. |
 | [Split-family Phase I](manuscripts/phase_I_revised.tex) | A rewritten proof for every odd prime, using two braid eigenratios to establish exact generic blocks, explicit inverse graph maps for the endomorphism algebra, and divisor generation on all powers. It also repairs the rational moving-part criterion. The general finite-abelian exhaustion theorem is not asserted. |
 | [Standalone balanced fusion](manuscripts/fusion_revised.tex) | A detailed geometric proof draft for mixed determinants on products of prime cyclic-cover Jacobians. It supplies slot-level rational projectors, balanced smoothing, and specialization. Its conditional all-powers application is completed by the new general manuscript; the standalone fusion proof itself uses no generator hypothesis. |
-| [Determinant-torus correction](docs/TORUS_REPAIR.md) | Saturation, the corrected rank-two character, and the exact conditional boundary of the stronger full-group refinement. |
+| [Determinant-torus correction](docs/TORUS_REPAIR.md) | The new structural companion constructs the geometric centralizer and its exact determinant quotient, closing the earlier conditional group-identification step. The erroneous legacy lattice is not restored. |
 
 These manuscripts are not externally referee-verified or novelty-certified.
+The [novelty audit](docs/NOVELTY.md) separates classical inputs and direct
+consequences from the remaining candidate contributions. Journal level is
+not established by the theorem title or the passing arithmetic checks.
 The [repair overview](docs/REPAIR_STATUS.md) links every change and its checks.
 
 ## Status at a glance
@@ -67,7 +74,7 @@ python3 -m venv .venv-audit
 
 This checks eight frozen source hashes, regenerates the original Phase II
 report byte for byte, verifies the review-PDF/source hashes, and runs the new
-Phase I, fusion and general arithmetic checks plus the assertion-preservation regression.
+Phase I, fusion, general and structural-extension arithmetic checks plus the assertion-preservation regression.
 It does not claim to reproduce the missing original Phase I core.
 
 ## Fast audit

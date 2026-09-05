@@ -151,19 +151,22 @@ split family. The separate `general_all_powers.tex` now supplies the complete
 prime-exponent connected-monodromy blocks and the general rational all-powers
 argument. Its proof uses all Galois embeddings, actual oriented graphs and
 balanced determinant sources; it does not need the missing Fricke/Fox core.
+The structural companion now supplies the exact generic Hodge group and
+determinant quotient in Section 2, and the odd-exponent extension with
+unconditional Aoki cases in Section 7.
 
 The following stronger assertions are still not supplied:
 
 - the old real product formula deleting compact complex embeddings;
 - equality of every monodromy-Hom corner with algebraic Hodge graph maps;
-- the complete generic Hodge group, its integral determinant-torus refinement,
-  or a general endomorphism formula outside the separately proved split case;
-- arbitrary composite-exponent finite abelian covers.
+- the legacy blanket endomorphism formula outside the separately proved split case;
+- arbitrary even composite exponent or unrestricted odd exponent without the
+  Fermat-Jacobian premise.
 
 The blanket cross-corner claim remains false. The general proof treats
 negative orientations as polarized duals and retains volume tensors as
 rank-one K Hodge structures until their all-row balance is proved. The
-standalone fusion companion then supplies their cycles.
+Fermat companion supplies their cycles, with fusion as an alternative.
 
 ## Reproduction and checked scope
 

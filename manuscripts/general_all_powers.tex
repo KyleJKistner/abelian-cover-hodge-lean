@@ -31,18 +31,22 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-We give a proof of the rational Hodge conjecture for all powers of the very
- general Jacobian in a full branch family of elementary abelian covers of the
- projective line of fixed prime exponent. For odd primes, the proof combines
- an explicit classification of connected monodromy blocks with the balanced
- mixed-determinant fusion theorem of the companion manuscript. A rational
+For every prime $p$, every elementary abelian group $(\Z/p)^m$, and every
+ admissible branch datum, we give a proof of the rational Hodge conjecture
+ for all powers of the very general Jacobian in the full branch family of
+ covers of $\mathbf P^1$. For odd primes, the proof combines
+ an explicit classification of connected monodromy blocks with a classical
+ reduction of determinant classes to Fermat varieties and Shioda's theorem.
+ A rational
  algebraic correspondence from determinant-word Hodge structures spans the
  monodromy invariants. Semisimplicity then lifts Hodge classes to balanced
- sources, where fusion applies. This avoids the incorrect identification of
+ sources, where Fermat transfer applies. This avoids the incorrect identification of
  the full monodromy commutant with Hodge endomorphisms and requires no formula
  for the central Hodge torus. The binary case uses independent symplectic
- factors and divisor classes. This is a written proof draft using precisely
- stated published inputs and the companion fusion proof; it is not a complete
+ factors and divisor classes. A companion extends the argument to arbitrary
+ finite abelian groups of odd prime-power exponent and certain mixed-prime
+ exponents. This is a written proof draft using precisely
+ stated published inputs and the companion finite-quotient proof; it is not a complete
  Lean formalization or an independently refereed result. Novelty is not asserted.
 \end{abstract}
 
@@ -72,16 +76,42 @@ For $r=2$ the only connected data generate a cyclic group and the curve has
 genus zero, so the conclusion is immediate. For $r=3$ the parameter space is
 a point; the odd-prime proof below includes its constant rank-one factors.
 The theorem concerns rational classes over $\C$. It makes no claim about
-integral classes, special fibers with additional Hodge classes, composite
-exponent, nonabelian groups, or explicit equations for all cycles.
+integral classes, special fibers with additional Hodge classes, nonabelian
+groups, or explicit equations for all cycles. Theorem~\ref{thm:main} itself
+has prime exponent. The separate companion \cite[Section 7]{Extensions}
+extends the conclusion to finite abelian groups of exponent dividing
+$p^e$ for odd $p$, $3^a5^b$ or $3^a7^b$, and gives a criterion for any odd
+exponent conditional on the corresponding Fermat-Jacobian Hodge conjecture.
 
-The companion manuscript \cite{Fusion}, Theorem~1.1, proves algebraicity of
-balanced mixed determinants for \emph{arbitrary} finite lists of cyclic
-$p$-covers of $\mathbf P^1$, with repetitions and specified generators.
-That result uses neither this theorem nor a general monodromy/generator
-hypothesis. Its final conditional all-powers application is replaced here by
-an explicit generator proof. The original frozen Phase I and Phase II files
-are not premises of this argument.
+The companion manuscript \cite{Fermat}, Theorem~1.1 and Corollary~1.2,
+realizes each cyclic-cover determinant as an algebraic direct summand of
+prime-degree Fermat cohomology. Shioda's product theorem \cite{Shioda}
+then makes every rational Hodge class in arbitrary products of these
+determinants algebraic. This includes all balanced mixed determinants and
+requires no monodromy hypothesis. The construction has direct precedent
+in Schoen's 1989 work, as recorded in \cite{Fermat}; its algebraicity
+consequence is not presented as a new cycle-construction theorem.
+The earlier companion \cite{Fusion} supplies an alternative degeneration
+argument, but is no longer a necessary premise. The original frozen Phase I
+and Phase II files are not premises either.
+
+There is also substantial monodromy precedent. Rohde
+\cite[Construction 3.2.1, Theorem 5.3.7]{Rohde} treats arbitrary branch
+residues for prime cyclic covers and proves their full derived monodromy.
+Together with the classical determinant construction and invariant theory,
+this already implies the cyclic case of Theorem~\ref{thm:main}; that
+implication is our comparison, not a claim that Rohde states the Hodge
+conclusion verbatim. Spelta--Tamborini \cite[Theorem 1.7]{ST} treat abelian
+covers with pairwise nonisomorphic noncompact unitary factors, and explicitly
+study the diagonal obstruction when factors repeat. The possible additional
+scope here is the uniform classification for distinct character words,
+including all repeated-factor cases and their actual Hodge orientations.
+The methods of comparing Dehn-twist spectra and subdirect products have
+these precedents. The four-point Klein-four cover symmetries themselves
+are classical; see also \cite[Section 2.6, Lemma 16]{FMZ} in the square-tiled
+description. Section~\ref{sec:monodromyexamples} exhibits the additional
+scope and the genuine graph exceptions concretely. No priority for the
+assembled theorem is asserted.
 
 \section{Character factors and a mixed embedding}\label{sec:moving}
 Suppose first that $p$ is odd. Put $K=\Q(\zeta_p)$ and
@@ -427,10 +457,12 @@ type $(\sum_jd_{c_j}(b),H-\sum_jd_{c_j}(b))$. After twisting by
 $\Q(-t)$ it is of type $(d,d)$ exactly when
 $\sum_jd_{c_j}(b)=H/2$. The cyclic dimension formula gives
 \eqref{eq:balance}; the opposite convention merely replaces $b$ by $-b$.
-Here $H$ is even since $H+2t=2d$. The standalone balanced fusion theorem
-\cite[Theorem~1.1]{Fusion} applies to this exact word, including repeated
-curves, rank-one factors and chosen generators. It makes all of $W_w$
-algebraic. Tate factors are represented by products of point or divisor
+Here $H$ is even since $H+2t=2d$. The Fermat transfer
+\cite[Corollary~1.2]{Fermat} applies to this exact word, including repeated
+curves, rank-one factors and chosen generators. Together with Shioda's
+product theorem it makes all of $W_w$ algebraic. The standalone fusion
+proof \cite[Theorem~1.1]{Fusion} is an alternative route.
+Tate factors are represented by products of point or divisor
 classes. No genericity is required for this last application.
 \end{proof}
 
@@ -609,7 +641,7 @@ It belongs to $I$. Lift it by Lemma~\ref{lem:lift} to a Hodge vector in
 \eqref{eq:surjection}. Its components are Hodge vectors separately in
 the displayed rational direct summands. By Proposition~\ref{prop:balance},
 a nonzero component in a nonempty word forces that entire word to satisfy
-all-row balance, and fusion supplies algebraic representatives. The Tate
+all-row balance, and Fermat transfer supplies algebraic representatives. The Tate
 components are algebraic too. All \emph{forward} maps in $F$ are
 algebraic correspondences, external products with algebraic classes, and
 pullbacks or pushforwards. They therefore carry those representatives to
@@ -665,8 +697,136 @@ invariants in $H^*(A_b^q)$. Very-general Hodge classes are invariant by the
 argument in Section~\ref{sec:lift}; hence they are generated by divisor
 classes. This completes the binary case.
 
+\section{Examples with repeated signature factors}\label{sec:monodromyexamples}
+The block theorem determines both independence and actual graph relations
+when signatures alone do not distinguish the factors. The following
+examples concern different cyclic quotient lines, rather than different
+embeddings of one cyclic quotient.
+
+\subsection{Equal signatures and independent factors at $p=3$}
+Take $G=\F_3^2$ and use the columns of
+\[
+ B=\begin{pmatrix}
+ 1&1&1&2&2&2\\
+ 1&1&2&1&2&2
+ \end{pmatrix}
+\]
+as the six ordered branch vectors. They are nonzero, generate $G$, and
+sum to zero. Let $c,e$ be the first and second rows. Both have support
+six and $K$-rank four. For each of the two nonzero multipliers their
+residue sum is $9$, so both signatures are $(2,2)$.
+
+The rows are nonproportional. On the pair twist at labels $1,3$, their
+residue sums are respectively $2$ and $0$. Its action on $V_c$ is
+projectively semisimple of order three, whereas on $V_e$ it is a
+nonidentity unipotent. The normalizer argument therefore excludes a
+graph between these two equal-signature factors.
+
+The other two projective character lines are represented by
+\[
+ c+e=(2,2,0,0,1,1),\qquad c-e=(0,0,2,1,0,0).
+\]
+They have support four and support two, respectively. Thus
+Theorem~\ref{thm:blocks} gives
+\[
+                       M_\C=\SL_4\times\SL_4\times\SL_2.
+\]
+The full covering curve has genus ten, since
+$2g-2=9(-2+6\cdot\frac23)=18$. Its Jacobian has cyclic quotient
+dimensions $4,4,2$, with the fourth quotient of genus zero. The
+nonrepetition hypothesis of \cite[Theorem~1.7]{ST} does not apply to the
+two identical $\operatorname{SU}(2,2)$ signatures; their independence
+here follows from the labelled pair operators.
+
+\subsection{A genuine graph between different quotient lines at $p=5$}
+Take $G=\F_5^2$ with branch matrix
+\[
+ B=\begin{pmatrix}1&1&1&2\\1&1&2&1\end{pmatrix},
+ \qquad c=(1,1,1,2),\quad e=(1,1,2,1).
+\]
+Again the columns are nonzero, span $G$, and sum to zero. The rows are
+nonproportional, but
+\[
+                         e=(12)(34)c.
+\]
+Consequently Theorem~\ref{thm:blocks} identifies their rank-two
+character spaces by actual oriented graph correspondences. With the
+branch points normalized to $0,1,t,\infty$, the map of the base is
+\[
+                         x\longmapsto\frac{t(x-1)}{x-t}.
+\]
+The Kummer lift after the finite root choice constructed in
+Section~\ref{sec:blocks} identifies $V_{bc}$ with $V_{be}$ for every
+$b\in\F_5^\times$. Thus different cyclic quotient lines can give a
+genuine diagonal monodromy block. Equal signatures do not themselves
+decide between this example and the preceding independent one.
+
+\subsection{The genus-five example of Spelta--Tamborini}
+We use exactly the ordered datum of \cite[Section~3, Example~2]{ST}.
+Write its generators additively as $g_1,g_2,g_3$ and identify them with
+the standard basis of $G=\F_2^3$. Their multiplicative notation for the
+branch tuple then becomes
+\[
+ (g_2,g_2,g_2,g_1+g_2,g_1+g_2+g_3,g_2+g_3).
+\]
+In the same order of the six branch labels, the matrix is
+\[
+ B=\begin{pmatrix}
+ 0&0&0&1&1&0\\
+ 1&1&1&1&1&1\\
+ 0&0&0&0&1&1
+ \end{pmatrix}.
+\]
+Let $c_i$ be its rows; the character corresponding to
+$u=(u_1,u_2,u_3)$ evaluates as $u_1c_1+u_2c_2+u_3c_3$.
+This agrees with the character indexing in that example. The nonzero
+character supports and quotient genera are
+\[
+\begin{array}{c|c|c}
+ \text{character word}&\text{active support}&\text{quotient genus}\\ \hline
+ c_2&\{1,2,3,4,5,6\}&2\\
+ c_1+c_2&\{1,2,3,6\}&1\\
+ c_2+c_3&\{1,2,3,4\}&1\\
+ c_1+c_2+c_3&\{1,2,3,5\}&1\\
+ c_1&\{4,5\}&0\\
+ c_3&\{5,6\}&0\\
+ c_1+c_3&\{4,6\}&0
+\end{array}
+\]
+The full cover has genus five, also directly from
+$2g-2=8(-2+6\cdot\frac12)=8$.
+
+The pair twists at $(1,6)$, $(1,4)$, and $(1,5)$ act nontrivially on,
+respectively, the three displayed elliptic quotient factors and
+projectively trivially on the other two. The nonseparating vanishing-cycle
+argument of Section~\ref{sec:binary} and the graph normalizer therefore
+make their three $\SL_2$ factors independent. The genus-two factor has
+group $\Sp_4$ and is independent by the different rank. Hence, as
+rational groups in the indicated character representation,
+\[
+ M=\Sp_4\times\SL_2^3
+       =\Sp(H^1(JX,\Q))^G.
+\]
+At a very general point the inclusions
+$M\subset\operatorname{Hg}(JX)\subset\Sp(H^1(JX,\Q))^G$
+are therefore equalities. If $S_f$ denotes the smallest special
+subvariety containing the family and $S(G)$ its deck-defined PEL
+subvariety, on the component containing the family this proves
+\[
+                         S_f=S(G),\qquad\dim S_f=3+1+1+1=6.
+\]
+The branch family has dimension three and is not special.
+The equality $S_f=S(G)$ is the issue left undecided in the cited
+example; the support argument supplies it. It is also a short consequence
+of older results: Bor\'owka--Ortega \cite[Remark 3.5, Proposition 3.9]{BO}
+already describe the same three independently varying Legendre factors
+for the non-isotropic Klein cover of the genus-two quotient. Their
+decomposition, classical genus-two monodromy and Goursat give the same
+answer. Thus resolving that precise formulation does not establish a new
+monodromy phenomenon or earliest priority for this corollary.
+
 \section{Dependencies and verification boundary}\label{sec:boundary}
-The new universal arguments here are the mixed-embedding carry lemma,
+The arguments supplied here are the mixed-embedding carry lemma,
 monodromy support and labelled-pair reconstruction, oriented graph
 construction, rational diagram realization, and Hodge lifting to balanced
 sources. The following inputs have distinct roles:
@@ -674,12 +834,12 @@ sources. The following inputs have distinct roles:
 \item Menet--Nguyen, Definition~1.1(a), Theorems~2.1, 2.2, 2.5, 5.1,
 and Corollary~2.7: cyclic dimensions, pair operators, and full factor
 projections. All hypotheses used are matched in Sections~2--3.
-\item The companion standalone fusion theorem: algebraicity only after a
-nonempty effective determinant word has all-row balance. Its inputs are
-the prime balanced-tuple theorem, Schoen's simple-tuple cycles with the
-1998 addendum scope, algebraic admissible-cover smoothing, compact-type
-Jacobians and cycle specialization. Their locators and hypotheses are
-recorded in that manuscript and its source audit.
+\item The companion finite-quotient construction \cite{Fermat} and
+Shioda's Theorem~2 \cite{Shioda}: determinant spaces are algebraic direct
+summands of Fermat cohomology, and Hodge classes on their products are
+algebraic. The common singular quotient is handled by a Chow-correspondence
+identity between smooth varieties. This route needs no Aoki pairing,
+admissible-cover smoothing, or cycle specialization.
 \item Classical automorphisms of adjoint linear groups, semisimple Goursat,
 Schur--Weyl duality and symplectic tensor invariants. The particular mixed
 $\SL$ tensor statement is proved from Schur--Weyl in
@@ -694,10 +854,16 @@ rank-two sign cube, higher-rank reconstruction, and several false shortcuts.
 They are regression evidence, not proofs of universal quantifiers or of
 cycle algebraicity. Its existing Lean results cover only designated
 arithmetic and abstract interfaces; this entire geometric argument is not
-formalized. In particular, resolving this written all-powers argument does
-not repair the legacy complete Hodge-group or central-torus formulas.
-Independent specialist review of this manuscript together with the fusion
-companion remains necessary before treating the result as publication-ready.
+formalized. The separate companion \cite{Extensions} supplies a new
+geometric centralizer proof for the exact generic Hodge group; it does not
+rehabilitate the erroneous legacy formulas. It also treats products across
+distinct primes and explicit moving absolutely simple Jacobians whose first
+exceptional classes and all-powers generators can be determined.
+Its Section 7 supplies the broader odd-exponent criterion and unconditional
+Aoki-exponent cases using primitive cyclic factors and controlled Fermat
+blowups; its Section 6 gives the degree-seven generalized-Hodge corollary.
+Independent specialist review and exact novelty assessment remain necessary
+before treating these manuscripts as publication-ready.
 
 \begin{thebibliography}{99}
 \bibitem{MN} G. Menet and D.-M. Nguyen,
@@ -708,6 +874,33 @@ Zariski closure and arithmeticity}, arXiv:2310.10401v3.
 cyclic covers: a revised fusion argument}, 4 September 2026.
 Companion source \texttt{manuscripts/fusion\_revised.tex},
 Theorem~1.1 and Sections~2--8.
+\bibitem{Fermat} K. Kistner, \emph{Determinants of cyclic covers of the line:
+a finite-quotient reduction to Fermat varieties}, 5 September 2026.
+Companion source \nolinkurl{manuscripts/fermat_determinant_transfer.tex}.
+\bibitem{Extensions} K. Kistner, \emph{Hodge groups, exceptional classes,
+and odd-exponent abelian covers},
+5 September 2026. Companion source
+\nolinkurl{manuscripts/structural_extensions.tex}.
+\bibitem{Shioda} T. Shioda, \emph{The Hodge conjecture and the Tate
+conjecture for Fermat varieties}, Proc. Japan Acad. Ser. A Math. Sci.
+\textbf{55} (1979), 111--114, Theorem~2, p.~112.
+\url{https://doi.org/10.3792/pjaa.55.111}.
+\bibitem{Rohde} J. C. Rohde, \emph{Cyclic coverings, Calabi--Yau manifolds
+and Complex multiplication}, dissertation, Duisburg--Essen, 2007,
+Construction 3.2.1, Section 4.3, Theorem 5.3.7.
+\url{https://webdoc.sub.gwdg.de/ebook/dissts/Duisburg/Rohde2007.pdf}.
+\bibitem{ST} I. Spelta and C. Tamborini, \emph{Decomposable abelian
+$G$-curves and special subvarieties}, Bulletin des Sciences Math\'ematiques
+201 (2025), 103616, Theorem 1.7 and Section 3.
+\url{https://doi.org/10.1016/j.bulsci.2025.103616}.
+\bibitem{FMZ} G. Forni, C. Matheus and A. Zorich,
+\emph{Square-tiled cyclic covers}, Journal of Modern Dynamics
+\textbf{5} (2011), 285--318, Section 2.6, Lemma 16.
+\url{https://doi.org/10.3934/jmd.2011.5.285}.
+\bibitem{BO} P. Bor\'owka and A. Ortega, \emph{Klein coverings of genus 2
+curves}, Transactions of the American Mathematical Society
+\textbf{373} (2020), 1885--1907. Author manuscript, Remark 3.5 and
+Proposition 3.9, \url{https://arxiv.org/pdf/1904.05962v2}.
 \bibitem{Andre} Y. Andr\'e, \emph{Mumford--Tate groups of mixed Hodge
 structures and the theorem of the fixed part}, Compositio Mathematica
 \textbf{82} (1992), 1--24, Section~4, Lemma~4.

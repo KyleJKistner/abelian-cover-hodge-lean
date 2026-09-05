@@ -3,7 +3,9 @@
 **Current status: written proof, not a complete Lean proof or external referee
 validation.** The general generator hypothesis left open in the 4 September
 repair is now supplied by [general_all_powers.tex](../manuscripts/general_all_powers.tex),
-read together with the independent [fusion companion](../manuscripts/fusion_revised.tex).
+read together with the [Fermat companion](../manuscripts/fermat_determinant_transfer.tex)
+and Shioda's classical product theorem. The independent
+[fusion companion](../manuscripts/fusion_revised.tex) is an alternative proof.
 The [review PDF](../output/pdf/general_all_powers.pdf) is compiled from that source.
 
 ## Exact result
@@ -18,8 +20,16 @@ divisors. The odd-prime argument includes constant support-three factors,
 repeated cyclic quotients, all Galois embeddings, and all effective determinant
 words in each finite degree.
 
-This is not a result for an arbitrary subfamily or every special fiber. It
-does not address composite exponent, nonabelian covers, integral Hodge
+Structural companion Section 7 now extends this result to arbitrary finite
+abelian groups of exponent dividing p^e (p odd), 3^a5^b or 3^a7^b. It also
+gives a criterion for any odd exponent N conditional on all-powers HC for
+the degree-N Fermat Jacobian. Its primitive-factor and rational assembly
+proofs treat the conductor-15 constant factor explicitly. The table below
+continues to describe the prime-exponent manuscript itself.
+
+These are not results for arbitrary subfamilies or every special fiber.
+They do not establish arbitrary even composite exponent, unrestricted odd
+exponent without the Fermat premise, nonabelian covers, integral Hodge
 classes, or the separate PEL/Weil-eightfold deformation problem.
 
 ## Where the formerly missing arguments are proved
@@ -35,7 +45,7 @@ classes, or the separate PEL/Weil-eightfold deformation problem.
 | All invariant diagrams realized algebraically | Section 5 | Schur–Weyl gives positive volume and coevaluation diagrams. Actual graph maps, rational polarization tensors and global matching projectors realize each complete Galois orbit. Empty words require all deck translates, not only a trace. |
 | Relations/cancellations and Hodge descent | Section 6 | The finite rational algebraic source map surjects onto monodromy invariants. A polarization complement lifts Hodge classes. The splitting need not be algebraic; only the forward map transfers cycles. |
 | Balanced sources are the only Hodge contributors | Section 4 and Section 6 | The rational Hodge subspace of a K-line is K-stable, hence zero or the whole line. Nonzero means every embedding has middle bidegree, exactly the fusion balance condition. |
-| Algebraic cycles | Fusion companion, Theorem 1.1 | Standalone balanced fusion applies to every resulting nonempty word. Algebraic diagram maps transfer the cycles to the desired Jacobian power. |
+| Algebraic cycles | Fermat companion, Theorem 1.1 and Corollary 1.2 | Determinants are algebraic direct summands of prime-degree Fermat cohomology; Shioda supplies Hodge classes on products. Algebraic diagram maps transfer them to the Jacobian power. Fusion is an alternative. |
 | Binary all powers | Section 7 | A'Campo full symplectic projections, independent supports, a nonseparating vanishing-cycle argument and symplectic tensor invariants give divisor generation. |
 
 No effective monoid is replaced by an integer lattice basis. A finite spanning
@@ -61,7 +71,11 @@ existence of a source Hodge lift; no algebraic splitting is assumed.
 ## Source coverage
 
 The exact general proof inputs are pinned in the manuscript bibliography.
-The companion source audit is [FUSION_REPAIR.md](FUSION_REPAIR.md).
+The principal new algebraicity input is Shioda, Proc. Japan Acad. 55 (1979),
+Theorem 2, p. 112, together with the explicit finite-quotient proof in the
+Fermat companion. Its construction and Schoen precedent are documented in
+[NOVELTY.md](NOVELTY.md). The alternative companion source audit is
+[FUSION_REPAIR.md](FUSION_REPAIR.md).
 
 | Primary source | Exact input and coverage |
 |---|---|
@@ -97,7 +111,13 @@ JSON. Its fixed ranges are:
 Normal and optimized Python produce identical reports; checks use an explicit
 helper that cannot be disabled by optimization. The combined replay runner
 includes this script, the previous repair checks, the byte-identical Phase II
-replay, eight frozen-source hashes and all three review-PDF/source hash pairs.
+replay, eight frozen-source hashes and all five review-PDF/source hash pairs.
+The additional structural checker covers 152 odd-subgroup cases through
+p=103, exact signature stabilizers and first-exceptional dimensions,
+7,746 volume-word balance checks at p=7,13,19, Koszul signs through rank six,
+and evaluation hyperplanes through rank eight. Its odd-exponent checks cover
+11 primitive projectors, six character inventories and 24,159 primitive
+support-four words at odd conductors up to 45, with the conductor-15 CM type.
 No enumeration proves the universal monodromy, Hodge, or cycle statement.
 
 ## Review and remaining work
@@ -110,8 +130,14 @@ Agreement among agents is not mathematical certification; the proof text and
 its imported theorems are the evidence to inspect.
 
 The general all-powers manuscript no longer has an unproved generator
-hypothesis. The independent fusion proof remains an explicit companion
-dependency. A specialist must review both before a publication-readiness
-judgment. The complete Lean geometric theorem, the stronger full Hodge-group
-and integral determinant-torus formulas, and a thorough novelty comparison
-remain separate unfinished work. No journal-level assessment is certified here.
+hypothesis. The Fermat companion supplies the principal algebraicity route;
+the structural companion now supplies the exact Hodge-group and determinant
+quotient formulas. These are written arguments, not full Lean proofs.
+
+The [novelty audit](NOVELTY.md) materially narrows the contribution: the
+mixed-determinant algebraicity is classical, and the unrestricted cyclic
+all-powers case follows from Rohde's 2007 theorem and old cycle inputs.
+The remaining candidate contribution is the uniform cross-character group
+classification and its assembly. Independent specialist review and exact
+priority assessment remain necessary; Duke/JEMS level is not supported by
+the present evidence.

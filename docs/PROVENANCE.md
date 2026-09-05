@@ -50,13 +50,14 @@ specified arithmetic and combinatorial subset.
 - **Original Phase I Python layer:** still not reproducible because the
   imported core is missing. See AF-3 in `AUDIT_FINDINGS.md`. The revised split
   proof does not depend on that core or its frozen enumeration.
-- **New Phase I, fusion and general checks:** `scripts/check_phase_i.py` and
-  `scripts/check_fusion.py` and `scripts/check_general.py` test the exact stated algebraic identities and
+- **New manuscript checks:** `scripts/check_phase_i.py`,
+  `scripts/check_fusion.py`, `scripts/check_general.py` and
+  `scripts/check_extensions.py` test the exact stated algebraic identities and
   bounded examples. Their reports name the source/script hashes and check
   ranges. They do not certify the full geometric arguments.
 - **Combined replay:** `scripts/replay_certificates.py` checks all eight frozen
   hashes before executing any certificate, enforces the dependency versions,
-  checks the review-PDF/source hashes, runs the original Phase II and all three
+  checks the review-PDF/source hashes, runs the original Phase II and all four
   new mathematical checkers plus the assertion-preservation regression, and
   writes an environment
   and output-hash manifest to `build/audit/replay_manifest.json`. CI runs the
@@ -123,6 +124,69 @@ using universal arguments. `GENERAL_ALL_POWERS.md` pins the exact additional
 André, CDK, Schur–Weyl, symplectic FFT and A'Campo source coverage and records
 the affine normalization correction. `scripts/check_general.py` is a new
 deterministic bounded regression, not a replay of the missing Phase I core.
-The three current source/PDF pairs are hashed in `output/pdf/manifest.json`
+The five current source/PDF pairs are hashed in `output/pdf/manifest.json`
 and all are required by the combined replay runner. Internal agent review is
 recorded as internal review, never as external specialist validation.
+
+## Novelty and structural revision (5 September 2026)
+
+The revision beginning from commit
+`b42aa9301ef682f6dffcde76cb0c36ceeb2ebbd2` adds two manuscripts and
+changes the general proof's principal algebraicity input. The new sources
+are `fermat_determinant_transfer.tex` and `structural_extensions.tex`.
+Their mathematical development and checks were assisted by Codex with
+separate internal reviews; no outside researcher or referee validated them.
+The frozen eight source files and the Lean mathematical declarations were
+not altered by this revision.
+
+The direct source comparison in `NOVELTY.md` supersedes any earlier claim
+that arbitrary mixed determinants themselves supply the principal new
+Hodge-cycle contribution. Shioda's 1979 Theorem 2 was checked in the actual
+four-page original scan; Schoen's 1989 introduction was checked directly,
+but the complete chapter was not accessible. Rohde's 2007 Construction
+3.2.1 and Theorem 5.3.7 show the unrestricted single-cyclic group input is
+old. Spelta–Tamborini's 2025 theorem and examples delimit the candidate
+additional cross-character scope. Full bibliographic locators and access
+limits are recorded in the novelty assessment and source bibliographies.
+
+Internal reviewers independently checked the common-quotient Chow
+identities, Koszul projector, Jacobian-transfer normalization, geometric
+centralizer, first exceptional degree, all-powers copy-placement span and
+distinct-prime product argument. Their agreement is recorded as review
+activity, not proof certification. The actual manuscripts provide the
+arguments a specialist must inspect.
+
+`check_extensions.py` records its source hashes and checks 152 subgroup
+families through p=103, all signature stabilizers and first-degree pair
+counts, 7,746 volume-word balance checks, geometric permutation signs through rank six and evaluation
+hyperplanes through rank eight. These are bounded arithmetic regressions.
+The combined runner now requires all five current PDF/source hash pairs;
+runtime reports remain generated under `build/audit/`.
+
+The degree-seven generalized-Hodge corollary explicitly verifies Abdulali's
+difference-one and CM-domination hypotheses, and uses only classical cyclic
+monodromy and Fermat-cycle algebraicity. Its proof and attribution were
+independently read internally. The late genus-five comparison also identifies
+Borówka–Ortega's older Legendre parameterization; that example is now labelled
+as a short consequence of older results.
+
+Structural Section 7 was developed and independently checked internally
+after the prime-exponent revision. Aoki's original 2000 Theorem 0.1, printed
+p. 177, was visually inspected, including its all-isogeny-factors-of-powers
+definition. Shioda–Katsura's original 1979 Lemmas 1.1–1.2 were read for the
+specific Fermat map and smooth blowup center. These inputs supply a written
+odd-exponent criterion and the unconditional p^e, 3^a5^b and 3^a7^b cases.
+Review covered primitive projectors, the unique conductor-15 finite factor,
+mixed-conductor rational spanning and the absence of a required fixed
+Abel–Jacobi basepoint. It does not certify priority or replace external
+specialist review. The Lean files were not expanded to formalize these steps.
+
+The final comparison directly checked Schoen 1988, Lemmas 1.1–1.2 and
+Remark 1.4, printed pp. 5–7. Primitive determinants, the one-slot residual
+action for arbitrary cyclic order, and Abel–Jacobi equivariance up to
+translation already occur there. The combined odd-exponent theorem does
+not claim novelty for those constructions. The extension checker now also
+tests 11 rational primitive projectors, six finite-abelian character
+inventories and 24,159 primitive support-four words at odd conductors up to
+45, including the conductor-15 CM type and a nonfixed-basepoint example.
+Its normal and optimized executions give identical output.

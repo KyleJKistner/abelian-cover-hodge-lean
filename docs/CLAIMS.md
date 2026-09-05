@@ -32,13 +32,24 @@ This is the controlling claim ledger for the repository. Status words mean:
 
 The current mathematical statement is Theorem 1.1 of
 [`general_all_powers.tex`](../manuscripts/general_all_powers.tex), with the
-independent standalone fusion companion. It covers every prime, fixed
+standalone Fermat-transfer companion and Shioda's classical product theorem.
+The earlier fusion proof remains an alternative. It covers every prime, fixed
 spanning zero-sum elementary abelian branch datum, and all powers of the
 very general Jacobian in the full branch family. Its rational diagram and
 Hodge-lifting proof closes the previously separate generator hypothesis.
 [GENERAL_ALL_POWERS.md](GENERAL_ALL_POWERS.md) records source coverage,
 regression ranges, and exact nonclaims. **This does not upgrade the Lean
 headline:** that declaration remains scaffold only.
+
+Structural companion Section 7 extends the written result to finite abelian
+groups of exponent dividing p^e (p odd), 3^a5^b or 3^a7^b. For arbitrary odd
+N it gives a criterion conditional on HC for every power of the degree-N
+Fermat Jacobian. The full P1 branch-family and very-general hypotheses
+remain. Aoki's published theorem supplies the listed unconditional cases.
+
+The [novelty assessment](NOVELTY.md) distinguishes the classical determinant
+algebraicity and cyclic all-powers consequence from the candidate uniform
+joint-group contribution. A written proof status below is not a priority claim.
 
 ## Lean headline declarations
 
@@ -105,8 +116,8 @@ headline:** that declaration remains scaffold only.
 | I.10 Exact connected monodromy blocks | WRITTEN PROOF; NOT FORMALIZED | The general manuscript determines all complex connected blocks and actual oriented occurrences. The abstract Lean phaseIExactBlocks field is still not a concrete theorem. |
 | I.11 Algebraization of disk intertwiners | WRITTEN PROOF WITH ORIENTED SCOPE | Deck-equivariant graphs and quotient pullback/norm give actual oriented arrows on (V4.c)∩C; negative components are polarized duals. Arbitrary monodromy intertwiners are not called Hodge maps. |
 | I.12 Cross-character Hodge-Hom corners | BLOCKED AS WRITTEN | The general oriented-corner saturation assertion is withdrawn (AF-9/AF-10). The restricted split case is separately proved with inverse graph maps. |
-| I.13 Saturated derived centralizer | MANUSCRIPT INPUT | Abstract and geometric double-centralizer work absent. |
-| I.14 Generic derived Hodge group | MANUSCRIPT INPUT | André normality application absent. |
+| I.13 Saturated derived centralizer | WRITTEN PROOF OF REPLACEMENT; NOT FORMALIZED | Structural companion Section 2 calculates the actual oriented graph centralizer over K and proves its derived group equals connected monodromy. It does not import the invalid blanket commutant assertion. |
+| I.14 Generic derived Hodge group | WRITTEN PROOF; NOT FORMALIZED | The structural ambient-group sandwich gives Hg^der=M without requiring the missing legacy normality argument. |
 | I.15 Binary/ternary consequences | WRITTEN PROOF + REGRESSION ONLY | The general manuscript proves binary independent symplectic factors and all-powers divisor generation. Finite word calculations remain regressions, not formal monodromy proofs. |
 | I.16 Split-family Kummer geometry | WRITTEN PROOF + PARTIAL FORMALIZED | Six explicit cover isomorphisms and their relations are written and symbolically checked; only split-row signature arithmetic is Lean proved. |
 | I.17 Split endomorphism algebra | WRITTEN PROOF | The revision constructs the crossed product, inverse matrix units and full generic commutant. It is not Lean formalized. |
@@ -121,11 +132,11 @@ headline:** that declaration remains scaffold only.
 | P2.1 Signature formulas | PARTIAL FORMALIZED + TYPED SOURCE INTERFACE | `qValue`, `signatureAt`, and exact columns are defined and computed; identifying them with Hodge multiplicities uses the still-prospective `External.ChevalleyWeilInput`. |
 | P2.2 `K`-rank `s(c)-2` | WRITTEN PROOF + PARTIAL FORMALIZED | The general and fusion manuscripts identify the rational cyclic factor and its K-rank. Lean supplies only finite support/rank arithmetic. |
 | P2.3 Toric-factor exclusion | WRITTEN PROOF OF REPLACEMENT | The mixed-embedding carry lemma and three-point isotriviality account for all rational factors directly. No higher-rank all-definite rational factor is dropped, and no Torelli argument is needed here. |
-| P2.4 Derived group equality | MANUSCRIPT INPUT | Carried by `phaseIExactBlocks`. |
-| P2.5 Determinant quotient lattice | PARTIAL FORMALIZED + BLOCKED AS WRITTEN | The manuscript's raw quotient is wrong; the saturated integral quotient and its torsion-freeness are formalized. Identifying that quotient with the connected determinant torus still requires a new geometric proof. |
+| P2.4 Derived group equality | WRITTEN PROOF; NOT FORMALIZED | Structural companion Section 2 proves M=L^der=Hg^der in the actual representation. The Lean field remains abstract. |
+| P2.5 Determinant quotient lattice | LEGACY ROUTE BYPASSED + PARTIAL FORMALIZED | The old raw quotient remains wrong. Structural Section 2 proves a free determinant-quotient lattice from actual GL and self-negative SL2 factors over K. The saturation arithmetic is Lean formalized; the geometric identification is written only. |
 | P2.6 Kummer relations in signature kernel | PARTIAL FORMALIZED + MANUSCRIPT INPUT | Given explicit equal/dual branch-word compatibility, raw generators and their saturation lie in the concrete all-row signature kernel. Producing those compatibilities from geometric variation isomorphisms remains absent. |
-| P2.7 Central torus annihilator | CONDITIONAL | `TORUS_REPAIR.md` separates the corrected integral algebra from the geometric character-lattice identification. No current Lean declaration proves that identification. |
-| P2.8 Full Hodge group | MANUSCRIPT INPUT | Depends on P2.4/P2.7. |
+| P2.7 Central torus annihilator | WRITTEN PROOF; NOT FORMALIZED | Structural Section 2 supplies the geometric premise and obtains X*(T)=E/ker(Sigma). The image is not claimed saturated in the auxiliary row lattice, nor identified integrally with an isogenous center. |
+| P2.8 Full Hodge group | WRITTEN PROOF; NOT FORMALIZED | Structural Section 2 proves Hg=q^-1(T) by minimality of the rational Hodge group. |
 | P2.9 Isolated disk criterion | PARTIAL FORMALIZED + BLOCKED AS WRITTEN | The character is `±ε_c`, not `2ε_c`; the correcting matrix identity is now Lean proved. Its Hodge-Hom interpretation and geometric torus hypotheses remain separate. |
 | P2.10 Tensor invariant generators | WRITTEN PROOF; NOT FORMALIZED | General manuscript Section 5 proves the Schur–Weyl reduction and algebraic rational diagram realization, with actual orientations, all effective words, and the empty-word Vandermonde step. The Lean source interface is still prospective. |
 | P2.11 Determinant word criterion | WRITTEN PROOF + PARTIAL FORMALIZED | The general manuscript constructs rational K-line word sources and proves zero-or-full Hodge subspace iff all embeddings balance. Lean proves the residue signature equivalence and divisibility adapters, not the Hodge realization. |
@@ -134,12 +145,26 @@ headline:** that declaration remains scaffold only.
 | P2.14 Smoothing and rank | WRITTEN PROOF + PARTIAL FORMALIZED | Lean derives fused lower bounds from source data and proves equality of actual local-rank sums. The manuscript supplies stable algebraic ACV smoothing and connectedness; the corresponding Lean geometric interface remains prospective. |
 | P2.15 Schoen cycles | WRITTEN PROOF; NOT FORMALIZED | The fusion revision verifies the primitive-equals-whole prime case, source tuple hypotheses and scope of the 1998 addendum. The Lean source interface and abstract bridge remain unconnected. |
 | P2.16 Specialization | WRITTEN PROOF; NOT FORMALIZED | The fusion revision supplies finite-extension descent, a compact-type abelian scheme, rational matching-slot projectors and cycle-class specialization. The Lean geometric bridge remains abstract. |
-| P2.17 Determinant relations algebraic | WRITTEN PROOF; NOT FORMALIZED | The standalone fusion proof algebraizes the specified balanced mixed determinant space. General manuscript Sections 5–6 now prove exhaustive rational generation using Hodge lifting, without assuming an algebraic splitting. |
-| P2.18 All rational Hodge classes algebraic | WRITTEN PROOF; LEAN SCAFFOLD ONLY | General manuscript Theorem 1.1 closes the all-powers statement with the standalone fusion proof and named published inputs. It bypasses P2.5/P2.7/P2.9. The separate Lean composition still has abstract unformalized deductions. |
+| P2.17 Determinant relations algebraic | WRITTEN PROOF; NOT FORMALIZED | The Fermat companion realizes all determinant spaces as algebraic summands; Shioda gives their product Hodge classes. This is a classical consequence. Fusion supplies an alternative. General Sections 5–6 prove exhaustive rational generation using Hodge lifting. |
+| P2.18 All rational Hodge classes algebraic | WRITTEN PROOF; LEAN SCAFFOLD ONLY | General Theorem 1.1 uses Fermat transfer, Shioda and the stated group/invariant inputs. It bypasses P2.5/P2.7/P2.9. The separate Lean composition still has abstract unformalized deductions. Novelty of the full assembly is unverified. |
 | P2.19 Binary divisor generation | WRITTEN PROOF; NOT FORMALIZED | General manuscript Section 7 matches A’Campo including genus one, separates supports with nonidentity pair twists, and applies symplectic tensor invariants to all powers. |
+
+## Structural development
+
+| Item | Status | Exact scope |
+|---|---|---|
+| Determinant Fermat summand | WRITTEN PROOF; NOT FORMALIZED | Fermat companion Theorem 1.1: arbitrary cyclic prime P1 cover, any smooth fiber, explicit finite-quotient Chow projectors and normalized Jacobian transfer. Classical mechanism, not asserted new. |
+| First exceptional degree | WRITTEN PROOF + REGRESSION ONLY | Structural Section 3: odd-subgroup branch words with added opposite pairs, full family, genus (p−1)h/2, first exceptional codimension h, quotient dimension (p−1)(m−1)/2. The 152 arithmetic cases do not prove the geometry. |
+| All-powers ring generators | WRITTEN PROOF; NOT FORMALIZED | Structural Section 4: divisors and homomorphism pullbacks of that first exceptional space generate every power. The proof handles all placements and rational descent. |
+| Distinct-prime products | WRITTEN PROOF; NOT FORMALIZED | Structural Section 5: independent or shared full configurations, isogeny factors and all powers; Hodge rings factor across primes. This product statement is separate from the exponent extension in Section 7. |
+| Degree-seven generalized HC | WRITTEN PROOF; NOT FORMALIZED | Structural Section 6: every power of the very general Jacobian for (1,2,4,(1,−1)^k), k≥1. The proof supplies every CM partner and ordinary-HC product required by Abdulali's domination criterion. An attributed classical corollary, not a general-prime statement. |
+| Odd-conductor projections and finite exception | WRITTEN PROOF; NOT FORMALIZED | Structural Section 7 matches MN's good-sequence hypotheses at every odd conductor. The unique all-definite support-at-least-four primitive type is (1,2,4,8) at conductor 15, with primitive factor E^8 for CM by Q(sqrt(−15)); its full H1 is retained. |
+| Odd-exponent transfer and Aoki cases | WRITTEN PROOF; NOT FORMALIZED | Structural Section 7: conditional for any odd N on all-powers HC for the Fermat-N Jacobian; unconditional for N=p^e (p odd), 3^a5^b,3^a7^b. Every finite abelian group of exponent dividing N, full ordered P1 branch family, very general Jacobian, every power. Primitive projectors, exact graph blocks, controlled Fermat blowups and full rational invariant sources are supplied. |
 
 ## Explicit nonclaims
 
-The repository does not establish the integral Hodge conjecture, composite
-exponent, special-fiber jumps, nonabelian deck groups, computable Chow-cycle
-formulas, or the separate PEL/Weil-eightfold deformation claim.
+The repository does not establish the integral Hodge conjecture, arbitrary
+even composite exponent, unrestricted odd exponent without the Fermat
+premise, arbitrary special fibers or restricted subfamilies, nonabelian deck
+groups, computable equations for all Chow cycles, or the separate
+PEL/Weil-eightfold deformation claim. All cover theorems here have base P1.

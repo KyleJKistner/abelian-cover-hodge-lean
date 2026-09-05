@@ -41,11 +41,13 @@ def verify_pdf_manifest() -> dict:
     data = json.loads(path.read_text())
     artifacts = data["artifacts"]
     required_sources = {"manuscripts/phase_I_revised.tex", "manuscripts/fusion_revised.tex",
-                        "manuscripts/general_all_powers.tex"}
+                        "manuscripts/general_all_powers.tex",
+                        "manuscripts/fermat_determinant_transfer.tex",
+                        "manuscripts/structural_extensions.tex"}
     if not artifacts or not required_sources.issubset(
         {artifact["source"] for artifact in artifacts}
     ):
-        raise RuntimeError("PDF manifest must include all three current manuscripts")
+        raise RuntimeError("PDF manifest must include all five current manuscripts")
     for artifact in artifacts:
         for kind in ("source", "pdf"):
             relative = artifact[kind]
@@ -107,7 +109,7 @@ def main() -> None:
         shutil.copy2(regenerated, legacy_report)
 
     repair_reports = []
-    for name in ("check_phase_i.py", "check_fusion.py", "check_general.py", "check_replay_safety.py"):
+    for name in ("check_phase_i.py", "check_fusion.py", "check_general.py", "check_extensions.py", "check_replay_safety.py"):
         script = ROOT / "scripts" / name
         destination = output / (script.stem + ".json")
         destination.unlink(missing_ok=True)

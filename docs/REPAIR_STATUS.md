@@ -7,8 +7,11 @@ are verified by SHA-256 before every certificate replay.
 
 The 5 September [general all-powers proof](GENERAL_ALL_POWERS.md) supplies the
 representation and rational generator arguments left open in the first repair.
-Its status is written proof with named source inputs and the fusion companion,
+Its status is written proof with named source inputs and the Fermat companion,
 not complete Lean formalization or external referee validation.
+The later [novelty audit](NOVELTY.md) identifies the determinant algebraicity
+and single-cyclic all-powers case as classical consequences. The uniform
+cross-character group classification remains a candidate contribution.
 
 ## Mathematical changes
 
@@ -17,8 +20,11 @@ not complete Lean formalization or external referee validation.
 | Split odd-prime family | Two local braid eigenratios replace reliance on the missing Fricke/Fox certificate. Explicit inverse graph maps give matrix units; the rational algebra is matched to the full monodromy commutant. | Written proof of the exact generic decomposition, endomorphisms, Hodge group and divisor generation on every power, relative to named classical and Menet–Nguyen inputs. Not formally or externally referee-verified. |
 | General moving part and blocks | Prove a mixed embedding exists for every support of size at least four, transport density to all conjugates, and reconstruct exact labelled support/±V4 blocks. | Written proof for every odd prime; no missing finite certificate is used. |
 | General graph correspondences and generators | Use actual oriented graphs, algebraic rational diagram maps, and Hodge semisimplicity to lift classes to balanced K-line sources. | Written general all-powers proof. The blanket equality of monodromy and Hodge commutants remains withdrawn. |
-| Balanced mixed determinants | Supply rational slot projectors, factorial/Koszul normalization, inverse tangent characters, stable gluing, algebraic smoothing, finite-extension cycle specialization and disconnected-component projection. | Standalone geometric proof draft; the general companion now proves the required all-powers generator statement. |
-| Determinant torus | Saturate the relation lattice and separate determinant image from the full integral character lattice. | Correct algebra and a precise conditional geometric refinement. |
+| Balanced mixed determinants | The new finite-quotient correspondence makes determinants algebraic summands of Fermat cohomology; Shioda's product theorem gives algebraicity. The earlier fusion proof is retained as an alternative. | Classical consequence, explicitly proved; no new cycle-construction priority claimed. |
+| Determinant torus and full Hodge group | Calculate the actual graph centralizer over K; identify its derived group and exact determinant quotient, then use the Galois signature span. | Written full group formula in the structural companion; old raw lattice and blanket commutant formulas remain invalid. |
+| Exceptional Hodge-ring structure | Odd-subgroup words yield simple moving Jacobians with exact first exceptional codimension, dimension, and all-powers generators. | Written universal argument plus 152 arithmetic cases; novelty of the explicit descriptions unverified. |
+| Distinct-prime products | Separate moving groups by local projective orders and Hodge sources by cyclotomic fields. | Written product theorem, including shared full configurations; separate from the Section 7 exponent extension. |
+| Odd-exponent covers | Primitive quotient projectors, all-odd density reduction, the conductor-15 E^8 exception, exact graph blocks, Fermat blowups and full rational tensor sources. | Written criterion conditional on all-powers HC for the degree-N Fermat Jacobian. Aoki gives unconditional exponents p^e (p odd), 3^a5^b and 3^a7^b for arbitrary finite abelian deck groups. |
 | Rank-two character | Prove `A J Aᵀ = det(A) J` and coefficient uniqueness in Lean. | Universal commutative-ring identity; the correct character is one determinant, not its square. |
 | Finite fusion | Derive surviving branch bounds from actual source counts, and connect signed determinant words to distinct labelled source copies and occurrence pairings. | Lean proofs with the exact Aoki source leaf; connected source pairings have a proved forest-existence theorem. General disconnected assembly remains separate. No erased geometric propositions occur in these finite theorems. |
 
@@ -47,6 +53,12 @@ and mpmath 1.3.0:
 - The general checker adds 13,268 normalized partitions, 69,644 four-words,
   2,166 higher-rank words, exact cyclotomic Vandermonde tests and explicit
   counterexamples to false shortcuts; its ranges are in GENERAL_ALL_POWERS.md.
+- The structural checker adds 152 subgroup-family cases through p=103,
+  exact signature stabilizers, first exceptional dimensions, 7,746 volume
+  words at p=7,13,19, and bounded
+  Koszul/evaluation-hyperplane checks. The odd-exponent extension adds 11
+  primitive projectors, six character inventories and 24,159 primitive
+  support-four words at odd conductors up to 45. It certifies none of the geometry.
 - The original Phase I core remains missing; its 7,077,120-vector report is
   **not** relabelled as reproduced. The revised split proof no longer needs it.
 
@@ -64,20 +76,24 @@ optimization cannot silently disable the legacy certificate assertions.
   [PDF](../output/pdf/phase_I_revised.pdf).
 - [Standalone fusion manuscript](../manuscripts/fusion_revised.tex) and
   [PDF](../output/pdf/fusion_revised.pdf).
+- [Fermat-transfer manuscript](../manuscripts/fermat_determinant_transfer.tex)
+  and [PDF](../output/pdf/fermat_determinant_transfer.pdf).
+- [Structural companion](../manuscripts/structural_extensions.tex) and
+  [PDF](../output/pdf/structural_extensions.pdf).
 
 The PDFs are compiled from the revised sources; their finite certificates
 support specified identities, not the geometric theorem as a whole.
 
 ## What remains unresolved
 
-The general all-powers claim has a written proof in the new manuscript, with
-the standalone fusion theorem as its independent companion dependency. Its
-full geometric determinant-torus and Hodge-group identification is a separate
-unresolved refinement; the all-powers proof does not require it.
+The general all-powers claim has a written proof using Fermat transfer and
+Shioda, with fusion as an alternative. The structural companion now supplies
+the full Hodge-group refinement. Those results still need specialist review.
 
 The Lean headline remains a logical scaffold: the project does not yet
 formalize the requisite covers, Hodge structures, Chow groups, algebraic
 smoothing or cycle specialization. The connected forest construction is proved; assembling all disconnected
-components in the finite API remains separate. The manuscripts also require independent
-mathematical review and a focused novelty comparison. None of those items is
+components in the finite API remains separate. The novelty comparison is now
+documented, but exact priority of the remaining joint-group contribution is
+not certified. None of those items is
 discharged by renaming an assumption or by a successful finite regression.
