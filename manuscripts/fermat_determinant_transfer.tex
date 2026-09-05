@@ -1,0 +1,417 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,hyperref}
+\hypersetup{hidelinks}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbf Q}\newcommand{\C}{\mathbf C}
+\newcommand{\Z}{\mathbf Z}\newcommand{\F}{\mathbf F}
+\newcommand{\CH}{\operatorname{CH}}\newcommand{\Sym}{\operatorname{Sym}}
+\newcommand{\im}{\operatorname{im}}\newcommand{\id}{\operatorname{id}}
+\newcommand{\cl}{\operatorname{cl}}\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\Alt}{\operatorname{Alt}}
+\title{Determinants of cyclic covers of the line:\\a finite-quotient reduction to Fermat varieties}
+\author{Kyle Kistner}
+\date{5 September 2026 --- proof and attribution audit draft}
+\begin{document}\maketitle
+\begin{abstract}
+Let $C\to\mathbf P^1$ be a cyclic cover of prime degree $p$ with $s\geq3$
+branch points. Put $h=s-2$. We exhibit the rational cyclotomic determinant
+of $H^1(C)$ as an algebraic direct summand of the middle cohomology of a
+degree-$p$ Fermat hypersurface of dimension $h$. The construction uses two
+finite maps to the same normal quotient and an explicit Chow-correspondence
+identity; it requires no specialization or singular-cohomology comparison.
+Shioda's published theorem for arbitrary products of prime-degree Fermat
+varieties then implies algebraicity of every rational Hodge class in every
+tensor product of these determinant spaces. In particular it implies the
+balanced mixed-determinant statement for arbitrary lists of cyclic covers.
+This supplies an attribution-sensitive simplification of the companion
+fusion argument. The Fermat-quotient construction has direct precedent in
+Schoen's 1989 paper; no priority claim is made for the construction or its
+product consequence. This is a classical proof draft, not a formalization
+or an independent referee certification.
+\end{abstract}
+
+\section{Statement and exact rational realization}
+All varieties and correspondences are over $\C$, and Chow groups have
+rational coefficients. Fix a prime $p$ and put $K=\Q(\zeta_p)$. The
+argument includes $p=2$, although the principal application has $p$ odd.
+Let $C\to\mathbf P^1$ be a smooth connected cyclic degree-$p$ cover with
+chosen deck generator $\sigma$ and distinct branch points $t_1,\ldots,t_s$.
+Write its nonzero residues as $a_i\in\F_p^\times$, with
+$\sum_i a_i=0$. Assume $s\geq3$, and set $h=s-2$ and $J=J(C)$.
+Then $\dim_K H^1(C,\Q)=h$ and the genus is $(p-1)h/2$.
+The action of $K$ sends $\zeta_p$ to $\sigma^*$; use the compatible
+action on $J$ under the Abel--Jacobi identification of $H^1$.
+
+The rational determinant realization $D_C$ is specified by
+\[
+ (D_C)_\C=\bigoplus_{b=1}^{p-1}
+       \bigwedge^h H^1(C,\C)_b,
+ \qquad \dim_\Q D_C=p-1.
+\]
+It has two natural realizations: in $H^h(C^h,\Q)$ by antisymmetrized
+K\"unneth tensors, and in
+\[
+ H^h(J,\Q)=\bigwedge^h H^1(J,\Q).
+\]
+An algebraic correspondence between these realizations is explained below.
+Write
+\[
+ F_p^h=\{x_1^p+\cdots+x_{h+2}^p=0\}\subset\mathbf P^{h+1}.
+\]
+
+\begin{theorem}\label{thm:transfer}
+There is a rational algebraic projector on $F_p^h$ whose cohomological
+image, concentrated in degree $h$, is isomorphic to $D_C$ by algebraic
+correspondences in both directions. For the realization in $C^h$, the
+projector and the two inverse correspondences already satisfy the required
+identities in rational Chow groups. In particular the realization of $D_C$
+in $H^h(J,\Q)$ is the image of a rational algebraic correspondence from
+$H^h(F_p^h,\Q)$.
+\end{theorem}
+
+\begin{corollary}\label{cor:products}
+Let $C_1,\ldots,C_N$ be any finite list of such covers of the same prime
+degree, with arbitrary branch points, residues and repetitions. Put
+$h_j=s_j-2$ and $H=\sum_jh_j$. Every rational Hodge class in
+\[
+ \bigotimes_{\Q,j}D_{C_j}
+ \ \subset\ H^H\left(\prod_jJ(C_j),\Q\right)
+\]
+is algebraic. The same holds in any rational algebraically projected
+subspace of this tensor product, including the subspace with all
+cyclotomic embedding labels equal.
+\end{corollary}
+
+No monodromy, genericity or endomorphism-algebra assumption appears here.
+The assertion is about determinant subspaces, not the entire cohomology
+of an arbitrary Jacobian or its powers.
+
+\section{A common normal finite quotient}
+Choose a coordinate on $\mathbf P^1$ for which all $t_i$ are finite.
+With representatives $1\leq a_i\leq p-1$, the cover has a Kummer equation
+\[
+ y^p=\prod_{i=1}^{h+2}(x-t_i)^{a_i}.
+\]
+The point at infinity is unramified because $\sum_i a_i=pk$ for an integer
+$k$. This equation describes the function field; $C$ denotes its smooth
+projective normalization.
+
+Let $Z=C^h$. On its $h$ factors act $\mu_p^h$, and let
+\[
+ N=\{(\epsilon_1,\ldots,\epsilon_h)\in\mu_p^h:
+             \epsilon_1\cdots\epsilon_h=1\},\qquad
+ G=N\rtimes\mathfrak S_h.
+\]
+Permutations permute the factors and normalize $N$. Let $Y=Z/G$, the
+normal projective finite quotient. Its degree over
+$\Sym^h\mathbf P^1=\mathbf P^h$ is $p$.
+
+On the dense affine locus write
+$u(T)=\prod_{\nu=1}^h(T-x_\nu)$. Its coefficients are coordinates on
+$\Sym^h\mathbf A^1$. The $N$-invariant element
+$z=\prod_{\nu=1}^h y_\nu$ is permutation invariant, and, after rescaling
+$z$ by a constant, satisfies
+\begin{equation}\label{eq:kummer}
+ z^p=\prod_{i=1}^{h+2}u(t_i)^{a_i}.
+\end{equation}
+The coordinate-field extension of the ordered product has group
+$\mu_p^h$ over $\C(x_1,\ldots,x_h)$: the $h$ Kummer classes are independent,
+as seen by valuation at $x_\nu=t_i$. Thus taking $N$-invariants leaves
+exactly the field generated by $z$. Taking permutation invariants gives
+exactly \eqref{eq:kummer} over the symmetric coefficient field. This
+also follows by comparing the degree $p$ of that equation with the index
+of $G$ in $\mu_p^h\rtimes\mathfrak S_h$.
+
+Homogeneously, evaluation at $t_i$ is a linear form $L_i$ on
+$H^0(\mathbf P^1,\mathcal O(h))$. The $h+2$ hyperplanes $L_i=0$ are in
+general position: any $h+1$ evaluations at distinct points are independent
+by polynomial interpolation. Consequently there is a unique linear
+relation, up to scaling,
+\[
+ \sum_{i=1}^{h+2}\lambda_i L_i=0,
+ \qquad \lambda_i\ne0\quad\hbox{for every }i.
+\]
+The nonvanishing follows because a relation omitting one evaluation would
+contradict that independence.
+
+Consider the smooth diagonal hypersurface
+\[
+ X=\{\textstyle\sum_i\lambda_i x_i^p=0\}\subset\mathbf P^{h+1}.
+\]
+Over $\C$ it is isomorphic to $F_p^h$ by diagonal rescaling. The map
+$[x_i]\mapsto[x_i^p]$ is a finite quotient onto the hyperplane
+$\sum_i\lambda_i u_i=0$, identified with $\mathbf P^h$ by $u_i=L_i$.
+Its group is
+\[
+ A=\mu_p^{h+2}/\mu_p^{\mathrm{diag}}.
+\]
+Because $\sum_i a_i=0$ modulo $p$, the formula
+$\chi_a((\epsilon_i))=\prod_i\epsilon_i^{a_i}$ is a well-defined
+nontrivial character of $A$. Put $B=\ker\chi_a$; then $|B|=p^h$.
+The quotient $X/B$ has precisely the Kummer function field
+\eqref{eq:kummer}. For example, in the chart $x_{h+2}\ne0$, the
+semi-invariant function
+\[
+ w=\frac{\prod_i x_i^{a_i}}{x_{h+2}^{pk}}
+ \quad\hbox{satisfies}\quad
+ w^p=\frac{\prod_i u_i^{a_i}}{u_{h+2}^{pk}}.
+\]
+Since both quotients are normal finite covers of the same $\mathbf P^h$
+with the same function field, they are isomorphic to its normalization in
+that field. We have therefore constructed finite quotient maps
+\begin{equation}\label{eq:quotients}
+ r:X\longrightarrow Y\longleftarrow Z:q,
+ \qquad d_X=\deg r=p^h,\quad d_Z=\deg q=p^{h-1}h!.
+\end{equation}
+The intermediate $Y$ may be singular. This causes no difficulty for the
+next argument, which uses only cycles on smooth $X$ and $Z$.
+
+\section{An elementary finite-correspondence identity}
+For smooth projective varieties of equal dimension $h$, a correspondence
+in $\CH^h(X\times Z)$ acts from the cohomology of $X$ to that of $Z$;
+write $T^{\mathsf t}$ for its transpose. Let $[X\times_Y Z]$ mean the
+dimension-$h$ fundamental cycle of the scheme-theoretic fiber product,
+with its generic multiplicities.
+
+\begin{lemma}\label{lem:finite}
+In the situation \eqref{eq:quotients}, set $T=[X\times_Y Z]$. Then
+\begin{align*}
+ T\circ T^{\mathsf t}&=d_X\sum_{g\in G}[\Gamma_g]
+                        &&\text{in }\CH^h(Z\times Z),\\
+ T^{\mathsf t}\circ T&=d_Z\sum_{b\in B}[\Gamma_b]
+                        &&\text{in }\CH^h(X\times X).
+\end{align*}
+\end{lemma}
+\begin{proof}
+The intersection support in each composition is finite over $Y$. In particular the
+two pulled-back correspondences intersect properly in $Z\times X\times Z$
+(or $X\times Z\times X$): the intersection has dimension $h$.
+On a dense open subset of $Y$ both quotient maps are finite \'etale torsors.
+There the composition from $Z$ to itself consists of each graph of $g\in G$
+with multiplicity $d_X$: for a point and its $g$-translate one can choose
+any of the $d_X$ points of $X$ above their common image. The other identity
+is identical with $X$ and $Z$ interchanged.
+
+These generic computations determine the entire dimension-$h$ cycles.
+Indeed, a component supported above the excluded proper closed subset of
+$Y$ has dimension at most $h-1$, since all the relevant maps are finite.
+It cannot contribute a dimension-$h$ component to the proper intersection
+or its pushforward. Thus the generic cycle identities hold globally, and
+therefore also in the indicated Chow groups. No pushforward to singular
+cohomology or resolution theorem has been used.
+\end{proof}
+
+\section{The determinant projector and transfer}
+For a finite group $L$ acting on $Z$, write
+$e_L=|L|^{-1}\sum_{\ell\in L}[\Gamma_\ell]$. Let
+$\widetilde G=\mu_p^h\rtimes\mathfrak S_h$, containing $G$ as a normal
+subgroup of index $p$, and set
+\begin{equation}\label{eq:P}
+ P=e_G-e_{\widetilde G}\in\CH^h(Z\times Z).
+\end{equation}
+Nested averaging gives $e_Ge_{\widetilde G}=e_{\widetilde G}e_G
+=e_{\widetilde G}$, hence $P^2=P$. This formula uses the quotient deck
+action through one slot; it never replaces it by simultaneous action on
+all slots. In particular it remains valid when $p\mid h$.
+
+\begin{lemma}\label{lem:cohom}
+The only nonzero cohomological image of $P$ is in degree $h$, where
+\[
+ \im P=\bigoplus_{b=1}^{p-1}\bigwedge^hH^1(C,\C)_b
+\]
+after extension of scalars to $\C$.
+\end{lemma}
+\begin{proof}
+K\"unneth tensors invariant under $N$ have equal deck-character labels
+on their $h$ slots, because the characters trivial on $N$ are exactly
+$(b,\ldots,b)$. The subtraction of $e_{\widetilde G}$ removes the label
+$b=0$. A nontrivial character occurs only in $H^1(C)$, because the deck
+action on $H^0(C)$ and $H^2(C)$ is trivial. Thus every surviving tensor
+has total degree $h$ and lies in $H^1(C)_b^{\otimes h}$.
+
+A geometric transposition of two factors acts on such K\"unneth tensors
+as minus the ordinary tensor transposition, by graded commutativity.
+Consequently taking geometric $\mathfrak S_h$-invariants takes ordinary
+alternating tensors, namely $\bigwedge^hH^1(C)_b$. Each is a line since
+$\dim H^1(C)_b=h$. The rationality is automatic from \eqref{eq:P}.
+\end{proof}
+
+Put $d=d_Xd_Z$ and define
+\[
+ R=\frac1d T^{\mathsf t}PT\in\CH^h(X\times X),\qquad
+ a=PT,\qquad b=\frac1d T^{\mathsf t}P.
+\]
+Lemma~\ref{lem:finite} and $Pe_G=P$ give
+\[
+ R^2=R,\qquad ab=P,\qquad ba=R.
+\]
+For instance $PTT^{\mathsf t}P=dP$. These are Chow identities.
+They exhibit $(Z,P)$ as a direct summand of $X$ with inverse algebraic
+correspondences. Lemma~\ref{lem:cohom} proves the first realization of
+Theorem~\ref{thm:transfer}.
+
+\paragraph{Passage to the Jacobian.}
+Let $\iota:C\to J$ be an Abel--Jacobi map based at a branch point; it is
+equivariant for the stated deck convention and induces an isomorphism
+$\iota^*:H^1(J,\Q)\to H^1(C,\Q)$. Its inverse is algebraic in degree one.
+Here is a direct way to make this familiar fact sufficient for our use.
+The inverse Hodge map, using the intersection pairing on $H^1(C)$, is a
+rational Hodge class in the K\"unneth component
+$H^1(C,\Q)\otimes H^1(J,\Q)\subset H^2(C\times J,\Q)$.
+By the Lefschetz $(1,1)$ theorem it is the class of a rational divisor.
+Composing this divisor correspondence with the curve projector
+\[
+ \pi_1^C=[\Delta_C]-[c_0\times C]-[C\times c_0]
+\]
+ensures its relevant source is precisely $H^1(C)$.
+Call the resulting correspondence $L:C\rightsquigarrow J$.
+
+Take $L^{\otimes h}$ from $C^h$ to $J^h$ and follow it by pullback along
+the diagonal $J\to J^h$. On the alternating subspace this is the usual
+wedge map. With the alternating inclusion normalized by $1/h!$, it
+identifies the determinant realization in $C^h$ with that in $J$.
+All maps are algebraic. For an explicit inverse on the determinant,
+pull back by the sum map
+$C^h\to J$, $(c_1,\ldots,c_h)\mapsto\sum_\nu\iota(c_\nu)$,
+apply $(\pi_1^C)^{\otimes h}$, and divide by $h!$.
+Its degree-$h$ component is the normalized alternating inclusion followed
+by $(\iota^*)^{\otimes h}$. This proves the
+remaining assertion of Theorem~\ref{thm:transfer}. No Hodge conjecture in
+higher codimension is used in this degree-one passage.
+
+\section{Products, rational Hodge classes, and balance}
+We use the following exact published input.
+
+\begin{theorem}[Shioda]\label{thm:shioda}
+For a fixed prime $p$, the rational Hodge conjecture holds for every finite
+product $\prod_j F_p^{h_j}$, with arbitrary dimensions $h_j$.
+\end{theorem}
+
+This is Theorem~2 on printed page 112 of \cite{Shioda79}; the paragraph
+immediately preceding it verifies the condition used there for prime
+degree and every dimension. The degree is fixed, but the dimensions need
+not agree. This is stronger than the single-Fermat-hypersurface assertion.
+
+To prove Corollary~\ref{cor:products}, first use the inverse degree-one
+correspondences to place a rational Hodge class in
+$\bigotimes_j\im P_j\subset H^H(\prod_j C_j^{h_j},\Q)$.
+The exterior product of the $b_j$ constructed above maps it to a rational
+Hodge class on $\prod_j F_p^{h_j}$; the exterior product of the $a_j$
+returns the original class. If $H$ is even, Shioda makes the source
+class algebraic, and its image under the forward algebraic correspondence
+is algebraic. If $H$ is odd there is no rational $(r,r)$ class in degree
+$H$. This proves the corollary. The explicit algebraic splitting means
+that even semisimplicity of polarizable Hodge structures is unnecessary
+for this proof.
+
+For comparison with the companion fusion statement, the matched space is
+\[
+ W_\C=\bigoplus_{b=1}^{p-1}
+             \bigotimes_j\bigwedge^{h_j}H^1(C_j,\C)_b.
+\]
+It is rational. To realize matching by an algebraic projector, one may
+work in all $H=\sum h_j$ curve slots and use
+\[
+ \prod_{r=2}^{H}\left(\frac1p\sum_{u=0}^{p-1}
+                  (\sigma_1^*)^u(\sigma_r^*)^{-u}\right).
+\]
+On the already alternating factors it selects exactly equal labels in
+all slots. This formulation also works when one or several $h_j$ are
+divisible by $p$; simultaneous action on $h_j$ slots is not substituted
+for the action on one selected slot.
+
+Write $[a]_p\in\{1,\ldots,p-1\}$ for the representative of a nonzero
+residue, and put $S=\sum_js_j$. The eigenspace Hodge numbers of a cyclic
+cover give the criterion
+\begin{equation}\label{eq:balance}
+ 2\sum_{j,i}[b a_{ji}]_p=pS\qquad (b\in\F_p^\times)
+\end{equation}
+for every component line of $W$ to have bidegree $(H/2,H/2)$.
+Changing the pullback labeling interchanges $b$ with $-b$, leaving the
+criterion unchanged. Hence \eqref{eq:balance} and
+Corollary~\ref{cor:products} imply
+\[
+ W\subset\im\left(\cl:\CH^{H/2}\left(\prod_jJ(C_j)\right)_\Q
+                       \longrightarrow H^H\left(\prod_jJ(C_j),\Q\right)\right).
+\]
+There is no need to decompose a balanced residue tuple into opposite pairs,
+construct a degeneration, or assume that an individual determinant is a
+Hodge class. Jointly balanced products of non-Hodge determinants are
+included directly.
+
+\begin{remark}[A previously proposed test example]
+For $p=5$, the branch tuples $(1,1,3)$ and $(1,2,4,4,4)$ give $h_1=1$
+and $h_2=3$. Their residue-age vectors, for multipliers $1,2,3,4$, are
+$(1,1,2,2)$ and $(3,3,2,2)$. Their sums are all four, so the matched
+rational four-dimensional space in
+$H^1(J(C_1))\otimes H^3(J(C_2))$ has type $(2,2)$.
+Its algebraicity is a consequence of the transfer from
+$F_5^1\times F_5^3$ and Shioda's theorem. The fact that neither individual
+determinant is of Tate type does not distinguish this example from the
+Fermat-product method.
+\end{remark}
+
+\section{Attribution and limits}
+The cycle theorem doing the essential algebraicity work is Shioda's
+published Fermat-product theorem \cite{Shioda79}. Schoen's 1989 paper
+\cite{Schoen89}, in its directly inspected introduction on printed pages
+137--138, announces algebraic correspondences from cyclic covers of
+$\mathbf P^v$ branched over $v+2$ hyperplanes, which are Fermat quotients,
+to determinant Hodge structures of cyclic-cover generalized Pryms.
+That is direct precedent for the construction used here, and must be
+acknowledged prominently.
+
+At the time of writing, only those two introduction pages of
+\cite{Schoen89} were available to this audit; the exact hypotheses of its
+later sections were not inspected. Accordingly we do not cite an
+unverified numbered theorem as if it already had precisely the scope of
+Theorem~\ref{thm:transfer}. Instead Sections 2--4 give the needed
+$\mathbf P^1$ argument explicitly. This access limitation does not become
+a claim of novelty. The product consequence is a short deduction from
+classical Fermat theory once this finite-quotient correspondence is written
+down; identifying its earliest explicit publication remains a bibliographic
+task.
+
+The companion all-powers assertion for a very general elementary-abelian
+cover additionally needs the simultaneous monodromy classification and
+the algebraic invariant-generator reduction. Those assertions do not
+follow merely from this note. Conversely the arbitrary balanced determinant
+algebraicity step should not be described as a new cycle-construction
+breakthrough on the evidence presently available.
+
+\begin{thebibliography}{9}
+\bibitem{Shioda79}
+T.~Shioda, \emph{The Hodge conjecture and the Tate conjecture for Fermat
+varieties}, Proc. Japan Acad. Ser. A Math. Sci. \textbf{55} (1979), 111--114,
+Theorem~2, p.~112.
+\href{https://doi.org/10.3792/pjaa.55.111}{doi:10.3792/pjaa.55.111}.
+\href{https://www.researchgate.net/profile/Tetsuji-Shioda/publication/226509160_The_hodge_conjecture_for_Fermat_varieties/links/56716efe08ae2b1f87aef843/The-hodge-conjecture-for-Fermat-varieties.pdf}{Author-uploaded original scan (direct PDF)}.
+The landing-page metadata labels the later Math. Ann. paper; the uploaded
+four-page primary scan is the Proc. Japan Acad. note cited here.
+
+\bibitem{Schoen89}
+C.~Schoen, \emph{Cyclic covers of $\mathbf P^v$ branched along $v+2$
+hyperplanes and the generalized Hodge conjecture for certain abelian
+varieties}, in Arithmetic of Complex Manifolds, Lecture Notes in Math.
+\textbf{1399}, Springer, 1989, 137--154.
+\href{https://doi.org/10.1007/BFb0095974}{doi:10.1007/BFb0095974}.
+\href{https://page-one.springer.com/pdf/preview/10.1007/BFb0095974}{Publisher introduction preview}.
+
+\bibitem{Schoen88}
+C.~Schoen, \emph{Hodge classes on self-products of a variety with an
+automorphism}, Compositio Math. \textbf{65} (1988), 3--32.
+\href{https://www.numdam.org/item/CM_1988__65_1_3_0.pdf}{Original journal scan}.
+
+\bibitem{Aoki02}
+N.~Aoki, \emph{Hodge cycles on CM abelian varieties of Fermat type},
+Comment. Math. Univ. Sancti Pauli \textbf{51} (2002), 99--130,
+Theorem~1.2, p.~102.
+\href{https://rikkyo.repo.nii.ac.jp/record/8744/files/AA00610867_51-01_07.pdf}{Original university-hosted PDF}.
+\end{thebibliography}
+\end{document}

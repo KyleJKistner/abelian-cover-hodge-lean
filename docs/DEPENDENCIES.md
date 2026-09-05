@@ -1,7 +1,7 @@
 # Target dependency graph
 
-The diagram below is the target mathematical DAG, not a claim that every solid
-arrow is already a Lean theorem. The core never imports the bridge. The current
+The diagram below is the written mathematical argument in the general and
+fusion manuscripts, not a claim that every arrow is a Lean theorem. The core never imports the bridge. The current
 bridge is explicitly a temporary logical scaffold; the concrete replacement
 criteria are in `AUDIT_BOUNDARY.md`.
 
@@ -9,49 +9,55 @@ criteria are in `AUDIT_BOUNDARY.md`.
 flowchart TD
   CODE["Full-support zero-sum code"] <--> BD["Prime inertia evaluation data"]
   BD --> A["Lean-verified integral signature"]
-  POS["Positive CW arithmetic pair"] --> GOOD["Lean-verified MN case-(a) good sequence"]
-  GOOD --> MN["Menet--Nguyen Theorem 5.1"]
-  MN -->|"one source input"| P1
-  TW["MN twist inputs + further source leaves"] --> P1
-  DEL["Deligne fixed part + Andre normality"] --> P1
-  PM["Project proofs: Goursat, reconstruction, Kummer geometry, descent"] --> P1
-  A --> CW["Chevalley--Weil bidegrees"]
-  P1["Phase I exact blocks + algebraic matrix units"] --> FFT["Weyl invariant theory"]
-  CW --> ZS["Determinant Hodge iff zero signature"]
-  FFT --> ZS
-  WORD["Concrete branch-valid signed determinant terms"] --> BAL["Lean: all-row zero signature gives literal Aoki balance"]
-  ZS -. "object-level realization still project-side" .-> WORD
-  BAL --> AO["Exact prime B = D source input (length >= 4)"]
-  AO --> PAIR["Opposite matching"]
-  PAIR --> FUS["Pairing graph / compact-type fusion datum"]
-  FUS --> ACV["ACV smoothing"]
+  BD --> POS["Written universal mixed-embedding lemma"]
+  POS --> GOOD["Lean-verified MN case-(a) arithmetic match"]
+  GOOD --> MN["MN Theorem 5.1 + finite scalar normalization"]
+  MN --> GAL["K-defined closure at all Galois embeddings"]
+  GAL --> P1["Exact connected monodromy blocks"]
+  TW["MN pair formula + spanning relation"] --> RECON["Written support and labelled-sign reconstruction"]
+  RECON --> P1
+  P1 --> FFT["Schur-Weyl standard/dual tensor diagrams"]
+  GRAPH["Actual oriented Kummer graphs"] --> MAP["Rational algebraic diagram-source map"]
+  FFT --> MAP
+  PAIR["Algebraic polarization tensors"] --> MAP
+  SLOT["Matching projectors + single-slot K action"] --> MAP
+  MAP --> SURJ["Surjection onto monodromy invariants"]
+  GEN["Generic monodromy inclusion + CDK Hodge loci"] --> LIFT["Polarizable Hodge splitting lifts generic classes"]
+  SURJ --> LIFT
+  LIFT --> KL["K-line Hodge subspace is zero or whole"]
+  CW["Chevalley-Weil bidegrees"] --> BAL["Every Galois row balances"]
+  KL --> BAL
+  A --> BAL
+  BAL --> AO["Prime B = D source leaf + finite adapters"]
+  AO --> FUS["Pairing forests and compact-type fusion"]
+  FUS --> ACV["Algebraic admissible-cover smoothing"]
   ACV --> SCH["Schoen simple-tuple cycles"]
-  SCH --> PW["Primitive equals whole for prime cyclic P1 cover"]
-  PW --> SP["Chow specialization + determinant compatibility"]
-  SP --> DET["Algebraic determinant spaces"]
-  P1 --> CON["Algebraic contractions"]
-  FFT --> GEN["Algebraic tensor generators"]
-  DET --> GEN
-  CON --> GEN
-  GEN --> HR["Weight-one Hodge realization"]
-  HR --> GOAL["All-powers rational Hodge conclusion"]
+  SCH --> SP["Compact-type Jacobian + cycle specialization"]
+  SP --> DET["Standalone algebraic determinant sources"]
+  DET --> FORWARD["Forward algebraic diagram maps"]
+  MAP --> FORWARD
+  FORWARD --> GOAL["All-powers rational Hodge theorem: written proof"]
+  BIN["A'Campo + support separation + symplectic FFT"] --> GOAL
 
-  LAT["Lean-verified saturated relation lattice"] -->|"explicit compatible-word hypotheses"| ASIG["Concrete all-row signature quotient"]
-  LAT --> TOR["Geometric torus identification"]
+  LAT["Lean saturated relation lattice"] --> TOR["Unresolved geometric torus identification"]
   TOR -. "separate refinement" .-> FULL["Full Hodge group / endomorphisms"]
 ```
 
 ## Why the direct route matters
 
-The all-powers conclusion uses determinant Hodge bidegrees directly. It does
+The all-powers conclusion uses a rational algebraic diagram-source map and
+Hodge lifting before imposing determinant Hodge bidegrees. It does
 not require a prior computation of the complete central torus. Consequently,
 the unsaturated quotient and rank-two character errors recorded as AF-1 and
 AF-2 do not enter this headline path.
 
 The full-group branch now starts from a proved algebraic correction: the
 saturated quotient is torsion-free and compatible signature maps descend.
-Only its identification with the geometric connected central torus remains on
-that branch.
+The remaining geometric work includes identifying the complete integral
+character lattice, not merely a rationally isogenous torus; see
+`TORUS_REPAIR.md`. The corrected rank-two character is independently proved
+in Lean. The general monodromy and generator steps now have written proofs
+in `general_all_powers.tex`; their Lean formalization remains unfinished.
 
 ## Current interfaces and scaffold
 
@@ -72,6 +78,15 @@ dotted edge from Hodge determinant data to the signed-word model is still a
 project obligation.
 
 `External.ProspectiveCitationInputs` is not consumed by the headline scaffold.
+The concrete finite continuation now lives in `Bridge/DeterminantFusion.lean`:
+repeated determinant factors receive distinct source labels, their residue
+concatenation is exact, and source support bounds imply all required fused
+bounds and rank preservation. `Verified/ConnectedFusion.lean` constructs a
+complete fusion component for connected pairing graphs. General disconnected
+component assembly and every cover/Chow realization remain beyond these Lean
+results. The standalone manuscript supplies the geometric argument; it is not
+silently treated as a formal theorem.
+
 The separate `Bridge.PublishedInputs` has seven logical arrows and
 `UnformalizedDeductions` has eight manuscript-specific arrows. Both structures
 remain scaffolding. Every manuscript-specific field must disappear from the

@@ -33,28 +33,31 @@ abstract `Bridge.PublishedInputs`.
 
 ## Shortest headline route
 
-The rational Hodge conclusion does not require the full determinant-torus
-calculation:
+The written proof in `manuscripts/general_all_powers.tex`, with the standalone
+fusion companion, now supplies the general mathematical route. Its geometric
+and Hodge objects are **not yet formalized**. The correct route is:
 
-1. Phase I identifies the derived Hodge-group blocks and supplies algebraic
-   Kummer matrix units.
-2. Weyl invariant theory reduces derived invariants to contractions and
-   determinant monomials.
-3. Chevalley--Weil bidegrees show directly that a determinant monomial is Hodge
-   exactly when every signature sum is zero.
-4. The manuscript-specific arithmetic reduction turns zero signature into an
-   Aoki-balanced residue tuple.
-5. The source-pinned prime `B = D` theorem supplies opposite-residue pairs at
-   length at least four; Lean handles the shorter tuples.
-6. The pairing graph and spanning forest give the compact-type fusion datum.
-7. ACV smoothing, Schoen's simple-tuple theorem, and Chow specialization
-   algebraize the determinant space.
-8. Algebraic contractions and determinant spaces generate every rational Hodge
-   class on every power.
+1. Prove a mixed embedding exists, retain all rational conjugates, and classify
+   connected monodromy blocks using Goursat, pair twists and actual oriented
+   graph correspondences.
+2. Use Schur–Weyl to span invariants by volume and coevaluation diagrams.
+3. Construct a finite rational algebraic source map from matching-embedding
+   determinant words and Tate summands onto those invariants. Empty words
+   require deck translates spanning their whole Galois orbit.
+4. At a very general point, lift each rational Hodge class through this map
+   using semisimplicity. Only the forward map must be algebraic.
+5. A nonzero source Hodge vector in a K-line forces all-row middle bidegree,
+   hence the literal balance condition.
+6. The prime `B = D` theorem, pairing forests, ACV smoothing, Schoen cycles and
+   specialization prove the standalone balanced fusion theorem.
+7. Forward algebraic diagram maps transfer these cycles to the target power.
 
-This route quarantines audit findings AF-1 and AF-2. They still block the
-separate claims computing the complete Hodge group and all endomorphism
-corners, but they are not premises of the direct all-powers argument.
+This route bypasses the complete determinant-torus calculation and never
+identifies arbitrary monodromy-Hom corners with Hodge-Hom corners. The earlier
+AF-8 through AF-10 defects remain defects of the historical arguments; the new
+universal proof replaces their needed steps. AF-11 is handled by the standalone
+fusion revision. Exact source coverage is in `GENERAL_ALL_POWERS.md` and
+`FUSION_REPAIR.md`.
 
 ## Citation-level leaves to state exactly
 
@@ -66,9 +69,12 @@ after their hypotheses are pinned to primary sources.
 3. Full monodromy projection for one positive cyclic eigenspace. The present
    source candidate is Menet--Nguyen, not Spelta--Tamborini Theorem 4.4, whose
    no-repeated-factors hypothesis is stronger than the factorwise use here.
-4. Menet--Nguyen pair- and subset-twist spectra.
-5. Andre normality for the derived generic Hodge group.
-6. Weyl's invariant theorem for standard/dual special-linear blocks.
+4. Menet--Nguyen pair-twist formula and spanning-vector relation. The new
+   proof avoids the old subset-twist and half-shift route.
+5. Generic connected-monodromy inclusion and CDK algebraicity of exceptional
+   Hodge loci. Equality with the derived Hodge group is not required.
+6. Schur–Weyl duality for standard/dual special-linear tensor invariants;
+   symplectic tensor invariants and A’Campo for the binary case.
 7. The prime `B = D` statement recorded on Aoki p. 24 and credited there to
    W. Parry, with the source's branch, nonzero-entry, unit-row, and even-length
    at least four premises, in the form used by Schoen.
@@ -85,7 +91,8 @@ all-powers route if Phase I is formulated directly on every relevant block.
 
 ## Manuscript-specific obligations
 
-The largest proof obligations that must not remain bundled as hypotheses are:
+The following are formalization obligations, even where a current manuscript
+now supplies a written proof. They must not remain bundled as hypotheses:
 
 - the finite-linear-algebra branch-datum/code equivalence, including
   coordinate independence, is formalized; cover classification and the
@@ -94,14 +101,19 @@ The largest proof obligations that must not remain bundled as hypotheses are:
   formalized on nonzero support; positivity-to-moving, the geometric factor
   identification, root/sign orientation bridge, and discharge of Theorem
   5.1's other standing hypotheses remain. Source-scoped action interfaces are
-  present, but the exact Theorem 2.2 Gram data and Lemma 3.9/Corollary 3.11
-  subset-eigenspace inputs still need to be modeled for the Phase I use;
+  present, but the Theorem 2.2 spanning relation and its nonzero-vector
+  consequence still need formal models. The new route does not require
+  Lemma 3.9/Corollary 3.11 subset-eigenspace inputs or a Gram computation;
 - semisimple subdirect-product reduction, support separation, and high-rank
   character reconstruction;
-- symbolic Fricke/Gassner fingerprint, half-shift exclusion, and Kummer
-  rigidity, replacing the missing legacy Phase I core certificate;
-- quotient-cover graph construction, nonvanishing, descent, matrix units,
-  double centralizer, and Phase I block assembly;
+- the new labelled pair-sum sign cube, global-sign reconstruction and
+  explicit oriented Kummer graphs; the old fingerprint certificate and
+  half-shift/rigidity route are no longer required;
+- quotient-cover oriented graph construction, nonvanishing, scalar descent
+  and connected block assembly; no general Hodge/monodromy double-centralizer
+  equality may be assumed;
+- the rational algebraic diagram-source surjection, empty-word orbit span,
+  and semisimple Hodge lifting argument;
 - determinant-word zero-signature iff balanced is formalized at the residue
   level under explicit branch-divisibility hypotheses. For branch-valid signed
   terms, Lean now proves every divisibility and nonzero-entry side condition,
@@ -110,17 +122,20 @@ The largest proof obligations that must not remain bundled as hypotheses are:
   applies the exact prime `B = D` leaf only at length at least four. Identifying
   a concrete Hodge determinant monomial and its bidegrees with this signed-word
   model remains;
-- occurrence-labelled pairing and the finite consequences of an attachment
-  forest are formalized. A distinct source-family wrapper gives exact source
-  vertex coverage, and actual local-rank sums are equated only under explicit
-  bounds for every source and fused component. Construction of that forest for
-  every pairing graph, persistent marking-slot identifiers, inverse-inertia
-  realization, connectedness, and compact type remain;
+- occurrence-labelled pairing, connected attachment-tree existence and the
+  finite consequences of an attachment forest are formalized. Distinct source
+  positions preserve repeated determinant factors. Source bounds alone imply
+  the required fused bounds and exact equality of actual local-rank sums.
+  The disconnected graph partition and assembly remain to be formalized, as
+  do the geometric inverse-inertia realization, smoothing and compact type.
+  The fusion revision supplies written arguments for the geometric steps;
 - prime primitive-factor equals whole-Jacobian application of Schoen;
 - determinant of a direct sum, specialization to component determinants,
   quotient pull--push/projectors, and final tensor-to-cohomology assembly.
 
-The integral algebra of the corrected determinant lattice is now formalized:
+The correcting rank-two determinant identity is now formalized over an
+arbitrary commutative ring. The integral algebra of the corrected determinant
+lattice is also formalized:
 it quotients by the saturation, proves the quotient torsion-free, proves the
 explicit standard/dual word generators up to branch-coordinate permutation
 vanish in every unit row (including self-dual `2 epsilon` relations), descends the

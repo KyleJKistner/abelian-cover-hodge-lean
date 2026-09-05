@@ -16,3 +16,10 @@ assembly must be supported by a pinned source or by a Lean proof. Remember that
 `Bridge.PublishedInputs` is still an unrelated abstract scaffold.
 
 Run `./scripts/audit.sh` before opening a pull request.
+
+For manuscript, fixture, or certificate changes, also install
+`requirements-audit.txt` in a virtual environment and run
+`python scripts/replay_certificates.py`. Preserve the eight frozen source
+hashes in `docs/PROVENANCE.md`; revise the current manuscripts rather than
+silently editing historical proof claims. Rebuild and visually inspect any
+changed review PDF from its matching source.

@@ -1,8 +1,13 @@
-# Abelian-cover Hodge arithmetic in Lean
+# Abelian-cover Hodge proofs and Lean arithmetic
 
 [![Lean audit](https://github.com/KyleJKistner/abelian-cover-hodge-lean/actions/workflows/lean.yml/badge.svg)](https://github.com/KyleJKistner/abelian-cover-hodge-lean/actions/workflows/lean.yml)
 
-This repository does **not** yet claim a Lean proof of the Hodge conjecture.
+This repository contains a written proof of the rational Hodge conjecture for
+all powers of very general Jacobians in full elementary-prime abelian-cover
+families, an extension to finite abelian groups of odd prime-power exponent
+and the mixed-prime exponents 3^a5^b and 3^a7^b, structural refinements,
+and a separately checked Lean
+arithmetic layer. It does **not** claim a Lean proof of the Hodge conjecture.
 The current checkpoint kernel-checks a growing arithmetic/combinatorial core,
 states the citation-level inputs as explicit typed interfaces, and contains a
 machine-checked dependency scaffold. The scaffold is not the final audit
@@ -10,6 +15,26 @@ boundary: its abstract propositions still hide manuscript-specific geometric
 deductions, and the concrete `External.*` interfaces are not yet wired into
 its theorem. [`docs/AUDIT_BOUNDARY.md`](docs/AUDIT_BOUNDARY.md) records the
 completion standard and exact remaining proof obligations.
+
+## Current mathematical manuscripts
+
+The preserved `phase_I_complete.tex` and `phase_II_complete.tex` are historical
+sources with known errors. Use the following revisions for the current claims.
+
+| Revision | Result and boundary |
+|---|---|
+| [General all-powers theorem](manuscripts/general_all_powers.tex) | Every prime, every rank, every admissible branch datum over the projective line, and every power of the very general Jacobian. Uses exact monodromy blocks, algebraic diagram maps and the classical Fermat-product reduction; the binary case gives divisor generation. |
+| [Fermat determinant transfer](manuscripts/fermat_determinant_transfer.tex) | An explicit Chow-correspondence splitting realizes every cyclic prime-cover determinant in Fermat cohomology. Shioda's theorem gives all mixed determinant Hodge classes. This is a classical-construction consequence, not a claimed new algebraicity breakthrough. |
+| [Structural extensions](manuscripts/structural_extensions.tex) | Odd-exponent transfer criterion and unconditional all-powers HC for finite abelian covers of exponent dividing p^e (p odd), 3^a5^b or 3^a7^b. Also exact prime-family Hodge groups, first exceptional classes, all-powers generators, distinct-prime products and a degree-seven generalized-Hodge corollary. Written proofs; novelty remains under comparison. |
+| [Split-family Phase I](manuscripts/phase_I_revised.tex) | A rewritten proof for every odd prime, using two braid eigenratios to establish exact generic blocks, explicit inverse graph maps for the endomorphism algebra, and divisor generation on all powers. It also repairs the rational moving-part criterion. The general finite-abelian exhaustion theorem is not asserted. |
+| [Standalone balanced fusion](manuscripts/fusion_revised.tex) | A detailed geometric proof draft for mixed determinants on products of prime cyclic-cover Jacobians. It supplies slot-level rational projectors, balanced smoothing, and specialization. Its conditional all-powers application is completed by the new general manuscript; the standalone fusion proof itself uses no generator hypothesis. |
+| [Determinant-torus correction](docs/TORUS_REPAIR.md) | The new structural companion constructs the geometric centralizer and its exact determinant quotient, closing the earlier conditional group-identification step. The erroneous legacy lattice is not restored. |
+
+These manuscripts are not externally referee-verified or novelty-certified.
+The [novelty audit](docs/NOVELTY.md) separates classical inputs and direct
+consequences from the remaining candidate contributions. Journal level is
+not established by the theorem title or the passing arithmetic checks.
+The [repair overview](docs/REPAIR_STATUS.md) links every change and its checks.
 
 ## Status at a glance
 
@@ -23,17 +48,34 @@ completion standard and exact remaining proof obligations.
 | Saturated Kummer-relation lattice | **Lean verified algebra** | The corrected quotient is torsion-free and has the same signature image when raw relations lie in the signature kernel; no geometric torus identification is claimed. |
 | Compatible Kummer words and all-row signature | **Lean verified algebra** | Standard/dual word generators, allowing branch-coordinate permutations and self-dual `2ε` relations, vanish in every unit Galois row; so does their saturated lattice. Geometric Kummer identifications remain outside this result. |
 | Opposite-pair witnesses imply all-row balance | **Lean verified** | Constructive theorem, not an invocation of Aoki. |
-| Occurrence pairing and certified fusion forests | **Lean verified conditional combinatorics** | Aoki pairings lift without losing multiplicity; a certified attachment forest gives simple survivors and exact branch counts. Integer rank expressions agree unconditionally; actual sums of local ranks agree for a distinct source family under explicit source- and fused-component lower bounds. Forest existence and geometric realization remain open. |
+| Occurrence pairing, connected fusion and branch bounds | **Lean verified combinatorics** | Connected pairing graphs admit attachment trees and a multiplicity-exact fusion component. With a supplied forest, actual local-rank sums agree from source bounds alone; source support at least three forces each fused support to be even and at least four. The disconnected assembly and geometric realization remain outside these results. |
+| Rank-two determinant character | **Lean verified algebra** | The universal identity `A J Aᵀ = det(A) J` and uniqueness of the multiplier correct the former squared determinant. |
 | Mixed `p = 5` and split `p = 3,5,7` examples | **Lean verified** | Exact kernel-reduced regressions. |
 | Prime balanced-tuple source leaf and geometric inputs | **Explicit hypotheses** | The exact prime `B = D` leaf is isolated and source-pinned; several geometric source interfaces remain prospective or need exact locators. |
 | Phase I blocks, tensor reduction, gluing, and exact specialization | **Unformalized deductions** | Manuscript-specific arrows remain to be replaced by concrete proofs. |
-| Rational Hodge conjecture on all powers | **Scaffold only** | The direct assembly bypasses the blocked torus claims, but still has abstract unformalized deductions. |
+| Rational Hodge conjecture on all powers | **Written proof; Lean scaffold only** | The general manuscript supplies the geometric and rational generator arguments. The separate Lean assembly still uses abstract unformalized deductions. |
 
-Seven mathematical/source-interface findings from this conversion are recorded
+Mathematical/source-interface findings and their repair status are recorded
 in [`docs/AUDIT_FINDINGS.md`](docs/AUDIT_FINDINGS.md). The two defects bypassed
-by the direct all-powers route are the unsaturated Phase II Kummer relation
+by the written direct all-powers proof are the unsaturated Phase II Kummer relation
 lattice and the misnormalized internal rank-two determinant character. The
-legacy manuscripts are preserved unchanged for provenance.
+[general proof audit](docs/GENERAL_ALL_POWERS.md) records the completed written
+representation and generator arguments, exact source coverage, and remaining
+formalization and external-review boundaries. The legacy manuscripts are
+preserved unchanged for provenance.
+
+The exact-arithmetic checks are reproducible separately:
+
+```bash
+python3 -m venv .venv-audit
+.venv-audit/bin/python -m pip install -r requirements-audit.txt
+.venv-audit/bin/python scripts/replay_certificates.py
+```
+
+This checks eight frozen source hashes, regenerates the original Phase II
+report byte for byte, verifies the review-PDF/source hashes, and runs the new
+Phase I, fusion, general and structural-extension arithmetic checks plus the assertion-preservation regression.
+It does not claim to reproduce the missing original Phase I core.
 
 ## Fast audit
 
@@ -75,7 +117,17 @@ full transitive export is resource intensive.
   lifts opposite residues to labelled occurrences and verifies attachment-tree,
   multiplicity, simplicity, and branch-count consequences of a concrete
   fusion-forest certificate. Its source-family API prevents repeated source
-  positions from collapsing and states every local rank bound explicitly.
+  positions from collapsing.
+- [`AbelianCoverHodge/Verified/FusionBounds.lean`](AbelianCoverHodge/Verified/FusionBounds.lean)
+  derives fused branch bounds from source counts and proves exact local-rank preservation.
+- [`AbelianCoverHodge/Verified/ConnectedFusion.lean`](AbelianCoverHodge/Verified/ConnectedFusion.lean)
+  constructs the attachment tree and complete multiplicity partition for a
+  connected pairing graph, retaining loops and parallel pairs as smooth leftovers.
+- [`AbelianCoverHodge/Bridge/DeterminantFusion.lean`](AbelianCoverHodge/Bridge/DeterminantFusion.lean)
+  gives every repeated determinant source a distinct label and derives its
+  pairing, rank preservation and positive even fused ranks.
+- [`AbelianCoverHodge/Mathlib/RankTwoDeterminant.lean`](AbelianCoverHodge/Mathlib/RankTwoDeterminant.lean)
+  proves the corrected alternating-tensor character over every commutative ring.
 - [`AbelianCoverHodge/Mathlib/PrimeBranchDatum.lean`](AbelianCoverHodge/Mathlib/PrimeBranchDatum.lean)
   constructs the prime inertia evaluation code in genuine mathlib `ZMod` linear algebra.
 - [`AbelianCoverHodge/Mathlib/BranchCodeEquivalence.lean`](AbelianCoverHodge/Mathlib/BranchCodeEquivalence.lean)
@@ -117,7 +169,8 @@ full transitive export is resource intensive.
   trust boundary and every manuscript-specific obligation still to formalize.
 - [`docs/PROVENANCE.md`](docs/PROVENANCE.md) records source hashes and the legacy
   certificate reproducibility gap.
-- [`manuscripts/`](manuscripts/) contains unmodified source copies and ledgers.
+- [`manuscripts/`](manuscripts/) contains the current revisions alongside the
+  unmodified historical manuscripts and ledgers.
 
 ## Exact verified scope
 
@@ -146,8 +199,12 @@ genuine `ZMod`. Together the verified layers provide:
 - occurrence-level opposite pairings and certified spanning-forest
   bookkeeping, including loops, exact multiplicities, simple survivors, and
   an unconditional integer rank-expression identity; for distinct source
-  positions, equality of actual local rank sums follows under separate lower
-  bounds for every source word and fused component;
+  positions, equality of actual local rank sums follows from source lower
+  bounds alone, and at least three source markings force at least four
+  surviving markings per fused component;
+- existence of an attachment tree and a complete fusion component for every
+  finite connected pairing graph; repeated pairs and loops are preserved;
+- the universal rank-two alternating-matrix determinant identity;
 - the exact mixed `p = 5` cancellation and fused rank-four witness;
 - a symbolic zero-signature calculation for a nonzero split row
   `(u,v,-u,-v)`, plus exact split-family regressions for `p = 3,5,7`.

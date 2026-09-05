@@ -4,6 +4,8 @@ public import AbelianCoverHodge.Verified.Core
 public import AbelianCoverHodge.Verified.IntegralSignature
 public import AbelianCoverHodge.Verified.AokiFusion
 public import AbelianCoverHodge.Verified.FusionForest
+public import AbelianCoverHodge.Verified.FusionBounds
+public import AbelianCoverHodge.Verified.ConnectedFusion
 public import AbelianCoverHodge.Mathlib.Signature
 public import AbelianCoverHodge.Mathlib.PrimeBranchDatum
 public import AbelianCoverHodge.Mathlib.BranchCodeEquivalence
@@ -11,10 +13,12 @@ public import AbelianCoverHodge.Mathlib.BranchSignature
 public import AbelianCoverHodge.Mathlib.MenetNguyenGood
 public import AbelianCoverHodge.Mathlib.DeterminantLattice
 public import AbelianCoverHodge.Mathlib.DeterminantSignature
+public import AbelianCoverHodge.Mathlib.RankTwoDeterminant
 public import AbelianCoverHodge.External.Aoki
 public import AbelianCoverHodge.External.MenetNguyen
 public import AbelianCoverHodge.External.Inputs
 public import AbelianCoverHodge.Bridge.DeterminantAoki
+public import AbelianCoverHodge.Bridge.DeterminantFusion
 public import AbelianCoverHodge.Bridge.Assembly
 public meta import Lean.Elab.Command
 
@@ -77,6 +81,16 @@ elab "#audit_axioms " declaration:ident : command => do
 #audit_axioms AbelianCoverHodge.Verified.FusionForestComponent.rankExpression_preserved
 #audit_axioms AbelianCoverHodge.Verified.FusionForestWitness.rankExpression_preserved
 #audit_axioms AbelianCoverHodge.Verified.FusionForestWitness.sourceRankSum_eq_fusedComponentRankSum
+#audit_axioms AbelianCoverHodge.Verified.FusionForestWitness.component_originalBranchCount_eq_source_sum
+#audit_axioms AbelianCoverHodge.Verified.FusionForestWitness.sourceRankSum_eq_fusedComponentRankSum_of_source_family
+#audit_axioms AbelianCoverHodge.Verified.FusionForestWitness.four_le_component_remainingBranchCount
+#audit_axioms AbelianCoverHodge.Verified.exists_attachmentSpanningTree_of_connected
+#audit_axioms AbelianCoverHodge.Verified.exists_fusionComponent_of_connected
+#audit_axioms AbelianCoverHodge.Verified.exists_fusionComponent_on
+#audit_axioms AbelianCoverHodge.Verified.SourceBranchFamily.exists_fusionForest_of_preconnected
+#audit_axioms AbelianCoverHodge.Verified.exists_fusionForest_of_connected
+#audit_axioms AbelianCoverHodge.Bridge.determinantSourceFamily_residues
+#audit_axioms AbelianCoverHodge.Bridge.determinant_fusion_rank_and_bounds
 #audit_axioms AbelianCoverHodge.Mathlib.Signature.p_dvd_qNumerator
 #audit_axioms AbelianCoverHodge.Mathlib.Signature.delta_neg_word
 #audit_axioms AbelianCoverHodge.Mathlib.Signature.determinantSignatureMap_zsmul
@@ -96,4 +110,6 @@ elab "#audit_axioms " declaration:ident : command => do
 #audit_axioms AbelianCoverHodge.Mathlib.signatureQuotientEquivRange
 #audit_axioms AbelianCoverHodge.Mathlib.KummerRelation.allRowsSignature_vector_eq_zero
 #audit_axioms AbelianCoverHodge.Mathlib.kummerSaturatedSubmodule_le_allRowsSignatureKernel
+#audit_axioms AbelianCoverHodge.Mathlib.RankTwoDeterminant.congruence_eq_det_smul
+#audit_axioms AbelianCoverHodge.Mathlib.RankTwoDeterminant.congruence_coefficient_unique
 #audit_axioms AbelianCoverHodge.Bridge.rationalHodge_allPowers_of_inputs

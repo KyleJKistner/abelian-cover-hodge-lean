@@ -1,0 +1,571 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,hyperref}
+\hypersetup{hidelinks}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbf Q}
+\newcommand{\C}{\mathbf C}
+\newcommand{\F}{\mathbf F}
+\newcommand{\Z}{\mathbf Z}
+\newcommand{\CH}{\operatorname{CH}}
+\newcommand{\Pic}{\operatorname{Pic}}
+\newcommand{\Alt}{\operatorname{Alt}}
+\newcommand{\cl}{\operatorname{cl}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\im}{\operatorname{im}}
+\title{Balanced mixed determinants of prime cyclic covers:\\a revised fusion argument}
+\author{Kyle Kistner}
+\date{4 September 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We isolate a proposed consequence of the prime balanced-tuple theorem and
+Schoen's simple-tuple cycle theorem. For an arbitrary finite list of positive-genus
+cyclic covers of the projective line of the same odd prime degree, balance of the
+combined branch residues implies algebraicity of a specified rational space of
+mixed determinant classes. The argument constructs a compact-type degeneration,
+uses algebraic smoothing and specialization, and treats disconnected pairing
+graphs by an explicit rational correspondence. This is a classical proof draft
+using stated external results, not a machine-checked theorem. No assertion about
+the full Hodge ring, a Mumford--Tate group, or novelty follows without additional
+work; the all-powers application is stated separately with its missing input.
+\end{abstract}
+
+\section{Scope and conventions}
+Fix an odd prime $p$, a primitive root $\zeta=\exp(2\pi i/p)$, and
+$K=\Q(\zeta)$. Let $N\geq1$. For each $1\leq j\leq N$, let
+\[
+ f_j:Y_j\longrightarrow\mathbf P^1_\C
+\]
+be a smooth connected cyclic cover of degree $p$, with a specified faithful
+generator $\sigma_j$ of its deck group. Its ordered nonzero branch residues are
+$a_{j1},\ldots,a_{js_j}\in\F_p^\times$, where $s_j\geq3$ and
+$\sum_i a_{ji}=0$ in $\F_p$. The residue $a$ means that positive local
+monodromy is $\sigma_j^a$. Set
+\[
+ A_j=J(Y_j),\quad V_j=H^1(A_j,\Q)=H^1(Y_j,\Q),\quad
+ h_j=s_j-2,\quad S=\sum_j s_j,\quad H=\sum_j h_j=S-2N.
+\]
+We use the induced action on cohomology for the chosen $K$-action, sending
+$\zeta$ to $\sigma_j^*$. For example the corresponding automorphism of
+$\Pic^0(Y_j)$ can be taken to be pullback by $\sigma_j^{-1}$, so that the
+Abel--Jacobi identification on $H^1$ has exactly this convention.
+
+The genus is $g_j=(p-1)h_j/2$. Moreover $V_j$ is a $K$-vector space of
+rank $h_j$: its deck-invariant part is $H^1(\mathbf P^1,\Q)=0$, and
+$\Q[C_p]=\Q\times K$. All $h_j$ are positive. Repetitions among the curves
+and different choices of generators on the same curve are permitted.
+
+Write $[a]_p\in\{1,\ldots,p-1\}$ for the representative of a nonzero residue.
+The balance condition is
+\begin{equation}\label{eq:balance}
+ 2\sum_{j,i}[b a_{ji}]_p=pS\qquad\text{for every }b\in\F_p^\times.
+\end{equation}
+It implies that $S$, and hence $H$, is even. Since $H>0$, $H\geq2$.
+
+For an embedding $\tau_b:K\hookrightarrow\C$ with $\tau_b(\zeta)=\zeta^b$,
+write $V_{j,b}$ for the associated eigenspace. There is a canonical rational
+subspace $W\subset H^H(\prod_j A_j,\Q)$ specified after extension of scalars by
+\begin{equation}\label{eq:W}
+ W_\C=\bigoplus_{b\in\F_p^\times}
+       \bigotimes_{j=1}^N\bigwedge^{h_j}V_{j,b}.
+\end{equation}
+The embedding is the usual exterior-algebra and K\"unneth embedding. Each
+summand has dimension one, and $\dim_\Q W=p-1$. Abstractly,
+\[
+ W\simeq\bigwedge_K^H\Bigl(\bigoplus_jV_j\Bigr)
+       \simeq\bigotimes_{K,j}\bigwedge_K^{h_j}V_j.
+\]
+These formulas mean the rational realization \eqref{eq:W}; they do not mean the
+full tensor product over $\Q$ of the individual determinant spaces.
+
+\begin{theorem}[Standalone balanced fusion statement]\label{thm:fusion}
+With the hypotheses above, assume \eqref{eq:balance}. Then
+\[
+ W\subset\im\left(\cl:\CH^{H/2}\left(\prod_j A_j\right)_\Q
+                       \longrightarrow H^H\left(\prod_j A_j,\Q\right)\right).
+\]
+In particular $W(H/2)$ is a rational Hodge structure of type $(0,0)$ generated
+by classes of algebraic cycles. No genericity of the branch points, full
+monodromy, or endomorphism-algebra hypothesis is required.
+\end{theorem}
+
+\paragraph{Status.}
+The following proof reduces this statement to the precise published inputs
+in Section~\ref{sec:inputs}. The project-specific rational projector, residue
+conversion, gluing, and reduction to those inputs are supplied below. This draft
+has not received independent mathematical referee review; finite checks and the
+repository's Lean layer do not certify its algebraic geometry.
+
+\section{Rational realization and algebraic projectors}\label{sec:projectors}
+We first make the tensor product over $K$ usable on algebraic cycles. Let
+$U_1,\ldots,U_m$ be copies of the $V_j$, with their specified deck operators
+$T_r$. On $\bigotimes_{\Q,r}U_r$, set
+\begin{equation}\label{eq:projector}
+ e_{uv}=\frac1p\sum_{a=0}^{p-1}T_u^aT_v^{-a},\qquad
+ E_m=\prod_{r=2}^m e_{1r},\qquad E_1=\id.
+\end{equation}
+All operators in these formulas act on their indicated tensor slots.
+
+\begin{lemma}\label{lem:slots}
+The rational operator $E_m$ is an idempotent with image
+$\bigoplus_b\bigotimes_r U_{r,b}$. It is induced by an algebraic
+correspondence on the product containing the tensor slots. For $m$ identical
+slots, it commutes with every ordinary tensor permutation.
+\end{lemma}
+\begin{proof}
+Over a splitting field, the value of $e_{uv}$ on an eigentensor with labels
+$b_u,b_v$ is
+\[
+ \frac1p\sum_{a=0}^{p-1}\zeta^{a(b_u-b_v)}
+ =\begin{cases}1&b_u=b_v,\\0&b_u\ne b_v.\end{cases}
+\]
+This proves the image and idempotence. Equality of all labels is invariant under
+permutations, proving the commutation assertion after scalar extension and
+hence over $\Q$. Each $T_r^a$ comes from a deck automorphism on an abelian
+factor. Their graphs, rational linear combinations, and compositions are
+algebraic correspondences. The $H^1$ K\"unneth projection is also algebraic:
+for an abelian variety of dimension $g$ and an integer $n\geq2$, the polynomial
+\[
+ \pi_k=\prod_{0\leq d\leq 2g,\ d\ne k}
+               \frac{[n]^*-n^d}{n^k-n^d}
+\]
+acts as the projection to $H^k$. It is represented cohomologically by a
+rational algebraic correspondence. Only this cohomological assertion about
+$\pi_k$ is needed, not an equality of Chow motives.
+\end{proof}
+
+For an abelian variety $A$ and $m\geq1$, let $\mu:A^m\to A$ be addition,
+$\delta:A\to A^m$ the diagonal, and
+$P=\pi_1^{\otimes m}$. The map
+\[
+ \iota_m=P\mu^*:H^m(A,\Q)\longrightarrow H^1(A,\Q)^{\otimes m}
+\]
+is the unnormalized alternating inclusion. The cup product
+$q_m=\delta^*|_{H^1(A)^{\otimes m}}$ satisfies
+\begin{equation}\label{eq:wedge}
+ q_m\iota_m=m!\,\id,\qquad
+ \iota_mq_m=m!\,\Alt_m,
+ \quad \Alt_m=\frac1{m!}\sum_{\pi\in\mathfrak S_m}
+                  \operatorname{sgn}(\pi)P_\pi.
+\end{equation}
+Indeed expansion of $\mu^*v=\sum_r\operatorname{pr}_r^*v$ for $v\in H^1(A)$
+gives the first identity; the exterior-algebra relation gives the second.
+Geometric permutations on products of odd cohomology classes have Koszul
+signs. Thus $P_\pi$ here is the ordinary tensor permutation, realized by the
+geometric permutation correspondence multiplied by $\operatorname{sgn}(\pi)$.
+There is no hidden assumption that these two actions coincide.
+
+For $A=A_j$ and $m=h_j$, the correspondence
+\begin{equation}\label{eq:Dprojector}
+ Q_j=\frac1{h_j!}q_{h_j}E_{h_j}\iota_{h_j}
+\end{equation}
+is an idempotent on $H^{h_j}(A_j)$ with image
+$D_j=\bigoplus_b\bigwedge^{h_j}V_{j,b}$. Idempotence follows from
+\eqref{eq:wedge} and Lemma~\ref{lem:slots}. This proves rationality and
+algebraic realizability of the determinant summands without selecting a single
+complex embedding as a rational subspace.
+
+\begin{remark}[The scalar action must be induced from one slot]\label{rem:scalar}
+On $D_j$, the scalar action of $k\in K$ is the action obtained from $k$ on
+\emph{one} slot after applying $E_{h_j}$ and alternation. All slot actions then
+agree, so this defines a unital $\Q$-algebra action. The corresponding scalar
+$\zeta$ acts by $\zeta^b$ on the $b$ determinant line. In contrast,
+$\bigwedge^{h_j}(\sigma_j^*)$ acts by $\zeta^{b h_j}$. These are different
+operators, and the latter is trivial when $p\mid h_j$. One must not use this
+exterior-power deck action to identify embeddings between determinant factors.
+Our construction needs no hypothesis $\gcd(p,h_j)=1$.
+\end{remark}
+
+Apply $E_H$ to all raw $H^1$ slots simultaneously, alternate within the $j$-th
+block of $h_j$ slots, and use \eqref{eq:wedge} to return to
+$H^H(\prod_j A_j)$. This gives a rational algebraic projector $Q_W$ with image
+$W$. More explicitly, put $\iota=\bigotimes_j\iota_{h_j}$,
+$q=\bigotimes_j q_{h_j}$, and $c=\prod_jh_j!$. On the indicated
+K\"unneth degree $(h_1,\ldots,h_N)$ the formula is
+\begin{equation}\label{eq:globalprojector}
+ Q_W=c^{-1}qE_H\iota;
+\end{equation}
+extend it by zero on the other degrees using algebraic K\"unneth projectors.
+The same calculation proves idempotence. Its action takes algebraic classes
+to algebraic classes and fixes $W$.
+
+\section{Exact external inputs}\label{sec:inputs}
+The proof uses the following results; none is asserted as a new theorem here.
+\begin{enumerate}
+\item \textbf{Prime balanced tuples.} A tuple of nonzero residues of even
+length at least four, with sum zero modulo the odd prime $p$, satisfying
+\eqref{eq:balance}, can be partitioned into pairs $(a,-a)$. This is the
+prime equality $B_p^n=D_p^n$ stated on p.~24 before Theorem A of
+Aoki~\cite{Aoki}, where the prime case is credited to W.~Parry; here
+$n=S-2$ is positive and even. The 1984 erratum corrects the introduction's
+Theorem B, not this input.
+\item \textbf{Simple-tuple cycles.} For a smooth connected cyclic curve with
+faithful action and simple branch tuple (a union of opposite pairs), Schoen's
+Theorem 2.0 and Corollary 3.1~\cite{Schoen} give algebraic classes spanning the
+primitive determinant space on its primitive Jacobian factor. We use this in
+characteristic zero, where Theorem 2.0 also holds over an arbitrary algebraically
+closed field. For a prime cover of $\mathbf P^1$ the primitive factor is the
+whole Jacobian up to isogeny, as shown in Section 1. The transfer in Corollary
+3.1 uses the algebraicity of inverse Lefschetz on abelian varieties; its argument
+works over algebraically closed characteristic-zero fields as well, by descent
+and comparison. No claim about arbitrary abelian varieties of Weil type is used.
+\item \textbf{Balanced admissible-cover deformation.} Abramovich--Corti--Vistoli
+\cite{ACV}, Theorems 3.0.2 and 4.3.2 and Corollary 3.0.5, identify balanced
+admissible $G$-covers with balanced twisted covers and give their unobstructed
+deformation theory, with a flat map to the moduli stack of stable pointed
+target curves. Section 3 identifies the balanced node smoothing directions.
+\item \textbf{Compact-type Picard and specialization.} For a proper nodal
+curve family whose fibers have tree dual graph, $\Pic^0$ is an abelian scheme,
+with special fiber the product of the component Jacobians. The relative Picard
+input is the semistable Picard theorem attributed to Deligne in
+\cite[\S9.4, Theorem 1, p.~259]{BLR}; the special-fiber description is
+\cite[\S9.2, Example 8, pp.~246--247]{BLR}. An explicitly inspected primary use of precisely
+this relative assertion is Achter--Pries~\cite[\S3.1]{AP}.
+For a smooth proper scheme over a DVR, specialization of Chow classes is
+compatible with smooth-proper specialization in $\ell$-adic cohomology.
+For the cycle map see SGA~6, X.7.13, especially 7.13.11, and X.7.16,
+\cite[pp.~576--579, 585]{SGA6}. Section 7.13 assumes a henselian trait;
+we make this base change explicitly in Section~\ref{sec:specialize}.
+Schoen~\cite[pp.~30--31]{Schoen} invokes the same compatibility.
+The cycle-level construction and base change
+are recorded in \cite[Tags 0H4H, 0H4M]{Stacks}.
+\end{enumerate}
+
+\paragraph{Source-audit boundary.}
+Aoki's exact prime assertion and erratum were pinned by the earlier repository
+audit. In this repair the indicated Schoen statements, his specialization
+paragraph, the 1998 addendum, ACV's deformation argument and equivalence, the
+Achter--Pries Picard assertion, and the Stacks cycle construction were inspected.
+The final cross-review directly inspected the original BLR pages 246--247 and
+258--259, and the original SGA~6 pages 576--579 and 585. The latter verify
+the henselian assumption, smooth-proper comparison, rational cycle-class
+compatibility in 7.13.11, and passage to geometric fibers in 7.16. We do not
+claim to have inspected the scan's missing sections 7.14--7.15. These are
+standard imported results with the precise forms used here stated above,
+not new theorems proved by this manuscript.
+
+\section{From balance to a compact-type cover}\label{sec:glue}
+Choose a pairing of all $S$ branch occurrences into opposite residues using
+the first input. Form a multigraph $\Gamma$ with vertices $1,\ldots,N$ and
+one edge for every chosen pair; both ends can lie on the same vertex. An
+occurrence is used once. Let $I$ be a connected component of this graph.
+If $|I|>1$, choose a spanning tree $T_I$ from its non-loop edges; if $|I|=1$,
+use the empty tree. Every branch occurrence on a vertex of $I$ is paired with
+another occurrence in $I$.
+
+\begin{lemma}[Residue versus tangent character]\label{lem:tangent}
+At a totally ramified branch point with residue $a$, the action of $\sigma_j$
+on a local tangent coordinate is multiplication by $\zeta^{a^{-1}}$.
+Consequently residues $a$ and $-a$ have inverse tangent characters for the
+chosen common deck generator.
+\end{lemma}
+\begin{proof}
+Write the cover locally as $x=u^p$. Positive monodromy about $x=0$ sends
+$u$ to $\zeta u$. By definition this is $\sigma_j^a$, so if
+$\sigma_j(u)=\zeta^c u$ then $ac=1$ modulo $p$. Also
+$(-a)^{-1}=-a^{-1}$.
+\end{proof}
+
+\begin{lemma}[Balanced gluing]\label{lem:glue}
+For every $I$ there is a connected balanced admissible $C_p$-cover
+$Y_{I,0}\to B_{I,0}$ whose component covers are exactly the chosen
+$Y_j\to\mathbf P^1$ for $j\in I$, whose source and target dual graphs are
+$T_I$, and whose remaining branch tuple is simple. Its source has compact
+type and genus $\sum_{j\in I}g_j$.
+\end{lemma}
+\begin{proof}
+For each tree edge glue its two indicated base branch points, and glue their
+unique ramification points upstairs. The deck action agrees under gluing,
+since the glued points are fixed. The curve maps glue to a finite morphism
+of nodal curves; away from markings and nodes they are principal $C_p$-bundles.
+Lemma~\ref{lem:tangent} gives the balanced action at every node. Both graphs
+are the chosen tree because a totally ramified point has a unique preimage.
+
+Each target component has exactly $s_j$ special points: replacing a selected
+branch marking by a node changes none of their number. Hence the pointed
+target is stable. Each source component has positive genus. A genus-one
+component in a non-singleton tree has a node and is stable; a singleton graph
+component has even $s_j\geq4$, hence $g_j\geq2$. Thus the source is stable
+after forgetting branch markings as well. The cover satisfies the admissible
+$G$-cover definition of \cite[Definition 4.3.1]{ACV}.
+
+Only complete pairs belonging to $T_I$ were removed. The unremoved tuple is
+therefore a union of opposite pairs and has length
+\begin{equation}\label{eq:counts}
+ s_I=\sum_{j\in I}s_j-2(|I|-1)=H_I+2,\qquad
+ H_I=\sum_{j\in I}h_j.
+\end{equation}
+All original occurrences within $I$ are paired, so their total number is even;
+thus $H_I$ is positive and even, $H_I\geq2$, and $s_I\geq4$. The tree graph
+has first Betti number zero, giving both compact type and the asserted genus.
+\end{proof}
+
+\begin{lemma}[Algebraic simultaneous smoothing]\label{lem:smooth}
+The cover of Lemma~\ref{lem:glue} is the closed fiber of an algebraic family
+of admissible $C_p$-covers over the spectrum of a DVR essentially of finite
+type over $\C$. Its geometric generic fiber is a smooth connected cyclic
+cover of $\mathbf P^1$ with the simple remaining branch tuple. After a finite
+base change, the family has an abelian scheme
+$\mathcal A_I=\Pic^0(\mathcal Y_I/R)$, equipped with the chosen $K$-action,
+whose special fiber is $\prod_{j\in I}A_j$.
+\end{lemma}
+\begin{proof}
+At a glued node of residue $a$ the local smoothing is
+\[
+ uv=t,\quad x=u^p,\quad y=v^p,\quad xy=t^p,\qquad
+ \sigma(u,v)=(\zeta^{a^{-1}}u,\zeta^{-a^{-1}}v).
+\]
+This is equivariant and smooths the node when $t\ne0$. Notice the power
+$t^p$ in the target parameter. The cover map is finite; it is not asserted
+flat at a node. Both nodal curve families are flat over the parameter base.
+
+By the ACV input these local balanced deformations globalize in an algebraic
+stack with smooth local charts. More precisely the local-to-global deformation
+sequence for a nodal twisted curve surjects onto its local node deformation
+spaces: the obstruction to this surjection is $H^2$ of its tangent sheaf,
+which is zero for a curve; the node deformation sheaf is supported at finitely
+many points. The invariant smoothing line survives exactly because the tangent
+characters are inverse. The torsor adds no obstruction, as its target $BG$ has
+zero cotangent complex in characteristic zero. These are the deformation
+calculations in ACV Section 3. Thus no node parameter is forced to vanish.
+
+Take an algebraic smooth atlas at our point and a curve through it with tangent
+direction outside the finitely many node-parameter hyperplanes. Such a curve
+exists: choose a suitable line in local \'etale coordinates and take its
+inverse image. Normalize and localize at the point, obtaining a DVR. Each
+source node parameter has a simple zero, so the source total space is regular
+at these nodes. All node parameters are nonzero at the generic point.
+Shrinking the atlas if
+necessary, smoothness away from the specified nodes is open, so the generic
+source and target are smooth. This constructs an algebraic family with the
+prescribed closed fiber, not merely a formal or analytic plumbing. The empty
+tree case can instead use a constant family over a DVR.
+
+The source is geometrically connected: its connected special fiber has
+$h^0(\mathcal O)=1$, which bounds the generic value from above by
+semicontinuity, while constants bound it from below. The target has genus
+zero and the remaining marked sections; after a finite extension if needed
+it is $\mathbf P^1$. The labeled inertia data at these sections is locally
+constant, so the generic tuple is exactly that in \eqref{eq:counts}.
+
+There are only generic and closed geometric fibers over the DVR; both have
+compact type. The compact-type Picard input gives the abelian scheme. For
+completeness, on the closed fiber normalization gives a Picard extension with
+torus of rank $b_1(T_I)=0$. Restriction of line bundles therefore identifies
+its identity component with the product of the component Jacobians, compatibly
+with deck actions. Since $1+\sigma+\cdots+\sigma^{p-1}$ acts as zero on the
+generic Jacobian, it acts as zero on the abelian scheme: a homomorphism of
+separated group schemes equal to zero on the dense generic fiber is zero.
+Thus the deck action factors through $K$ in rational endomorphisms everywhere.
+\end{proof}
+
+\section{Spreading cycles and specializing their classes}\label{sec:specialize}
+Fix $I$, let $L$ be the fraction field of the DVR in
+Lemma~\ref{lem:smooth}, and fix an algebraic closure $\overline L$. The
+geometric generic curve has $K$-rank $H_I$ in $H^1$, by
+\eqref{eq:counts}. The simple-tuple theorem gives cycle classes spanning
+\[
+ W_{I,\overline\eta}
+ =\bigwedge_{K\otimes_\Q\Q_\ell}^{H_I}
+       H^1(\mathcal A_{I,\overline\eta},\Q_\ell)
+ \subset H^{H_I}(\mathcal A_{I,\overline\eta},\Q_\ell).
+\]
+Here and below the wedge notation denotes the matching-embedding realization
+after extension to $\Q_\ell$, including the appropriate Tate twist when
+comparing cycle classes. Fix any rational prime $\ell$.
+
+\begin{lemma}\label{lem:specialization}
+The space
+\[
+ W_I=\bigoplus_b\bigotimes_{j\in I}\bigwedge^{h_j}V_{j,b}
+ \subset H^{H_I}\left(\prod_{j\in I} A_j,\Q\right)
+\]
+is generated by algebraic classes.
+\end{lemma}
+\begin{proof}
+Choose finitely many rational algebraic cycles whose $\Q_\ell$-classes span the
+geometric generic determinant space, applying the generic-fiber algebraic
+determinant projector first if the supplied cycles have other components.
+Each cycle is defined over a finite
+extension of $L$: its finitely many defining equations have coefficients
+algebraic over $L$. A single finite extension $L'/L$ suffices for all chosen
+cycles. The DVR is excellent, so its integral closure in $L'$ is finite;
+localize at a point above the closed point to obtain a DVR $R'$. Its residue
+field is $\C$. Pulling back the abelian scheme leaves its complex special
+fiber unchanged.
+
+Take the closures of the generic cycles in this proper smooth scheme and
+specialize in the Chow group. An integral closure of a generic cycle
+dominates the DVR and is flat over it; its special fiber with multiplicities
+gives the specialization. For the cohomological comparison, now pass from
+$R'$ to its strict henselization $R'^{\mathrm{sh}}$, with a compatible choice
+of geometric generic point. Its residue field is still $\C$, so its closed
+fiber and the specialized complex cycles are unchanged. Pull back the abelian
+scheme and the cycles to this trait. Specialization commutes with this flat
+DVR base change; all closures and finite-extension descent were already
+constructed over $R'$. The henselian hypothesis in SGA~6, X.7.13 is now met.
+The compatibility cited in Section~\ref{sec:inputs}
+identifies these classes with the original generic classes under the
+smooth-proper $\ell$-adic specialization isomorphism. This is a specialization
+of cycles defined over a finite extension, not an assumption that an arbitrary
+Hodge class is algebraic because it lies in a family.
+
+The relative $H^1$ local system carries the deck action. The projectors from
+Section~\ref{sec:projectors}, formed from addition, diagonals, multiplication,
+and deck maps of the abelian scheme, commute with specialization. Thus
+specialization identifies the generic determinant space with
+$\bigwedge_K^{H_I}(\bigoplus_{j\in I}V_j)$ on the closed fiber. Expanding the
+top exterior power of each $b$-eigenspace gives exactly $W_I$: to reach degree
+$H_I=\sum h_j$ one must use all $h_j$ dimensions of each summand. In
+particular no other K\"unneth degrees occur.
+
+Apply the algebraic special-fiber projector if necessary so that every
+specialized cycle class lies in $W_I$. Their rational Betti classes have
+$\Q_\ell$-span $W_I\otimes\Q_\ell$. Betti--\'etale comparison and extension
+of scalars then show that their $\Q$-span is $W_I$: the quotient of $W_I$ by
+that span becomes zero over the field $\Q_\ell$, and is therefore zero.
+This proves rational, not merely $\ell$-adic, algebraicity.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:fusion}]
+For every connected component $I$ of the pairing graph,
+Lemma~\ref{lem:specialization} supplies algebraic classes spanning $W_I$.
+Take their external products. They span $\bigotimes_{\Q,I}W_I$, which
+contains independent embedding choices on the different graph components.
+The projector $Q_W$ of \eqref{eq:globalprojector} kills precisely the terms
+whose embedding choices disagree. Its image on that tensor product is $W$,
+since every matching term is fixed. Applying this algebraic correspondence
+to the external-product cycles proves the theorem. If the graph is connected,
+this last projection is redundant; if it is disconnected, it is essential.
+\end{proof}
+
+\section{Independent Hodge-type check and example}
+The Hodge type can also be checked without a monodromy theorem. In a coordinate
+with infinity unramified write $y^p=\prod_i(x-t_i)^{a_i}$ with
+$1\leq a_i\leq p-1$ and $\sum a_i=kp$. For $l=p-b$, forms of deck eigenvalue
+$\zeta^b$ have the shape $r(x)dx/y^l$. Holomorphy at $t_i$ forces
+$r(x)$ divisible by $(x-t_i)^{\lfloor la_i/p\rfloor}$, since the valuation is
+$p\operatorname{ord}_{t_i}(r)+p-1-la_i$. Holomorphy at infinity bounds the
+remaining polynomial degree by $lk-\sum_i\lfloor la_i/p\rfloor-2$.
+Consequently
+\[
+ \dim V_{j,b}^{1,0}
+ =-1+\frac1p\sum_i[-b a_{ji}]_p
+ =s_j-1-\frac1p\sum_i[b a_{ji}]_p.
+\]
+The fractional-part sum is a positive integer, so the formula includes the
+zero-dimensional case. Under balance, the sum over $j$ is
+$S-N-S/2=H/2$. Each line of \eqref{eq:W} therefore has type $(H/2,H/2)$.
+This also fixes the sign convention rather than importing an ambiguous
+Chevalley--Weil formula.
+
+For $p=5$, take branch tuples
+\[
+ (1,1,3),\qquad (1,2,4,4,4).
+\]
+They give $K$-ranks $1,3$ and genera $2,6$. Their $H^{1,0}$ multiplicities
+for $b=1,2,3,4$ are respectively $(1,1,0,0)$ and $(1,1,2,2)$, whose sum is
+$(2,2,2,2)$. The concatenation pairs into three $(1,4)$ pairs and one
+$(3,2)$ pair. Glue the residue-$3$ point of the first curve to the residue-$2$
+point of the second. The remaining tuple is $(1,1,1,4,4,4)$, the smooth
+fused curve has genus $8$ and $K$-rank $4$, and the theorem gives a
+four-dimensional rational space of codimension-two classes on $A_1\times A_2$.
+Neither individual determinant space is of middle Hodge type. The mixed
+balance is the relevant condition.
+
+\section{The separate all-powers implication}\label{sec:conditional}
+Let $A$ be an abelian variety assembled, up to isogeny, from cyclic quotient
+Jacobians of odd prime degree. To deduce the Hodge conjecture for every power
+of $A$, the following \emph{additional generator statement} suffices:
+
+\medskip\noindent
+\textbf{Generator hypothesis.} Every rational Hodge class on every $A^m$
+is in the span obtained from divisor classes and spaces $W$ satisfying
+\eqref{eq:balance} by external products, cup products, pullbacks and
+pushforwards along algebraic correspondences, including the isogenies,
+quotient maps, permutations, and rational projectors needed for realization.
+The determinant words have positive multiplicities of the chosen cyclic
+$H^1$ factors; conjugate words use inverse chosen generators. Any dualization
+is implemented with its polarization and Tate twist before using this form.
+\medskip
+
+\begin{corollary}[Conditional all-powers application]
+Assume the generator hypothesis for $A$. Then every rational Hodge class on
+every power of $A$ is algebraic.
+\end{corollary}
+\begin{proof}
+Divisor Hodge classes are algebraic by the Lefschetz $(1,1)$ theorem. Theorem
+\ref{thm:fusion} handles each indicated determinant space. Every operation in
+the generator hypothesis preserves algebraic cycle classes.
+\end{proof}
+
+The generator hypothesis is a distinct representation-theoretic and rational
+descent problem. This manuscript does not prove the claimed full monodromy,
+the treatment of compact embedding sectors, graph-arrow signs, the complete
+central torus, or exhaustion by determinant words. An integer lattice basis
+of determinant relations alone does not prove generation of the effective
+tensor monoid; negative exponents need separately realized duals and twists,
+or an appropriate monoid-generation argument. No unconditional all-powers
+claim is made here.
+
+\section{Relation to prior work and review gates}
+The input for a single simple cyclic cover is Schoen's. Compact-type clutching
+and algebraic specialization are also established tools; the proposed
+contribution is their combination for an arbitrary list of separately
+unbalanced prime cyclic factors whose combined signatures balance, including
+the disconnected-graph projection. A bounded literature search did not locate
+this exact quantified mixed-product formulation, but does not establish novelty.
+It should be compared explicitly with the cyclic-cover clutching literature
+and later work on exceptional classes on products of CM and moving factors.
+
+Schoen's 1998 addendum~\cite{SchoenAddendum} corrects the missing polarization
+invariant in the statement of the 1988 Theorem 3.2. It explicitly continues to
+use Corollary 3.1. Our argument uses the latter simple-tuple input and does not
+import the uncorrected general fourfold statement.
+
+The next review gates are: independent expert verification of the geometric
+proof beyond the internal cross-review; an exact prior-art comparison for the mixed-product
+statement; and, for any global Hodge application, a proof of the separate
+generator hypothesis. The finite script accompanying this revision checks
+projector identities and tuple/graph examples only. It cannot verify
+smoothability, cycle existence, or specialization.
+
+\begin{thebibliography}{99}
+\bibitem{Aoki} N. Aoki, \emph{On some arithmetic problems related to the Hodge
+cycles on the Fermat varieties}, Math. Ann. 266 (1983), 23--54,
+\url{https://doi.org/10.1007/BF01458703}. Erratum, Math. Ann. 267 (1984), 572,
+\url{https://eudml.org/doc/163917}.
+\bibitem{Schoen} C. Schoen, \emph{Hodge classes on self-products of a variety
+with an automorphism}, Compositio Math. 65 (1988), 3--32,
+\url{https://www.numdam.org/item/CM_1988__65_1_3_0.pdf}.
+\bibitem{SchoenAddendum} C. Schoen, \emph{Addendum to: Hodge classes on
+self-products of a variety with an automorphism}, Compositio Math. 114 (1998),
+329--336, \url{https://doi.org/10.1023/A:1000566205021}.
+\bibitem{ACV} D. Abramovich, A. Corti, and A. Vistoli, \emph{Twisted bundles
+and admissible covers}, Comm. Algebra 31 (2003), 3547--3618; inspected version
+arXiv:math/0106211v1, \url{https://arxiv.org/abs/math/0106211v1}.
+\bibitem{BLR} S. Bosch, W. L\"utkebohmert, and M. Raynaud, \emph{N\'eron
+Models}, Ergebnisse der Mathematik 21, Springer, 1990, Chapter 9,
+\url{https://doi.org/10.1007/978-3-642-51438-8}.
+\bibitem{AP} J. D. Achter and R. Pries, \emph{The integral monodromy of
+hyperelliptic and trielliptic curves}, Math. Ann. 338 (2007), 187--206,
+\url{https://www.math.colostate.edu/~achter/math/trigonal.pdf}.
+\bibitem{SGA6} P. Berthelot, A. Grothendieck, and L. Illusie, eds.,
+\emph{Th\'eorie des intersections et th\'eor\`eme de Riemann--Roch}, SGA 6,
+Lecture Notes in Math. 225, Springer, 1971, Expos\'e X, 7.13 (especially
+7.13.11) and 7.16, pp.~576--579 and 585,
+\url{https://library.slmath.org/nonmsri/sga/sga/pdf/sga6.pdf}.
+\bibitem{Stacks} The Stacks Project authors, \emph{Specialization of cycles},
+Tags 0H4H and 0H4M, \url{https://stacks.math.columbia.edu/tag/0H4H} and
+\url{https://stacks.math.columbia.edu/tag/0H4M}.
+\end{thebibliography}
+\end{document}

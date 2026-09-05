@@ -1,9 +1,20 @@
 # Legacy certificates
 
-These Python sources and frozen JSON reports are provenance artifacts.
+These four Python/JSON files are unchanged provenance artifacts.
 
-- Phase II source is present but its exact SymPy environment was not recorded.
-- Phase I's wrapper imports a missing core source, so the frozen report cannot
-  currently be regenerated from this directory.
+- The original Phase II report is now reproduced byte for byte with pinned
+  SymPy 1.14.0 and mpmath 1.3.0; the first successful local replay used Python
+  3.14.6.
+- Phase I's wrapper still imports a missing core source. Its frozen report is
+  not claimed as reproduced. The rewritten split-family argument bypasses the
+  missing core and has a separate new checker.
 
-The Lean verified layer is independent of these scripts.
+Run `python scripts/replay_certificates.py` from the repository root in the
+pinned environment. It stages the original Phase II inputs in a temporary
+folder, checks all source hashes and leaves these originals unchanged.
+Current reports go to `build/audit/`. See
+[provenance](../../docs/PROVENANCE.md) for exact hashes and
+[the repair overview](../../docs/REPAIR_STATUS.md) for the new checks.
+
+The Lean verified layer is independent of these scripts. A finite report does
+not prove the full manuscript theorem.
