@@ -1,0 +1,602 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,microtype,hyperref}
+\hypersetup{hidelinks,pdftitle={Fermat control for abelian covers of arbitrary exponent}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\Q}{\mathbf Q}\newcommand{\C}{\mathbf C}
+\newcommand{\Z}{\mathbf Z}\newcommand{\PP}{\mathbf P}
+\DeclareMathOperator{\SL}{SL}\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\PGL}{PGL}\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Hom}{Hom}\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\HC}{HC}\DeclareMathOperator{\CH}{CH}
+\DeclareMathOperator{\Sym}{Sym}\DeclareMathOperator{\im}{im}
+\title{Fermat control of Hodge classes for abelian covers\\of arbitrary exponent}
+\author{Research continuation for \texttt{abelian-cover-hodge-lean}}
+\date{5 September 2026 --- written proof draft, not independently reviewed}
+\begin{document}
+\maketitle
+\begin{abstract}
+We give a proposed extension of the repository's odd-exponent reduction to
+arbitrary finite abelian deck groups. The extra arguments are an even-order
+rank-two graph test and a uniform three-point model for every all-definite
+primitive factor. The high-rank parity argument already occurs in
+Menet--Nguyen and is explicitly credited. With the classical primitive
+Fermat-determinant construction, these arguments give an algebraic-correspondence
+presentation of the connected-monodromy invariants on every power of a
+very general covering Jacobian. Consequently the all-powers rational Hodge
+conjecture for the degree-$N$ Fermat Jacobian is equivalent to its validity
+for every full abelian-cover family of exponent dividing $N$. The reverse
+implication simply includes the Fermat curve itself. This is a proposed
+proof with stated classical inputs, not a completed Lean proof or a
+certification of priority or journal significance.
+\end{abstract}
+
+\paragraph{Checkpoint and scope.}
+This note continues the repository checkpoint\\
+{\small\texttt{add067109eb00dc9bd3e4cd3dcdcc2852067dd87}},
+without modifying its frozen sources. The inherited correspondence and rational
+assembly arguments are in \cite[Sections 4--6]{General} and
+\cite[Section 7]{Structural}. We restate their precise uses below and supply
+the new parity and constant-factor arguments. All varieties and Hodge
+structures are over $\C$ and $\Q$, respectively. No statement about all
+special fibers, integral Hodge classes, nonabelian covers, or restricted
+branch subfamilies is made.
+
+\section{Statements}
+Let $N\geq2$, let $G$ be a finite abelian group of exponent dividing $N$,
+and let $a_1,\ldots,a_r\in G\setminus\{0\}$ generate $G$, with
+$\sum_i a_i=0$ and $r\geq3$. Let $B=M_{0,r}$ be the full ordered branch
+configuration space. Passing to a finite cover to choose the family does
+not change the connected monodromy or the meaning of very general. Write
+$X_b\to\PP^1$ for its connected $G$-cover and $A_b=J(X_b)$.
+Let $F_N^j\subset\PP^{j+1}$ be a smooth degree-$N$ Fermat hypersurface;
+$F_N=F_N^1$ is the Fermat curve.
+
+\begin{theorem}[Fermat-source presentation]\label{thm:presentation}
+For every power $q$ and degree $k$, the connected-monodromy invariant part
+$H^k(A_b^q,\Q)^M$ is the image of a finite direct sum of maps induced by
+rational algebraic correspondences. Their sources are tensor products of
+primitive Fermat-determinant summands, first cohomology of isogeny factors
+of $J(F_N)$, and effective Tate factors. Each determinant summand is an
+algebraic direct summand of some $H^h(F_d^h,\Q)$ with $d\mid N$.
+The maps present the entire invariant space, including mixed-conductor
+classes and finite-monodromy factors.
+\end{theorem}
+This is a cohomological presentation by algebraic maps. It does not assert
+an algebraic projector onto the full invariant space or an algebraic
+splitting of an arbitrary Hodge surjection.
+
+\begin{theorem}[All-exponent transfer]\label{thm:transfer}
+Assume the rational Hodge conjecture for every power of $J(F_N)$. Then,
+for every datum above, it holds for every power of $A_b$ at every point
+outside one countable union of proper closed algebraic subsets of $B$.
+In particular the following assertions are equivalent:
+\[
+ \HC(J(F_N)^q)\text{ for every }q
+ \quad\Longleftrightarrow\quad
+ \begin{gathered}
+ \HC(A_b^q)\text{ for every }q\text{ and every such datum,}\\
+ \text{with }b\text{ very general in its full branch family.}
+ \end{gathered}
+\]
+The quantification on the right includes the rigid three-branch families.
+\end{theorem}
+
+\begin{corollary}[The universal fixed-part Hodge category]\label{cor:category}
+Let $\mathcal T_N$ be the smallest rigid tensor subcategory of polarizable
+rational Hodge structures containing Tate objects and all spaces
+$H^k(A_b^q,\Q)^M$ above, as the full branch datum varies and $b$ is very
+general. Then
+\[
+ \mathcal T_N=\langle H^1(F_N,\Q),\Q(1)\rangle.
+\]
+This is an equality of Hodge-theoretic tensor categories, not an assertion
+that the corresponding Chow-motive categories have been identified.
+\end{corollary}
+
+\begin{corollary}[Established Fermat degrees as input]\label{cor:aoki}
+Subject to the proposed proof of Theorem~\ref{thm:transfer}, its conclusion
+is unconditional for
+\[
+ N=p^e\text{ or }2p^e\quad(p\text{ prime},\ e\geq1),
+\]
+and for
+\[
+ N=2^a3^b5^c7^d\geq2,
+ \qquad a,b,c,d\geq0,\qquad c=0\text{ or }d=0.
+\]
+Here the cycle input is Aoki's theorem, not a new Fermat-cycle result.
+\end{corollary}
+The first list is also restated in \cite[Theorem 1.2]{Aoki02}, together
+with the second. In particular, the statement includes all finite abelian
+$2$-groups and many even mixed-exponent groups. It does not infer the
+Fermat premise at unrestricted $N$.
+
+\section{Primitive factors and a dichotomy without conductor exceptions}
+Fix $\zeta_N$. An evaluated character is a word
+$c=(c(a_1),\ldots,c(a_r))\in(\Z/N)^r$. Its order is denoted by $d(c)$.
+If $d=d(c)$, write $c_i=(N/d)b_i$, with $b_i\in\Z/d$.
+The active $b_i$ are nonzero, sum to zero, and generate $\Z/d$.
+Write $s$ for their number and $h=s-2$.
+
+One representative of each unit orbit of characters gives the rational
+primitive decomposition of $H^1(X_b,\Q)$. More precisely, for the degree-$d$
+cyclic quotient $Y_c=X_b/\ker c$, take the primitive factor
+\[
+ U_c=\ker\Phi_d(T_c^*)\subset H^1(Y_c,\Q),
+ \qquad
+ U_c\otimes\C=\bigoplus_{u\in(\Z/d)^\times}V_{uc}.
+\]
+It has rank $h$ over $K_d=\Q(\zeta_d)$. Quotient pullback, norm, and
+cyclotomic idempotents are rational algebraic maps. One must not sum the
+whole cohomology of every cyclic quotient: that double counts the
+lower-conductor factors. For example, the primitive idempotent on an
+order-$d$ operator is
+\[
+ e_d(T)=\sum_{k\mid d}\mu(d/k)\frac{k}{d}
+                 \sum_{j=0}^{d/k-1}T^{kj}.
+\]
+Support two contributes zero. In the remainder of this section $s\geq3$
+and $d>2$.
+
+For $u\in(\Z/d)^\times$, define
+\[
+ Q_u(b)=\frac1d\sum_{i=1}^s[ub_i]_d,
+ \qquad 1\leq Q_u(b)\leq s-1,
+\]
+where the representatives lie in $\{1,\ldots,d-1\}$. With one fixed
+character convention the Hodge dimensions are
+$(Q_u-1,s-1-Q_u)$; reversing the convention reverses both entries
+throughout the argument.
+
+\begin{lemma}[Moving or all definite]\label{lem:dichotomy}
+If some $u$ has $2\leq Q_u\leq s-2$, every conjugate complex projection
+of connected monodromy is $\SL_h$. Otherwise every primitive embedding
+is definite, and the rational monodromy of $U_c$ is finite.
+\end{lemma}
+\begin{proof}
+Put one active branch point at infinity. There are $n=s-1$ finite
+weights, and their sum is $Q_u-[ub_\infty]_d/d$. At a mixed embedding
+it lies strictly between $1$ and $n-1$. This is case (a) of the good-sequence
+condition in \cite[Definition 1.1]{MN}; \cite[Theorem 5.1]{MN} gives full
+special-unitary closure. The residues of the finite points still have gcd
+one with $d$, since the omitted residue is minus their sum.
+Complexification gives $\SL_h$.
+
+The matrices in a character basis have entries in $K_d$. Galois conjugation
+transports their complex Zariski closure to that of every primitive conjugate:
+a polynomial relation over $\C$ can be expanded in a finite linearly
+independent list of coefficients over $K_d$. Thus fullness propagates even
+to definite complex embeddings. The affine normalization and the forgetting
+map to the active configuration preserve connected closure, as in
+\cite[Sections 2--3]{General}.
+
+If there is no mixed embedding, the polarization-preserving real
+$K_d$-centralizer is compact. The rational primitive summand has a
+monodromy-stable lattice, obtained by intersection with integral cohomology.
+Its monodromy lies in a compact group and a discrete integral group, and
+is therefore finite. This compactness argument and the classification of
+finite cases are classical; see \cite[Theorem 8 and Lemma 11]{GV}.
+We do not need that classification.
+\end{proof}
+
+\begin{lemma}[A three-point model for every all-definite factor]
+\label{lem:triangle}
+Suppose $Q_u(b)\in\{1,s-1\}$ for every unit $u$. Set
+\[
+ e=\gcd(d,b_1,b_2),\qquad m=d/e,
+ \qquad \beta=(b_1/e,b_2/e,-(b_1+b_2)/e)\pmod m.
+\]
+Then all entries of $\beta$ are nonzero and $m\geq3$. Let $B_\beta$ be
+the primitive $K_m$-factor of the Jacobian of the connected three-point
+curve
+\[
+ y^m=x^{b_1/e}(1-x)^{b_2/e}.
+\]
+As rational Hodge structures, with the indicated $K_d$ action,
+\[
+ U_c\simeq
+ \left(H^1(B_\beta,\Q)\otimes_{K_m}K_d\right)^{\oplus h}.
+\]
+Consequently the primitive abelian factor of $J(Y_c)$ is isogenous to
+\[
+ B_\beta^{\,h[K_d:K_m]}.
+\]
+In particular, it is an isogeny factor of a power of $J(F_N)$ whenever
+$d\mid N$.
+\end{lemma}
+\begin{proof}
+At a unit $u$ with $Q_u=1$, all $s$ positive residues sum to $d$.
+Since $s\geq3$, the first two sum strictly below $d$. At a unit with
+$Q_u=s-1$, apply the previous observation to $-u$: the first two original
+residues then sum strictly above $d$. Neither sum is $d$, so
+$b_1+b_2\not\equiv0\pmod d$. The triangle has three active entries;
+its gcd with $m$ is one. A zero-sum active triangle cannot have modulus two.
+
+The triangle's residue sum, after multiplying by a unit $u$, is $m$
+when $Q_u(b)=1$ and $2m$ when $Q_u(b)=s-1$. Reduction of units from $d$
+to $m$ is surjective. The rank-one $K_m$ Hodge structure
+$H^1(B_\beta,\Q)$ therefore has exactly the pure types required at each
+extension to $K_d$. Both sides of the displayed isomorphism have dimension
+$h$ at each $K_d$ embedding and just one nonzero Hodge type there.
+Any $K_d$-linear vector-space isomorphism is consequently a Hodge
+isomorphism. After forgetting the $K_d$ action, scalar extension is
+$[K_d:K_m]$ copies of the original rational Hodge structure.
+
+Rational weight-one Hodge morphisms of complex abelian varieties are
+homomorphisms up to isogeny. Thus the preceding comparison supplies actual
+algebraic maps on the whole primitive factor, not only matching Hodge
+numbers. Finally, on $F_m$ in affine coordinates $u^m+v^m=1$, the map
+$x=u^m$, $y=u^{b_1/e}v^{b_2/e}$ dominates the triangle curve. Pullback and
+norm make $B_\beta$ an isogeny factor of $J(F_m)$, and the power map
+$F_N\to F_m$ finishes the claim.
+\end{proof}
+
+\begin{remark}
+The lemma avoids a conductor-by-conductor list and any degeneration or
+specialization theorem. It includes the quartic word $(1,1,1,1)$, the
+sextic word $(1,1,1,1,1,1)$, and the conductor-fifteen word $(1,2,4,8)$.
+Its conclusion is about the primitive factor, not the whole cyclic
+Jacobian. Its exact historical priority has not been established.
+\end{remark}
+
+\section{Simultaneous moving monodromy at every exponent}
+Retain only the primitive orbits with a mixed embedding. For an individual
+complex character write $q_i=\zeta_N^{c_i}$ at its active positions; their
+product is one. Quadratic characters are considered separately below.
+
+\begin{theorem}[Exact moving blocks]\label{thm:blocks}
+For nonquadratic moving characters, different active supports belong to
+independent simple factors. On a fixed support of size at least five,
+the blocks are $\{c,-c\}$, with standard and dual $\SL_{s-2}$
+occurrences. On four active labels, the blocks are
+\[
+ (\mathcal V_4 c\cup-\mathcal V_4 c)\cap C,
+\]
+where $\mathcal V_4$ is the Klein four group and the intersection is with
+the actual character code. The oriented $\mathcal V_4$ identifications
+are algebraic curve-graph correspondences; negation is supplied by
+polarization with its dual and Tate twist.
+
+Every nonzero quadratic factor has full $\Sp_{s-2}$ monodromy.
+Different quadratic supports are independent, and no quadratic moving
+factor is joined to a nonquadratic one. The connected complex linear
+monodromy is the product of these groups with the stated occurrences;
+all-definite factors have trivial connected action.
+\end{theorem}
+
+\subsection{Common projective representations and active support}
+All projective representations are defined on the same $\pi_1(M_{0,r})$.
+Choices of lifts change a character operator only by a deck scalar. The
+normalizer of a graph in $H\times H$, for a centerless simple group $H$,
+is that graph: a normalizing pair $(a,b)$ has $\theta(a)^{-1}b$ central.
+Since the connected closure is normal in the full closure, any connected
+graph relation therefore constrains the original braid images, before
+finite base changes take powers of their eigenvalues.
+
+An active pair twist is a nonzero rank-one modification of the identity.
+This follows from \cite[Theorems 2.2 and 2.5]{MN}: put a different active
+point at infinity; the spanning vectors have their sole relation
+$\sum_i g_i=0$, the chosen vector is nonzero, and the Hermitian form and
+the rank-one coefficient are nonzero. Its spectrum is
+\[
+ (q_iq_j,1,\ldots,1).
+\]
+When $q_iq_j=1$ it is a \emph{nonidentity} unipotent. Forgetting an inactive
+label makes that same twist projectively trivial. This separates unequal
+supports whenever the simple target groups are isomorphic; otherwise
+independence is automatic. Goursat's lemma then reduces the joint
+classification to graph relations on a single support.
+
+\subsection{Rank at least three: the existing parity-free argument}
+This step is the argument of \cite[proof of Proposition 6.2]{MN}, applied
+to two possibly different residue words rather than two embeddings of one
+word. It is not a new method. After choosing inner or inverse-transpose
+orientation, a projective graph gives one simultaneous conjugating matrix.
+For an inner graph, comparison of the pair spectra above forces the scalar
+multipliers to be one: the eigenvalue of multiplicity $h-1\geq2$ is
+canonically one, including the unipotent case. Thus the canonical affine
+pure-braid representations are \emph{linearly} conjugate on every pair
+generator, hence on the entire pure braid group.
+
+For a twist enclosing three finite active points $i,j,k$,
+\cite[Theorem 2.8]{MN} gives the trace
+\[
+ (h-2)+2q_iq_jq_k.
+\]
+The pair products and these triple products agree for the two words.
+Their quotient recovers each $q_i$, with no division by two in $\Z/N$.
+The missing infinity root follows from the product-one relation. In the
+dual orientation replace all roots by their inverses. This proves that
+the words are $c$ or $-c$.
+
+It is important that the scalar normalization is simultaneous on generators.
+Comparing an isolated projective triple spectrum is not a substitute for
+linear conjugacy and does not justify this step.
+
+\subsection{Rank two: the remaining half-turn is detected by a trace}
+Put $u=q_1$, $v=q_2$, $w=q_3$, so $q_4=(uvw)^{-1}$.
+In the basis $(g_1,g_2)$ furnished by the source Gram and pair formulas,
+the adjacent pair twists have matrices
+\begin{equation}\label{eq:AB}
+ A=\begin{pmatrix}uv&v(1-u)\\0&1\end{pmatrix},\qquad
+ B=\begin{pmatrix}1&0\\1-w&vw\end{pmatrix}.
+\end{equation}
+For example, the upper-right coefficient of $A$ is obtained by substituting
+$\langle g_2,g_1\rangle$ into the rank-one formula; the lower-left
+coefficient of $B$ is obtained from $\langle g_1,g_2\rangle$.
+Thus the same source conventions determine both operators. Direct
+multiplication gives
+\[
+ \det(XI-AB)=(X-v)(X-uvw).
+\]
+The scalar-conjugacy invariant
+\begin{equation}\label{eq:J}
+ \mathcal J(A,B)=
+ \frac{\tr(A)\tr(B)\tr(AB)}{\det A\det B}
+ =\frac{(1+uv)(1+uw)(1+vw)}{uvw}
+ =\sum_{i=1}^4(q_i+q_i^{-1})
+\end{equation}
+is unchanged by independent scalar changes of $A,B$ and by simultaneous
+conjugation. It is a classical trace-type invariant; no invention of a new
+character-variety invariant is claimed.
+
+Pair spectra determine each of
+$X=q_1q_2$, $Y=q_1q_3$, $Z=q_1q_4$ up to inversion. The four even
+inversions are realized by $\mathcal V_4$; simultaneous inversion of
+all roots supplies the other four. After applying one of these known
+geometric or dual transformations, the two words have equal pair
+products. Their coordinate ratios are then one common number $\epsilon$
+with $\epsilon^2=1$. The only extra candidate is
+\[
+ (q_1,q_2,q_3,q_4)\longmapsto(-q_1,-q_2,-q_3,-q_4).
+\]
+It corresponds to adding $N/2$ to every active residue when $N$ is even.
+If it produces an inactive entry, support separation already excludes it.
+
+Under this half-turn, $\mathcal J$ changes sign. Hence a projective graph
+is impossible when $\mathcal J\neq0$. If $\mathcal J=0$, one pair product
+is $-1$, and the complementary pair product is also $-1$. Let $P$ swap
+the entries within these two pairs. Then
+\[
+ -q_i=q_{P(i)}^{-1}\quad\text{for every }i.
+\]
+The half-turn is therefore already in $-\mathcal V_4$ and supplies no
+additional graph. This proves the rank-two necessity for every modulus.
+No coprime pair-sum hypothesis is needed.
+
+For the converse, a double transposition of four branch points is induced
+by a M\"obius transformation preserving their cross-ratio. For the two
+cyclic equations the quotient of their pulled-back Kummer functions has
+divisor divisible by the actual conductor. Since $\operatorname{Pic}^0
+(\PP^1)=0$, adjoining a root of a parameter-dependent constant gives a
+deck-equivariant isomorphism after a finite base cover. Quotient pullback
+and norm transfer its graph to the primitive character factors. This is
+exactly the oriented graph construction in \cite[Section 3]{General},
+which does not require odd conductor. Polarization realizes the negative
+orientation; it is not an unsupported degree-zero Hodge isomorphism to
+the opposite character.
+
+\paragraph{An even-order regression.}
+At modulus eight, $c=(1,1,1,5)$ and $e=(5,5,5,1)$ have identical
+projective pair spectra but are not in one $\pm\mathcal V_4$ orbit.
+Their trace invariants are $2\sqrt2$ and $-2\sqrt2$. Both primitive
+orbits have mixed embeddings. Thus pair spectra alone would permit a
+false graph; the trace calculation excludes it.
+
+\subsection{Quadratic factors and completion of the product argument}
+A quadratic character is determined by its even active support. Its
+quotient is hyperelliptic and has full symplectic connected monodromy,
+by A'Campo's theorem with the compact homology quotient; the ordered and
+normalized configurations preserve connected closure. The explicit source
+match is in \cite[Section 7]{General}.
+
+Distinct quadratic supports separate by a nonzero Picard--Lefschetz
+transvection on an active pair, trivial after forgetting an inactive label.
+The only isomorphism between a symplectic and a special-linear simple
+factor in the dimensions at issue is $\Sp_2=\SL_2$. On a common
+four-point support the quadratic pair twists are all unipotent. A graph
+to a nonquadratic rank-two factor would force $q_iq_j=1$ for every pair,
+so all active roots would be $-1$. That is itself quadratic, a contradiction.
+
+The connected solvable radical acts trivially on every full simple
+projection and on every finite factor, hence is trivial. Semisimple
+Goursat theory now assembles the pairwise classification; there are no
+additional relations invisible in all pairwise projections. Lifting from
+adjoint groups gives the stated product of simply connected $\SL$ and
+$\Sp$ groups. Every factor has a faithful standard occurrence in $H^1$,
+so this product is the connected linear image. This completes
+Theorem~\ref{thm:blocks}.
+
+\section{Algebraic sources and the Hodge reduction}
+\subsection{The classical determinant correspondence has no parity restriction}
+For a degree-$d>2$ primitive cyclic factor of rank $h$, put
+\[
+ D_c\otimes\C=\bigoplus_{u\in(\Z/d)^\times}\bigwedge^h V_{uc}.
+\]
+The required input is the rational algebraic realization of $D_c$ as a
+summand of $H^h(F_d^h,\Q)$. This is the classical Schoen determinant
+construction \cite[Lemmas 1.1--1.2]{Schoen88}; its finite-correspondence
+normalization is written out in \cite[Section 7]{Structural} and in
+\cite{Fermat}. Here is the specific parity-independent mechanism.
+
+On $Z=Y_c^h$, average over
+$H=\ker(\mu_d^h\to\mu_d)\rtimes\mathfrak S_h$ and apply the primitive
+cyclotomic projector for a deck action in \emph{one} coordinate. Subtracting
+the full $\mu_d^h\rtimes\mathfrak S_h$ average removes the invariant
+part. The unsigned geometric permutation average is the ordinary exterior
+antisymmetrizer on degree-one tensors because of the Koszul sign. The
+projector's cohomological image is exactly $D_c$.
+
+The normal quotient $Z/H$ is a cyclic cover of $\Sym^h\PP^1=\PP^h$
+branched along $h+2$ evaluation hyperplanes. They are in general position,
+and taking $d$th roots gives a diagonal Fermat $h$-fold mapping finitely
+onto the same quotient. The fiber-product correspondence, its transpose,
+and division by their finite degrees give inverse maps on the projected
+summand. These are proper algebraic correspondences; their compositions
+are the finite deck averages. Neither root-taking, averaging, nor the
+primitive idempotent assumes $d$ odd.
+
+Using the algebraic $H^1$ correspondence with the Jacobian gives the same
+summand in its cohomology. Basepoint changes in Abel--Jacobi are translations
+and act trivially on $H^1$. Acting in every coordinate simultaneously would
+instead multiply the character by $h$, and can lose it when $d\mid h$;
+that operation is not used. No new cycle-construction priority is claimed.
+
+\subsection{Rational invariant spanning, including finite factors}
+The first fundamental theorems for $\SL$ and $\Sp$ express invariant
+tensors using contractions and, for $\SL$, full volumes. Apply them to
+Theorem~\ref{thm:blocks}. Actual oriented graphs identify occurrences,
+polarization handles duals, and alternation passes from tensor powers of
+$H^1$ to $H^k(A_b^q)$, with nonzero rational factorial normalizations.
+Quadratic symplectic blocks require only polarization contractions.
+
+Use \emph{full rational} tensor products of the $D_c$, the
+$H^1(B_\beta,\Q)$ furnished by Lemma~\ref{lem:triangle}, and Tate factors.
+Support-three factors are included in the same lemma. The finite factors'
+whole first cohomology, not merely their determinants, is inserted by the
+isogenies proved there. All forward maps are algebraic.
+
+For rational spanning, temporarily extend scalars to $L=\Q(\zeta_N)$.
+Every character selector on a raw slot is
+\[
+ e_c=\frac1{|G|}\sum_{g\in G}\zeta_N^{-c(g)}g^*,
+\]
+an $L$-linear combination of rational algebraic deck correspondences.
+Expand the selectors in each complex invariant diagram, including
+selectors on contractions and graph maps. Each diagram is consequently
+in the $L$-span of images of rational algebraic maps from the full sources.
+Each expanded map still has invariant image: it uses determinant volumes,
+finite-factor slots, equivariant deck or graph maps, and polarization
+contractions. In a fixed degree only finitely many diagrams and terms
+are required. Their direct sum is a rational Hodge surjection onto the
+invariant space, since it is surjective after extension to $L$.
+
+This is the full-rational-source argument of
+\cite[Section 7]{Structural}, now with Lemma~\ref{lem:triangle} replacing
+its special conductor-fifteen source and with quadratic pairings added.
+It assumes neither rank one over a common cyclotomic field nor independence
+of different cyclotomic CM characters. In particular it controls mixed
+Hodge classes rather than inferring them from factorwise HC. This proves
+Theorem~\ref{thm:presentation}.
+
+\subsection{From one Fermat Jacobian to all source products}
+Assume $\HC(J(F_N)^q)$ for all $q$. For $N\geq3$, Abel--Jacobi pullback
+surjects on the cohomology of $F_N$, hence on all its powers. Semisimplicity
+lifts Hodge classes through this surjection, proving HC for curve products.
+For $N=2$ these products are rational and the conclusion is immediate.
+
+The Shioda--Katsura rational map
+$F_N^{h-1}\times F_N^1\dashrightarrow F_N^h$ of degree $N$ is resolved
+by blowing up $F_N^{h-2}\times F_N^0$ \cite[Lemmas 1.1--1.2]{SK}.
+The blowup formula and $N^{-1}f_*f^*=1$ reduce HC for arbitrary products
+of Fermat hypersurfaces inductively to curve products and points. Both
+the source and the blowup center are controlled; arbitrary rational
+domination alone would not justify the deduction. For every $d\mid N$,
+the finite power map $F_N^h\to F_d^h$ gives the same conclusion for
+products of degrees dividing $N$. Effective Tate factors are supplied by
+projective spaces. Thus all Hodge classes in every source of
+Theorem~\ref{thm:presentation} have algebraic representatives in their
+specified realizations.
+
+At a very general fiber all rational Hodge classes on all powers are
+fixed by connected monodromy. The generic-monodromy and algebraic
+Hodge-locus argument, including the countable union across powers and
+degrees, is recorded with source locators in \cite[Section 6]{General}.
+Lift any such class through the rational Hodge surjection of
+Theorem~\ref{thm:presentation}. Polarizable rational Hodge structures
+are semisimple, so the lift can be chosen Hodge. Its algebraic source
+representatives map forward to an algebraic representative on $A_b^q$.
+Only the forward maps must be algebraic; an algebraic splitting of the
+surjection is not assumed. This proves the forward implication of
+Theorem~\ref{thm:transfer}.
+
+For the reverse implication take $G=(\Z/N)^2$ and branch vectors
+$(1,0),(0,1),(-1,-1)$. Its three-point cover is the Fermat curve
+$x^N+y^N=1$, via the coordinate $x^N$. Its full branch space is a point.
+The right-hand assertion therefore includes HC for all powers of $J(F_N)$.
+Corollary~\ref{cor:aoki} follows from the established Fermat degrees.
+
+For Corollary~\ref{cor:category}, the same Shioda--Katsura blowup induction,
+without any Hodge-conjecture premise, puts the cohomology of every relevant
+Fermat product in $\langle H^1(F_N),\Q(1)\rangle$. Semisimplicity and
+Theorem~\ref{thm:presentation} put every invariant space in that category.
+The reverse inclusion again uses the rigid Fermat datum. Thus this
+categorical fixed-part description is independent of the cycle-algebraicity
+premise, although its presentation is by the algebraic maps already proved.
+
+
+\section{Verification boundary and novelty}
+The accompanying exact-arithmetic script verifies five symbolic matrix
+identities, the four-point reconstruction for all 236,096 active zero-sum
+words at moduli 2 through 32, and separation of 46,032 nongraph half-turn
+candidates. It also verifies the common pair-kernel and triple reconstruction,
+and the triangle types for 391 primitive all-definite four-point words with
+first-row residue sum equal to the conductor, at conductors through 32.
+Negation accounts for the other definite first-row sum. Thirty-six tested
+words have a proper triangle conductor. Higher-support examples are stated
+explicitly rather than included in that four-point count.
+
+These are symbolic and bounded arithmetic checks, not proofs of geometric
+monodromy, algebraic correspondences, or the Hodge conjecture. The universal
+arguments are the written proofs above. No new Lean theorem is asserted;
+the repository-wide Lean and legacy certificate suites were not run in
+this continuation environment. None of the old frozen sources was changed.
+
+The credible contribution under examination is the exact simultaneous
+classification, with its all-exponent Fermat-source assembly for arbitrary
+noncyclic deck groups. Individual density, the high-rank trace method,
+finite-monodromy classification, determinant cycles, and the established
+Fermat degrees are earlier work. The rank-two trace application and the
+three-point model are short arguments, not evidence by themselves of a
+major new mechanism. The complete 1989 Schoen chapter and the full
+hypergeometric-equivalence literature remain priority checks; a failed
+search is not a proof of novelty. Neither Duke nor JEMS readiness is
+asserted by this draft.
+
+\begin{thebibliography}{99}
+\bibitem{MN} A. Menet and D.-M. Nguyen,
+\emph{Representations of braid groups via cyclic covers of the sphere:
+Zariski closure and arithmeticity}, arXiv:2310.10401v3.
+Definitions and locators: Definition 1.1; Theorems 2.1, 2.2, 2.5, 2.8,
+5.1; Proposition 6.2 and Remark 6.4.
+\bibitem{GV} E. Ghate and T. N. Venkataramana,
+\emph{Sums of fractions and finiteness of monodromy},
+arXiv:1612.04548; Indagationes Mathematicae (2017),
+\href{https://doi.org/10.1016/j.indag.2017.09.003}{doi:10.1016/j.indag.2017.09.003}.
+Theorem 8 and Lemma 11.
+\bibitem{Schoen88} C. Schoen, \emph{Hodge classes on self-products of a
+variety with an automorphism}, Compositio Mathematica 65 (1988), 3--32.
+Lemmas 1.1--1.2 and Remark 1.4.
+\bibitem{Schoen89} C. Schoen, \emph{Cyclic covers of $\PP^v$ branched
+along $v+2$ hyperplanes and the generalized Hodge conjecture for certain
+abelian varieties}, Lecture Notes in Mathematics 1399 (1989), 137--154.
+\href{https://doi.org/10.1007/BFb0095974}{doi:10.1007/BFb0095974}.
+Full chapter not re-read in this continuation; no new exact theorem
+attribution is made to it.
+\bibitem{SK} T. Shioda and T. Katsura,
+\emph{On Fermat varieties}, Tohoku Mathematical Journal 31 (1979), 97--115.
+\bibitem{Aoki00} N. Aoki, \emph{Some remarks on the Hodge conjecture for
+abelian varieties of Fermat type}, Commentarii Mathematici Universitatis
+Sancti Pauli 49 (2000), 177--194, Theorem 0.1.
+\bibitem{Aoki02} N. Aoki, \emph{Hodge cycles on CM abelian varieties of
+Fermat type}, Commentarii Mathematici Universitatis Sancti Pauli 51 (2002),
+99--130, Theorem 1.2. This author's restatement was read in the available
+full-text mirror; that mirror's landing-page title is mismatched.
+\bibitem{General} K. Kistner, \emph{All powers of very general Jacobians
+of elementary abelian covers}, repository manuscript
+\texttt{manuscripts/general\_all\_powers.tex}, checkpoint specified above.
+Written project proof, not an externally refereed input.
+\bibitem{Structural} K. Kistner, repository structural companion,
+\texttt{manuscripts/structural\_extensions.tex}, same checkpoint,
+Section 7. Written project proof, not an externally refereed input.
+\bibitem{Fermat} K. Kistner, repository Fermat-transfer companion,
+\path{manuscripts/fermat_determinant_transfer.tex}, same checkpoint.
+Explicit presentation of a classical mechanism, not a priority claim.
+\end{thebibliography}
+\end{document}
