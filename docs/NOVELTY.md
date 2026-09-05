@@ -2,10 +2,11 @@
 
 **The earlier Duke/JEMS assessment was premature.** The search and direct
 proof comparison identify classical sources for much of the apparent Hodge
-breakthrough. The current manuscripts contain a potentially useful uniform
-group theorem and structural consequences; they do not establish exceptional
-novelty or publication readiness. Correctness, priority and significance are
-separate questions throughout this report.
+breakthrough. A direct reduction of the remaining proofs now favors
+**incremental technical novelty and synthesis**, rather than unexplored
+evidence of substantial new Hodge theory. Exact priority and publishability
+remain unestablished. Correctness, priority and significance are separate
+questions throughout this report.
 
 ## Exact theorem under assessment
 
@@ -40,7 +41,7 @@ or fully formalized in Lean.
 | The determinant-to-Fermat construction | **Classical mechanism, explicitly rederived** | Schoen's 1989 introduction describes this construction. The new companion supplies the full finite-quotient correspondence needed here. |
 | All powers of a single prime cyclic cover, with arbitrary residues | **Old formal consequence** | Rohde's unrestricted prime cyclic monodromy theorem, classical invariant theory and the preceding Fermat algebraicity imply it. This is our deduction, not a claim that Rohde prints the HC corollary. |
 | Full individual character projections | **Published input and elementary reductions** | Rohde, Mohajer–Zuo and Menet–Nguyen already supply the relevant density results. |
-| Exact simultaneous blocks across distinct character words, including equal-signature factors | **Uniform extension candidate** | The inspected abelian-cover results do not give the same complete classification. The proposed extra scope is support separation, only ±c in rank at least three, and exactly ±V4.c intersected with the actual code in four-point rank two. |
+| Exact simultaneous blocks across distinct character words, including equal-signature factors | **Modest technical extension candidate** | MN Proposition 6.2 already uses the central proof mechanism. Comparing arbitrary words adds support separation, a triangle identity in rank at least three, and an elementary signed-pair-sum calculation with classical Klein-four geometry in rank two. Exact priority remains open; proof depth is no longer an unexplored question. |
 | Full elementary-abelian all-powers theorem | **Combination-theorem candidate** | Its possible contribution is the preceding joint classification and rational algebraic assembly. The cycle construction itself should not be claimed as new. No earlier theorem with precisely all these quantifiers was located; that is not a proof of priority. |
 | Exact generic Hodge group | **Structural consequence; standard torus method** | The actual graph centralizer now supplies the missing geometric premise. Signature-span determination of the center is already explicit in Xue–Zarhin. |
 | Explicit first exceptional degree, dimensions and all-powers generators for the subgroup families | **Potentially useful explicit descriptions** | The new text proves precise formulas. Their algebraicity follows from old ingredients; exact priority of the descriptions is not established. |
@@ -267,11 +268,35 @@ are not their proof.
 
 ## Publication judgment and next decision
 
-The evidence does **not** currently support Duke or JEMS. A complete uniform
-group classification with worthwhile applications may support a specialist
-paper, but even that judgment needs independent review and an exact priority
-comparison. Adding more corollaries of the same classical cycle construction
-does not, on its own, change the contribution into a major breakthrough.
+The current working assessment is **incremental technical novelty and
+synthesis**, with no affirmative evidence for Duke/JEMS-level significance.
+This is supported by a direct contraction of the proofs, not just by failure
+to find an exact earlier theorem. MN Proposition 6.2 already contains the
+inner/dual comparison, control of projective scalars, braid spectra and
+residue reconstruction. Our marginal steps are arbitrary-word comparison,
+support separation, and the elementary rank-two completion. Rohde already
+supplies the graph method and cyclic conductor separation. The extensions
+add arithmetic reductions, finite exception analysis and standard assembly;
+they supply no independent new cycle or generalized-Hodge mechanism.
+
+See the [seven-step residual group audit](RESIDUAL_GROUP_AUDIT.md) and
+[extension audit](RESIDUAL_EXTENSIONS_AUDIT.md) for the actual deductions.
+An exact statement can still be original even when its proof is a modest
+extension. That does not establish publishability, which remains
+unassessed by an external specialist. Merely expanding the present route
+with more corollaries is not a supported strategy for reaching Duke/JEMS.
+
+There is a specific counterweight to a claim of no identifiable new use.
+The existing four-point genus-16 example has dim S_f=3<4=dim S(G), contrary
+to the informal expectation in Spelta–Tamborini Remark 3.8. The group audit
+records an explicit extra involution, all contributing signatures, and
+three independent moving factors. The strict inequality already follows
+from the involution and signatures, without the uniform theorem or HC.
+The source does not require G to be the full automorphism group. This
+challenges an informal expectation, not the paper's proved theorems.
+Subject to priority and external verification, it provides a concrete
+reason for a short note. Its classical extra-symmetry mechanism does not
+restore the earlier high-significance Hodge rationale.
 
 The strongest current presentation would lead with exact simultaneous
 monodromy and generic Hodge groups, explain explicitly how it removes the
